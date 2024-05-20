@@ -1,2 +1,9 @@
+#!/bin/bash
 git remote add interface https://github.com/bpstrngr/interface;
+git fetch interface;
+git switch -c interface interface/stable;
+git checkout stable;
+git checkout interface/stable .;
+git restore --staged .;
+git restore $(git ls-files);
 node --experimental-detect-module --import=./Blik_2023_interface.js ./Blik_2023_host.js expose ./Blik_2023_form.js ./Blik_2023_parameters.json https remember;
