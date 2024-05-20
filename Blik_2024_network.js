@@ -8,7 +8,7 @@
  var {default:vectors}=await resolve("./Blik_2020_svg.json");
  var browser=Boolean(globalThis.window);
 
- export default compose(combine(compose(sprawl,relate,spread,note),drop(2)),chart,simulate,pass(report));
+ export default compose(drop(1),combine(compose(note,sprawl,relate,spread,note),drop(2)),chart,simulate,pass(report));
 
  function sprawl(resource,options={})
 {// parse object as a D3 hierarchy. 

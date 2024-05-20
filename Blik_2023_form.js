@@ -6,6 +6,7 @@
  import {access,resolve,modularise,window,fetch,mime} from "./Blik_2023_interface.js";
  import local from "./Blik_2024_static.js";
  import source from "./Blik_2023_form.js";
+ import network from "./Blik_2024_network.js";
  import extend from "./Blik_2023_d4.js";
  var {default:svg}=await resolve("./Blik_2020_svg.json");
 
@@ -98,6 +99,8 @@
  ,"./Bostock_2020_d3v6_rollup.js":["* as d3"]
  }
 ,namespace,"body",refer,{type:mime("js")},Object.assign
+),routes:compose
+(crop(1),"get",{spread:"force"},network.bind(null),throttle,{style:"background:#222222"},tether(document)
 )};
 
  var script=compose
