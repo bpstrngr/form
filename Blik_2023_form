@@ -1,0 +1,2 @@
+git remote add interface https://github.com/bpstrngr/interface;
+node --experimental-detect-module --import=./Blik_2023_interface.js ./Blik_2023_host.js expose ./Blik_2023_form.js ./Blik_2023_parameters.json https remember;
