@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Merging with Interface to access functions...";
-git stash;
+git stash --keep-index;
 commit=$(git rev-parse HEAD);
 git remote add interface https://github.com/bpstrngr/interface;
 git fetch interface;
@@ -9,7 +9,7 @@ git checkout $commit;
 git checkout interface/stable .;
 git restore --staged .;
 git restore $(git ls-files);
-git stash apply;
+git checkout stash -- .;
 node --experimental-detect-module --import=./Blik_2023_interface.js ./Blik_2023_host.js expose ./Blik_2023_form.js ./Blik_2023_parameters.json https remember;
 exit 0;
 
