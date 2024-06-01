@@ -8,7 +8,7 @@
  var {default:vectors}=await resolve("./Blik_2020_svg.json");
  var browser=Boolean(globalThis.window);
 
- export default compose(drop(1),combine(compose(note,sprawl,relate,spread,note),drop(2)),chart,simulate,pass(report));
+ export default compose(drop(1),combine(compose(sprawl,relate,spread,note),drop(2)),chart,simulate,pass(report));
 
  function sprawl(resource,options={})
 {// parse object as a D3 hierarchy. 
@@ -41,15 +41,17 @@
  function descend(value,{relations,title,routed})
 {// define children. 
  if(!value)return [];
+ if(array(value))return value;
  if(string(value))return {[value]:undefined};
  if(value[relations])return value[relations];
+ if(relations)return [];
  let flatten=array(value);
  let children=Object.entries(value);
  return children.flatMap(([field,value],index,{length})=>
  flatten||(length==1)
 ?!value||Object.keys(value).length>1
 ?descend(value,{relations,title,routed})
-// routed records refer to terminal objects, which shouldn't be strings.
+ // routed records refer to terminal objects, which shouldn't be strings. 
 :(routed&&Object.values(value).every(value=>string(value)||array(value)))
 ?[]:value
 :{[field]:value})
@@ -201,7 +203,7 @@
  let change=[population,connections].some((size,index)=>size!==[nodes,links][index].length);
  if(!change||!simulation.alpha())return simulation;
  [nodes,links]=[cluster.data(),network.data()];
- let density=connections/population**2||0;
+ let density=connections/(population*(population-1)/2)||0;
  let [width,height]=["width","height"].map(dimension=>scale(population**2/(density||1)));
  let [exposure,imposure,internal,balance]=nodes.reduce((metric,{exposure,imposure,complexity},internal)=>
 [exposure,imposure,internal=complexity&&(complexity!=Infinity),internal?complexity:0
@@ -217,15 +219,15 @@
  combine
 (infer(),infer("alpha",1)//,infer("alphaDecay",0.3)
 ,infer("nodes",nodes,nodeindex)
-,infer("force","center",d3.forceCenter(0,0).strength(density*2))
+,infer("force","center",d3.forceCenter(0,0).strength(0.25))
 ,infer("force","x",d3.forceX(0).strength(0))
 ,infer("force","y",d3.forceY(0).strength(0))
-,compose("charge","force",infer("strength",node=>scale(node.centrality)*-2))
+,compose("charge","force",infer("strength",node=>scale(node.centrality)*-3))
 ,compose("collision","force",infer("radius",node=>scale(size(node))+1))
 ,compose("link","force"
 ,infer("links",links,linkindex)
 ,infer("strength",({value})=>value||tension)
-,infer("distance",({source,target})=>scale(Math.sqrt(size(source)**3+size(target)**3))||spacing)
+,infer("distance",({source,target})=>scale(size(source)*3+size(target)*3)||spacing)
 ))(simulation);
  return simulation;
 };
@@ -241,7 +243,7 @@
  let {breadth,length}=measure(arguments[0]);
  let [width,height]=force
 ?Array(2).fill(forage(this).reduce((nodes,links)=>
- scale(nodes.size()/(links.size()/(nodes.size()**2))/2||0)))
+ scale(nodes.size()/(links.size()/(nodes.size()*(nodes.size()-1)/2))||0)))
 :[breadth,length].map(size=>size*monospace).sort(size=>vertical-1);
  let viewBox=radial?[-width,-height,width*2,height*2]:[-width/2,-height/2,width,height];
  return viewBox.join(" ");
@@ -380,12 +382,13 @@
  }
 ,{update(path){extend.call(path,{fold:false,...extract.call(link.path[1],["d"])});}
  ,class:"arrow"
- ,d({source,target})
+ ,d:buffer(function({source,target})
 {if(!this.previousSibling.getPointAtLength)
  return null;
  let curve=[source,source,this.previousSibling.getPointAtLength?.(scale(size(source)))||target];
  return curve.map(({x,y},index)=>["M","S"," "][index]+[x,y]).join("");
-},"stroke-width"(){return this.previousSibling.getAttribute("stroke-width")/2}
+},swap(undefined))
+ ,"stroke-width"(){return this.previousSibling.getAttribute("stroke-width")/2}
  ,"marker-end":function({source})
 {let [fragment]=ascend.call(this);
  let marker=trace(source,[]).pop()?.replace(/[^a-zA-Z0-9]/g,"").replace(/^[0-9]+/,number=>
@@ -577,6 +580,14 @@
 [[source.children?.map(node=>[node])||[],Array.from(source.relations||[])].flat().flatMap(([target,value])=>
  [{source,target,value},connect(target,sources)].flat())
 ].flat());
+};
+
+ function neighbors({target})
+{let node=d3.select(target).datum();
+ let {parent,children}=node;
+ let {1:links}=forage(target.closest("svg"));
+ let cluster=[node,parent,children].flat().filter(Boolean).map();
+ return links.filter(({source,target})=>[source,target].every(node=>cluster.includes(node)));
 };
 
  var measure=node=>
