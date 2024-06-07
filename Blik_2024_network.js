@@ -1,142 +1,94 @@
  import {color} from "./Blik_2023_layout.js";
  import {search,merge,prune,extreme,sum,extract,unfold} from "./Blik_2023_search.js";
- import {document,demarkup,namespaces,path,activate} from "./Blik_2023_fragment.js";
- import {infer,tether,swap,wait,drop,pass,note,collect,compose,combine,wether,refer,buffer,observe,ascending,defined,compound,array,string,clock,revert,provide} from "./Blik_2023_inference.js";
+ import {document,demarkup,namespaces,path,activate,deselect} from "./Blik_2023_fragment.js";
+ import {infer,tether,simple,swap,wait,drop,pass,note,has,collect,compose,combine,wether,refer,buffer,observe,ascending,defined,compound,array,string,clock,revert,provide} from "./Blik_2023_inference.js";
  import {window,fetch,resolve} from "./Blik_2023_interface.js";
  import * as d3 from './Bostock_2011_d3.js';
  import extend,{ascend} from "./Blik_2023_d4.js";
  var {default:vectors}=await resolve("./Blik_2020_svg.json");
  var browser=Boolean(globalThis.window);
 
- export default compose(drop(1),combine(compose(sprawl,relate,spread,note),drop(2)),chart,simulate,pass(report));
+ export default compose(drop(1),combine(sprawl,drop(1)),combine(spread,drop(1)),chart,simulate,pass(report));
 
- function sprawl(resource,options={})
+ export function sprawl(resource,options={})
 {// parse object as a D3 hierarchy. 
  if(typeof resource==="string")
  resource=JSON.parse(resource);
- if(resource.constructor.name=="Node")
+ if(resource.constructor.name==="Node")
  return resource;
- let {relations,spread,title,monospace=10,cluster,still,source,gradual,depth}=options;
- let matrix=records(resource);
- //resources may contain link definitions as single fields by name or index, or as full matrix. clear the latter now.
- let routes=matrix.map(([field])=>field);
- let routed=routes.some(path=>array(path));
- if(routes.length)
- resource=Object.fromEntries(Object.entries(resource).filter(([field])=>!routes.includes(field)));
- matrix=matrix.filter(([field])=>[field.join?.("/")||field,"average",true,undefined].includes(options.matrix))
- let node=resource.nodeName
-?merge(d3.hierarchy({}),{children:Graph(resource)},1)
-:d3.hierarchy(resource,infer(descend,{relations,title,routed}));
- let nodes=unfold.call(node,childfold);
- if(depth)nodes.forEach(node=>node.depth===depth&&delete node.children);
- nodes.forEach((node,index,{length})=>Object.assign(node
-,{title:title&&node.data[title]||(string(node.data)?node.data:Object.keys(node.data).slice(0,2).map((field,index)=>index?"":field).join("..."))
- }));
- let [min,max]=extreme(nodes.flatMap(period).filter(Boolean).sort(ascending));
- let time=d3.scaleLinear().domain([min-(max-min)/5,max+(max-min)/5]).range([0,(max-min)/14000000])
- Object.assign(node,{matrix,spread,monospace,still,cluster,gradual,time});
- return node;
+ let {relations,spread,title,monospace=10,still,source,gradual,depth}=options;
+ if(resource.nodeName)
+ return Graph(resource);
+ let {resource:{nodes}}=prune.call({resource},split,false,"value");
+ prune.call(nodes,crosslink,false,["source","value"]);
+ let cluster=unfold.call({nodes},childfold).slice(1);
+ cluster.forEach(deduplicate);
+ return nodes;
+//  note(unfold.call(nodes[0],childfold));
+//  if(depth)nodes.forEach(node=>node.depth===depth&&delete node.children);
+//  nodes.forEach((node,index,{length})=>Object.assign(node
+// ,{title:title&&node.data[title]||(string(node.data)?node.data:Object.keys(node.data).slice(0,2).map((field,index)=>index?"":field).join("..."))
+//  }));
+//  let [min,max]=extreme(nodes.flatMap(period).filter(Boolean).sort(ascending));
+//  let time=d3.scaleLinear().domain([min-(max-min)/5,max+(max-min)/5]).range([0,(max-min)/14000000])
+//  Object.assign(node,{matrix,spread,monospace,still,cluster,gradual,time});
+//  return node;
 };
 
- function descend(value,{relations,title,routed})
-{// define children. 
- if(!value)return [];
- if(array(value))return value;
- if(string(value))return {[value]:undefined};
- if(value[relations])return value[relations];
- if(relations)return [];
- let flatten=array(value);
- let children=Object.entries(value);
- return children.flatMap(([field,value],index,{length})=>
- flatten||(length==1)
-?!value||Object.keys(value).length>1
-?descend(value,{relations,title,routed})
- // routed records refer to terminal objects, which shouldn't be strings. 
-:(routed&&Object.values(value).every(value=>string(value)||array(value)))
-?[]:value
-:{[field]:value})
+ function split([name,value],path=[])
+{// split entries into nodes. 
+ let fields="value,name,nodes,depth".split(",");
+ let node=compound(this)&&has.call(this||{},fields)&&Object.keys(this).length===fields.length;
+ if(node)return value;
+ let entry=path.at(-1)==="nodes";
+ if(entry&&array(this))
+ return provide((compound(value)?Object.entries(value):[[value]]).map(entry=>split.call(value,entry,path)));
+ let nodes=defined(value)?[value].flat():undefined;
+ // search.prune collects array indices in path, which doubles the depth. 
+ // first entries only serve to expose resource entries, which increments depth. 
+ let depth=path.length/2-1;
+ return {name,value,nodes,depth};
+};
+ function crosslink([field,value],path)
+{if(!path.length)return value;
+ let {nodes,depth}={[field]:true};
+ if(nodes&&array(value))
+ value.forEach(entry=>merge(entry,{source:[this]}));
+ let terminal=depth&&!this.nodes?.length;
+ if(terminal)
+ unfold.call(this,"source").reverse().forEach((node,index)=>
+ merge(node,{height:Math.max(node.height||0,value-index)}));
+ return value;
+};
+ function deduplicate(node,index,cluster)
+{cluster.slice(index+1).filter(({name})=>name===node.name).map(duplicate=>
+ cluster.splice(cluster.indexOf(duplicate),1).flatMap(({source,nodes})=>
+ [source,nodes].flatMap((list,index)=>list?.map(node=>node[index?"source":"nodes"]||[])||[])).reduce((node,list)=>
+ list.splice(list.indexOf(duplicate),1,node)[0]
+,merge(node,duplicate,0))
+,node);
 };
 
- function records(resource)
-{// extract matrix definitions as {domain,range,matrix:{[domain]:[...range]}}.
- if(resource.constructor.name!=="Object")return [];
- let records=Object.entries(resource).filter(([field,records])=>
- array(records)&&records.some(record=>
- array(record)&&record.every(vector=>!isNaN(vector))));
- if(records.length)
- return records;
- if(Object.entries(resource).length==2)
- // they may also be referential values by title or index 
- // with uniform "record" keys as {scope,matrix:{path:{in:{scope:{record:[[...fields]]}}}}}.
- // WARNING binary trees may contain such arrays intended as children, not records. 
- return Object.entries(resource).map(([field,value])=>[[field],value]).reduce(function trace(matrix,[path,value])
-{if(!compound(value))return matrix;
- let references=Object.entries(value||[]).map(([field,references])=>
-[field,Object.entries(references||[]).find(({1:record})=>
- array(record)&&!record.flat().some(field=>!string(field)&&field))||[]
-]);
- let records=references.every(({1:{0:field}},index,[{1:{length,0:first}}])=>length&&field===first);
- if(records)
- return references.reduce((matrix,[field,{1:record}])=>Object.assign(matrix
-,{[matrix.length]:[[...path,field],[record]]})
-,matrix);
- return Object.entries(value).reduce((matrix,[field,value])=>trace(matrix,[[...path,field],value]),matrix);
-},[]);
- return records;
-};
-
- function relate(node)
-{if(array(node))return node;
- [node,...node.matrix].reduce((node,[path,records])=>
- records.reduce((node,vectors,record)=>vectors.reduce((node,vector,field)=>
-{if(!vector||!node)return;
- let [domain,range]=[0,1].map(index=>node.children[index].leaves());
- let [source,target]=array(path)?
-[[node,...path].reduce(({children},field)=>children.find(({title})=>title==field))
-,domain[field]
-]:[domain,range].map((nodes,index)=>nodes[[field,record][index]]);
- // clear child node representing these relation records. 
- let [referral]=Object.entries(source.data[source.title]||{}).find(({1:value})=>value==records[0])||[];
- if(source.children?.find(({title})=>title==referral)||!source.children?.length)
- delete source.children;
- let domains=["stakeholder"];
- let ranges=["service","provider"];
- [source,target]=[source,target].sort((source,target)=>
- // parent title indicates the direction of the relationship. 
- [source,target].map(({parent:{title}})=>title).reduce((independent,title)=>
- [ranges,domains][Number(independent)].includes(title),false)-1);
- [source,target].forEach(node=>merge(node,{occurence:new Set([path])},0));
- merge(source,{adjacency:{[target.title]:new Set([path])}},0);
- let relation=source.relations?.get(target);
- relation=isNaN(vector)?[...relation||[],...[vector].flat()]:((relation||0)+vector)/source.adjacency[target.title].size;
- merge(source,{relations:new Map([[target,relation]])},0);
- return node;
-},node),node));
- let nodes=unfold.call(node,childfold);
- return node;
-};
-
- function spread(node)
-{let {spread,monospace,matrix}=node;
- let {force,radial,up,down,left,right}={[spread]:true};
+ function spread(nodes,{spread,monospace,matrix})
+{let {force,radial,up,down,left,right}={[spread]:true};
+ if(force)
+ return nodes;
+//  nodes.reverse().reduce(({x,y},node)=>Object.assign(node,{x,y})
+// ,[breadth,length].map(size=>size*monospace/2).reduce((x,y)=>({x,y})));
  let horizontal=left||right;
  let vertical=down||up;
  let inverse=up||left;
- let nodes=unfold.call(node,childfold);
- let {breadth,length}=measure(node);
- if(force)
- return node;
-//  nodes.reverse().reduce(({x,y},node)=>Object.assign(node,{x,y})
-// ,[breadth,length].map(size=>size*monospace/2).reduce((x,y)=>({x,y})));
+ nodes=unfold.call({nodes},childfold).slice(1);
+ let [{breadth,length}]=nodes.map(measure);
  if(radial)
- d3.tree().size([Math.PI*2,height/2]).separation(({depth,parent},next)=>(parent==next.parent?1:2)/depth)(node);
+ d3.tree().size([Math.PI*2,height/2]).separation(({depth,source},next)=>(source==next.source?1:2)/depth)(node);
  else
  nodes.forEach(node=>Object.assign(node,
-[sum(measure(node).breadth/2,unfold.call(node,"parent").flatMap(node=>
- [node.parent].flat().flatMap(node=>node?.children||[]).map((child,index,children)=>
- child===node?children.splice(index)&&child:child).map(node=>measure(node).breadth)))*monospace
-,sum(10,unfold.call(node,"parent").slice(1).map(node=>
- extreme((node.parent?.children||[node]).map(node=>node.title?.length||0))[1],0))*monospace
+[sum(measure(node).breadth/2,unfold.call(node,"source").flatMap(node=>
+ [node.source].flat().flatMap(node=>node?.nodes||[]).map((child,index,nodes)=>
+ child===node?nodes.splice(index)&&child:child).map(node=>measure(node).breadth)))*monospace
+,sum(10,unfold.call(node,"source").slice(1).map(node=>
+ extreme((node.source?.nodes||[node]).map(node=>node.title?.length||0))[1],0))*monospace
 ].sort(size=>!horizontal-1).reduce((x,y)=>({x,y}))));
  let [width,height]=[breadth,length].map(size=>size*monospace).sort(size=>!horizontal-1);
  if(inverse)
@@ -144,10 +96,13 @@
  return node;
 };
 
- function chart(node,fragment)
+ function chart(nodes,options,fragment)
 {return compose.call
-(fragment?.nodeName?.toLowerCase()==="svg"?fragment:{svg:{"xmlns:xlink":namespaces.xlink,preserveAspectRatio:"xMidYMid meet",defs:{filter:[vectors.shadow.defs.filter,vectors.shadow_white.defs.filter]}}}
-,document,{...svg,datum:node},tether(extend)
+(fragment?.nodeName?.toLowerCase()==="svg"?fragment:{svg:
+ {"xmlns:xlink":namespaces.xlink,preserveAspectRatio:"xMidYMid meet"
+ ,defs:{filter:[vectors.shadow.defs.filter,vectors.shadow_white.defs.filter]}
+ }}
+,document,{datum:Object.assign(nodes,options),...svg},tether(extend)
 );
 };
 
@@ -174,9 +129,7 @@
  if(!browser&&datum.gradual)
  return simulation.alpha(0).stop();
  let [cluster,network]=forage(fragment); 
- let nodes=unfold.call(datum,"children");
- if(!datum.height)
- nodes=nodes.slice(1);
+ let nodes=unfold.call({nodes:datum},"nodes").slice(1);
  let links=connect(nodes);
  if(datum.gradual)
  links=links.slice(0,network.size()+!clock)
@@ -233,17 +186,19 @@
 };
 
  var svg=
- {fold:false,datum:node,call(fragment)
+ {fold:false,call(fragment)
 {if(!browser||fragment.datum().still)return;
  observe.call(d3.zoom().scaleExtent([0.1,100]),{zoom({transform}){extend.call(this,{fold:false,g:{fold:false,class:"graph",transform}});}})(fragment);
-},id:({source})=>source,class:"d3"//,width:({width,monospace})=>width*monospace,height:({height})=>height*monospace
+},id:({source})=>deselect(source||"get"),class:"d3"
+  //,width:({width,monospace})=>width*monospace,height:({height})=>height*monospace
  ,title(concept){return trace(concept,[])[0];}
  ,viewBox({monospace,spread})
 {let {up,down,force,radial}={[spread]:true},vertical=Boolean(up||down);
  let {breadth,length}=measure(arguments[0]);
+ let [nodes,links]=forage(this);
+ let density=links.size()/(nodes.size()*(nodes.size()-1)/2);
  let [width,height]=force
-?Array(2).fill(forage(this).reduce((nodes,links)=>
- scale(nodes.size()/(links.size()/(nodes.size()*(nodes.size()-1)/2))||0)))
+?Array(2).fill(scale(nodes.size()/density||0))
 :[breadth,length].map(size=>size*monospace).sort(size=>vertical-1);
  let viewBox=radial?[-width,-height,width*2,height*2]:[-width/2,-height/2,width,height];
  return viewBox.join(" ");
@@ -263,7 +218,7 @@
  }
 ,{update:true,class:"cluster","stroke-linejoin":"round","stroke-width":1,g:
  {class:"node"
- ,fold(node){let nodes=unfold.call(node,childfold);return node.height?nodes:nodes.slice(1);}
+ ,fold(node){return unfold.call({nodes:node},childfold).slice(1);}
  ,match:nodeindex
  ,update(nodes){if(ascend.call(nodes)[0].datum().spread==="force")nodes.each(locate).call(drag);}
  ,call(nodes){nodes.remove();}
@@ -275,11 +230,15 @@
  var node=
  {fold:false,match:nodeindex
  ,update(nodes)
-{let fields=["transform"];
- extend.call(nodes
-,{fold:false,...extract.call(node,fields)
- ,circle:{update:true,...extract.call(node.circle[0],["class","r"])}
+{let fragment=ascend.call(nodes)[0];
+ let {gradual}=fragment.datum();
+ let content=gradual&&
+ {circle:{update:true,...extract.call(node.circle[0],["class","r"])}
  ,text:{fold:false,update:true,...extract.call(node.text,"font-size")}
+ };
+ extend.call(nodes
+,{fold:false,...extract.call(node,["transform"])
+ ,...content
  });
 },each(node)
 {if(trace(node,[])?.[0]?.includes("image"))
@@ -295,18 +254,18 @@
  return force?"translate("+[x,y]+")"
 :radial?"rotate("+(x*180/Math.PI-90)+") translate("+y+",0)"
 :"translate("+[x,y]+") rotate("+(right?0:down?90:up?-90:0)+")";
-},title:{text:({title})=>title}
+},title:{text:({name})=>name}
  ,circle:
 [{class:"node"
- ,name({title,parent,children}){return parent&&!children?parent.title+"_"+title:null;}
+ ,name({name,source,nodes}){return source&&!nodes?source.name+"_"+name:null;}
  ,r(node){return ascend.call(d3.select(this))[0].datum().spread==="force"?scale(size(node)):5;}
  ,fill:node=>paint(node)
- ,title:{text({data,title}){return search.call(data,[title,"progress"])?.concat("%")||this.remove();}}
+ ,title:{text({value,name}){return search.call(value,"progress")?.concat("%")||this.remove();}}
  }
 ,{fold(node){return trace(node,[])?.[0]?.includes("image")?[node]:[];}
  ,class:"label"
  ,r(node){return this.previousSibling.getAttribute("r")*0.9;}
- ,fill({title}){return "url(#"+title?.replace(/ /g,"_")+")"}
+ ,fill({name}){return "url(#"+name?.replace(/ /g,"_")+")"}
  }
 ],text:
  {fold:wrap,class:"label",fill:"black",stroke:"black",opacity:0.5
@@ -367,8 +326,8 @@
  if(!browser)return;
  activate(this,"./actions");
 },id:linkindex,class:"link",opacity:0.5
- ,title:{text:(link)=>[link,link.source,link.target].map(({value,title},index)=>
- index?title:{R:"responsible",A:"accountable",C:"consulted",I:"informed"}[value]||value).join("\n")}
+ ,title:{text:(link)=>[link,link.source,link.target].map(({value,name},index)=>
+ index?name:{R:"responsible",A:"accountable",C:"consulted",I:"informed"}[value]||value).join("\n")}
  ,transform(link,index,links)
 {let twins=d3.selectAll(links).select(function(twin){return ["source","target"].every(key=>twin[key]==link[key])&&this}).data();
  let twinindex=twins.indexOf(link);
@@ -439,7 +398,7 @@
 ,{fold:false,defs:{fold:false,pattern:
  {fold(){return d3.select(this).selectAll("pattern").data().concat(node);}
  ,match:patternindex
- ,id:patternindex,name({data,title}){return data[title]||title;}
+ ,id:patternindex,name({value,name}){return value||name;}
  ,x:0,y:0,width:1,height:1,viewBox({centrality:size}){return [0,0,size,size];}
  ,each(node,index,patterns)
 {let {id}=this,name=this.getAttribute("name"),pattern=this,color=paint(node);
@@ -524,34 +483,35 @@
  function nodeindex(node){return node?trace(node,[]).join("/"):this.getAttribute("id");};
  function linkindex(link){return link?[link.source,link.target].map(nodeindex).join("_"+link.value+"_"):this.getAttribute("id");};
  function patternindex({title}){return title.replace(/[^\d\w]/g,"");};
- function size(node){return Math.cbrt(node.data[node.title]?.weight)||node.centrality||1;};
+ function size(node){return Math.cbrt(node.value?.weight)||node.centrality||1;};
  function scale(value){return value};
- function period(node){return ["start","end"].map(field=>search.call(node.data,[node.title,field]));};
+ function period(node){return ["start","end"].map(field=>search.call(node.value,field));};
 
- var childfold=["children",node=>Array.from(node.relations?.keys()||[])];
+ var childfold=["nodes",node=>Array.from(node.relations?.keys()||[])];
 
- export var trace=(node,path)=>!path&&color[node.title]?node.title:!node.parent
-?[node.title,...path||[]]
-:trace(node.parent,path?[node.title,...path]:path);
+ export var trace=(node,path)=>!path&&color[node.name]?node.name:!node.source
+?[node.name,...path||[]]
+:trace(node.source,path?[node.name,...path]:path);
 
  function paint(node,scale)
 {if(typeof node=="string")
  return {R:color.red,A:color.yellow,C:color.green}[node]||color.indigo;
- let {progress}=node.data[node.title]||{};
- return typeof progress!=="undefined"
+ let {progress}=node.value||{};
+ return defined(progress)
 ?Number(progress)?color.health(Number(progress)/100):"#616161"
-:node.color||color[trace(node)]||(scale||color.rainbow).call(color,node.height/(node.depth+node.height));
+:node.color||color[trace(node)]||
+ (scale||color.rainbow).call(color,node.height/(node.depth+node.height));
 };
 
- function wrap({title,parent})
+ function wrap({name,source})
 {if(trace(arguments[0],[])?.[0]?.includes("image"))
  return [];
  let force=ascend.call(d3.select(this))[0].datum().spread==="force";
- return force?!title||(title.toString().match(/.+?(_|\/|$)/g)||[]).reduce((wrap,split,index,splits)=>
+ return force?!name||(name.toString().match(/.+?(_|\/|$)/g)||[]).reduce((wrap,split,index,splits)=>
  wrap.concat(index&&(split.length+wrap[wrap.length-1].length<18)
 ?wrap.pop()+split
 :split.match(new RegExp(".{1,"+18+"}","g"))),[])
-:[parent?title:""];
+:[source?name:""];
 };
 
  function locate(node)
@@ -577,25 +537,25 @@
 
  function connect(node,sources=new Set())
 {return [node].flat().filter(source=>source&&!sources.has(source)&&sources.add(source)).flatMap(source=>
-[[source.children?.map(node=>[node])||[],Array.from(source.relations||[])].flat().flatMap(([target,value])=>
+[[source.nodes?.map(node=>[node])||[],Array.from(source.relations||[])].flat().flatMap(([target,value])=>
  [{source,target,value},connect(target,sources)].flat())
 ].flat());
 };
 
  function neighbors({target})
 {let node=d3.select(target).datum();
- let {parent,children}=node;
+ let {source,nodes}=node;
  let {1:links}=forage(target.closest("svg"));
- let cluster=[node,parent,children].flat().filter(Boolean).map();
+ let cluster=[node,source,nodes].flat().filter(Boolean).map();
  return links.filter(({source,target})=>[source,target].every(node=>cluster.includes(node)));
 };
 
  var measure=node=>
-[unfold.call(node,childfold).filter(node=>!node?.children).length
-,(node.title?.length||0)+
- extreme(unfold.call(node,childfold).filter(node=>!node.children).map(node=>
- sum(unfold.call(node,"parent").map((node,index)=>
- extreme(node.children?.map(node=>node.title.length))[1]))))[1]
+[unfold.call({nodes:node},childfold).slice(1).filter(node=>!node?.nodes).length
+,(node.name?.length||0)+
+ extreme(unfold.call({nodes:node},childfold).filter(node=>!node.nodes).map(node=>
+ sum(unfold.call(node,"source").map((node,index)=>
+ extreme(node.nodes?.map(node=>node.name.length))[1]))))[1]
 ].reduce((breadth,length)=>({breadth,length}));
 
  function degree(link,rate=1)
@@ -675,7 +635,7 @@
  ,size:[getFirstElementByTagNS(n, 'viz', 'size')?.getAttribute('value')].map(size=>size&&Number(size)).shift()
  ,shape:getFirstElementByTagNS(n, 'viz', 'shape')?.getAttribute('value')
  }:{}
- })).map(({id,label,viz,attributes})=>({id,title:label,...viz,data:{[label]:attributes}}));
+ })).map(({id,label,viz,attributes})=>({id,name:label,...viz,value:attributes}));
  let links=Array.from(xml.getElementsByTagName('edge')).filter(node=>node.nodeName!=="#text").map(e=>(
  {type:defaultEdgetype||"undirected",label:'',weight:1.0
  ,...Object.fromEntries(Array.from(e.attributes).map(node=>[node.name,node.value]).map(([field,value])=>
@@ -689,8 +649,8 @@
  }:{}
  }));
  links.forEach(({source,target,weight})=>[source,target].map(name=>nodes.find(({id})=>id===name)).forEach((node,index,nodes)=>
- merge(node,{[index?"parent":weight?"relations":"children"]:new (!index&&weight?Map:Set)(!index&&weight?[[nodes[(index+1)%2],weight]]:[nodes[(index+1)%2]])},0)));
- return nodes.map(node=>merge(node,Object.fromEntries(["children","parent"].map(field=>[field,node[field]?Array.from(node[field]):undefined])),1));
+ merge(node,{[index?"source":weight?"relations":"nodes"]:new (!index&&weight?Map:Set)(!index&&weight?[[nodes[(index+1)%2],weight]]:[nodes[(index+1)%2]])},0)));
+ return nodes.map(node=>merge(node,Object.fromEntries(["nodes","source"].map(field=>[field,node[field]?Array.from(node[field]):undefined])),1));
  //return {nodes,edges:links,version: version,mode: mode,defaultEdgeType: defaultEdgetype
  //,meta:meta&&{lastmodifieddate:meta.getAttribute('lastmodifieddate'),...Object.fromEntries(Array.from(meta.childNodes).filter(node=>node.nodeName!=="#text").map(child=>[child.tagName.toLowerCase(), child.textContent]))}
  // ,model: attributes
@@ -701,3 +661,89 @@
  node.getElementsByTagName(tag)[0];
 };
 };
+
+ export var tests=
+ {sprawl:compose.call
+({a:{b:"c"}},{name:"a",height:2,depth:0,nodes:[{name:"b",depth:1,height:1,nodes:[{name:"c",depth:2,height:0,value:undefined}]}]},(context,term)=>(
+ {context:[context]
+ ,terms:[[merge(term,{value:context.a,nodes:[{source:[term],value:context.a.b,nodes:[{source:[term.nodes[0]]}]}]})]]
+ ,condition:"deepEqual"
+ })
+)};
+
+//  function descend(value,{relations,title,routed})
+// {// split data structure into node hierarchy. cyclical references 
+//  if(!value)return [];
+//  if(array(value))return value;
+//  if(string(value))return {[value]:undefined};
+//  if(value[relations])return value[relations];
+//  if(relations)return [];
+//  let flatten=array(value);
+//  let children=Object.entries(value);
+//  return children.flatMap(([field,value],index,{length})=>
+//  flatten||(length==1)
+// ?!value||Object.keys(value).length>1
+// ?descend(value,{relations,title,routed})
+//  // routed records refer to terminal objects, which shouldn't be strings. 
+// :(routed&&Object.values(value).every(value=>string(value)||array(value)))
+// ?[]:value
+// :{[field]:value})
+// };
+
+//  function records(resource)
+// {// extract matrix definitions as {domain,range,matrix:{[domain]:[...range]}}.
+//  if(resource.constructor.name!=="Object")return [];
+//  let records=Object.entries(resource).filter(([field,records])=>
+//  array(records)&&records.some(record=>
+//  array(record)&&record.every(vector=>!isNaN(vector))));
+//  if(records.length)
+//  return records;
+//  if(Object.entries(resource).length==2)
+//  // they may also be referential values by title or index 
+//  // with uniform "record" keys as {scope,matrix:{path:{in:{scope:{record:[[...fields]]}}}}}.
+//  // WARNING binary trees may contain such arrays intended as children, not records. 
+//  return Object.entries(resource).map(([field,value])=>[[field],value]).reduce(function trace(matrix,[path,value])
+// {if(!compound(value))return matrix;
+//  let references=Object.entries(value||[]).map(([field,references])=>
+// [field,Object.entries(references||[]).find(({1:record})=>
+//  array(record)&&!record.flat().some(field=>!string(field)&&field))||[]
+// ]);
+//  let records=references.every(({1:{0:field}},index,[{1:{length,0:first}}])=>length&&field===first);
+//  if(records)
+//  return references.reduce((matrix,[field,{1:record}])=>Object.assign(matrix
+// ,{[matrix.length]:[[...path,field],[record]]})
+// ,matrix);
+//  return Object.entries(value).reduce((matrix,[field,value])=>trace(matrix,[[...path,field],value]),matrix);
+// },[]);
+//  return records;
+// };
+
+//  function relate(node)
+// {if(array(node))return node;
+//  [node,...node.matrix].reduce((node,[path,records])=>
+//  records.reduce((node,vectors,record)=>vectors.reduce((node,vector,field)=>
+// {if(!vector||!node)return;
+//  let [domain,range]=[0,1].map(index=>node.children[index].leaves());
+//  let [source,target]=array(path)?
+// [[node,...path].reduce(({children},field)=>children.find(({title})=>title==field))
+// ,domain[field]
+// ]:[domain,range].map((nodes,index)=>nodes[[field,record][index]]);
+//  // clear child node representing these relation records. 
+//  let [referral]=Object.entries(source.data[source.title]||{}).find(({1:value})=>value==records[0])||[];
+//  if(source.children?.find(({title})=>title==referral)||!source.children?.length)
+//  delete source.children;
+//  let domains=["stakeholder"];
+//  let ranges=["service","provider"];
+//  [source,target]=[source,target].sort((source,target)=>
+//  // parent title indicates the direction of the relationship. 
+//  [source,target].map(({parent:{title}})=>title).reduce((independent,title)=>
+//  [ranges,domains][Number(independent)].includes(title),false)-1);
+//  [source,target].forEach(node=>merge(node,{occurence:new Set([path])},0));
+//  merge(source,{adjacency:{[target.title]:new Set([path])}},0);
+//  let relation=source.relations?.get(target);
+//  relation=isNaN(vector)?[...relation||[],...[vector].flat()]:((relation||0)+vector)/source.adjacency[target.title].size;
+//  merge(source,{relations:new Map([[target,relation]])},0);
+//  return node;
+// },node),node));
+//  return node;
+// };
