@@ -116,35 +116,9 @@
 :[this];
 };
 
-export function jss(style) {
-    return Object.fromEntries(Object.entries(style).map(([field, value]) => [
-        field.replace(/-(.)/g, (match, lowerCase) => lowerCase.toUpperCase()),
-        value,
-    ]));
+ export function jss(style)
+{return Object.fromEntries(Object.entries(style).map(([field,value])=>
+[field.replace(/-(.)/g, (match, lowerCase) => lowerCase.toUpperCase())
+,value
+]));
 };
-
-export function activate(action, register = true) {
-    // construct event (pair) fragments for extensions (css pseudoclasses for js)
-    // and (un)register them directly on bound Node.
-    const binary = {
-        hover: ['mouseenter', 'mouseleave'],
-        focus: ['focusin', 'focusout'],
-    };
-    const entries = [action]
-        .flat()
-        .flatMap((action) => 
-    // function names are removed in nextjs builds, so don't use action.name.
-    typeof action === 'object' ? Object.entries(action) : [[action?.name, action]])
-        .flatMap(([name, action]) => binary[name]?.reduce((start, end) => [
-        [start, action],
-        [
-            end,
-            function (event) {
-                this.dispatchEvent(new { focus: FocusEvent, hover: MouseEvent }[name](start, event));
-            },
-        ],
-    ]) || [[name, action]]);
-    if (this !== undefined)
-        entries.reduce((node, [event, action]) => (node[(register ? 'add' : 'remove') + 'EventListener'](event, action), this), this);
-    return Object.fromEntries(entries);
-}

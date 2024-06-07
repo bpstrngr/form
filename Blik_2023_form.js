@@ -1,8 +1,8 @@
- import {note,crop,provide,compose,infer,tether,refer,route,record,combine,wether,drop,slip,exit} from "./Blik_2023_inference.js";
+ import {note,crop,swap,is,buffer,provide,compose,infer,tether,refer,route,record,combine,wether,drop,slip,exit,numeric} from "./Blik_2023_inference.js";
  import {document,hypertext,throttle,form,transform,insert,expose,activate,namespaces,stylesheet,fill,deselect} from "./Blik_2023_fragment.js";
- import {namespace,proceduralize} from "./Blik_2023_meta.js";
+ import {serialize,proceduralize,coordinates,parse} from "./Blik_2023_meta.js";
  import layout,{fontface} from "./Blik_2023_layout.js";
- import {merge} from "./Blik_2023_search.js";
+ import {merge,search} from "./Blik_2023_search.js";
  import {access,resolve,modularise,window,fetch,mime,digest} from "./Blik_2023_interface.js";
  import local from "./Blik_2024_static.js";
  import source from "./Blik_2023_form.js";
@@ -10,19 +10,72 @@
  import extend from "./Blik_2023_d4.js";
  import wikipedia from "./Blik_2024_wikipedia.js";
  var {default:svg}=await resolve("./Blik_2020_svg.json");
+ var address=new URL(import.meta.url).pathname;
+
+ var input=
+ {focusin:function({isTrusted:genuine,target})
+{let [form,label]=["form","label"].map(tag=>target.closest(tag));
+ if(!target.value)
+ form.querySelector("#switch").dispatchEvent(new Event("click"));
+ let singular=Array.from(form.elements).filter(input=>input.type=="text");
+ if(singular.length>1)
+ form.style.setProperty("--scroll","-"+form.scrollLeft);
+ if(target.type=="text")
+ target.setSelectionRange(...Array(2).fill(target.value.length));
+ if(label)
+ label.setAttribute("focused",label.getAttribute("focused")!=="true");
+},focusout:function({target}){return target.dispatchEvent(new Event("focusin",{bubbles:true}));}
+ ,keydown:function({target,keyCode})
+{let {enter,updown,leftright}=keyboard(keyCode);
+ let list=target.parentNode.querySelector("ul");
+ let selection=list?.querySelector("li.hover");
+ if(enter)
+ return selection?selection.click():this.dispatchEvent(new Event("submit"));
+ if(escape)
+ return target.dispatchEvent(new Event("blur"));
+ if(!list)return;
+ if(updown||leftright)
+ return [Array.from(list.querySelectorAll("li")),[38,39].includes(keyCode)||-1].reduce((list,step)=>
+ list.at((list.indexOf(selection)+step)%list.length)?.classList.toggle('hover'));
+},input:function({isTrusted:genuine,target})
+{if(target.id==="message"&&target.value)
+ return target.ownerDocument.defaultView.room.emit("signal",room.name);
+ let label=target.closest("label");
+ let prefix=Array.from(label?.childNodes||[]).find(({nodeName})=>!["span","svg"].includes(nodeName.toLowerCase()));
+ let sample=window.document.body.appendChild(document(
+ {span:{span:[{"#text":prefix?.textContent||""},{"#text":target.value}]}
+ ,style:"position:absolute;font-family:averia;top:0;font-size:"+window.getComputedStyle(target).fontSize+";max-width:100vw;visibility:hidden;"
+ }).next().value);
+ compose
+(wait(300),each(infer(({style},sample,index)=>style.width=
+ Math[index?"max":"abs"](sample.childNodes[index].getBoundingClientRect().width+5,30)
+,sample)),drop(),sample,"remove"
+)(prefix,target);
+ Array.from(target.parentNode.querySelectorAll("li")).map(li=>
+[li,target.value&&!unfold.call(li,li=>li.parentNode.closest("li")).map(li=>
+ li.firstChild?.nodeValue||"").join("/").includes(target.value)?"setProperty":"removeProperty"
+]).forEach(([li,term])=>li.style[term]("display","none"));
+ if(genuine)
+ this.closest("form").querySelector("#switch").dispatchEvent(new Event("click"));
+},change:function({target})
+{target.dispatchEvent(new Event("input"));
+ if(target.type!=="text")
+ return target.form.dispatchEvent(new target.ownerDocument.defaultView.Event("submit"));
+}};
 
  var actions=
  {body:{load,popstate}
- ,"#composer":{submit,input,keydown,focusin,focusout,change,click}
- ,"#switch":{click:refocus},"#submit":{mousedown}
+ ,"#composer":{submit,click,...input}
+ ,"#extend":{keydown:add}
+ ,"#switch":{click:toggle},"#submit":{mousedown}
  ,".field":{click({target}){form.call(target.closest("form"),{extend:{key:"",value:""}})}}
  ,".carousel":{scroll}
  ,".defer":{load:defer}
  ,".reference":{click:expand}
  ,".editor":{submit:modify,keydown:write}
- ,"g.link":
- {mouseover:function({target}){event.stopPropagation();this.style.removeProperty("filter");this.setAttribute("opacity",this.getAttribute("opacity")<1?1:0.5);}
- ,mouseout:function(event){event.stopPropagation();this.dispatchEvent(new Event("mouseover"))}
+ ,"g.network":
+ {mouseover:function({target}){arguments[0].stopPropagation();target.style.removeProperty("filter");target.setAttribute("opacity",target.getAttribute("opacity")<1?1:0.5);}
+ ,mouseout:function({target}){arguments[0].stopPropagation();target.dispatchEvent(new Event("mouseover"))}
  }
  ,".node":
  {mouseover:function(event)
@@ -34,8 +87,8 @@
 (each(["1",compose
 (combine
 (infer()
-,buffer(differ("parent"),drop())
-,buffer(differ("children"),drop())
+,buffer(differ("source"),drop())
+,buffer(differ("nodes"),drop())
 ,buffer(compose(differ("relations"),"keys",Array.from),drop())
 ),collect,"flat",collect,slip(Set),Reflect.construct
 )
@@ -51,10 +104,26 @@
  }
  };
 
- export var submission={get,put,delete:erase,send};
+ export var submission={get,put,erase,send};
+
+ var {exports,imports}=
+ {exports:{default:actions,submission,path,edit,update,highlight,dim,identity}
+ ,imports:
+ {"./Blik_2023_interface.js":["","resolve","digest"]
+ ,"./Blik_2023_search.js":["","merge","unfold","search"]
+ ,"./Blik_2023_inference.js":";note;compose;combine;route;trace;drop;crop;slip;infer;tether;wait;observe;refer;buffer;swap;when;array;has;each;differ;provide;collect;is".split(";")
+ ,"./Blik_2023_fragment.js":";* as fragment;document;form;demarkup;insert;navigate;activate;metamarkup;transform;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard".split(";")
+ ,"./Blik_2024_network.js":["","forage"]
+ ,"./Blik_2023_d4.js":"extend"
+ ,"./Blik_2020_svg.json":"svg"
+ ,"./actions":"actions"
+ ,"./Bostock_2011_d3.js":"* as d3"
+ }
+ };
 
  export default
  {...local,rss,svg,wikipedia
+ ,overpass(){return fetch('https://www.overpass-api.de/api/interpreter?' +new URLSearchParams({data:'[out:json];rel[admin_level=2]'+/*'convert item ::=::,::geom=geom(),_osm_type=type();'*/+';out geom;'}))}
  // ,google,mongo,economy,asana
  // ,signature:{...store("Blik_2020_signature.json","author")}
  // ,mind:{...store("Blik_2020_mind.json","code",digest)}
@@ -86,20 +155,53 @@
  },true);
  return {type:mime("css"),body:[font,document].join("\n")};
 },actions:compose
-(drop()
-,{default:actions,submission,path,edit,update,highlight,dim,identity}
-,{"./Blik_2023_interface.js":["","resolve","digest"]
- ,"./Blik_2023_search.js":["","merge","unfold","search"]
- ,"./Blik_2023_inference.js":";note;compose;combine;route;trace;drop;crop;slip;infer;tether;wait;observe;refer;buffer;swap;when;array;has;each;differ;provide;collect".split(";")
- ,"./Blik_2023_fragment.js":";* as fragment;document;form;demarkup;insert;navigate;activate;metamarkup;transform;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces".split(";")
- ,"./Blik_2024_network.js":["","forage"]
- ,"./Blik_2023_d4.js":"extend"
- ,"./Blik_2020_svg.json":"svg"
- ,"./actions":"actions"
- ,"./Bostock_2011_d3.js":"* as d3"
- }
-,namespace,"body",refer,{type:mime("js")},Object.assign
-),routes:compose
+(drop(),{exports,imports}
+,serialize,"\n//# sourceMappingURL=sourcemap","concat","body",refer,{type:mime("js"),headers:{"SourceMap":"/sourcemap","X-SourceMap":"/sourcemap"}},Object.assign
+),async sourcemap(request)
+{let module="./actions";
+ let namespace={["./"+await resolve("path","basename",address)]:[exports,submission,...Object.values(actions)].flatMap(names=>Object.entries(names).map(([field,value])=>is(Function)(value)&&value.name||field))};
+ let names=Object.values(namespace).flat();
+ let sources=await [Object.keys(namespace),module].flat().reduce(record(source=>compose(fetch.bind(this),"text")(source)),[]);
+ let grammars=await Object.entries({...namespace,[module]:names}).reduce(record(function([module,[...names]],index,namespaces)
+{// find node with same source text as first name match in source files (names are more likely shadowed in output, but source may still be mistaken). 
+ let reference=this.slice(0,namespaces[index+1]?0:index).flatMap(Object.values);
+ return compose(buffer(parse,swap(null)),tether(search,({1:value})=>names.includes(value?.id?.name)&&
+ [value,reference?.find(node=>node.id.name===value.id.name)].filter(Boolean).map(node=>
+ (sources[node===value?index:this.findIndex(grammar=>Object.values(grammar).includes(node))]).slice(node.start,node.end)).reduce((text,reference)=>text===reference)&&
+ names.splice(names.indexOf(value.id.name),1),true))(sources[index]);
+}),[]);
+ let [source,grammar]=[sources,grammars].map(list=>list.pop());
+ let locations=grammars.map((nodes,index)=>Object.values(nodes).map(node=>
+[coordinates(sources[index],node.id.start)
+,coordinates(source,Object.values(grammar).find(({id})=>id.name===node.id.name)?.id.start)
+,node.id.name
+]).filter(({0:source,1:target})=>
+ // filter locations not matched due to transformation. 
+ [source,target].flat().every(numeric)));
+ let entries=locations.flatMap((locations,source)=>
+ locations.map(([[sourceline,sourcecharacter],[line,character],name],index,locations)=>[line,[
+ // zero-based character, file, sourceline, sourcecharacter and name index relative to previous value. 
+[character-(locations[index-1]?.[1][0]===line?locations[index-1][1][1]:0)
+,index?0:source?1:0
+,sourceline-(locations[index-1]?.[0][0]??0)
+,sourcecharacter-(locations[index-1]?.[0][1]??0)
+,[locations[index-1]?.[2],name].filter(Boolean).map(name=>names.indexOf(name)).reduce((past,next)=>next-past)
+]]]));
+ let vlq='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+ let quantifiers=entries.map(entry=>Object.fromEntries([entry])).reduce((quantifiers,quantifier)=>merge(quantifiers,quantifier,0));
+ let mappings=Object.assign(Array(),quantifiers).map(entries=>
+ entries.map(entry=>entry.map(quantifier=>
+ // https://github.com/Rich-Harris/vlq/blob/master/src/index.js
+ [quantifier<0?(-quantifier<<1)|1:quantifier<<1].reduce(function clamp(stack,shifted)
+{return (!stack.length||shifted>0)&&(shifted>>>5>0)?clamp([...stack,(shifted&31)|32],shifted>>>5):[...stack,shifted&31];
+},[]).map(quantifier=>vlq[quantifier]).join("")).join("")).join(",")).join(";");
+ let {origin}=new URL("http"+(request.client.encrypted?"s":"")+"://"+request.headers.host);
+ let report=locations.flatMap((locations,index)=>locations.map(([source,target,name])=>name+": "+
+[[Object.keys(namespace)[index],source.map(index=>index+1)].flat().join(":")
+,[module,target.map(index=>index+1)].flat().join(":")
+].map(path=>path.replace(/^\.{0,1}/,origin)).join(" -> "))).join("; \n");
+ return {version:3,file:"/actions",sources:Object.keys(namespace),names,mappings,report};
+},routes:compose
 (crop(1),"get",{spread:"force"},network.bind(null),throttle,{style:"background:#222222"},tether(document)
 )};
 
@@ -130,31 +232,94 @@
 
  export function path(name){return (window.location.pathname+(name||"")).replace(/^\/*|\/*$/g,"");}
 
- async function load(event)
-{this.dispatchEvent(new Event("popstate"));
- let [{stream}]=await resolve(["./Blik_2020_room.js","./rauch_2014_socket.io.slim.js"]);
- compose.call
-({transports:['websocket']},io,this.location.origin,"connect"
-,{message:stream.message},merge,stream,tether(observe)
-,"room",refer,merge.bind(null,this)
-);
-};
+ async function load(event){this.dispatchEvent(new Event("popstate"));};
 
  function popstate(event)
 {let window=event.target.defaultView||event.target;
  window.document.forms[0]?.dispatchEvent(new Event("submit"));
 };
 
+ function add({target,keyCode})
+{arguments[0].stopPropagation();
+ let {enter}=keyboard(keyCode);
+ if(!enter)return;
+ let {value}=target;
+ if(Array.from(value).every(is(".")))
+ return;
+ let form=this.closest("form");
+ let method=form.getAttribute("method");
+ fragment.form.call(form,{[method]:{[target.value]:""}});
+ target.value="...";
+};
+
+ async function toggle({isTrusted,target})
+{let form=this.closest("form");
+ let method=form.getAttribute("method");
+ let focused=this.ownerDocument.activeElement;
+ let fields=fragment.fill.call(form);
+ let empty=method==="get"&&Object.entries(fields).find(([name,value],index)=>!value&&name&&index&&name===focused.id);
+ let {source,message,name,code}=fields;
+ let intent=
+ {room:code?"sign":message?"send":isTrusted?"get":undefined
+ ,send:message?"send":"room"
+ ,sign:!code&&"room"
+ ,author:"room"
+ ,erase:!empty&&"get"
+ ,put:"get"
+ ,get:isTrusted?"room":empty?"erase":undefined
+ }[method];
+ if(!intent)return;
+ let action={sign:"author"}[intent]||path();
+ let icon={get:"node",put:"plus",erase:"plus",sign:"fingerprint",room:"chat",send:"paperplane"}[intent];
+ fields=
+ {room:{message:[],code:note(identity())?undefined:""}
+ ,send:{message:[]}
+ ,sign:{name:message,code:code}
+ ,code:intent==="put"||{[code?"name":"message"]:form[code?"message":"name"].value}
+ }[intent]||{};
+ document.call(form,{method:intent,action});
+ this.parentNode.replaceChild(document({svg:{...svg[icon],title:intent,id:"switch"}}),this);
+ fragment.form.call(form,{[intent]:fields});
+ Array.from(form.elements).forEach(input=>input.dispatchEvent(new Event("input")));
+ form.elements[focused.id]?.focus();
+ if(intent==="room")compose
+(["ws://"+this.ownerDocument.defaultView.location.host],Reflect.construct
+,resolve("./Blik_2020_room.js","default"),tether(activate),"room",refer,slip(form),merge
+)(this.ownerDocument.defaultView.WebSocket);
+ let {default:actions}=await import("./actions");
+ activate(form,actions);
+};
+
+ function click({target})
+{if(target.nodeName.toLowerCase()!=="li")
+ return;
+ let field=target.closest("label");
+ if(!field)return;
+ let input=field.querySelector("input");
+ input.value=["",target.closest("li")].reduce(function prepend(path,item)
+{path=item.childNodes[0].nodeValue+(path?"/"+path:"");
+ item=item.parentNode.parentNode;
+ return item.nodeName=="LI"?prepend(path,item):path
+});
+ ["input","blur"].forEach(event=>
+ input.dispatchEvent(new Event(event,{bubbles:true}))); 
+ input.form.dispatchEvent(new Event("submit"));
+};
+
  async function submit(event)
-{event.preventDefault();
+{// Important to prevent default to avoid unintended url-encoded requests. 
+ // Only get/put submissions should go through, as defined. 
+ event.preventDefault();
  let form=event.target;
  let method=form.getAttribute("method");
- let fields=Object.fromEntries(Array.from(form.elements).filter(input=>input.parentNode.classList.contains(method)).map(({id,value})=>[id,value]));
+ let fields=Object.fromEntries(Array.from(form.elements).filter(input=>
+ input.parentNode.classList.contains(method)).map(({id,value})=>[id,value]));
  submission[method].call(form,fields);
 };
 
  function get(fields)
-{let incumbent=this.ownerDocument.querySelector("#"+deselect(fields.source||"get"))||undefined;
+{let id=deselect(fields.source||"get");
+ let incumbent=this.ownerDocument.querySelector("#"+id)||undefined;
  let query=new URLSearchParams(fields).toString();
  let route=[window.location.pathname,query].filter(Boolean).join("?");
  if(this)
@@ -165,7 +330,6 @@
 )(fields.source);
  let frame=this?.ownerDocument.defaultView.frame||
  infer(insert,"before",this)(document({center:{id:"frame"}}));
- frame.title=fields.source;
  return insert(fragment,incumbent?"over":"under",incumbent||frame);
 };
 
@@ -174,7 +338,7 @@
  // manage these with previous events!
 [signature?{source:this.labels.message}:{source:this.source.value,code:this.code.value}
 ,["action",action=signature?"/"+signature[0].replace("=","/"):"mind/"+fields.source]
-,["method",method=signature?"delete":"put"]
+,["method",method=signature?"erase":"put"]
 ].forEach((fields,index)=>index
 ?this.setAttribute(...fields)
 :form.call(this,{[method]:fields}));
@@ -186,7 +350,7 @@
  room.message.bind(this)({author:{name:"system",face:"svg/deer"},message}));
  this.dispatchEvent(new Event("switch"));
  if(status!=200)return;
- if(method=="delete"&&this.action.startsWith("/signature"))
+ if(method=="erase"&&this.action.startsWith("/signature"))
  note(window.document.cookie=this.action.substring(1).replace("/","=")+";path=/;expires="+new Date().toUTCString()+";")&&
  room.emit("leave",room.name)&&
  (this.labels.message="");
@@ -207,8 +371,11 @@
 };
 
  function erase()
-{this.setAttribute("method",this.getAttribute("method")=="delete"?"get":"delete");
- Array.from(this.querySelectorAll(".put")).map(label=>label.getAttribute("for")!="name"&&label.remove());
+{let method=this.getAttribute("method");
+ let input=this.ownerDocument.activeElement;
+ if(input.nodeName.toLowerCase()!=="input"||input.value)
+ return console.error("erasure called on non-empty field:",input);
+ input.closest("label").remove();
  this.dispatchEvent(new Event("switch"));
 };
 
@@ -216,112 +383,6 @@
 {if(!message)return;
  this.ownerDocument.defaultView.room.emit("message",{room,message});
  this.message.value="";
-};
-
- function keydown({target,keyCode})
-{let [key]=Object.entries({enter:13,escape:27,space:32,leftright:[37,39],updown:[38,40]}).find(({1:code})=>
- [code].flat().includes(keyCode))||[];
- let {enter,updown,leftright}={[key]:true};
- let list=target.parentNode.querySelector("ul");
- let selection=list?.querySelector("li.hover");
- if(enter)
- return selection?selection.click():this.dispatchEvent(new Event("submit"));
- if(escape)
- return target.dispatchEvent(new Event("blur"));
- if(!list)return;
- if(updown||leftright)
- return [Array.from(list.querySelectorAll("li")),[38,39].includes(keyCode)||-1].reduce((list,step)=>
- list.at((list.indexOf(selection)+step)%list.length)?.classList.toggle('hover'));
-};
-
- function focusin({target})
-{let [form,label]=["form","label"].map(tag=>target.closest(tag));
- //note(this,target,form,label);
- let singular=Array.from(form.elements).filter(input=>input.type=="text");
- if(singular.length>1)
- form.style.setProperty("--scroll","-"+form.scrollLeft);
- let focused=label.getAttribute("focused")=="true";
- label.setAttribute("focused",!focused);
- if(target.type=="text")
- target.setSelectionRange(...Array(2).fill(target.value.length));
-};
-
- function focusout({target})
-{let selection=target.parentNode.querySelector("ul");
- if(selection)
- target.selection=Array.from(selection.childNodes).forEach(item=>
- item.classList.remove('hover'));
- return target.dispatchEvent(new Event("focusin",{bubbles:true}));
-};
-
- function change({target})
-{if(target.type!=="text")
- return target.form.dispatchEvent(new target.ownerDocument.defaultView.Event("submit"));
- let label=Array.from(target.parentNode.childNodes).find(({nodeName})=>!["span","svg"].includes(nodeName.toLowerCase()));
- let sample=window.document.body.appendChild(document(
- {span:{span:[{"#text":label?label.textContent:""},{"#text":target.value}]}
- ,style:"position:absolute;font-family:averia;top:0;font-size:"+window.getComputedStyle(target).fontSize+";max-width:100vw;visibility:hidden;"
- }).next().value);
- compose
-(wait(300),each(infer(({style},sample,index)=>style.width=
- Math[index?"max":"abs"](sample.childNodes[index].getBoundingClientRect().width+5,30)
-,sample)),drop(),sample,"remove"
-)(label,target);
- Array.from(target.parentNode.querySelectorAll("li")).map(li=>
-[li,target.value&&!unfold.call(li,li=>li.parentNode.closest("li")).map(li=>
- li.firstChild?.nodeValue||"").join("/").includes(target.value)?"setProperty":"removeProperty"
-]).forEach(([li,term])=>li.style[term]("display","none"));
-};
-
- function input({target})
-{this.closest("form").querySelector("#switch").dispatchEvent(new Event("click"));
- if(target.id==="message"&&target.value)
- target.ownerDocument.defaultView.room.emit("signal",room.name);
-};
-
- async function refocus({isTrusted,target})
-{let form=this.closest("form");
- let focused=this.ownerDocument.activeElement;
- let {id,value}=focused;
- let {source,message,name,code,...fields}=fragment.fill.call(form);
- let intent=
- {room:code?"sign":message?"send":isTrusted?"get":undefined
- ,send:message?"send":"room"
- ,sign:!code&&"room"
- ,author:"room",put:"get","delete":source&&"put",get:isTrusted?"room":value?undefined:"edit"
- }[form.getAttribute("method")];
- note(intent)
- if(!intent)return;
- let action={sign:"author"}[intent]||path();
- let icon={get:"node",put:"plus",delete:"plus",sign:"fingerprint",room:"chat",send:"paperplane"}[intent];
- fields=
- {room:{message:[],code:note(identity())?undefined:""}
- ,send:{message:[]}
- ,sign:{name:message,code:code}
- ,code:intent==="put"||{[code?"name":"message"]:form[code?"message":"name"].value}
- }[intent]||{};
- document.call(form,{method:intent,action});
- this.parentNode.replaceChild(document({svg:{...svg[icon],title:intent,id:"switch"}}),this);
- fragment.form.call(form,{[intent]:fields});
- form.elements[id]?.focus();
- let {default:actions}=await import("./actions");
- activate(form,actions);
-};
-
- function click({target})
-{if(target.nodeName.toLowerCase()!=="li")
- return;
- let field=target.closest("label");
- if(!field)return;
- let input=field.querySelector("input");
- input.value=["",target.closest("li")].reduce(function prepend(path,item)
-{path=item.childNodes[0].nodeValue+(path?"/"+path:"");
- item=item.parentNode.parentNode;
- return item.nodeName=="LI"?prepend(path,item):path
-});
- ["input","blur"].forEach(event=>
- input.dispatchEvent(new Event(event,{bubbles:true}))); 
- input.form.dispatchEvent(new Event("submit"));
 };
 
  function mousedown({target})
