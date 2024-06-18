@@ -1,6 +1,6 @@
- import {color} from "./Blik_2023_layout.js";
+ import layout,{color} from "./Blik_2023_layout.js";
  import {search,merge,prune,extreme,sum,extract,unfold} from "./Blik_2023_search.js";
- import {document,demarkup,namespaces,path,activate,deselect} from "./Blik_2023_fragment.js";
+ import {document,demarkup,namespaces,path,deselect,stylesheet} from "./Blik_2023_fragment.js";
  import {infer,tether,simple,swap,wait,drop,pass,note,has,collect,compose,combine,wether,refer,buffer,observe,ascending,defined,compound,array,string,clock,revert,provide} from "./Blik_2023_inference.js";
  import {window,fetch,resolve} from "./Blik_2023_interface.js";
  import * as d3 from './Bostock_2011_d3.js';
@@ -11,7 +11,8 @@
  export default compose(drop(1),combine(sprawl,drop(1)),combine(spread,drop(1)),chart,simulate,pass(report));
 
  export function sprawl(resource,options={})
-{// parse object as a D3 hierarchy. 
+{// parse object as a nodes. 
+ // {node:{node:[{node:"node",relations:["node"]},"node"]}} or [{name,relations}]
  if(typeof resource==="string")
  resource=JSON.parse(resource);
  if(resource.constructor.name==="Node")
@@ -100,6 +101,8 @@
 {return compose.call
 (fragment?.nodeName?.toLowerCase()==="svg"?fragment:{svg:
  {"xmlns:xlink":namespaces.xlink,preserveAspectRatio:"xMidYMid meet"
+ ,class:"d3"
+ ,style:{"#text":stylesheet({".d3":layout.media})}
  ,defs:{filter:[vectors.shadow.defs.filter,vectors.shadow_white.defs.filter]}
  }}
 ,document,{datum:Object.assign(nodes,options),...svg},tether(extend)
@@ -243,8 +246,6 @@
 },each(node)
 {if(trace(node,[])?.[0]?.includes("image"))
  pattern(node);
- if(!browser)return;
- activate(this,"./actions");
 },call(nodes){if(browser)drag(nodes);}
  ,class:"node",id:nodeindex,filter:"url(#shadow)"
  ,fill:node=>paint(node)
@@ -256,8 +257,7 @@
 :"translate("+[x,y]+") rotate("+(right?0:down?90:up?-90:0)+")";
 },title:{text:({name})=>name}
  ,circle:
-[{class:"node"
- ,name({name,source,nodes}){return source&&!nodes?source.name+"_"+name:null;}
+[{name({name,source,nodes}){return source&&!nodes?source.name+"_"+name:null;}
  ,r(node){return ascend.call(d3.select(this))[0].datum().spread==="force"?scale(size(node)):5;}
  ,fill:node=>paint(node)
  ,title:{text({value,name}){return search.call(value,"progress")?.concat("%")||this.remove();}}
@@ -323,8 +323,6 @@
  parent=demarkup(fragment,"viewBox").viewBox.split(" ").map((side,index,sides)=>
  Number(side)+(sides.splice(2,1)[0])/2).reduce((x,y)=>({x,y}));
  unlocated.forEach(node=>[parent,node].reduce(({x,y},node)=>Object.assign(node,{x,y})));
- if(!browser)return;
- activate(this,"./actions");
 },id:linkindex,class:"link",opacity:0.5
  ,title:{text:(link)=>[link,link.source,link.target].map(({value,name},index)=>
  index?name:{R:"responsible",A:"accountable",C:"consulted",I:"informed"}[value]||value).join("\n")}
@@ -334,7 +332,6 @@
  return "translate(0,"+(scale(!link.value||isNaN(link.value)?1:link.value)/7/twins.length)*Math.ceil(twinindex/2)*(twinindex%2||-1)+")";
 },path:
 [{update(path){extend.call(path,{fold:false,...extract.call(link.path[0],["d"])});}
- ,class:"link"
  ,stroke({value,source}){return paint(value&&isNaN(value)?value:source);}
  ,"stroke-width":({value})=>scale(!value||isNaN(value)?1:(value*(value<0?10:1)))/2
  ,d:line
@@ -555,7 +552,7 @@
 ,(node.name?.length||0)+
  extreme(unfold.call({nodes:node},childfold).filter(node=>!node.nodes).map(node=>
  sum(unfold.call(node,"source").map((node,index)=>
- extreme(node.nodes?.map(node=>node.name.length))[1]))))[1]
+ extreme(node.nodes?.map(node=>node.name?.length))[1]))))[1]
 ].reduce((breadth,length)=>({breadth,length}));
 
  function degree(link,rate=1)
