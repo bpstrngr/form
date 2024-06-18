@@ -1,8 +1,7 @@
  import * as d3 from './Bostock_2011_d3.js';
- import {fail,trace} from './Blik_2023_sort.js';
  import {merge,search} from './Blik_2023_search.js';
  import {window} from "./Blik_2023_interface.js";
- import {numeric,note,defined,simple} from "./Blik_2023_inference.js";
+ import {numeric,note,defined,simple,exit} from "./Blik_2023_inference.js";
  import {qualify} from "./Blik_2023_fragment.js";
 
 // Data-Driven Document Declarations (D4).
@@ -16,7 +15,6 @@
  // To preserve unmatched nodes, consume them in a "drop" function.
  // eg: ul:{datum:1,li:{fold:n=>[n,n,n],update:true,text:n=>n}} = 1 ul, 3 li, updated on each call.
  if(!this)return;
- if(name=='0')trace(this, ...arguments);
  const [cast]=Object.entries({select:window.Node,selectAll:window.NodeList}).find(({1:selectable})=>this instanceof selectable)||[];
  let selection=d3[cast]?.(this)||this;
  if(name)
@@ -43,7 +41,7 @@
 :selection);
  if(selection.size())
  Object.entries(fragment).reduce((selection,entry)=>Object.values(extension).reduce((applied,extension)=>applied||extension.apply(selection,entry),undefined)||
- fail("extension entry doesn't satisfy "+Object.keys(extension).join('/')+' namespaces: '+entry),selection);
+ exit("extension entry doesn't satisfy "+Object.keys(extension).join('/')+' namespaces: '+entry),selection);
  return this;
 }
 
@@ -84,9 +82,7 @@
 },attribute(field, value)
 {try
 {return this.attr(field, value);
-}catch (fail)
-{console.log(fail);
-}
+}catch(fail){console.log(fail);}
 }};
 
  export function ascend(selector,descendants=new Set())

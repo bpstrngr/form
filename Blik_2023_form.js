@@ -1,5 +1,5 @@
  import {note,crop,swap,is,buffer,provide,compose,infer,tether,refer,route,record,combine,wether,drop,slip,exit,numeric} from "./Blik_2023_inference.js";
- import {document,hypertext,throttle,form,transform,insert,expose,activate,namespaces,stylesheet,fill,deselect} from "./Blik_2023_fragment.js";
+ import {document,hypertext,dispose,throttle,charge,form,transform,insert,expose,activate,namespaces,stylesheet,fill,deselect} from "./Blik_2023_fragment.js";
  import {serialize,proceduralize,coordinates,parse} from "./Blik_2023_meta.js";
  import layout,{fontface} from "./Blik_2023_layout.js";
  import {merge,search} from "./Blik_2023_search.js";
@@ -12,118 +12,9 @@
  var {default:svg}=await resolve("./Blik_2020_svg.json");
  var address=new URL(import.meta.url).pathname;
 
- var input=
- {focusin:function({isTrusted:genuine,target})
-{let [form,label]=["form","label"].map(tag=>target.closest(tag));
- if(!target.value)
- form.querySelector("#switch").dispatchEvent(new Event("click"));
- let singular=Array.from(form.elements).filter(input=>input.type=="text");
- if(singular.length>1)
- form.style.setProperty("--scroll","-"+form.scrollLeft);
- if(target.type=="text")
- target.setSelectionRange(...Array(2).fill(target.value.length));
- if(label)
- label.setAttribute("focused",label.getAttribute("focused")!=="true");
-},focusout:function({target}){return target.dispatchEvent(new Event("focusin",{bubbles:true}));}
- ,keydown:function({target,keyCode})
-{let {enter,updown,leftright}=keyboard(keyCode);
- let list=target.parentNode.querySelector("ul");
- let selection=list?.querySelector("li.hover");
- if(enter)
- return selection?selection.click():this.dispatchEvent(new Event("submit"));
- if(escape)
- return target.dispatchEvent(new Event("blur"));
- if(!list)return;
- if(updown||leftright)
- return [Array.from(list.querySelectorAll("li")),[38,39].includes(keyCode)||-1].reduce((list,step)=>
- list.at((list.indexOf(selection)+step)%list.length)?.classList.toggle('hover'));
-},input:function({isTrusted:genuine,target})
-{if(target.id==="message"&&target.value)
- return target.ownerDocument.defaultView.room.emit("signal",room.name);
- let label=target.closest("label");
- let prefix=Array.from(label?.childNodes||[]).find(({nodeName})=>!["span","svg"].includes(nodeName.toLowerCase()));
- let sample=window.document.body.appendChild(document(
- {span:{span:[{"#text":prefix?.textContent||""},{"#text":target.value}]}
- ,style:"position:absolute;font-family:averia;top:0;font-size:"+window.getComputedStyle(target).fontSize+";max-width:100vw;visibility:hidden;"
- }).next().value);
- compose
-(wait(300),each(infer(({style},sample,index)=>style.width=
- Math[index?"max":"abs"](sample.childNodes[index].getBoundingClientRect().width+5,30)
-,sample)),drop(),sample,"remove"
-)(prefix,target);
- Array.from(target.parentNode.querySelectorAll("li")).map(li=>
-[li,target.value&&!unfold.call(li,li=>li.parentNode.closest("li")).map(li=>
- li.firstChild?.nodeValue||"").join("/").includes(target.value)?"setProperty":"removeProperty"
-]).forEach(([li,term])=>li.style[term]("display","none"));
- if(genuine)
- this.closest("form").querySelector("#switch").dispatchEvent(new Event("click"));
-},change:function({target})
-{target.dispatchEvent(new Event("input"));
- if(target.type!=="text")
- return target.form.dispatchEvent(new target.ownerDocument.defaultView.Event("submit"));
-}};
-
- var actions=
- {body:{load,popstate}
- ,"#composer":{submit,click,...input}
- ,"#extend":{keydown:add}
- ,"#switch":{click:toggle},"#submit":{mousedown}
- ,".field":{click({target}){form.call(target.closest("form"),{extend:{key:"",value:""}})}}
- ,".carousel":{scroll}
- ,".defer":{load:defer}
- ,".reference":{click:expand}
- ,".editor":{submit:modify,keydown:write}
- ,"g.network":
- {mouseover:function({target}){arguments[0].stopPropagation();target.style.removeProperty("filter");target.setAttribute("opacity",target.getAttribute("opacity")<1?1:0.5);}
- ,mouseout:function({target}){arguments[0].stopPropagation();target.dispatchEvent(new Event("mouseover"))}
- }
- ,".node":
- {mouseover:function(event)
-{event.stopPropagation();
- compose
-(each([compose(crop(1),"svg","closest",forage),compose(crop(1),"target",d3.select,"datum")])
-,when(array,has(["x","y"]))
-,combine("0",compose
-(each(["1",compose
-(combine
-(infer()
-,buffer(differ("source"),drop())
-,buffer(differ("nodes"),drop())
-,buffer(compose(differ("relations"),"keys",Array.from),drop())
-),collect,"flat",collect,slip(Set),Reflect.construct
-)
-])
-,(links,nodes)=>links.each(dim).filter(({source,target})=>[source,target].every(node=>nodes.has(node)))
-,infer("each",infer("dispatchEvent",new Event("mouseover")))
-,links=>new Set(links.data().flatMap(({source,target})=>[source,target]))
-))
-,(nodes,cluster)=>nodes.each(dim).filter(node=>cluster.has(node)).each(highlight)
-)(this,...arguments);
-},mouseout:function(event){event.stopPropagation();this.dispatchEvent(new Event("mouseover"));}
- ,click:interact
- }
- };
-
- export var submission={get,put,erase,send};
-
- var {exports,imports}=
- {exports:{default:actions,submission,path,edit,update,highlight,dim,identity}
- ,imports:
- {"./Blik_2023_interface.js":["","resolve","digest"]
- ,"./Blik_2023_search.js":["","merge","unfold","search"]
- ,"./Blik_2023_inference.js":";note;compose;combine;route;trace;drop;crop;slip;infer;tether;wait;observe;refer;buffer;swap;when;array;has;each;differ;provide;collect;is".split(";")
- ,"./Blik_2023_fragment.js":";* as fragment;document;form;demarkup;insert;navigate;activate;metamarkup;transform;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard".split(";")
- ,"./Blik_2024_network.js":["","forage"]
- ,"./Blik_2023_d4.js":"extend"
- ,"./Blik_2020_svg.json":"svg"
- ,"./actions":"actions"
- ,"./Bostock_2011_d3.js":"* as d3"
- }
- };
-
  export default
  {...local,rss,svg,wikipedia
- ,overpass(){return fetch('https://www.overpass-api.de/api/interpreter?' +new URLSearchParams({data:'[out:json];rel[admin_level=2]'+/*'convert item ::=::,::geom=geom(),_osm_type=type();'*/+';out geom;'}))}
+ ,overpass(){return fetch('https://www.overpass-api.de/api/interpreter?'+new URLSearchParams({data:'[out:json];rel[admin_level=2]'/*'convert item ::=::,::geom=geom(),_osm_type=type();'*/+';out geom;'}))}
  // ,google,mongo,economy,asana
  // ,signature:{...store("Blik_2020_signature.json","author")}
  // ,mind:{...store("Blik_2020_mind.json","code",digest)}
@@ -131,33 +22,32 @@
  ,interface:async function(request)
 {if(!request.query)request.query={};
  let {controls,...fields}={source:"get",...request.query};
+ let icon={id:"switch",title:"get",...svg.node};
+ let input={id:"extend",type:"text",value:"..."};
  let labels={message:"",source:"",layout:"as",title:"of",category:"on",spread:"by",matrix:"from",relations:"with"};
- let composer=document({form:{id:"composer",method:"get",dataset:{labels},svg:{id:"switch",title:"get",...svg.node},...form(fields,labels)}},0);
- let fragment=compose.call({composer},"concept","svg/node/document",["./actions"],["./style"],hypertext,0,document);
- fill.call(composer,fields);
- await compose(submission.get.bind(composer),throttle)(fields).catch(note);
+ let control=document({form:
+ {id:"composer",method:"get",svg:icon,...form(fields,labels),input,dataset:{labels}
+ ,style:{"#text":stylesheet({"#composer":styles.composer})}
+ }});
+ let body=
+ {control
+ ,style:{"#text":stylesheet([layout.theme,layout.goo].reduce(merge,Object.fromEntries(["a","blockquote","body","table"].map(tag=>[tag,layout[tag]]))),true)}
+ };
+ let fragment=compose.call(body,"concept","svg/node/document",[proceduralize(expose)],["./style"],hypertext,0,document);
+ await compose(submission.get.bind(control),throttle)(fields).catch(note);
  if(String(controls)==="false")
- composer.remove();
+ control.remove();
  return activate(fragment,actions);
 },style:async function()
 {let {averia,oswald,ranger}=fontface;
  let font=await stylesheet({"@font-face":[averia,oswald,ranger]});
- let document=await stylesheet(
- {...layout.theme
- ,...layout.goo
- ,"#frame":layout.frame
- ,"#composer":["form","pill","material"].map(key=>layout[key]).reduce(merge,{})
- ,".editor":layout.form
- ,".d3":layout.media
- ,...Object.fromEntries(["a","blockquote","body","table"].map(tag=>[tag,layout[tag]]))
- ,...layout.pdfjs
- ,img:{filter:"invert(1)"}
- },true);
- return {type:mime("css"),body:[font,document].join("\n")};
-},actions:compose
-(drop(),{exports,imports}
-,serialize,"\n//# sourceMappingURL=sourcemap","concat","body",refer,{type:mime("js"),headers:{"SourceMap":"/sourcemap","X-SourceMap":"/sourcemap"}},Object.assign
-),async sourcemap(request)
+ return {type:mime("css"),body:font};
+},actions()
+{return compose.call
+({exports,imports},serialize,"\n//# sourceMappingURL=sourcemap","concat","body",refer
+,{type:mime("js"),headers:{"SourceMap":"/sourcemap","X-SourceMap":"/sourcemap"}},Object.assign
+);
+},async sourcemap(request)
 {let module="./actions";
  let namespace={["./"+await resolve("path","basename",address)]:[exports,submission,...Object.values(actions)].flatMap(names=>Object.entries(names).map(([field,value])=>is(Function)(value)&&value.name||field))};
  let names=Object.values(namespace).flat();
@@ -230,13 +120,223 @@
  return {status:200,type:"rss+xml",body}
 };
 
+ var actions=
+ {body:{load,popstate}
+ ,"#composer":
+ {click:function({target})
+{if(target.nodeName.toLowerCase()!=="li")
+ return;
+ let field=target.closest("label");
+ if(!field)return;
+ let input=field.querySelector("input");
+ input.value=["",target.closest("li")].reduce(function prepend(path,item)
+{path=item.childNodes[0].nodeValue+(path?"/"+path:"");
+ item=item.parentNode.parentNode;
+ return item.nodeName=="LI"?prepend(path,item):path
+});
+ ["input","blur"].forEach(event=>
+ input.dispatchEvent(new Event(event,{bubbles:true}))); 
+ input.form.dispatchEvent(new Event("submit"));
+},submit:async function submit(event)
+{// Important to prevent default to avoid unintended url-encoded requests. 
+ // Only get/put submissions should go through, as defined. 
+ event.preventDefault();
+ let form=event.target;
+ let method=form.getAttribute("method");
+ let fields=Object.fromEntries(Array.from(form.elements).filter(input=>
+ input.parentNode.classList.contains(method)).map(({id,value})=>[id,value]));
+ let location=this.ownerDocument.defaultView.location.pathname.split("/").slice(0,-1);
+ if(!fields.source)
+ fields.source="get";
+ submission[method].call(form,fields);
+},focusin:function({isTrusted:genuine,target})
+{let [form,label]=["form","label"].map(tag=>target.closest(tag));
+ if(!target.value)
+ form.querySelector("#switch").dispatchEvent(new Event("click"));
+ let singular=Array.from(form.elements).filter(input=>input.type=="text");
+ if(singular.length>1)
+ form.style.setProperty("--scroll","-"+form.scrollLeft);
+ if(target.type=="text")
+ target.setSelectionRange(...Array(2).fill(target.value.length));
+ if(label)
+ label.setAttribute("focused",label.getAttribute("focused")!=="true");
+},focusout:function({target}){return target.dispatchEvent(new Event("focusin",{bubbles:true}));}
+ ,keydown:function({target,keyCode})
+{let {enter,updown,leftright}=keyboard(keyCode);
+ let list=target.parentNode.querySelector("ul");
+ let selection=list?.querySelector("li.hover");
+ if(enter)
+ return selection?selection.click():this.dispatchEvent(new Event("submit"));
+ if(escape)
+ return target.dispatchEvent(new Event("blur"));
+ if(!list)return;
+ if(updown||leftright)
+ return [Array.from(list.querySelectorAll("li")),[38,39].includes(keyCode)||-1].reduce((list,step)=>
+ list.at((list.indexOf(selection)+step)%list.length)?.classList.toggle('hover'));
+},input:function({isTrusted:genuine,target})
+{let form=target.closest("form");
+ if(target.id==="message"&&target.value)
+ form.dispatchEvent(new MessageEvent("message",{data:{type:"signal",room:"room"},bubbles:true}));
+ let label=target.closest("label");
+ let prefix=Array.from(label?.childNodes||[]).find(({nodeName})=>!["span","svg"].includes(nodeName.toLowerCase()));
+ let sample=window.document.body.appendChild(document({span:
+ {span:[{"#text":prefix?.textContent||""},{"#text":target.value}]
+ ,style:"position:absolute;font-family:averia;top:0;font-size:"+window.getComputedStyle(target).fontSize+";max-width:100vw;visibility:hidden;"
+ }}));
+ compose
+(wait(300),each(infer(({style},sample,index)=>
+ style.width=Math[index?"max":"abs"](sample.childNodes[index].getBoundingClientRect().width+5,30)
+,sample)),drop(),sample,"remove"
+)(prefix,target);
+ Array.from(target.parentNode.querySelectorAll("li")).map(li=>
+[li,target.value&&!unfold.call(li,li=>li.parentNode.closest("li")).map(li=>
+ li.firstChild?.nodeValue||"").join("/").includes(target.value)?"setProperty":"removeProperty"
+]).forEach(([li,term])=>li.style[term]("display","none"));
+ if(genuine)
+ this.closest("form").querySelector("#switch").dispatchEvent(new Event("click"));
+},change:function({target})
+{target.dispatchEvent(new Event("input"));
+ if(target.type!=="text")
+ return target.form.dispatchEvent(new target.ownerDocument.defaultView.Event("submit"));
+}}
+ ,"#switch":{click:intend}
+ ,"#extend":{keydown:add}
+ ,".field":{click({target}){form.call(target.closest("form"),{extend:{key:"",value:""}})}}
+ ,".carousel":{scroll}
+ ,".defer":{load:defer}
+ ,".reference":{click:expand}
+ ,".editor":{submit:modify,keydown:write}
+ ,"g.network":
+ {mouseover:function({target})
+{target=target.closest(".link");
+ target.style.removeProperty("filter");
+ target.setAttribute("opacity",target.getAttribute("opacity")<1?1:0.5);
+},mouseout:function({target}){target.dispatchEvent(new Event("mouseover",{bubbles:true}));}
+ }
+ ,"g.cluster":
+ {pointerover:function({target})
+{target=target.closest(".node");
+ compose
+(combine(compose("svg","closest",forage),compose(d3.select,"datum"))
+,when(array,has(["x","y"]))
+,combine("0",compose
+(each(["1",compose
+(combine
+(infer()
+,buffer(differ("source"),drop())
+,buffer(differ("nodes"),drop())
+,buffer(compose(differ("relations"),"keys",Array.from),drop())
+),collect,"flat",collect,slip(Set),Reflect.construct
+)
+])
+,(links,nodes)=>links.each(dim).filter(({source,target})=>[source,target].every(node=>nodes.has(node)))
+,infer("each",infer("dispatchEvent",new Event("mouseover",{bubbles:true})))
+,links=>new Set(links.data().flatMap(({source,target})=>[source,target]))
+))
+,(nodes,cluster)=>nodes.each(dim).filter(node=>cluster.has(node)).each(highlight)
+)(target);
+},pointerout:function({target}){target.dispatchEvent(new Event("pointerover",{bubbles:true}));}
+ ,click:interact
+ }
+ };
+
+ var styles=
+ {composer:
+ {"--form":"6em",position:"fixed"
+ ,bottom:"0px",left:"0px","max-width":"calc(100% - 20px)"
+ ,margin:0,"padding-right":"1.5em",overflow:"scroll"
+ ,"box-sizing":"border-box"
+ ,"font-family":"averia","vertical-align":"middle","white-space":"nowrap"
+ ,transition:"all var(--transition)"
+ ,"&:not(:hover)":
+ {[Object.entries({room:"message",get:"source"}).map(([method,primary])=>
+ "&[method="+method+"]>label:not([for="+primary+"])").join()]:{width:0,display:"none"}
+ ,"&>input#extend":{width:0,display:"none"}
+ }
+ ,...Object.fromEntries(["get","sign","send","room"].map(method=>["&[method="+method+"] label:not(."+method+")",{display:"none"}]))
+ ,"&[method=get],&[method=sign]":{"&>svg":{padding:0,width:"5em",height:"5em"}}
+ ,"&[method=erase]":{"&>svg>path":{transform:"rotate(45deg)","transform-origin":"center center"}}
+ ,"&>svg":
+ {height:"3em",width:"3em",cursor:"pointer",fill:"var(--isle)","vertical-align":"middle","background-color":"black"
+ ,"clip-path":"circle(50%)",padding:"1em",transform:"scale(0.8)",position:"sticky",left:0
+ }
+ ,"font-size":"var(--size)"
+ ,"& label":
+ {position:"relative",display:"inline-block","white-space":"nowrap","vertical-align":"middle",cursor:"pointer"
+ ,"&:hover":{"&>svg":layout.glow,"&>input":{"text-shadow":"white 0px 0px 2px,white 0px 0px 2px",transition:"all 0.3s"}}
+ ,"&>svg":{float:"left",height:"1em","vertical-align":"middle",cursor:"pointer",overflow:"visible"}
+ ,"&>span":{float:"left","&:not(:empty):after":{content:":"}}
+ ,"&>ul":
+ {position:"fixed","margin-left":"0.6em","max-height":"100%","max-width":"100%","padding-top":"var(--form)",bottom:"var(--form)","box-sizing":"border-box",width:"inherit","overflow":"scroll"//"background-image":"radial-gradient(at center bottom, rgb(17, 17, 17) 0%, rgba(33, 33, 33, 0) 100%)"
+ ,"&>li":{display:"block"}
+ ,"&:hover":{display:"block"}
+ }
+ ,"& ul":
+ {display:"none","z-index":"2",padding:"0px","margin-bottom":"0px","text-align":"left","pointer-events":"none","list-style-type":"none"
+ ,"& ul":{position:"relative",bottom:"initial","max-height":"initial","vertical-align":"top","text-align":"left"}
+ ,"& li":
+ {position:"relative",display:"inline-block","pointer-events":"all","padding-right":"1em",color:"var(--text)","vertical-align":"top",margin:"auto",left:"0px",right:"0px","white-space":"pre","padding-left":"1em"
+ ,"&:hover,&.hover":
+ {color:"var(--highlight)"
+ ,"& ul":
+ {display:"inline-block","white-space":"pre"
+ ,"&:hover>li":{display:"block"}
+ }
+ }
+ ,"&>svg":{position:"absolute",height:"1em",left:"0px","margin-left":"0px","margin-right":"0px",transform:"scale(0.9)",fill:"var(--text)"}
+ }
+ }
+ ,"&[focused=true]>ul":{display:"block"}
+ ,"&[for=message],&[for=source]":{"&>ul":
+ {"text-align":"left",width:"auto","&>li":{"text-shadow":"black 0px 0px 10px","white-space":"nowrap","&>span":{"white-space":"normal"}}
+ ,"background-image":"linear-gradient(to right, rgb(17, 17, 17) 0%, rgba(33, 33, 33, 0) 100%)"
+ }}
+ ,"&[for=message]>ul":
+ {display:"block","margin-left":"-5em","max-height":"50vh","min-width":"150px"
+ ,"&>li":
+ {opacity:0,animation:"fadeout 6s","padding-left":0,"min-height":"4em","white-space":"normal"
+ ,"&>img":{...layout.material,margin:"1em",height:"2em",float:"left","border-radius":"50%","background-color":"var(--isle)",padding:".5em",margin:".5em .5em 0 .5em"}
+ ,"&>div":{color:"var(--isle)"}
+ }
+ ,"&>li:not(:last-of-type)":{animation:"fadeout 2s"}
+ ,"&>span":{position:"fixed",bottom:"1.5em",left:"5.5em",color:"black"}
+ ,"&:hover>li":{opacity:1,animation:"fadein 1s"}
+ }
+ ,"&:not(:last-of-type):after":{content:","}
+ ,"&[for=message]>span":{position:"absolute",left:"-0.5em",top:"-1.5em",color:"black"}
+ }
+ ,"&:hover label[for=message]>ul>li":{opacity:1,animation:"fadein 1s"}
+ ,"& input":
+ {height:"1em",transition:"all var(--transition)","text-shadow":"inherit"
+ ,"&:focus+ul":{display:"block"}
+ ,"&[type=text]":
+ {outline:"none","background-color":"transparent",border:"none",width:"20px","box-sizing":"border-box"
+ ,color:"inherit","text-align":"center","font-family":"inherit","font-size":"inherit"
+ ,"&#code":{"-webkit-text-security":"disc"}
+ }
+ ,"&[type=radio]":{display:"none"}
+ ,"&[type=checkbox]":
+ {appearance:"none","font-family":"inherit",cursor:"pointer",width:"auto"
+ ,"&:hover":{"text-shadow":"rgb(255,255,255) 0px 0px 10px,rgb(255,255,255) 0px 0px 10px,rgb(255,255,255) 0px 0px 10px"}
+ ,"&:after":{content:"' ?'","margin-left":"3px","margin-right":"3px"}
+ ,"&:focus:after":{"text-shadow":"rgb(255,255,255) 0px 0px 10px, rgb(255,255,255) 0px 0px 10px, rgb(255,255,255) 0px 0px 10px"}
+ ,"&:checked:after":{content:"'✓'",color:"var(--highlight)"}
+ }
+ ,"&~svg":{"margin-right":"0.5em"}
+ }
+ ,...layout.pill,...layout.material
+ }
+ };
+
  export function path(name){return (window.location.pathname+(name||"")).replace(/^\/*|\/*$/g,"");}
 
- async function load(event){this.dispatchEvent(new Event("popstate"));};
+ async function load(event)
+{if(this.document===event.target)
+ this.dispatchEvent(new Event("popstate"));
+};
 
  function popstate(event)
-{let window=event.target.defaultView||event.target;
- window.document.forms[0]?.dispatchEvent(new Event("submit"));
+{this.document.forms[0]?.dispatchEvent(new Event("submit"));
 };
 
  function add({target,keyCode})
@@ -252,70 +352,41 @@
  target.value="...";
 };
 
- async function toggle({isTrusted,target})
+ async function intend({isTrusted:genuine,target})
 {let form=this.closest("form");
  let method=form.getAttribute("method");
  let focused=this.ownerDocument.activeElement;
  let fields=fragment.fill.call(form);
- let empty=method==="get"&&Object.entries(fields).find(([name,value],index)=>!value&&name&&index&&name===focused.id);
+ let empty=method==="get"&&Object.entries(fields).find(([name,value],index)=>
+ !value&&name&&index&&name===focused.id);
  let {source,message,name,code}=fields;
+ if(method==="send"&&message&&genuine)
+ return form.dispatchEvent(new Event("submit",{bubbles:true}));
  let intent=
- {room:code?"sign":message?"send":isTrusted?"get":undefined
- ,send:message?"send":"room"
- ,sign:!code&&"room"
- ,author:"room"
- ,erase:!empty&&"get"
- ,put:"get"
- ,get:isTrusted?"room":empty?"erase":undefined
+ {room:code?"sign":message?"send":genuine?"get":undefined
+ ,send:!message&&"room",sign:!code&&"room",author:"room"
+ ,erase:!empty&&"get",put:"get",get:genuine?"room":empty?"erase":undefined
  }[method];
  if(!intent)return;
  let action={sign:"author"}[intent]||path();
+ document.call(form,{method:intent,action});
  let icon={get:"node",put:"plus",erase:"plus",sign:"fingerprint",room:"chat",send:"paperplane"}[intent];
+ this.parentNode.replaceChild(document({svg:{...svg[icon],title:intent,id:"switch"}}),this);
  fields=
- {room:{message:[],code:note(identity())?undefined:""}
- ,send:{message:[]}
+ {room:{message:method==="send"?null:[],code:identity()?undefined:""}
+ ,send:{message:null}
  ,sign:{name:message,code:code}
  ,code:intent==="put"||{[code?"name":"message"]:form[code?"message":"name"].value}
  }[intent]||{};
- document.call(form,{method:intent,action});
- this.parentNode.replaceChild(document({svg:{...svg[icon],title:intent,id:"switch"}}),this);
  fragment.form.call(form,{[intent]:fields});
  Array.from(form.elements).forEach(input=>input.dispatchEvent(new Event("input")));
  form.elements[focused.id]?.focus();
- if(intent==="room")compose
-(["ws://"+this.ownerDocument.defaultView.location.host],Reflect.construct
-,resolve("./Blik_2020_room.js","default"),tether(activate),"room",refer,slip(form),merge
-)(this.ownerDocument.defaultView.WebSocket);
- let {default:actions}=await import("./actions");
- activate(form,actions);
+ if(intent==="room")
+ this.dispatchEvent(new MessageEvent("message",{data:{type:"join",room:form.source.value},bubbles:true}));
+ activate(form,"./actions");
 };
 
- function click({target})
-{if(target.nodeName.toLowerCase()!=="li")
- return;
- let field=target.closest("label");
- if(!field)return;
- let input=field.querySelector("input");
- input.value=["",target.closest("li")].reduce(function prepend(path,item)
-{path=item.childNodes[0].nodeValue+(path?"/"+path:"");
- item=item.parentNode.parentNode;
- return item.nodeName=="LI"?prepend(path,item):path
-});
- ["input","blur"].forEach(event=>
- input.dispatchEvent(new Event(event,{bubbles:true}))); 
- input.form.dispatchEvent(new Event("submit"));
-};
-
- async function submit(event)
-{// Important to prevent default to avoid unintended url-encoded requests. 
- // Only get/put submissions should go through, as defined. 
- event.preventDefault();
- let form=event.target;
- let method=form.getAttribute("method");
- let fields=Object.fromEntries(Array.from(form.elements).filter(input=>
- input.parentNode.classList.contains(method)).map(({id,value})=>[id,value]));
- submission[method].call(form,fields);
-};
+ export var submission={get,put,erase,send,sign:put};
 
  function get(fields)
 {let id=deselect(fields.source||"get");
@@ -329,7 +400,9 @@
 ,{incumbent,...fields},transform.bind(this),actions,activate
 )(fields.source);
  let frame=this?.ownerDocument.defaultView.frame||
- infer(insert,"before",this)(document({center:{id:"frame"}}));
+ infer(insert,"before",this)(document(
+ {center:{id:"frame",style:{"#text":stylesheet({"#frame":layout.frame})}}
+ }));
  return insert(fragment,incumbent?"over":"under",incumbent||frame);
 };
 
@@ -345,29 +418,22 @@
  let request={method,...{put:{body:JSON.stringify(fields),headers:{"Content-Type":"application/json"}}}[method]};
  let [status,message]=await fetch(action,note(request)).then(response=>
  Promise.all([response.status,response.text()]));
- let room=this.ownerDocument.defaultView.room;
- Promise.resolve(room).then(ready=>
- room.message.bind(this)({author:{name:"system",face:"svg/deer"},message}));
- this.dispatchEvent(new Event("switch"));
+ this.dispatchEvent(new MessageEvent("message",{data:{author:{name:"system",face:"svg/deer"},message},bubbles:true}));
+ this.querySelector("#switch").dispatchEvent(new Event("click"));
  if(status!=200)return;
  if(method=="erase"&&this.action.startsWith("/signature"))
  note(window.document.cookie=this.action.substring(1).replace("/","=")+";path=/;expires="+new Date().toUTCString()+";")&&
- room.emit("leave",room.name)&&
- (this.labels.message="");
- return this.dispatchEvent(new Event("switch"));
+ this.dispatchEvent(new MessageEvent("message",{data:{type:"leave",room:"room"},bubbles:true}))&&
+ this.querySelector("#switch").dispatchEvent(new Event("click"));
  // update custom graphs...
  return this.dispatchEvent(new Event("submit"));
- let nodes=window.object.childNodes[0].simulation.nodes;
+ let nodes=window.frame.childNodes[0].simulation.nodes;
  this.method=="put"
 ?note(nodes().splice(findIndex(({title})=>title==fields.source),1,conceive(node).concept))
 :nodes(nodes().concat(conceive(node).concept));
  let simulation=window.object.childNodes[0].simulation;
  simulation.nodes(simulation.nodes().filter(node=>node.title!=this.source.value));
  simulation.force("link").links(simulation.force("link").links().filter(({source,target})=>![source.title,target.title].includes(this.source.value)))
- this.reform({get:{source:""}});
- this.elements.source.dispatchEvent(new Event("input",{bubbles:true}));
- //persist custom graphs...
- //let resource=subceive(node);
 };
 
  function erase()
@@ -379,15 +445,11 @@
  this.dispatchEvent(new Event("switch"));
 };
 
- function send(room,{message})
+ function send({message})
 {if(!message)return;
- this.ownerDocument.defaultView.room.emit("message",{room,message});
+ this.dispatchEvent(new MessageEvent("message",{data:{room:this.source.value,message},bubbles:true}));
  this.message.value="";
-};
-
- function mousedown({target})
-{[target.closest("form").elements[target.closest("label").getAttribute("for")],target.ownerDocument.activeElement].reduce((input,focused)=>
- target!=input&&(input==focused)&&setTimeout(()=>input.blur(),50));
+ this.querySelector("#switch").dispatchEvent(new Event("click"));
 };
 
  function scroll({target})
@@ -570,3 +632,18 @@
  let author=compose(fetch,when(compose("status",is(200))),"json","author");
  return compose(signature,author,"body",refer,{method:"put"},merge,slip(signature),author);
 };
+
+ var {exports,imports}=
+ {exports:{default:actions,submission,path,edit,update,highlight,dim,identity}
+ ,imports:
+ {"./Blik_2023_interface.js":["","resolve","digest"]
+ ,"./Blik_2023_search.js":["","merge","unfold","search","prune"]
+ ,"./Blik_2023_inference.js":";note;compose;combine;pass;route;trace;drop;crop;slip;infer;tether;wait;observe;refer;buffer;swap;when;array;has;each;differ;provide;collect;is".split(";")
+ ,"./Blik_2023_fragment.js":";* as fragment;document;form;demarkup;insert;navigate;activate;metamarkup;transform;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard".split(";")
+ ,"./Blik_2024_network.js":["","forage"]
+ ,"./Blik_2023_d4.js":"extend"
+ ,"./Blik_2020_svg.json":"svg"
+ ,"./actions":"actions"
+ ,"./Bostock_2011_d3.js":"* as d3"
+ }
+ };
