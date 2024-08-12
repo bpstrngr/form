@@ -473,8 +473,8 @@
 },100)
 };
 
- function defer({path:[target]})
-{if(target.dataset.subject)
+ function defer(event)
+{note(event);if(event.path[0].dataset.subject)
  compose(combine(compose("source",fetch,digest),infer()),transform,"over",target,insert)(JSON.parse(target.dataset.subject));
 };
 
