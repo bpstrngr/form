@@ -99,12 +99,14 @@
 
  function chart(nodes,options,fragment)
 {return compose.call
-(fragment?.nodeName?.toLowerCase()==="svg"?fragment:{svg:
+(fragment?.nodeName?.toLowerCase()==="svg"?fragment
+:{svg:
  {"xmlns:xlink":namespaces.xlink,preserveAspectRatio:"xMidYMid meet"
  ,class:"d3"
  ,style:{"#text":stylesheet({".d3":layout.media})}
  ,defs:{filter:[vectors.shadow.defs.filter,vectors.shadow_white.defs.filter]}
- }}
+ }
+ }
 ,document,{datum:Object.assign(nodes,options),...svg},tether(extend)
 );
 };

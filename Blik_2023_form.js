@@ -1,8 +1,8 @@
- import {note,crop,swap,is,buffer,provide,compose,infer,tether,refer,route,record,combine,wether,drop,slip,exit,numeric} from "./Blik_2023_inference.js";
- import {document,hypertext,dispose,throttle,charge,form,transform,insert,expose,activate,namespaces,stylesheet,fill,deselect} from "./Blik_2023_fragment.js";
+ import {note,crop,swap,is,buffer,provide,collect,compose,infer,tether,refer,route,record,combine,wether,drop,slip,exit,numeric} from "./Blik_2023_inference.js";
+ import {document,hypertext,dispose,throttle,form,transform,insert,expose,activate,namespaces,stylesheet,fill,deselect} from "./Blik_2023_fragment.js";
  import {serialize,proceduralize,coordinates,parse} from "./Blik_2023_meta.js";
  import layout,{fontface} from "./Blik_2023_layout.js";
- import {merge,search} from "./Blik_2023_search.js";
+ import {merge,search,extract} from "./Blik_2023_search.js";
  import {access,resolve,modularise,window,fetch,mime,digest} from "./Blik_2023_interface.js";
  import local from "./Blik_2024_static.js";
  import source from "./Blik_2023_form.js";
@@ -19,7 +19,7 @@
  // ,signature:{...store("Blik_2020_signature.json","author")}
  // ,mind:{...store("Blik_2020_mind.json","code",digest)}
  ,document:compose(crop(1),{width:50},merge,infer(refer,"svg"),document)
- ,interface:async function(request)
+ ,interface:async function(a,request)
 {if(!request.query)request.query={};
  let {controls,...fields}={source:"get",...request.query};
  let icon={id:"switch",title:"get",...svg.node};
@@ -31,7 +31,7 @@
  }});
  let body=
  {control
- ,style:{"#text":stylesheet([layout.theme,layout.goo].reduce(merge,Object.fromEntries(["a","blockquote","body","table"].map(tag=>[tag,layout[tag]]))),true)}
+ ,style:{"#text":compose({"#frame":layout.frame},layout.theme,layout.goo,collect,infer("reduce",merge),true,stylesheet)(extract.call(layout,["body","a","blockquote","table"]))}
  };
  let fragment=compose.call(body,"concept","svg/node/document",[proceduralize(expose)],["./style"],hypertext,0,document);
  await compose(submission.get.bind(control),throttle)(fields).catch(note);
@@ -47,13 +47,24 @@
 ({exports,imports},serialize,"\n//# sourceMappingURL=sourcemap","concat","body",refer
 ,{type:mime("js"),headers:{"SourceMap":"/sourcemap","X-SourceMap":"/sourcemap"}},Object.assign
 );
-},async sourcemap(request)
+},routes:compose
+(crop(1),"get",{spread:"force"},network.bind(null),throttle,{style:"background:#222222"},tether(document)
+),sourcemap
+ };
+
+ async function sourcemap(request)
 {let module="./actions";
- let namespace={["./"+await resolve("path","basename",address)]:[exports,submission,...Object.values(actions)].flatMap(names=>Object.entries(names).map(([field,value])=>is(Function)(value)&&value.name||field))};
+ let namespace={["./"+await resolve("path","basename",address)]:
+ [exports,...Object.values(actions)].flatMap(names=>
+ Object.entries(names).map(([field,value])=>
+ is(Function)(value)&&value.name||field))};
  let names=Object.values(namespace).flat();
- let sources=await [Object.keys(namespace),module].flat().reduce(record(source=>compose(fetch.bind(this),"text")(source)),[]);
+ let sources=await Object.keys(namespace).reduce
+(record(source=>infer(access,true)(source))
+,[await compose(fetch,"text")(module)]
+);
  let grammars=await Object.entries({...namespace,[module]:names}).reduce(record(function([module,[...names]],index,namespaces)
-{// find node with same source text as first name match in source files (names are more likely shadowed in output, but source may still be mistaken). 
+{// find node with same source text as first name match in source files (names are more likely shadowed in output, but source may still be mistaken).
  let reference=this.slice(0,namespaces[index+1]?0:index).flatMap(Object.values);
  return compose(buffer(parse,swap(null)),tether(search,({1:value})=>names.includes(value?.id?.name)&&
  [value,reference?.find(node=>node.id.name===value.id.name)].filter(Boolean).map(node=>
@@ -66,11 +77,11 @@
 ,coordinates(source,Object.values(grammar).find(({id})=>id.name===node.id.name)?.id.start)
 ,node.id.name
 ]).filter(({0:source,1:target})=>
- // filter locations not matched due to transformation. 
+ // filter locations not matched due to transformation.
  [source,target].flat().every(numeric)));
  let entries=locations.flatMap((locations,source)=>
  locations.map(([[sourceline,sourcecharacter],[line,character],name],index,locations)=>[line,[
- // zero-based character, file, sourceline, sourcecharacter and name index relative to previous value. 
+ // zero-based character, file, sourceline, sourcecharacter and name index relative to previous value.
 [character-(locations[index-1]?.[1][0]===line?locations[index-1][1][1]:0)
 ,index?0:source?1:0
 ,sourceline-(locations[index-1]?.[0][0]??0)
@@ -91,9 +102,7 @@
 ,[module,target.map(index=>index+1)].flat().join(":")
 ].map(path=>path.replace(/^\.{0,1}/,origin)).join(" -> "))).join("; \n");
  return {version:3,file:"/actions",sources:Object.keys(namespace),names,mappings,report};
-},routes:compose
-(crop(1),"get",{spread:"force"},network.bind(null),throttle,{style:"background:#222222"},tether(document)
-)};
+};
 
  var script=compose
 (combine(fetch.bind(source),infer()),wether
@@ -184,10 +193,12 @@
  ,style:"position:absolute;font-family:averia;top:0;font-size:"+window.getComputedStyle(target).fontSize+";max-width:100vw;visibility:hidden;"
  }}));
  compose
-(wait(300),each(infer(({style},sample,index)=>
- style.width=Math[index?"max":"abs"](sample.childNodes[index].getBoundingClientRect().width+5,30)
-,sample)),drop(),sample,"remove"
-)(prefix,target);
+(expect(sample=>Boolean(sample.childNodes[1].getBoundingClientRect().width))
+,drop(),prefix,target,collect,infer("filter",Boolean),provide
+,each(infer(({style},sample,index,{length})=>
+ style.width=Math[index?"max":"abs"](sample[length>1?index:1].getBoundingClientRect().width+5,30)+"px"
+,sample.childNodes)),drop(),sample,"remove"
+)(sample);
  Array.from(target.parentNode.querySelectorAll("li")).map(li=>
 [li,target.value&&!unfold.call(li,li=>li.parentNode.closest("li")).map(li=>
  li.firstChild?.nodeValue||"").join("/").includes(target.value)?"setProperty":"removeProperty"
@@ -242,10 +253,10 @@
 
  var styles=
  {composer:
- {"--form":"6em",position:"fixed"
+ {"--form":"6em",position:"fixed","z-index":100
  ,bottom:"0px",left:"0px","max-width":"calc(100% - 20px)"
  ,margin:0,"padding-right":"1.5em",overflow:"scroll"
- ,"box-sizing":"border-box"
+ ,"box-sizing":"border-box",background:"var(--isle)"
  ,"font-family":"averia","vertical-align":"middle","white-space":"nowrap"
  ,transition:"all var(--transition)"
  ,"&:not(:hover)":
@@ -400,9 +411,7 @@
 ,{incumbent,...fields},transform.bind(this),actions,activate
 )(fields.source);
  let frame=this?.ownerDocument.defaultView.frame||
- infer(insert,"before",this)(document(
- {center:{id:"frame",style:{"#text":stylesheet({"#frame":layout.frame})}}
- }));
+ infer(insert,"before",this)(document({div:{id:"frame"}}));
  return insert(fragment,incumbent?"over":"under",incumbent||frame);
 };
 
@@ -474,8 +483,8 @@
 };
 
  function defer(event)
-{note(event);if(event.path[0].dataset.subject)
- compose(combine(compose("source",fetch,digest),infer()),transform,"over",target,insert)(JSON.parse(target.dataset.subject));
+ {if(this.dataset.subject)
+ compose(combine(compose("source",fetch,digest),infer()),transform,"over",this,insert)(JSON.parse(this.dataset.subject));
 };
 
  function dim(){if(!this.style.filter)this.style.filter="brightness(0.2)";else this.style.removeProperty("filter");};
@@ -558,10 +567,11 @@
 };
 
  function expand(event)
-{let {source,title}=demarkup(this,["source","title"]);
+{event.preventDefault();
+ let {source,title}=demarkup(this,["source","title"]);
  source===title
 ?insert(this.ownerDocument.createTextNode(source.replace(/_/g,' ')),"under",this).parentNode.removeAttribute('source')
-:compose.call(insert(compose(this.getAttribute("src"),fetch,digest,{source:this.getAttribute("src")},transform),"under",this),"parentNode",infer("setAttribute","source",title));
+:compose.call(insert(compose(fetch,digest,{source:this.getAttribute("src")},transform)(this.getAttribute("src")),"under",this),"parentNode",infer("setAttribute","source",title));
 };
 
  function edit(target)
@@ -638,8 +648,9 @@
  ,imports:
  {"./Blik_2023_interface.js":["","resolve","digest"]
  ,"./Blik_2023_search.js":["","merge","unfold","search","prune"]
- ,"./Blik_2023_inference.js":";note;compose;combine;pass;route;trace;drop;crop;slip;infer;tether;wait;observe;refer;buffer;swap;when;array;has;each;differ;provide;collect;is".split(";")
- ,"./Blik_2023_fragment.js":";* as fragment;document;form;demarkup;insert;navigate;activate;metamarkup;transform;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard".split(";")
+ ,"./Blik_2023_inference.js":";note;expect;compose;combine;pass;route;trace;drop;crop;slip;infer;tether;wait;observe;refer;buffer;swap;when;array;has;each;differ;provide;collect;is".split(";")
+ ,"./Blik_2023_fragment.js":";* as fragment;document;form;demarkup;insert;navigate;activate;metamarkup;transform;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard;stylesheet".split(";")
+ ,"./Blik_2023_layout.js":["layout"]
  ,"./Blik_2024_network.js":["","forage"]
  ,"./Blik_2023_d4.js":"extend"
  ,"./Blik_2020_svg.json":"svg"

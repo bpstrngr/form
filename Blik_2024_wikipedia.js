@@ -1,4 +1,4 @@
- import {note,each,drop,compose,either,infer,tether,is,record,slip,numeric,collect,provide,combine,wether,when,crop,buffer,remember,pass,refer,colors,expect,wait,exit} from "./Blik_2023_inference.js";
+ import {note,each,drop,compose,either,infer,tether,is,record,slip,numeric,collect,provide,combine,wether,when,crop,buffer,pass,refer,colors,expect,wait,exit} from "./Blik_2023_inference.js";
  import {fetch} from "./Blik_2023_interface.js";
  import {merge,search,extract,unfold,prune,sum,extreme} from "./Blik_2023_search.js";
  let wikipedia="https://en.wikipedia.org/w/api.php?";
@@ -44,7 +44,7 @@
  cotitle!==title&&pages.includes(title)).map(({title})=>title)})).reduce(merge);
 }};
 
- var harvest=remember(async function harvest(query,rate=1000,limit=50,history=[])
+ var harvest=record(async function harvest(query,rate=1000,limit=50,history=[])
 {let entry=performance.now();
  this.requests=this.requests||new Map(),this.buffer=this.buffer||new Set();
  let throttle=pass(expect(infer((pool,index)=>pool.size<limit||
@@ -63,7 +63,7 @@
  result
 ]
 )(wikipedia+new URLSearchParams([history.at(-1)?.continue,query].reduce(merge,{})));
-},JSON.stringify);
+},JSON.stringify).bind({});
 
  export function expand(title,depth,height,section,homogeneous)
 {// request page with subpages/subcategories. 
@@ -88,7 +88,7 @@
 (harvest,infer("flatMap",result=>result.parse||result.query?.backlinks||Object.values(result.query?.pages||{}))
 ,infer("flatMap",page=>page.links||page.revisions||page)
 ,infer("map",page=>merge(page,{title:page.title||page["*"]}))
- ,homogeneous?infer("filter",({ns})=>ns===namespaces[namespace]):infer()
+,homogeneous?infer("filter",({ns})=>ns===namespaces[namespace]):infer()
 ,descend?compose
 (infer("map",compose(combine(compose("title",infer(expand,depth-1,height+1,section,homogeneous),"pages",refer),infer()),merge))
 // ,infer("reduce",record(compose(pass(compose(performance.now(),(pages,{title},index,{length},time)=>

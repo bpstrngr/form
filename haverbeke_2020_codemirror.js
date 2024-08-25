@@ -1,3 +1,5 @@
+import {window} from "./Blik_2023_interface.js";
+let {document}=window;
 let userAgent = navigator.userAgent;
 let platform = navigator.platform;
 let gecko = (/gecko\/\d/i).test(userAgent);
