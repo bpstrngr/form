@@ -1,31 +1,33 @@
  import {merge} from "./Blik_2023_search.js";
+ import {document} from "./Blik_2023_fragment.js";
+ import CodeMirror from './haverbeke_2020_codemirror.js';
+ import('./haverbeke_2020_codemirror_jsmode.js');
 
- export default async function collaborate(source,settings)
-{let {default:CodeMirror}=await import('./haverbeke_2020_codemirror.js')
- globalThis.CodeMirror=CodeMirror;
- let mode=await import('./haverbeke_2020_codemirror_jsmode.js')
+ export default function collaborate(source,settings)
+{globalThis.CodeMirror=CodeMirror;
  //if(!Array.prototype.find.call(document.styleSheets[0].rules,rule=>rule.selectorText==".CodeMirror-scroll"))document.styleSheets[0].addRule(".CodeMirror-scroll","width:100vw");
- if(document.onkeydown!==suppresssave)document.onkeydown=suppresssave;
- let rooms=merge(window,{rooms:{}}).rooms;
- if(!rooms[settings.end])
-{rooms[settings.end]=CodeMirror(document.createElement("div"),{lineNumbers:true,mode:"text",theme:"monokai",lineWrapping:true,cursorHeight:1,indentUnit:2,indentWithTabs:false,tabSize:2,foldGutter:["CodeMirror-linenumbers","CodeMirror-foldgutter"],minimap:true,autoCloseBrackets:true,matchBrackets:true,extraKeys:{"Ctrl-S":contribute,"Ctrl-/":"undo"}});
- if(!window.mirrorstyle)
-{window.mirrorstyle=document.head.appendChild(document.createElement("style"));window.mirrorstyle.textContent=mirrorstyle;
- //("rel","stylesheet");window.mirrorstyle.href="./codemirror_2019/codemirror-5.48.4/lib/codemirror.css";
- window.monokai=document.head.appendChild(document.createElement("style"));window.monokai.textContent=monokai;
+ if(globalThis.document.onkeydown!==suppresssave)
+ globalThis.document.onkeydown=suppresssave;
+ let worksheet=CodeMirror(document({div:{}})
+,{lineNumbers:true,mode:"text",theme:"monokai",lineWrapping:true
+ ,cursorHeight:1,indentUnit:2,indentWithTabs:false,tabSize:2
+ ,foldGutter:["CodeMirror-linenumbers","CodeMirror-foldgutter"]
+ ,minimap:true,autoCloseBrackets:true,matchBrackets:true
+ ,extraKeys:{"Ctrl-S":contribute,"Ctrl-/":"undo"}
+ });
   //("rel","stylesheet");window.monokai.href="./codemirror_2019/codemirror-5.48.4/theme/monokai.css";
-}//document.styleSheets[0].insertRule(Array.prototype.reduce.call(document.styleSheets[0].rules,(ruletext,rule,index)=>{if(rule.selectorText!=".cm-s-monokai.CodeMirror")return ruletext;document.styleSheets[0].removeRule(index);return ruletext},".cm-s-monokai.CodeMirror{position:absolute;background-color:transparent;text-align:left; height:"+window.innerHeight+"px;width:"+window.innerWidth+"px;"));
- rooms[settings.end].setValue(typeof source=="string"?source:JSON.stringify(source));
- rooms[settings.end].socket=io.connect(window.location.origin);
- rooms[settings.end].socket.emit("apply",settings.end);
- rooms[settings.end].socket.on("welcome",socket=>console.log("welcome aboard:",socket));
- rooms[settings.end].socket.on("enter",({guest,subject})=>console.log(guest,"joined",subject));
- rooms[settings.end].socket.on("join",guest=>console.log(guest,"arrived"));
- rooms[settings.end].socket.on("leave",guest=>console.log(guest,"left"));
- rooms[settings.end].socket.on("save",({author,subject,content})=>subject?author!=socket[subject].socket.id?socket[subject].setValue(decodeURIComponent(escape(atob(content)))):window.Tone.Transport.start():console.log("failed"));
-}console.log(rooms[settings.end]);
- note(rooms[settings.end].display.wrapper.id=settings.end)
- return rooms[settings.end].display.wrapper;
+ //document.styleSheets[0].insertRule(Array.prototype.reduce.call(document.styleSheets[0].rules,(ruletext,rule,index)=>{if(rule.selectorText!=".cm-s-monokai.CodeMirror")return ruletext;document.styleSheets[0].removeRule(index);return ruletext},".cm-s-monokai.CodeMirror{position:absolute;background-color:transparent;text-align:left; height:"+window.innerHeight+"px;width:"+window.innerWidth+"px;"));
+ worksheet.setValue(typeof source=="string"?source:JSON.stringify(source));
+ // rooms[settings.end].socket.on("welcome",socket=>console.log("welcome aboard:",socket));
+ // rooms[settings.end].socket.on("enter",({guest,subject})=>console.log(guest,"joined",subject));
+ // rooms[settings.end].socket.on("join",guest=>console.log(guest,"arrived"));
+ // rooms[settings.end].socket.on("leave",guest=>console.log(guest,"left"));
+ // rooms[settings.end].socket.on("save",({author,subject,content})=>subject?author!=socket[subject].socket.id?socket[subject].setValue(decodeURIComponent(escape(atob(content)))):window.Tone.Transport.start():console.log("failed"));
+ globalThis.postMessage({action:"join",subject:settings.source});
+ let {wrapper}=worksheet.display;
+ wrapper.id=settings.source;
+ wrapper.append(document({style:{"#text":[codemirror,monokai].join("\n")}}));
+ return wrapper;
 /*else
 {console.info("opening",label.textContent)
  if(!window.mirrors)window.mirrors={};
@@ -64,23 +66,32 @@
  cartridge.setAttribute("name",click.target.id);
  cartridge.textContent="";
  cartridge.textContent=text;*/
-//})
-}
+//});
+};
  
  function contribute(instance)
-{let buffer=new FileReader();
- let parcel=unescape(encodeURIComponent(instance.getValue()));console.log(parcel)
+{let parcel=unescape(encodeURIComponent(instance.getValue()));
  let parcelarray=new Array(parcel.length);
- for(let i=0;i<parcel.length;i++){parcelarray[i]=parcel.charCodeAt(i);};console.log(parcelarray)
- let bytes=new Uint8Array(parcelarray);console.log(bytes)
+ for(let i=0;i<parcel.length;i++){parcelarray[i]=parcel.charCodeAt(i);};
+ let bytes=new Uint8Array(parcelarray);
  var blob=new Blob([bytes],{type:'text/plain'});
+ let buffer=new FileReader();
  buffer.onload=function(event)
-{instance.socket.emit("save",{subject:instance.display.wrapper.id,content:btoa(event.target.result)})
+{globalThis.postMessage(
+ {action:"put"
+ ,subject:instance.display.wrapper.id
+ ,content:btoa(event.target.result)
+ },globalThis.origin);
+};
  buffer.readAsBinaryString(blob);
-}
-}
+};
 
- function suppresssave(e){e=e||window.event;if(!e.ctrlKey)return;switch(e.which||e.keyCode){case 83:case 87:e.preventDefault();e.stopPropagation();break;}};
+ function suppresssave(e)
+{e=e||window.event;if(!e.ctrlKey)return;
+ switch(e.which||e.keyCode)
+{case 83:case 87:e.preventDefault();e.stopPropagation();break;
+}
+};
 
  var monokai=`.cm-s-monokai.CodeMirror { background: #272822; color: #f8f8f2; }
 .cm-s-monokai div.CodeMirror-selected { background: #49483E; }
@@ -122,18 +133,10 @@
   color: white !important;
 }`;
 
-var codemirror=`/* BASICS */
-
-.CodeMirror {
-  /* Set height, width, borders, and global font properties here */
-  font-family: monospace;
-  height: 300px;
-  color: black;
-  direction: ltr;
-}
+var codemirror=`
+.CodeMirror {font-family: monospace;height: 100%;color: black;direction: ltr;}
 
 /* PADDING */
-
 .CodeMirror-lines {
   padding: 4px 0; /* Vertical padding around content */
 }
@@ -147,7 +150,6 @@ var codemirror=`/* BASICS */
 }
 
 /* GUTTER */
-
 .CodeMirror-gutters {
   border-right: 1px solid #ddd;
   background-color: #f7f7f7;
@@ -166,7 +168,6 @@ var codemirror=`/* BASICS */
 .CodeMirror-guttermarker-subtle { color: #999; }
 
 /* CURSOR */
-
 .CodeMirror-cursor {
   border-left: 1px solid black;
   border-right: none;
@@ -181,9 +182,7 @@ var codemirror=`/* BASICS */
   border: 0 !important;
   background: #7e7;
 }
-.cm-fat-cursor div.CodeMirror-cursors {
-  z-index: 1;
-}
+.cm-fat-cursor div.CodeMirror-cursors {z-index: 1;}
 .cm-fat-cursor-mark {
   background-color: rgba(20, 255, 20, 0.5);
   -webkit-animation: blink 1.06s steps(1) infinite;
@@ -198,21 +197,9 @@ var codemirror=`/* BASICS */
   animation: blink 1.06s steps(1) infinite;
   background-color: #7e7;
 }
-@-moz-keyframes blink {
-  0% {}
-  50% { background-color: transparent; }
-  100% {}
-}
-@-webkit-keyframes blink {
-  0% {}
-  50% { background-color: transparent; }
-  100% {}
-}
-@keyframes blink {
-  0% {}
-  50% { background-color: transparent; }
-  100% {}
-}
+@-moz-keyframes blink {0% {}50% { background-color: transparent; }100% {}}
+@-webkit-keyframes blink {0% {}50% { background-color: transparent; }100% {}}
+@keyframes blink {0% {}50% { background-color: transparent; }100% {}}
 
 /* Can style cursor different in overwrite (non-insert) mode */
 .CodeMirror-overwrite .CodeMirror-cursor {}
@@ -280,11 +267,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
 /* The rest of this file contains styles related to the mechanics of
    the editor. You probably shouldn't touch them. */
 
-.CodeMirror {
-  position: relative;
-  overflow: hidden;
-  background: white;
-}
+.CodeMirror {position: relative;overflow: hidden;background: white;}
 
 .CodeMirror-scroll {
   overflow: scroll !important; /* Things will break if this is overridden */
@@ -296,10 +279,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
   outline: none; /* Prevent dragging from highlighting the element */
   position: relative;
 }
-.CodeMirror-sizer {
-  position: relative;
-  border-right: 30px solid transparent;
-}
+.CodeMirror-sizer {position: relative;border-right: 30px solid transparent;}
 
 /* The fake, visible scrollbars. Used to force redraw during scrolling
    before actual scrolling happens, thus preventing shaking and
@@ -451,10 +431,7 @@ div.CodeMirror-dragcursors {
 .CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection { background: #d7d4f0; }
 .CodeMirror-line::-moz-selection, .CodeMirror-line > span::-moz-selection, .CodeMirror-line > span > span::-moz-selection { background: #d7d4f0; }
 
-.cm-searching {
-  background-color: #ffa;
-  background-color: rgba(255, 255, 0, .4);
-}
+.cm-searching {background-color: #ffa;background-color: rgba(255, 255, 0, .4);}
 
 /* Used to force a border model for a node */
 .cm-force-border { padding-right: .1px; }
