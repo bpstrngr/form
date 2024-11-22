@@ -1,8 +1,8 @@
  import layout,{color} from "./Blik_2023_layout.js";
- import {search,merge,prune,extreme,sum,extract,unfold} from "./Blik_2023_search.js";
- import {document,demarkup,namespaces,path,deselect,stylesheet} from "./Blik_2023_fragment.js";
- import {infer,tether,simple,swap,wait,drop,pass,note,has,collect,compose,combine,wether,refer,buffer,observe,ascending,defined,compound,array,string,clock,revert,provide} from "./Blik_2023_inference.js";
- import {window,fetch,resolve} from "./Blik_2023_interface.js";
+ import {search,merge,extreme,sum,extract,unfold,prune} from "./Blik_2023_search.js";
+ import {document,demarkup,namespaces,deselect,stylesheet} from "./Blik_2023_fragment.js";
+ import {infer,tether,simple,swap,wait,numeric,drop,pass,note,has,collect,compose,combine,wether,record,buffer,observe,ascending,defined,compound,array,string,clock,revert,provide,plural} from "./Blik_2023_inference.js";
+ import {window,fetch,digest,resolve,path} from "./Blik_2023_interface.js";
  import * as d3 from './Bostock_2011_d3.js';
  import extend,{ascend} from "./Blik_2023_d4.js";
  var {default:vectors}=await resolve("./Blik_2020_svg.json");
@@ -14,7 +14,7 @@
 {// parse object as a nodes. 
  // {node:{node:[{node:"node",relations:["node"]},"node"]}} or [{name,relations}]
  if(typeof resource==="string")
- resource=JSON.parse(resource);
+ return compose(fetch,digest,infer(sprawl,options))(resource);
  if(resource.constructor.name==="Node")
  return resource;
  let {relations,spread,title,monospace=10,still,source,gradual,depth}=options;
@@ -246,7 +246,7 @@
  ,...content
  });
 },each(node)
-{if(trace(node,[])?.[0]?.includes("image"))
+{if(trace(node,[])?.[0]?.includes?.("image"))
  pattern(node);
 },call(nodes){if(browser)drag(nodes);}
  ,class:"node",id:nodeindex,filter:"url(#shadow)"
@@ -308,7 +308,7 @@
 },drop(links)
 {extend.call(links,{fold:false,each(link)
 {let detached=degree(link,-1).filter(node=>!node.degree);
- detached.forEach(infer("remove"))
+ detached.forEach(infer("remove"));
 }});
  return links;
 },call(links){if(browser)drag(links)}
@@ -516,7 +516,7 @@
  function locate(node)
 {return compose.call
 (this.transform?.baseVal[0]?.matrix||{}
-,combine(swap(node),compose("e","x",refer),compose("f","y",refer)),collect,infer("reduce",merge)
+,combine(swap(node),compose(["e","x"],record),compose(["f","y"],record)),collect,infer("reduce",merge)
 );
 };
 
@@ -661,15 +661,6 @@
 };
 };
 
- export var tests=
- {sprawl:compose.call
-({a:{b:"c"}},{name:"a",height:2,depth:0,nodes:[{name:"b",depth:1,height:1,nodes:[{name:"c",depth:2,height:0,value:undefined}]}]},(context,term)=>(
- {context:[context]
- ,terms:[[merge(term,{value:context.a,nodes:[{source:[term],value:context.a.b,nodes:[{source:[term.nodes[0]]}]}]})]]
- ,condition:"deepEqual"
- })
-)};
-
 //  function descend(value,{relations,title,routed})
 // {// split data structure into node hierarchy. cyclical references 
 //  if(!value)return [];
@@ -746,3 +737,12 @@
 // },node),node));
 //  return node;
 // };
+
+ export var tests=
+ {sprawl:compose.call
+({a:{b:"c"}},{name:"a",height:2,depth:0,nodes:[{name:"b",depth:1,height:1,nodes:[{name:"c",depth:2,height:0}]}]},(context,term)=>(
+ {context:[context]
+ ,terms:[[merge(term,{value:context.a,nodes:[{source:[term],value:context.a.b,nodes:[{source:[term.nodes[0]]}]}]})]]
+ ,condition:"deepEqual"
+ })
+)};

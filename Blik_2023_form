@@ -1,19 +1,23 @@
 #!/bin/bash
-echo "Merging with Interface to access modules...";
-git stash --keep-index;
-commit=$(git rev-parse HEAD);
-git remote add interface https://github.com/bpstrngr/interface;
-git fetch interface;
-git switch -c interface interface/stable;
-git checkout $commit;
-git checkout interface/stable .;
-git restore --staged .;
-git restore $(git ls-files);
-git checkout stash -- .;
-node --experimental-detect-module --import=./Blik_2023_interface.js ./Blik_2023_host.js expose ./Blik_2023_form.js ./Blik_2023_parameters.json https remember;
-exit 0;
+ echo " Merging with Interface to access modules...";
+ echo " Stashing local changes..."
+ git stash --keep-index;
+ commit=$(git rev-parse HEAD);
+ git remote add interface https://github.com/bpstrngr/interface;
+ git fetch interface;
+ git switch -c interface interface/stable;
+ git checkout $commit;
+ git checkout interface/stable .;
+ echo " Unstaging union..."
+ git restore --staged .;
+ echo " Discarding potential conflicts..."
+ git restore $(git ls-files);
+ echo " Restoring local changes."
+ git checkout stash -- .;
+ node --experimental-detect-module --import=./Blik_2023_interface.js ./Blik_2023_host.js expose ./Blik_2023_form.js ./Blik_2023_parameters.json https remember;
+ exit 0;
 
 To author commits unambiguously, target the remote explicitly: 
 
-git remote add form https://github.com/bpstrngr/form;
-git push form HEAD:refs/heads/$(git rev-parse --abbrev-ref HEAD);
+ git remote add form https://github.com/bpstrngr/form;
+ git push form HEAD:refs/heads/$(git rev-parse --abbrev-ref HEAD);
