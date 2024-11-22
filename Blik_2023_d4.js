@@ -118,7 +118,7 @@
 
  export function jss(style)
 {return Object.fromEntries(Object.entries(style).map(([field,value])=>
-[field.replace(/-(.)/g, (match, lowerCase) => lowerCase.toUpperCase())
+[field.replace(/-(.)/g,(match,lowerCase)=>lowerCase.toUpperCase())
 ,value
 ]));
 };

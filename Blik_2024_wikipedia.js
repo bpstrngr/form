@@ -1,7 +1,6 @@
- import {note,each,drop,compose,either,infer,tether,is,record,slip,numeric,collect,provide,combine,wether,when,crop,buffer,pass,refer,colors,expect,wait,exit} from "./Blik_2023_inference.js";
+ import {note,each,drop,compose,either,infer,tether,is,record,slip,numeric,collect,provide,combine,wether,when,crop,buffer,pass,colors,expect,wait,exit} from "./Blik_2023_inference.js";
  import {fetch} from "./Blik_2023_interface.js";
  import {merge,search,extract,unfold,prune,sum,extreme} from "./Blik_2023_search.js";
- let wikipedia="https://en.wikipedia.org/w/api.php?";
  let parameters={query:{format:"json",origin:"*"}};
 
  export default 
@@ -62,7 +61,7 @@
  this.requests.delete(query)&&
  result
 ]
-)(wikipedia+new URLSearchParams([history.at(-1)?.continue,query].reduce(merge,{})));
+)("https://en.wikipedia.org/w/api.php?"+new URLSearchParams([history.at(-1)?.continue,query].reduce(merge,{})));
 },JSON.stringify).bind({});
 
  export function expand(title,depth,height,section,homogeneous)
@@ -90,7 +89,7 @@
 ,infer("map",page=>merge(page,{title:page.title||page["*"]}))
 ,homogeneous?infer("filter",({ns})=>ns===namespaces[namespace]):infer()
 ,descend?compose
-(infer("map",compose(combine(compose("title",infer(expand,depth-1,height+1,section,homogeneous),"pages",refer),infer()),merge))
+(infer("map",compose(combine(compose("title",infer(expand,depth-1,height+1,section,homogeneous),["pages"],record),infer()),merge))
 // ,infer("reduce",record(compose(pass(compose(performance.now(),(pages,{title},index,{length},time)=>
 //  colors.ready+(index+1)+"/"+length+" "+title+" ("+(performance.now()-time)/1000+"s)"+colors.steady,console.log)),drop(1,3))),[])
 ,Promise.all.bind(Promise)

@@ -1,11 +1,11 @@
- import {note,crop,swap,is,buffer,provide,collect,compose,infer,tether,refer,route,record,combine,wether,drop,slip,exit,numeric} from "./Blik_2023_inference.js";
- import {document,hypertext,dispose,throttle,form,transform,insert,expose,activate,namespaces,stylesheet,fill,deselect} from "./Blik_2023_fragment.js";
- import {serialize,proceduralize,coordinates,parse} from "./Blik_2023_meta.js";
+ import {note,crop,swap,is,buffer,provide,collect,same,pass,compose,each,infer,tether,route,record,combine,wether,drop,slip,exit,numeric,match,when,has} from "./Blik_2023_inference.js";
+ import {document,hypertext,dispose,throttle,form,transform,insert,expose,activate,namespaces,css,fill,deselect,expand,spell,syndicate,article,profile,demarkup,media} from "./Blik_2023_fragment.js";
+ import {serialize,proceduralize,parse,mime,sourcemap} from "./Blik_2023_meta.js";
  import layout,{fontface} from "./Blik_2023_layout.js";
- import {merge,search,extract} from "./Blik_2023_search.js";
- import {access,resolve,modularise,window,fetch,mime,digest} from "./Blik_2023_interface.js";
- import local from "./Blik_2024_static.js";
- import source from "./Blik_2023_form.js";
+ import {merge,search,extract,encrypt} from "./Blik_2023_search.js";
+ import {access,resolve,window,fetch,digest,cookies,script,query,path,scope as modules} from "./Blik_2023_interface.js";
+ import local,{persistence} from "./Blik_2024_static.js";
+ import routes from "./Blik_2023_form.js";
  import network from "./Blik_2024_network.js";
  import extend from "./Blik_2023_d4.js";
  import wikipedia from "./Blik_2024_wikipedia.js";
@@ -13,219 +13,346 @@
  var address=new URL(import.meta.url).pathname;
 
  export default
- {...local,rss,svg,wikipedia
+ {...local,svg,wikipedia,modules
  ,overpass(){return fetch('https://www.overpass-api.de/api/interpreter?'+new URLSearchParams({data:'[out:json];rel[admin_level=2]'/*'convert item ::=::,::geom=geom(),_osm_type=type();'*/+';out geom;'}))}
- // ,google,mongo,economy,asana
- // ,signature:{...store("Blik_2020_signature.json","author")}
- // ,mind:{...store("Blik_2020_mind.json","code",digest)}
- ,document:compose(crop(1),{width:50},merge,infer(refer,"svg"),document)
- ,interface:async function(a,request)
-{if(!request.query)request.query={};
- let {controls,...fields}={source:"get",...request.query};
- let icon={id:"switch",title:"get",...svg.node};
- let input={id:"extend",type:"text",value:"..."};
- let labels={message:"",source:"",layout:"as",title:"of",category:"on",spread:"by",matrix:"from",relations:"with"};
- let control=document({form:
- {id:"composer",method:"get",svg:icon,...form(fields,labels),input,dataset:{labels}
- ,style:{"#text":stylesheet({"#composer":styles.composer})}
+ ,author:persistence("Blik_2024_author.json",{code:encrypt("secret")})
+ ,document:compose(crop(1),{width:50},merge,infer(record,["svg"]),document)
+ ,media:compose(crop(1),"toString",media,collect,document)
+ ,interface:async function(request)
+{let queries=query(request.url);
+ let fragment=numeric(this.put)?"fragment/feed":"fragment/media";
+ let {controls,...fields}={source:"",fragment,...queries};
+ let labels={message:"",source:"",fragment:"as",title:"of",category:"on",spread:"by",matrix:"from",relations:"with"};
+ let composer=document({form:
+ {id:"composer",dataset:{labels}
+ ,style:{"#text":css({"form#composer":
+ {position:"fixed","z-index":100,bottom:"0px",left:"0px",margin:0,"padding-right":"1.5em",overflow:"scroll","box-sizing":"border-box","max-width":"calc(100% - 20px)"
+ ,background:"var(--isle)","vertical-align":"middle","white-space":"nowrap"
+ ,"font-family":"averia","font-size":"var(--size)",transition:"all var(--transition)"
+ ,"&:not(:hover)":
+ {[Object.entries({send:"message",get:"source"}).map(([method,primary])=>
+ "&[method="+method+"]>label:not([for="+primary+"])").join()]:{width:0,display:"none"}
+ ,"&>span[role=input]#extend":{width:0,display:"none"}
+ }
+ ,"& label":layout.label,"& input,& span[role=input]":layout.input
+ ,"&:hover label[for=message]>ul>li":{opacity:1,animation:"fadein 1s"}
+ ,...Object.fromEntries(["erase","get","put","send"].map((method,index)=>
+ ["&[method="+method+"] label:not(."+(index?method:"get")+")",{display:"none"}]))
+ ,...layout.pill,...layout.material
+ }})}
+ ,...form({get:fields},labels)
+ ,span:{role:"input",contenteditable:true,id:"extend",type:"text","#text":"..."}
  }});
+ toggle.call(composer,"get");
  let body=
- {control
- ,style:{"#text":compose({"#frame":layout.frame},layout.theme,layout.goo,collect,infer("reduce",merge),true,stylesheet)(extract.call(layout,["body","a","blockquote","table"]))}
+ {composer
+ ,style:{"#text":compose
+({"#frame":layout.frame},layout.theme,layout.goo,layout.link
+,collect,infer("reduce",merge),css
+)(extract.call(layout,["body","a","blockquote","table"]))}
  };
- let fragment=compose.call(body,"concept","svg/node/document",[proceduralize(expose)],["./style"],hypertext,0,document);
- await compose(submission.get.bind(control),throttle)(fields).catch(note);
+ fragment=compose.call(body,"concept","/svg/node/document",[proceduralize(expose)],["/style"],hypertext,0,document);
+ if(this!==routes)
+ fields.source=path(window.origin+request.url),fields.resource=this;
+ await buffer(compose(tether(submission.get),throttle),note)(composer,fields);
  if(String(controls)==="false")
- control.remove();
+ composer.remove();
  return activate(fragment,actions);
 },style:async function()
 {let {averia,oswald,ranger}=fontface;
- let font=await stylesheet({"@font-face":[averia,oswald,ranger]});
- return {type:mime("css"),body:font};
+ return {type:mime("css"),body:css(
+ {"@font-face":[averia,oswald,ranger]
+ ,"@keyframes wave":{"0%":{height:0,transform:"translate(0,-100%)",opacity:0},"50%":{opacity:0.25},"100%":{transform:"translate(0,100%)",opacity:0}}
+ })};
 },actions()
-{return compose.call
-({exports,imports},serialize,"\n//# sourceMappingURL=sourcemap","concat","body",refer
-,{type:mime("js"),headers:{"SourceMap":"/sourcemap","X-SourceMap":"/sourcemap"}},Object.assign
+{let address="/sourcemap?module=actions";
+ let headers=Object.fromEntries(["X-",""].map(field=>[field+"SourceMap",address]));
+ return compose.call
+({exports,imports},serialize,"\n//# sourceMappingURL="+address,"concat",["body"],record
+,{type:mime("js"),headers},Object.assign
 );
 },routes:compose
 (crop(1),"get",{spread:"force"},network.bind(null),throttle,{style:"background:#222222"},tether(document)
-),sourcemap
+),sourcemap:compose(drop(1),address,sourcemap)
+ ,peer()
+{return compose.call(peer,serialize,["body"],record,{type:mime("js")},Object.assign);
+},manifest()
+{return {name:"JS Interface",short_name:"interface",theme_color:"#ffcbe4",background_color:"#fa99ca"
+ ,display:"standalone",scope:"/",start_url:"https://jsinterface.org/",description:"public js interface"
+ ,orientation:"any",icons:[{src:"/svg/node/document",sizes:"1024x1024"}]
  };
-
- async function sourcemap(request)
-{let module="./actions";
- let namespace={["./"+await resolve("path","basename",address)]:
- [exports,...Object.values(actions)].flatMap(names=>
- Object.entries(names).map(([field,value])=>
- is(Function)(value)&&value.name||field))};
- let names=Object.values(namespace).flat();
- let sources=await Object.keys(namespace).reduce
-(record(source=>infer(access,true)(source))
-,[await compose(fetch,"text")(module)]
-);
- let grammars=await Object.entries({...namespace,[module]:names}).reduce(record(function([module,[...names]],index,namespaces)
-{// find node with same source text as first name match in source files (names are more likely shadowed in output, but source may still be mistaken).
- let reference=this.slice(0,namespaces[index+1]?0:index).flatMap(Object.values);
- return compose(buffer(parse,swap(null)),tether(search,({1:value})=>names.includes(value?.id?.name)&&
- [value,reference?.find(node=>node.id.name===value.id.name)].filter(Boolean).map(node=>
- (sources[node===value?index:this.findIndex(grammar=>Object.values(grammar).includes(node))]).slice(node.start,node.end)).reduce((text,reference)=>text===reference)&&
- names.splice(names.indexOf(value.id.name),1),true))(sources[index]);
-}),[]);
- let [source,grammar]=[sources,grammars].map(list=>list.pop());
- let locations=grammars.map((nodes,index)=>Object.values(nodes).map(node=>
-[coordinates(sources[index],node.id.start)
-,coordinates(source,Object.values(grammar).find(({id})=>id.name===node.id.name)?.id.start)
-,node.id.name
-]).filter(({0:source,1:target})=>
- // filter locations not matched due to transformation.
- [source,target].flat().every(numeric)));
- let entries=locations.flatMap((locations,source)=>
- locations.map(([[sourceline,sourcecharacter],[line,character],name],index,locations)=>[line,[
- // zero-based character, file, sourceline, sourcecharacter and name index relative to previous value.
-[character-(locations[index-1]?.[1][0]===line?locations[index-1][1][1]:0)
-,index?0:source?1:0
-,sourceline-(locations[index-1]?.[0][0]??0)
-,sourcecharacter-(locations[index-1]?.[0][1]??0)
-,[locations[index-1]?.[2],name].filter(Boolean).map(name=>names.indexOf(name)).reduce((past,next)=>next-past)
-]]]));
- let vlq='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
- let quantifiers=entries.map(entry=>Object.fromEntries([entry])).reduce((quantifiers,quantifier)=>merge(quantifiers,quantifier,0));
- let mappings=Object.assign(Array(),quantifiers).map(entries=>
- entries.map(entry=>entry.map(quantifier=>
- // https://github.com/Rich-Harris/vlq/blob/master/src/index.js
- [quantifier<0?(-quantifier<<1)|1:quantifier<<1].reduce(function clamp(stack,shifted)
-{return (!stack.length||shifted>0)&&(shifted>>>5>0)?clamp([...stack,(shifted&31)|32],shifted>>>5):[...stack,shifted&31];
-},[]).map(quantifier=>vlq[quantifier]).join("")).join("")).join(",")).join(";");
- let {origin}=new URL("http"+(request.client.encrypted?"s":"")+"://"+request.headers.host);
- let report=locations.flatMap((locations,index)=>locations.map(([source,target,name])=>name+": "+
-[[Object.keys(namespace)[index],source.map(index=>index+1)].flat().join(":")
-,[module,target.map(index=>index+1)].flat().join(":")
-].map(path=>path.replace(/^\.{0,1}/,origin)).join(" -> "))).join("; \n");
- return {version:3,file:"/actions",sources:Object.keys(namespace),names,mappings,report};
-};
-
- var script=compose
-(combine(fetch.bind(source),infer()),wether
-(compose("status",200,Object.is)
-,compose(combine(compose(crop(1),"text"),drop(1,2)),modularise)
-,compose(crop(1),"text",Error,exit)
-)
-);
-
- async function rss(input)
-{let title="ranger";
- let link="https://blikpatrik.net/rss";
- let description="publishing";
- let feed=Object.keys(await this.get(".")).reduce(record(async item=>
+},async rss(request)
+{when(has(["pub","put"]))(this);
+ let queries=query(request.url);
+ let item=await Object.keys(this.pub).reduce(record(async item=>
 {let description=item;
  let pubDate=await compose(access,"birthtime","toString")(item);
- let content=await compose(fetch,"text",input.query.augment?media:infer())(item);
- return ({item:[{description},{pubdate},{content}]})
+ let content=await compose(fetch,"text",queries.augment?media
+:infer("replace",/[<>]/g,match=>"&"+{"<":"l",">":"g"}[match]+"t;"))(item);
+ return prune.call({description,pubDate,content}
+,([field,value])=>({"#text":value}),0,1);
 }),[]);
- let xml=await import("./dylang_2017_xml.js").then(module=>module.default);
- let body=xml(
- {rss:[{channel:[{title},{link},{description},...feed]}]}
-,{declaration:true,indent:" "})
- return {status:200,type:"rss+xml",body}
-};
+ //let xml=await import("./dylang_2017_xml.js").then(module=>module.default);
+ let channel=prune.call({title:"",description:""}//link:request.url}
+,([field,value])=>({"#text":value}),0,1);
+ let {outerHTML:body}=document({rss:{version:"2.0",channel:{...channel,item}}});
+//,{declaration:true,indent:" "})
+ return {status:200,type:"rss+xml",body:'<?xml version="1.0" encoding="UTF-8" ?>'+body};
+}};
+
+ export var submission=
+ {get({resource,...fields})
+{let {pathname:path}=this.ownerDocument.defaultView.location;
+ let source=(path+fields.source).replace(/\/+$/,"");
+ let incumbent=source?this.ownerDocument.querySelector("#"+deselect(source)):undefined;
+ let query=new URLSearchParams(prune.call(fields,({1:value})=>value||undefined,0,1)).toString();
+ let route=[path,query].filter(Boolean).join("?");
+ if(this)
+ this.ownerDocument.defaultView.history.pushState({},null,route);
+ resource=resource||compose(fetch,digest)(source);
+ form.call(this,{get:profile(resource)});
+ //fill.call(this,fields);
+ let fragment=transform(resource,{incumbent,...fields,source});
+ let target=incumbent||this?.ownerDocument.defaultView.frame||
+ infer(insert,"before",this)(document({div:{id:"frame"}}));
+ let progress=document({div:{class:"progress",style:{"#text":css(
+ {".progress":{position:"absolute",width:"100%",height:"100%",background:"linear-gradient(transparent 0%,rgba(33,150,243,0.25) 75%,transparent 100%)",animation:"wave 3s ease 1s infinite"}
+ ,"@keyframes wave":{"0%":{height:0,transform:"translate(0,-100%)",opacity:0},"50%":{opacity:0.25},"100%":{transform:"translate(0,100%)",opacity:0}}
+ })}}});
+ insert(progress,target.lastChild?"after":"under",target.lastChild||target);
+ //insert(document({}),"under",target);
+ let fragments=each.call(fragment,(fragment,index)=>
+(!index&&insert(progress,"under",target),
+ insert(fragment,incumbent?"over":target.lastChild?"after":"under",target.lastChild||target)
+));
+ return compose.call(fragments,each(infer(activate,"/actions")),swap(progress),"remove");
+},async put(fields)
+{let {method}=demarkup(this,"method");
+ let {name}=fields;
+ let action="/author/"+name;
+ let request={method,body:JSON.stringify(fields),headers:{"Content-Type":"application/json"}};
+ let [status,message]=await compose(fetch,combine("status","text"))(action,request);
+ if(status!==200)
+ return;
+ document.cookie=cookie({author:name,path:"/",expires:new Date(Date.now()+1000*60*60).toUTCString()})
+ this.dispatchEvent(new MessageEvent("message",{data:{action:"sign",name},bubbles:true}));
+},erase()
+{let {method}=demarkup(this,"method");
+ let active=this.ownerDocument.activeElement;
+ let input=[this.contains(active)?active
+:Array.from(this.querySelectorAll("span[role=input]:not([id=source])")).filter(({textContent:text})=>!text)].flat();
+ input.forEach(input=>demarkup(input,"role").role!=="input"||input.textContent
+?console.error("erasure called on non-empty field:",input)
+:input.closest("label").remove());
+ toggle.call(this,"get");
+},send({message})
+{if(!message)return;
+ let address=this.ownerDocument.defaultView.location.href;
+ let room=[path(address),query(address).source].join("/");
+ this.dispatchEvent(new MessageEvent("message",{data:{action:"message",room,message},bubbles:true}));
+ this.querySelector("#message").textContent="";
+ toggle.call(this,"send");
+}};
 
  var actions=
- {body:{load,popstate}
+ {body:
+ {load(event)
+{//if(this.document===event.target)
+ //this.document.forms[0]?.dispatchEvent(new Event("submit"))
+ //this.dispatchEvent(new Event("popstate"));
+// },popstate(event)
+// {note(event);this.document.forms[0]?.dispatchEvent(new Event("submit"));
+ if(this===event.target.body)
+ this.querySelectorAll("canvas[role=img]").forEach(canvas=>
+ canvas.dispatchEvent(new canvas.ownerDocument.defaultView.Event("contextrestored",{bubbles:true})));
+}}
+ ,"canvas[role=img]":
+ {contextrestored(event)
+{let [src,alt]=["data-source","aria-label"].map(this.getAttribute.bind(this));
+ compose(image,canvas,infer(insert,"over",this))(src,alt);
+}}
  ,"#composer":
- {click:function({target})
+ {click({target})
 {if(target.nodeName.toLowerCase()!=="li")
  return;
  let field=target.closest("label");
  if(!field)return;
- let input=field.querySelector("input");
- input.value=["",target.closest("li")].reduce(function prepend(path,item)
+ let input=field.querySelector("span[role=input]");
+ input.textContent=["",target.closest("li")].reduce(function prepend(path,item)
 {path=item.childNodes[0].nodeValue+(path?"/"+path:"");
  item=item.parentNode.parentNode;
- return item.nodeName=="LI"?prepend(path,item):path
+ return item.nodeName=="LI"?prepend(path,item):path;
 });
- ["input","blur"].forEach(event=>
- input.dispatchEvent(new Event(event,{bubbles:true}))); 
- input.form.dispatchEvent(new Event("submit"));
-},submit:async function submit(event)
+ input.dispatchEvent(new Event("blur",{bubbles:true})); 
+ input.closest("form").dispatchEvent(new Event("submit",{bubbles:true}));
+},message(event)
+{let {data:message}=event;
+ console.info("send",message);
+ this.ownerDocument.defaultView.socket.send(JSON.stringify(message));
+},submit(event)
 {// Important to prevent default to avoid unintended url-encoded requests. 
- // Only get/put submissions should go through, as defined. 
- event.preventDefault();
- let form=event.target;
- let method=form.getAttribute("method");
- let fields=Object.fromEntries(Array.from(form.elements).filter(input=>
- input.parentNode.classList.contains(method)).map(({id,value})=>[id,value]));
- let location=this.ownerDocument.defaultView.location.pathname.split("/").slice(0,-1);
- if(!fields.source)
- fields.source="get";
- submission[method].call(form,fields);
-},focusin:function({isTrusted:genuine,target})
+ event?.preventDefault();
+ let form=this;
+ let {method}=demarkup(form,"method");
+ let fields=fill.call(form,method);
+ return submission[method].call(form,fields);
+},focusin({isTrusted:genuine,target})
 {let [form,label]=["form","label"].map(tag=>target.closest(tag));
- if(!target.value)
- form.querySelector("#switch").dispatchEvent(new Event("click"));
- let singular=Array.from(form.elements).filter(input=>input.type=="text");
+ let {name,type}=demarkup(target,["name","text"]),value=target.textContent;
+ let {method}=demarkup(form,"method");
+ if(!genuine&&method==="erase")
+ toggle.call(form,"get");
+ if(method==="get"&&name!=="source"&&!value)
+ toggle.call(form,"erase");
+ let singular=Array.from(form.querySelectorAll("span[role=input]")).filter(input=>input.type=="text");
  if(singular.length>1)
  form.style.setProperty("--scroll","-"+form.scrollLeft);
- if(target.type=="text")
- target.setSelectionRange(...Array(2).fill(target.value.length));
+ if(type=="text")
+ focus(target);
  if(label)
  label.setAttribute("focused",label.getAttribute("focused")!=="true");
-},focusout:function({target}){return target.dispatchEvent(new Event("focusin",{bubbles:true}));}
- ,keydown:function({target,keyCode})
-{let {enter,updown,leftright}=keyboard(keyCode);
+},focusout({target}){return target.dispatchEvent(new Event("focusin",{bubbles:true}));}
+ ,keydown(event)
+{let {target,keyCode}=event;
+ let {enter,updown,leftright}=keyboard(keyCode);
  let list=target.parentNode.querySelector("ul");
  let selection=list?.querySelector("li.hover");
  if(enter)
- return selection?selection.click():this.dispatchEvent(new Event("submit"));
+ return event.preventDefault(),selection?selection.click():this.dispatchEvent(new Event("submit",{bubbles:true}));
  if(escape)
- return target.dispatchEvent(new Event("blur"));
+ return target.dispatchEvent(new Event("blur",{bubbles:true}));
  if(!list)return;
  if(updown||leftright)
  return [Array.from(list.querySelectorAll("li")),[38,39].includes(keyCode)||-1].reduce((list,step)=>
  list.at((list.indexOf(selection)+step)%list.length)?.classList.toggle('hover'));
-},input:function({isTrusted:genuine,target})
+},input({target})
 {let form=target.closest("form");
- if(target.id==="message"&&target.value)
- form.dispatchEvent(new MessageEvent("message",{data:{type:"signal",room:"room"},bubbles:true}));
- let label=target.closest("label");
- let prefix=Array.from(label?.childNodes||[]).find(({nodeName})=>!["span","svg"].includes(nodeName.toLowerCase()));
- let sample=window.document.body.appendChild(document({span:
- {span:[{"#text":prefix?.textContent||""},{"#text":target.value}]
- ,style:"position:absolute;font-family:averia;top:0;font-size:"+window.getComputedStyle(target).fontSize+";max-width:100vw;visibility:hidden;"
- }}));
- compose
-(expect(sample=>Boolean(sample.childNodes[1].getBoundingClientRect().width))
-,drop(),prefix,target,collect,infer("filter",Boolean),provide
-,each(infer(({style},sample,index,{length})=>
- style.width=Math[index?"max":"abs"](sample[length>1?index:1].getBoundingClientRect().width+5,30)+"px"
-,sample.childNodes)),drop(),sample,"remove"
-)(sample);
- Array.from(target.parentNode.querySelectorAll("li")).map(li=>
-[li,target.value&&!unfold.call(li,li=>li.parentNode.closest("li")).map(li=>
- li.firstChild?.nodeValue||"").join("/").includes(target.value)?"setProperty":"removeProperty"
+ let value=target.textContent;
+ let {name}=demarkup(target,"name");
+ let {source}=fill.call(form);
+ if(name==="message"&&value)
+ form.dispatchEvent(new MessageEvent("message",{data:{action:"signal",room:[path(window.location.href),source].join("/")},bubbles:true}));
+ let list=target.parentNode.querySelectorAll("li");
+ Array.from(list).map(li=>
+[li,value&&!unfold.call(li,li=>li.parentNode.closest("li")).map(li=>
+ li.firstChild?.nodeValue||"").join("/").includes(value)?"setProperty":"removeProperty"
 ]).forEach(([li,term])=>li.style[term]("display","none"));
- if(genuine)
- this.closest("form").querySelector("#switch").dispatchEvent(new Event("click"));
-},change:function({target})
-{target.dispatchEvent(new Event("input"));
- if(target.type!=="text")
- return target.form.dispatchEvent(new target.ownerDocument.defaultView.Event("submit"));
+ let {message,code}=fill.call(form);
+ let method=
+ {put:!code&&"send"
+ ,get:name!=="source"&&!value&&"erase"
+ ,erase:value&&"get"
+ ,send:code?"put":message?.length<2?"send":undefined
+ }[form.getAttribute("method")];
+ if(method)
+ toggle.call(form,method);
+},change({target})
+{let {method}=demarkup(this.closest("form"),"method");
+ if(target.type!=="text"&&method==="get")
+ return target.form.dispatchEvent(new target.ownerDocument.defaultView.Event("submit",{bubbles:true}));
 }}
- ,"#switch":{click:intend}
- ,"#extend":{keydown:add}
+ ,"#toggle":
+ {async click({isTrusted:genuine}={})
+{let form=this.closest("form");
+ let method=form.getAttribute("method");
+ let {message}=fill.call(form,method);
+ if({erase:true,send:message,put:true}[method])
+ return form.dispatchEvent(new Event("submit",{bubbles:true}));
+ toggle.call(form,{get:"send",send:"get"}[method]);
+}}
+ ,"#extend":{keydown(event)
+{event.stopPropagation();
+ event.preventDefault();
+ let {target,keyCode}=event;
+ let {enter}=keyboard(keyCode);
+ if(!enter)return;
+ let value=target.textContent;
+ if(Array.from(value).every(is(".")))
+ return this.dispatchEvent(new Event("submit",{bubbles:true}));
+ let form=this.closest("form");
+ let method=form.getAttribute("method");
+ fragment.form.call(form,{[method]:{[value]:""}});
+ target.textContent="...";
+}}
+ ,".spell":{click(){spell(this);}}
  ,".field":{click({target}){form.call(target.closest("form"),{extend:{key:"",value:""}})}}
  ,".carousel":{scroll}
  ,".defer":{load:defer}
- ,".reference":{click:expand}
+ ,".reference":{click(){expand.call(this,...arguments);}}
+ ,"#Interface":Object.fromEntries(["mousedown"].map(event=>
+ [event,async function pulse({target})
+{let circle=this.querySelector("circle");
+ if(target!==circle)
+ return;
+ let icon=this.querySelector("g").lastChild;
+ circle.style.transition="0s";
+ circle.style.transform="scale(1)";
+ icon.style.transform="scale(1)";
+ let pulse=circle.cloneNode(true);
+ pulse.style.opacity=0.1;
+ pulse.style.pointerEvents="none";
+ pulse.style.transition="1.5s ease-out";
+ circle.insertAdjacentElement("afterEnd",pulse);
+ await wait(100)();
+ icon.style.transform="scale(1.1)";
+ circle.style.transition="0.1s";
+ circle.style.removeProperty("transform");
+ pulse.style.transform="scale(16)";
+ pulse.style.opacity=0;
+ compose(wait(3000),"remove")(pulse);
+ //await wait(5000)();
+ //this.dispatchEvent(new Event("mousedown",{bubbles:true}))
+}]))
  ,".editor":{submit:modify,keydown:write}
  ,"g.network":
- {mouseover:function({target})
+ {mouseover({target})
 {target=target.closest(".link");
  target.style.removeProperty("filter");
  target.setAttribute("opacity",target.getAttribute("opacity")<1?1:0.5);
-},mouseout:function({target}){target.dispatchEvent(new Event("mouseover",{bubbles:true}));}
+},mouseout({target}){target.dispatchEvent(new Event("mouseover",{bubbles:true}));}
  }
+ ,".comment":
+ {input(event)
+{if(event.data)typenoise(event.data.charCodeAt(0));
+ if(event.inputType==="insertParagraph"){event.preventDefault();typenoise(13);respond(event.srcElement.parentNode);}
+}}
+ ,".article":{async click()
+{let feed=this.closest(".feed");
+ let multiple=Array.from(feed.querySelectorAll(".article")).filter(node=>
+ node!==this).some(node=>node.nextSibling);
+ let expanded=this.nextSibling;
+ feed.style.setProperty("max-width",!expanded||multiple?"calc(100% - 2em)":"revert");
+ if(expanded)
+ return [this,"nextSibling"].reduce(function trim(node,next){destroy(node[next])&&trim(...arguments);});
+ let source=feed.getAttribute("source");
+ let index=this.getAttribute("index");
+ let article=await compose(consume,syndicate,index)([source]);
+ let media=article?.media&&reference("",article?.media);
+ let content=article?.content
+?[this.ownerDocument.createRange().createContextualFragment(article.content),/#.*$/].reduce((fragment,hash)=>
+ Array.from(fragment.querySelectorAll("a")).map(link=>[link,link.getAttribute("href")]).forEach(([link,href])=>
+ hash.test(href)&&link.setAttribute("href",href.replace(/[^#]*/,"")))||fragment)
+:await compose(fetch,"text",semiotics,parse)(source+"/"+this.getAttribute("source"));
+ let entry=insert(document({span:{media}}),"after",this);
+ return compose(each(async function add(fragment,index,entry)
+{return compose.call(fragment,"./actions",activate,infer(insert,...entry.lastChild?["after",entry.lastChild]:["under",entry]));
+},entry),collect)(content);
+}}
+ ,".author":{click()
+{let description=this.nextSibling;
+ if(this.parentNode.nextSibling)
+ return [this.parentNode,"nextSibling"].reduce(function trim(node,next){destroy(node[next])&&trim(...arguments);})
+,merge(description,{style:"display:none"});
+ if(description)
+ spell(description);
+ let source=this.closest(".feed").getAttribute("source");
+ compose(collect,consume,syndicate,provide,each(article)
+,each(fragment=>insert(fragment,"after",this.parentNode))
+,each(infer(activate,"./actions")),collect)(source);
+}}
+ ,"span[role=link]":{click(){this.ownerDocument.defaultView.open(this.getAttribute("source"),this.classList.contains("redirect")?undefined:"_blank")}}
  ,"g.cluster":
- {pointerover:function({target})
+ {pointerover({target})
 {target=target.closest(".node");
  compose
 (combine(compose("svg","closest",forage),compose(d3.select,"datum"))
@@ -246,219 +373,142 @@
 ))
 ,(nodes,cluster)=>nodes.each(dim).filter(node=>cluster.has(node)).each(highlight)
 )(target);
-},pointerout:function({target}){target.dispatchEvent(new Event("pointerover",{bubbles:true}));}
+},pointerout({target}){target.dispatchEvent(new Event("pointerover",{bubbles:true}));}
  ,click:interact
  }
  };
 
- var styles=
- {composer:
- {"--form":"6em",position:"fixed","z-index":100
- ,bottom:"0px",left:"0px","max-width":"calc(100% - 20px)"
- ,margin:0,"padding-right":"1.5em",overflow:"scroll"
- ,"box-sizing":"border-box",background:"var(--isle)"
- ,"font-family":"averia","vertical-align":"middle","white-space":"nowrap"
- ,transition:"all var(--transition)"
- ,"&:not(:hover)":
- {[Object.entries({room:"message",get:"source"}).map(([method,primary])=>
- "&[method="+method+"]>label:not([for="+primary+"])").join()]:{width:0,display:"none"}
- ,"&>input#extend":{width:0,display:"none"}
+ export var broadcast=
+ {join({room},peer)
+{this.rooms[room]=this.rooms[room]||{messages:[]};
+ let {author}=merge(peer,{rooms:new Set([room])},0);
+ let message=JSON.stringify({author:system,message:author.name+" joined "+room,room});
+ this.clients.forEach(client=>client!==peer&&client.rooms.has(room)&&client.send(message));
+ let {length}=this.rooms[room].messages;
+ if(length)
+ peer.send(JSON.stringify({action:"history",history:this.rooms[room].messages}));
+ return this.rooms[room];
+},async sign({name},peer)
+{let author=await compose(fetch,"json",extract(["name","icon"]))("/author/"+name);
+ Object.assign(peer,{author});
+ peer.send(JSON.stringify({action:"message",author,message:"signed in as "+author.name}));
+},signal({subject},peer)
+{let event={action:"signal",author:peer.author};
+ broadcast.broadcast.call(this,event);
+},message({message},{author})
+{let event={action:"message",author,message};
+ broadcast.broadcast.call(this,event);
+},broadcast(event)
+{let message=JSON.stringify(event);
+ this.clients.forEach(client=>client.readyState===1&&
+ client.send(message));
+},save:async function({subject,content,updates,version},peer)
+{peer.subject=this.subjects[subject]||broadcast.join.call(...arguments);
+ let {EditorState,collab,receiveUpdates,getSyncedVersion,ChangeSet}=await import("./haverbeke_2020_codemirror.js");
+ if(!peer.subject.track)
+ peer.subject.track=await fetch(subject).then(doc=>
+ EditorState.create({doc:doc.toString(),extensions:[collab()]}));
+ //if(note([version,getSyncedVersion(this.subject.content)]).reduce((next,past)=>next>past))
+ await update(peer.subject.track,updates);
+ let body=this.subject.track.doc.toString();
+ let headers={"Content-Type":"text/plain"};
+ let message=await fetch(subject+"?force=overwrite",{method:"put",body,headers});
+ if(message instanceof Error)
+ return this.emit("message",{author:system,message});
+ else message=this.author+" edited "+subject;
+[["save",{author:this.author,subject,updates}]
+,["message",{author:system,message}]
+].map(event=>
+ this.server.sockets.in(subject).emit(...event));
+},disconnect(text)
+{Object.keys(this.subjects).forEach(subject=>
+ this.leave(subject)&&
+ this._events.message.bind(this)({author:system,message:this.author+" left "+subject,subject}));
+},put:async function({subject,content},peer)
+{peer.subject=this.subjects[subject]||broadcast.join.call(...arguments);
+ peer.subject.content=content;
+ let body=Buffer.from(content,"base64").toString("utf8");
+ let message=await fetch(subject+"?force=overwrite",{method:"put",body,headers:{"Content-Type":"text/plain"}});
+ if(message.status!==200)
+ return peer.send("message",{author:system,message:await message.text()});
+[{action:"put",body:content}
+,{action:"message",author:system,message:this.author+" updated "+subject}
+].forEach(event=>broadcast.broadcast.call(this,event));
+}};
+
+ export var peer=
+ {imports:
+ {"./Blik_2023_inference.js":["","note","compose","wait","has"]
+ ,"./Blik_2023_fragment.js":["","demarkup","document","fill"]
  }
- ,...Object.fromEntries(["get","sign","send","room"].map(method=>["&[method="+method+"] label:not(."+method+")",{display:"none"}]))
- ,"&[method=get],&[method=sign]":{"&>svg":{padding:0,width:"5em",height:"5em"}}
- ,"&[method=erase]":{"&>svg>path":{transform:"rotate(45deg)","transform-origin":"center center"}}
- ,"&>svg":
- {height:"3em",width:"3em",cursor:"pointer",fill:"var(--isle)","vertical-align":"middle","background-color":"black"
- ,"clip-path":"circle(50%)",padding:"1em",transform:"scale(0.8)",position:"sticky",left:0
- }
- ,"font-size":"var(--size)"
- ,"& label":
- {position:"relative",display:"inline-block","white-space":"nowrap","vertical-align":"middle",cursor:"pointer"
- ,"&:hover":{"&>svg":layout.glow,"&>input":{"text-shadow":"white 0px 0px 2px,white 0px 0px 2px",transition:"all 0.3s"}}
- ,"&>svg":{float:"left",height:"1em","vertical-align":"middle",cursor:"pointer",overflow:"visible"}
- ,"&>span":{float:"left","&:not(:empty):after":{content:":"}}
- ,"&>ul":
- {position:"fixed","margin-left":"0.6em","max-height":"100%","max-width":"100%","padding-top":"var(--form)",bottom:"var(--form)","box-sizing":"border-box",width:"inherit","overflow":"scroll"//"background-image":"radial-gradient(at center bottom, rgb(17, 17, 17) 0%, rgba(33, 33, 33, 0) 100%)"
- ,"&>li":{display:"block"}
- ,"&:hover":{display:"block"}
- }
- ,"& ul":
- {display:"none","z-index":"2",padding:"0px","margin-bottom":"0px","text-align":"left","pointer-events":"none","list-style-type":"none"
- ,"& ul":{position:"relative",bottom:"initial","max-height":"initial","vertical-align":"top","text-align":"left"}
- ,"& li":
- {position:"relative",display:"inline-block","pointer-events":"all","padding-right":"1em",color:"var(--text)","vertical-align":"top",margin:"auto",left:"0px",right:"0px","white-space":"pre","padding-left":"1em"
- ,"&:hover,&.hover":
- {color:"var(--highlight)"
- ,"& ul":
- {display:"inline-block","white-space":"pre"
- ,"&:hover>li":{display:"block"}
- }
- }
- ,"&>svg":{position:"absolute",height:"1em",left:"0px","margin-left":"0px","margin-right":"0px",transform:"scale(0.9)",fill:"var(--text)"}
- }
- }
- ,"&[focused=true]>ul":{display:"block"}
- ,"&[for=message],&[for=source]":{"&>ul":
- {"text-align":"left",width:"auto","&>li":{"text-shadow":"black 0px 0px 10px","white-space":"nowrap","&>span":{"white-space":"normal"}}
- ,"background-image":"linear-gradient(to right, rgb(17, 17, 17) 0%, rgba(33, 33, 33, 0) 100%)"
- }}
- ,"&[for=message]>ul":
- {display:"block","margin-left":"-5em","max-height":"50vh","min-width":"150px"
- ,"&>li":
- {opacity:0,animation:"fadeout 6s","padding-left":0,"min-height":"4em","white-space":"normal"
- ,"&>img":{...layout.material,margin:"1em",height:"2em",float:"left","border-radius":"50%","background-color":"var(--isle)",padding:".5em",margin:".5em .5em 0 .5em"}
- ,"&>div":{color:"var(--isle)"}
- }
- ,"&>li:not(:last-of-type)":{animation:"fadeout 2s"}
- ,"&>span":{position:"fixed",bottom:"1.5em",left:"5.5em",color:"black"}
- ,"&:hover>li":{opacity:1,animation:"fadein 1s"}
- }
- ,"&:not(:last-of-type):after":{content:","}
- ,"&[for=message]>span":{position:"absolute",left:"-0.5em",top:"-1.5em",color:"black"}
- }
- ,"&:hover label[for=message]>ul>li":{opacity:1,animation:"fadein 1s"}
- ,"& input":
- {height:"1em",transition:"all var(--transition)","text-shadow":"inherit"
- ,"&:focus+ul":{display:"block"}
- ,"&[type=text]":
- {outline:"none","background-color":"transparent",border:"none",width:"20px","box-sizing":"border-box"
- ,color:"inherit","text-align":"center","font-family":"inherit","font-size":"inherit"
- ,"&#code":{"-webkit-text-security":"disc"}
- }
- ,"&[type=radio]":{display:"none"}
- ,"&[type=checkbox]":
- {appearance:"none","font-family":"inherit",cursor:"pointer",width:"auto"
- ,"&:hover":{"text-shadow":"rgb(255,255,255) 0px 0px 10px,rgb(255,255,255) 0px 0px 10px,rgb(255,255,255) 0px 0px 10px"}
- ,"&:after":{content:"' ?'","margin-left":"3px","margin-right":"3px"}
- ,"&:focus:after":{"text-shadow":"rgb(255,255,255) 0px 0px 10px, rgb(255,255,255) 0px 0px 10px, rgb(255,255,255) 0px 0px 10px"}
- ,"&:checked:after":{content:"'✓'",color:"var(--highlight)"}
- }
- ,"&~svg":{"margin-right":"0.5em"}
- }
- ,...layout.pill,...layout.material
- }
+ ,exports:
+ {message({type,message,author:{name,icon}},window)
+{let form=window.document.querySelector("#composer");
+ let fields=fill.call(form,form.getAttribute("method"));
+ if(!has.call(fields,"message"))
+ return;
+ message=document({li:{img:{src:icon||"/svg/deer/document",height:"12px"},div:{"#text":name||"anonymous"},span:{"#text":message}}});
+ form.querySelector("#message").parentNode.querySelector("ul").append(message);
+ if(name==="system")
+ compose(wait(10000),{style:"opacity:0;transition:all 1s;"},Object.assign,wait(1000),"remove")(message);
+},signal({author},window)
+{let form=window.document.querySelector("form#composer");
+ let fields=Array.from(form.querySelectorAll("span[role=input]"));
+ let input=fields.find(input=>demarkup(input,"id").id==="message");
+ let label=input.closest("label");
+ let list=label.querySelector("ul")||label.appendChild(document({ul:{}}));
+ let node=list.querySelector("span#signal");
+ let entry=document({span:{id:"signal","#text":author.name+" is typing..."}});
+ list[node?"replaceChild":"appendChild"](entry,node);
+ compose(wait(3000),node=>node.parentNode&&node.remove())(entry);
+},save({author,subject,updates})
+{if(author==window.subject.labels.message)
+ return window.Tone.Transport.start();
+ let {state}=this.subject.content.viewState;
+ import("./haverbeke_2020_codemirror.js").then(({ChangeSet,receiveUpdates})=>
+ receiveUpdates(state,updates.map(({changes})=>
+ Array.isArray(changes)
+?ChangeSet.fromJSON(changes)
+:changes.toJSON()).map((changes,index)=>
+ Object.assign(updates[index],{changes})))).then(updates=>
+ this.subject.content.update([updates]));
+}}
  };
 
- export function path(name){return (window.location.pathname+(name||"")).replace(/^\/*|\/*$/g,"");}
+ var system={name:"system"};
 
- async function load(event)
-{if(this.document===event.target)
- this.dispatchEvent(new Event("popstate"));
-};
-
- function popstate(event)
-{this.document.forms[0]?.dispatchEvent(new Event("submit"));
-};
-
- function add({target,keyCode})
-{arguments[0].stopPropagation();
- let {enter}=keyboard(keyCode);
- if(!enter)return;
- let {value}=target;
- if(Array.from(value).every(is(".")))
- return;
- let form=this.closest("form");
- let method=form.getAttribute("method");
- fragment.form.call(form,{[method]:{[target.value]:""}});
- target.value="...";
-};
-
- async function intend({isTrusted:genuine,target})
-{let form=this.closest("form");
- let method=form.getAttribute("method");
- let focused=this.ownerDocument.activeElement;
- let fields=fragment.fill.call(form);
- let empty=method==="get"&&Object.entries(fields).find(([name,value],index)=>
- !value&&name&&index&&name===focused.id);
- let {source,message,name,code}=fields;
- if(method==="send"&&message&&genuine)
- return form.dispatchEvent(new Event("submit",{bubbles:true}));
- let intent=
- {room:code?"sign":message?"send":genuine?"get":undefined
- ,send:!message&&"room",sign:!code&&"room",author:"room"
- ,erase:!empty&&"get",put:"get",get:genuine?"room":empty?"erase":undefined
+ async function toggle(method)
+{let filter=wether(this.contains.bind(this),infer(),swap(undefined));
+ let active=filter(this.ownerDocument.activeElement);
+ let {source,message,name,code}=fill.call(this);
+ let icon=
+ {get:"node",put:code?"fingerprint":"plus"
+ ,erase:"plus",send:message?"paperplane":"chat"
  }[method];
- if(!intent)return;
- let action={sign:"author"}[intent]||path();
- document.call(form,{method:intent,action});
- let icon={get:"node",put:"plus",erase:"plus",sign:"fingerprint",room:"chat",send:"paperplane"}[intent];
- this.parentNode.replaceChild(document({svg:{...svg[icon],title:intent,id:"switch"}}),this);
- fields=
- {room:{message:method==="send"?null:[],code:identity()?undefined:""}
- ,send:{message:null}
- ,sign:{name:message,code:code}
- ,code:intent==="put"||{[code?"name":"message"]:form[code?"message":"name"].value}
- }[intent]||{};
- fragment.form.call(form,{[intent]:fields});
- Array.from(form.elements).forEach(input=>input.dispatchEvent(new Event("input")));
- form.elements[focused.id]?.focus();
- if(intent==="room")
- this.dispatchEvent(new MessageEvent("message",{data:{type:"join",room:form.source.value},bubbles:true}));
- activate(form,"./actions");
-};
-
- export var submission={get,put,erase,send,sign:put};
-
- function get(fields)
-{let id=deselect(fields.source||"get");
- let incumbent=this.ownerDocument.querySelector("#"+id)||undefined;
- let query=new URLSearchParams(fields).toString();
- let route=[window.location.pathname,query].filter(Boolean).join("?");
- if(this)
- this.ownerDocument.defaultView.history.pushState({},null,route);
- let fragment=compose
-(fetch.bind(globalThis.window||source),digest
-,{incumbent,...fields},transform.bind(this),actions,activate
-)(fields.source);
- let frame=this?.ownerDocument.defaultView.frame||
- infer(insert,"before",this)(document({div:{id:"frame"}}));
- return insert(fragment,incumbent?"over":"under",incumbent||frame);
-};
-
- async function put(action)
-{let signature=identity();
- // manage these with previous events!
-[signature?{source:this.labels.message}:{source:this.source.value,code:this.code.value}
-,["action",action=signature?"/"+signature[0].replace("=","/"):"mind/"+fields.source]
-,["method",method=signature?"erase":"put"]
-].forEach((fields,index)=>index
-?this.setAttribute(...fields)
-:form.call(this,{[method]:fields}));
- let request={method,...{put:{body:JSON.stringify(fields),headers:{"Content-Type":"application/json"}}}[method]};
- let [status,message]=await fetch(action,note(request)).then(response=>
- Promise.all([response.status,response.text()]));
- this.dispatchEvent(new MessageEvent("message",{data:{author:{name:"system",face:"svg/deer"},message},bubbles:true}));
- this.querySelector("#switch").dispatchEvent(new Event("click"));
- if(status!=200)return;
- if(method=="erase"&&this.action.startsWith("/signature"))
- note(window.document.cookie=this.action.substring(1).replace("/","=")+";path=/;expires="+new Date().toUTCString()+";")&&
- this.dispatchEvent(new MessageEvent("message",{data:{type:"leave",room:"room"},bubbles:true}))&&
- this.querySelector("#switch").dispatchEvent(new Event("click"));
- // update custom graphs...
- return this.dispatchEvent(new Event("submit"));
- let nodes=window.frame.childNodes[0].simulation.nodes;
- this.method=="put"
-?note(nodes().splice(findIndex(({title})=>title==fields.source),1,conceive(node).concept))
-:nodes(nodes().concat(conceive(node).concept));
- let simulation=window.object.childNodes[0].simulation;
- simulation.nodes(simulation.nodes().filter(node=>node.title!=this.source.value));
- simulation.force("link").links(simulation.force("link").links().filter(({source,target})=>![source.title,target.title].includes(this.source.value)))
-};
-
- function erase()
-{let method=this.getAttribute("method");
- let input=this.ownerDocument.activeElement;
- if(input.nodeName.toLowerCase()!=="input"||input.value)
- return console.error("erasure called on non-empty field:",input);
- input.closest("label").remove();
- this.dispatchEvent(new Event("switch"));
-};
-
- function send({message})
-{if(!message)return;
- this.dispatchEvent(new MessageEvent("message",{data:{room:this.source.value,message},bubbles:true}));
- this.message.value="";
- this.querySelector("#switch").dispatchEvent(new Event("click"));
+ let style=document({style:{class:"icon","#text":css(
+ {"#toggle":
+ {height:"3em",width:"3em",cursor:"pointer",fill:"var(--isle)","vertical-align":"middle","background-color":"black"
+ ,"clip-path":"circle(50%)",padding:"1em",transform:"scale(0.8)",position:"sticky",left:0
+ ,...["node","fingerprint"].includes(icon)&&{padding:0,width:"5em",height:"5em"}
+ ,"&>path":{erase:{transform:"rotate(45deg)","transform-origin":"center center"}}[method]
+ }
+ })}});
+ let fields=
+ {send:{message:message?null:[],code:message||identity()?undefined:""}
+ ,put:{name:message,code:code}
+ ,code:method==="put"||{[code?"name":"message"]:code?message:name}
+ }[method]||{};
+ form.call(this,{[method]:fields});
+ document.call(this,{method:method});
+ if(active)
+ focus(this.querySelector(qualify(active)));
+ let control=this.querySelector("#toggle");
+ insert(style,control?"over":"after",control?this.querySelector("style.icon"):this.lastChild);
+ insert(document({svg:{...svg[icon],title:method,id:"toggle"}}),control?"over":"before",control||this.firstChild);
+ let room=[path(this.ownerDocument.defaultView.location.href),fill.call(this).source].join("/");
+ if(method==="send")
+ this.dispatchEvent(new MessageEvent("message",{data:{action:"join",room},bubbles:true}));
+ activate(this,"./actions");
 };
 
  function scroll({target})
@@ -483,11 +533,16 @@
 };
 
  function defer(event)
- {if(this.dataset.subject)
- compose(combine(compose("source",fetch,digest),infer()),transform,"over",this,insert)(JSON.parse(this.dataset.subject));
+{if(!this.dataset.subject)
+ return;
+ let subject=JSON.parse(this.dataset.subject);
+ compose(combine(compose("source",fetch,digest),infer()),transform,"over",this,insert)(subject);
 };
 
- function dim(){if(!this.style.filter)this.style.filter="brightness(0.2)";else this.style.removeProperty("filter");};
+ function dim()
+{let mode=this.style.filter?"remove":"set";
+ this.style[mode+"Property"]("filter","brightness(0.2)");
+};
 
  function highlight(node)
 {this.style.removeProperty("filter");
@@ -566,14 +621,6 @@
  this.remove();
 };
 
- function expand(event)
-{event.preventDefault();
- let {source,title}=demarkup(this,["source","title"]);
- source===title
-?insert(this.ownerDocument.createTextNode(source.replace(/_/g,' ')),"under",this).parentNode.removeAttribute('source')
-:compose.call(insert(compose(fetch,digest,{source:this.getAttribute("src")},transform)(this.getAttribute("src")),"under",this),"parentNode",infer("setAttribute","source",title));
-};
-
  function edit(target)
 {let label=target.querySelector("text.label");
  let form=target.querySelector("form");
@@ -635,26 +682,27 @@
 };
 
  function identity(full)
-{let signature=window.document.cookie.match(/signature=[^;]+/);
- if(!signature)return;
- signature="/"+signature[0].replace("=","/");
- if(!full)return signature;
- let author=compose(fetch,when(compose("status",is(200))),"json","author");
- return compose(signature,author,"body",refer,{method:"put"},merge,slip(signature),author);
+{let {author}=cookies(window.document.cookie);
+ if(!author)return;
+ if(!full)return author;
+ return compose.call({author},["body",author],record,{method:"put"},merge,fetch,when(compose("status",is(200))),"json","author");
 };
 
  var {exports,imports}=
- {exports:{default:actions,submission,path,edit,update,highlight,dim,identity}
- ,imports:
- {"./Blik_2023_interface.js":["","resolve","digest"]
- ,"./Blik_2023_search.js":["","merge","unfold","search","prune"]
- ,"./Blik_2023_inference.js":";note;expect;compose;combine;pass;route;trace;drop;crop;slip;infer;tether;wait;observe;refer;buffer;swap;when;array;has;each;differ;provide;collect;is".split(";")
- ,"./Blik_2023_fragment.js":";* as fragment;document;form;demarkup;insert;navigate;activate;metamarkup;transform;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard;stylesheet".split(";")
+ {imports:
+ {"./Blik_2023_interface.js":["","resolve","digest","cookie","cookies","query"]
+ ,"./Blik_2023_search.js":["","merge","unfold","search","prune","extract"]
+ ,"./Blik_2023_inference.js":";note;expect;compose;combine;pass;route;record;trace;drop;crop;slip;infer;tether;wether;wait;observe;buffer;swap;when;array;has;each;differ;provide;collect;is;match".split(";")
+ ,"./Blik_2023_fragment.js":";* as fragment;document;form;image;canvas;demarkup;insert;navigate;activate;metamarkup;transform;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard;spell;expand;parse;semiotics;consume;syndicate;article;destroy;reference;profile;fill;qualify;focus".split(";")
  ,"./Blik_2023_layout.js":["layout"]
- ,"./Blik_2024_network.js":["","forage"]
  ,"./Blik_2023_d4.js":"extend"
  ,"./Blik_2020_svg.json":"svg"
  ,"./actions":"actions"
+ ,"./Blik_2024_syndication.js":"syndication"
  ,"./Bostock_2011_d3.js":"* as d3"
+ }
+ ,exports:
+ {default:actions,submission,path,edit,update,highlight,dim
+ ,identity,proceduralize,toggle,peer:peer.exports
  }
  };
