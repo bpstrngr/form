@@ -1,7 +1,8 @@
 #!/bin/bash
  echo " Merging with Interface to access modules...";
  echo " Stashing local changes..."
- git stash --keep-index;
+ git stash;
+ stash=$($?);
  commit=$(git rev-parse HEAD);
  git remote add interface https://github.com/bpstrngr/interface;
  git fetch interface;
@@ -13,7 +14,7 @@
  echo " Discarding potential conflicts..."
  git restore $(git ls-files);
  echo " Restoring local changes."
- git checkout stash -- .;
+ $stash && git checkout stash -- .;
  node --experimental-detect-module --import=./Blik_2023_interface.js ./Blik_2023_host.js expose ./Blik_2023_form.js ./Blik_2023_parameters.json https remember;
  exit 0;
 
