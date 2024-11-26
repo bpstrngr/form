@@ -1,9 +1,9 @@
- import {note,crop,swap,is,buffer,provide,collect,same,pass,compose,each,infer,tether,route,record,combine,wether,drop,slip,exit,numeric,match,when,has} from "./Blik_2023_inference.js";
- import {document,hypertext,dispose,throttle,form,transform,insert,expose,activate,namespaces,css,fill,deselect,expand,spell,syndicate,article,profile,demarkup,media} from "./Blik_2023_fragment.js";
- import {serialize,proceduralize,parse,mime,sourcemap} from "./Blik_2023_meta.js";
+ import {note,crop,swap,is,buffer,provide,collect,same,pass,compose,each,infer,tether,route,record,combine,wether,drop,slip,exit,numeric,match,when,has,basic,ascend,fields as inheritance} from "./Blik_2023_inference.js";
+ import {document,hypertext,dispose,throttle,capture,form,insert,expose,activate,namespaces,css,fill,annotate,deselect,expand,spell,syndicate,article,demarkup,media} from "./Blik_2023_fragment.js";
+ import {serialize,proceduralize,parse,mime} from "./Blik_2023_meta.js";
  import layout,{fontface} from "./Blik_2023_layout.js";
  import {merge,search,extract,encrypt} from "./Blik_2023_search.js";
- import {access,resolve,window,fetch,digest,cookies,script,query,path,scope as modules} from "./Blik_2023_interface.js";
+ import {access,resolve,locate,window,sourcemap,fetch,digest,cookies,script,query,path,scope as modules} from "./Blik_2023_interface.js";
  import local,{persistence} from "./Blik_2024_static.js";
  import routes from "./Blik_2023_form.js";
  import network from "./Blik_2024_network.js";
@@ -22,10 +22,8 @@
 {let queries=query(request.url);
  let fragment=numeric(this.put)?"fragment/feed":"fragment/media";
  let {controls,...fields}={source:"",fragment,...queries};
- let labels={message:"",source:"",fragment:"as",title:"of",category:"on",spread:"by",matrix:"from",relations:"with"};
  let composer=document({form:
- {id:"composer",dataset:{labels}
- ,style:{"#text":css({"form#composer":
+ {id:"composer",style:{"#text":css({"form#composer":
  {position:"fixed","z-index":100,bottom:"0px",left:"0px",margin:0,"padding-right":"1.5em",overflow:"scroll","box-sizing":"border-box","max-width":"calc(100% - 20px)"
  ,background:"var(--isle)","vertical-align":"middle","white-space":"nowrap"
  ,"font-family":"averia","font-size":"var(--size)",transition:"all var(--transition)"
@@ -40,7 +38,7 @@
  ["&[method="+method+"] label:not(."+(index?method:"get")+")",{display:"none"}]))
  ,...layout.pill,...layout.material
  }})}
- ,...form({get:fields},labels)
+ ,...form({get:annotate(fields,exports.labels)})
  ,span:{role:"input",contenteditable:true,id:"extend",type:"text","#text":"..."}
  }});
  toggle.call(composer,"get");
@@ -51,10 +49,11 @@
 ,collect,infer("reduce",merge),css
 )(extract.call(layout,["body","a","blockquote","table"]))}
  };
- fragment=compose.call(body,"concept","/svg/node/document",[proceduralize(expose)],["/style"],hypertext,0,document);
+ let scripts=[proceduralize(serialize({exports:{fragment:"data:text/javascript;globalThis",actions:"/actions",ascend,fields:inheritance}}),capture,expose)];
+ fragment=compose.call(body,"concept","/svg/node/document",scripts,["/style"],hypertext,0,document);
  if(this!==routes)
  fields.source=path(window.origin+request.url),fields.resource=this;
- await buffer(compose(tether(submission.get),throttle),note)(composer,fields);
+ await buffer(compose(tether(submission.get),note,throttle),note)(composer,fields);
  if(String(controls)==="false")
  composer.remove();
  return activate(fragment,actions);
@@ -65,7 +64,7 @@
  ,"@keyframes wave":{"0%":{height:0,transform:"translate(0,-100%)",opacity:0},"50%":{opacity:0.25},"100%":{transform:"translate(0,100%)",opacity:0}}
  })};
 },actions()
-{let address="/sourcemap?module=actions";
+{let address="/sourcemap?module=/actions";
  let headers=Object.fromEntries(["X-",""].map(field=>[field+"SourceMap",address]));
  return compose.call
 ({exports,imports},serialize,"\n//# sourceMappingURL="+address,"concat",["body"],record
@@ -103,29 +102,33 @@
  export var submission=
  {get({resource,...fields})
 {let {pathname:path}=this.ownerDocument.defaultView.location;
- let source=(path+fields.source).replace(/\/+$/,"");
+ let source=[path,fields.source||"get"].join("").replace(/\/+$/,"");
  let incumbent=source?this.ownerDocument.querySelector("#"+deselect(source)):undefined;
  let query=new URLSearchParams(prune.call(fields,({1:value})=>value||undefined,0,1)).toString();
  let route=[path,query].filter(Boolean).join("?");
  if(this)
  this.ownerDocument.defaultView.history.pushState({},null,route);
- resource=resource||compose(fetch,digest)(source);
- form.call(this,{get:profile(resource)});
+ resource=resource||compose(note,fetch,digest)(source);
+ form.call(this,{get:annotate(profile(resource),labels)});
  //fill.call(this,fields);
  let fragment=transform(resource,{incumbent,...fields,source});
  let target=incumbent||this?.ownerDocument.defaultView.frame||
  infer(insert,"before",this)(document({div:{id:"frame"}}));
- let progress=document({div:{class:"progress",style:{"#text":css(
- {".progress":{position:"absolute",width:"100%",height:"100%",background:"linear-gradient(transparent 0%,rgba(33,150,243,0.25) 75%,transparent 100%)",animation:"wave 3s ease 1s infinite"}
- ,"@keyframes wave":{"0%":{height:0,transform:"translate(0,-100%)",opacity:0},"50%":{opacity:0.25},"100%":{transform:"translate(0,100%)",opacity:0}}
- })}}});
+ let progress=document({div:{class:"progress",style:{"#text":css({".progress":
+ {position:"absolute",width:"100%",height:"100%"
+ ,background:"linear-gradient(transparent 0%,rgba(33,150,243,0.25) 75%,transparent 100%)"
+ ,animation:"wave 3s ease 1s infinite"
+ },"@keyframes wave":
+ {"0%":{height:0,transform:"translate(0,-100%)",opacity:0}
+ ,"50%":{opacity:0.25},"100%":{transform:"translate(0,100%)",opacity:0}
+ }})}}});
  insert(progress,target.lastChild?"after":"under",target.lastChild||target);
  //insert(document({}),"under",target);
- let fragments=each.call(fragment,(fragment,index)=>
-(!index&&insert(progress,"under",target),
+ let fragments=each.call(fragment,async(fragment,index)=>
+(!index&&insert(progress,"under",target),fragment!==target&&
  insert(fragment,incumbent?"over":target.lastChild?"after":"under",target.lastChild||target)
 ));
- return compose.call(fragments,each(infer(activate,"/actions")),swap(progress),"remove");
+ return compose.call(fragments,pass(progress.remove.bind(progress)));
 },async put(fields)
 {let {method}=demarkup(this,"method");
  let {name}=fields;
@@ -133,7 +136,7 @@
  let request={method,body:JSON.stringify(fields),headers:{"Content-Type":"application/json"}};
  let [status,message]=await compose(fetch,combine("status","text"))(action,request);
  if(status!==200)
- return;
+ return this.ownerDocument.defaultView.socket.dispatchEvent(new Event("message",{data:JSON.stringify({message})}));
  document.cookie=cookie({author:name,path:"/",expires:new Date(Date.now()+1000*60*60).toUTCString()})
  this.dispatchEvent(new MessageEvent("message",{data:{action:"sign",name},bubbles:true}));
 },erase()
@@ -157,14 +160,16 @@
  var actions=
  {body:
  {load(event)
-{//if(this.document===event.target)
- //this.document.forms[0]?.dispatchEvent(new Event("submit"))
- //this.dispatchEvent(new Event("popstate"));
-// },popstate(event)
-// {note(event);this.document.forms[0]?.dispatchEvent(new Event("submit"));
- if(this===event.target.body)
+{if(this!==event.target.body)
+ // ignore propagated load events. 
+ return;
  this.querySelectorAll("canvas[role=img]").forEach(canvas=>
  canvas.dispatchEvent(new canvas.ownerDocument.defaultView.Event("contextrestored",{bubbles:true})));
+ this.querySelectorAll("[actions]").forEach(scope=>
+ capture(scope,scope.getAttribute("actions"))||
+ scope.dispatchEvent(new scope.ownerDocument.defaultView.Event("contextrestored")));
+},popstate(event)
+{//note(event);this.document.forms[0]?.dispatchEvent(new Event("submit"));
 }}
  ,"canvas[role=img]":
  {contextrestored(event)
@@ -176,7 +181,8 @@
 {if(target.nodeName.toLowerCase()!=="li")
  return;
  let field=target.closest("label");
- if(!field)return;
+ if(!field||field.getAttribute("for")==="message")
+ return;
  let input=field.querySelector("span[role=input]");
  input.textContent=["",target.closest("li")].reduce(function prepend(path,item)
 {path=item.childNodes[0].nodeValue+(path?"/"+path:"");
@@ -221,7 +227,7 @@
  return event.preventDefault(),selection?selection.click():this.dispatchEvent(new Event("submit",{bubbles:true}));
  if(escape)
  return target.dispatchEvent(new Event("blur",{bubbles:true}));
- if(!list)return;
+ if(!list||target.id==="message")return;
  if(updown||leftright)
  return [Array.from(list.querySelectorAll("li")),[38,39].includes(keyCode)||-1].reduce((list,step)=>
  list.at((list.indexOf(selection)+step)%list.length)?.classList.toggle('hover'));
@@ -229,10 +235,10 @@
 {let form=target.closest("form");
  let value=target.textContent;
  let {name}=demarkup(target,"name");
- let {source}=fill.call(form);
  if(name==="message"&&value)
  form.dispatchEvent(new MessageEvent("message",{data:{action:"signal",room:[path(window.location.href),source].join("/")},bubbles:true}));
  let list=target.parentNode.querySelectorAll("li");
+ if(name!=="message")
  Array.from(list).map(li=>
 [li,value&&!unfold.call(li,li=>li.parentNode.closest("li")).map(li=>
  li.firstChild?.nodeValue||"").join("/").includes(value)?"setProperty":"removeProperty"
@@ -271,7 +277,7 @@
  return this.dispatchEvent(new Event("submit",{bubbles:true}));
  let form=this.closest("form");
  let method=form.getAttribute("method");
- fragment.form.call(form,{[method]:{[value]:""}});
+ fragment.form.call(form,{[method]:annotate({[value]:""},labels)});
  target.textContent="...";
 }}
  ,".spell":{click(){spell(this);}}
@@ -304,19 +310,13 @@
  //this.dispatchEvent(new Event("mousedown",{bubbles:true}))
 }]))
  ,".editor":{submit:modify,keydown:write}
- ,"g.network":
- {mouseover({target})
-{target=target.closest(".link");
- target.style.removeProperty("filter");
- target.setAttribute("opacity",target.getAttribute("opacity")<1?1:0.5);
-},mouseout({target}){target.dispatchEvent(new Event("mouseover",{bubbles:true}));}
- }
  ,".comment":
  {input(event)
 {if(event.data)typenoise(event.data.charCodeAt(0));
  if(event.inputType==="insertParagraph"){event.preventDefault();typenoise(13);respond(event.srcElement.parentNode);}
 }}
- ,".article":{async click()
+ ,".article":
+ {async click()
 {let feed=this.closest(".feed");
  let multiple=Array.from(feed.querySelectorAll(".article")).filter(node=>
  node!==this).some(node=>node.nextSibling);
@@ -350,31 +350,8 @@
 ,each(fragment=>insert(fragment,"after",this.parentNode))
 ,each(infer(activate,"./actions")),collect)(source);
 }}
- ,"span[role=link]":{click(){this.ownerDocument.defaultView.open(this.getAttribute("source"),this.classList.contains("redirect")?undefined:"_blank")}}
- ,"g.cluster":
- {pointerover({target})
-{target=target.closest(".node");
- compose
-(combine(compose("svg","closest",forage),compose(d3.select,"datum"))
-,when(array,has(["x","y"]))
-,combine("0",compose
-(each(["1",compose
-(combine
-(infer()
-,buffer(differ("source"),drop())
-,buffer(differ("nodes"),drop())
-,buffer(compose(differ("relations"),"keys",Array.from),drop())
-),collect,"flat",collect,slip(Set),Reflect.construct
-)
-])
-,(links,nodes)=>links.each(dim).filter(({source,target})=>[source,target].every(node=>nodes.has(node)))
-,infer("each",infer("dispatchEvent",new Event("mouseover",{bubbles:true})))
-,links=>new Set(links.data().flatMap(({source,target})=>[source,target]))
-))
-,(nodes,cluster)=>nodes.each(dim).filter(node=>cluster.has(node)).each(highlight)
-)(target);
-},pointerout({target}){target.dispatchEvent(new Event("pointerover",{bubbles:true}));}
- ,click:interact
+ ,"span[role=link]":
+ {click(){this.ownerDocument.defaultView.open(this.getAttribute("source"),this.classList.contains("redirect")?undefined:"_blank")}
  }
  };
 
@@ -382,7 +359,7 @@
  {join({room},peer)
 {this.rooms[room]=this.rooms[room]||{messages:[]};
  let {author}=merge(peer,{rooms:new Set([room])},0);
- let message=JSON.stringify({author:system,message:author.name+" joined "+room,room});
+ let message=JSON.stringify({message:author.name+" joined "+room,room});
  this.clients.forEach(client=>client!==peer&&client.rooms.has(room)&&client.send(message));
  let {length}=this.rooms[room].messages;
  if(length)
@@ -414,40 +391,40 @@
  let headers={"Content-Type":"text/plain"};
  let message=await fetch(subject+"?force=overwrite",{method:"put",body,headers});
  if(message instanceof Error)
- return this.emit("message",{author:system,message});
+ return this.emit("message",{message});
  else message=this.author+" edited "+subject;
 [["save",{author:this.author,subject,updates}]
-,["message",{author:system,message}]
+,["message",{message}]
 ].map(event=>
  this.server.sockets.in(subject).emit(...event));
 },disconnect(text)
 {Object.keys(this.subjects).forEach(subject=>
  this.leave(subject)&&
- this._events.message.bind(this)({author:system,message:this.author+" left "+subject,subject}));
+ this._events.message.bind(this)({message:this.author+" left "+subject,subject}));
 },put:async function({subject,content},peer)
 {peer.subject=this.subjects[subject]||broadcast.join.call(...arguments);
  peer.subject.content=content;
  let body=Buffer.from(content,"base64").toString("utf8");
  let message=await fetch(subject+"?force=overwrite",{method:"put",body,headers:{"Content-Type":"text/plain"}});
  if(message.status!==200)
- return peer.send("message",{author:system,message:await message.text()});
+ return peer.send("message",{message:await message.text()});
 [{action:"put",body:content}
-,{action:"message",author:system,message:this.author+" updated "+subject}
+,{action:"message",message:this.author+" updated "+subject}
 ].forEach(event=>broadcast.broadcast.call(this,event));
 }};
 
  export var peer=
  {imports:
  {"./Blik_2023_inference.js":["","note","compose","wait","has"]
- ,"./Blik_2023_fragment.js":["","demarkup","document","fill"]
+ ,"./Blik_2023_fragment.js":["","demarkup","document","fill","image","canvas"]
  }
  ,exports:
- {message({type,message,author:{name,icon}},window)
+ {async message({type,message,author:{name,icon}={name:"system",icon:"/svg/deer/document"}},window)
 {let form=window.document.querySelector("#composer");
  let fields=fill.call(form,form.getAttribute("method"));
  if(!has.call(fields,"message"))
  return;
- message=document({li:{img:{src:icon||"/svg/deer/document",height:"12px"},div:{"#text":name||"anonymous"},span:{"#text":message}}});
+ message=document({li:{canvas:await compose(image,canvas,{height:"12px"},merge)(icon||"/svg/deer/document"),div:{"#text":name||"anonymous"},span:{"#text":message}}});
  form.querySelector("#message").parentNode.querySelector("ul").append(message);
  if(name==="system")
  compose(wait(10000),{style:"opacity:0;transition:all 1s;"},Object.assign,wait(1000),"remove")(message);
@@ -475,8 +452,6 @@
 }}
  };
 
- var system={name:"system"};
-
  async function toggle(method)
 {let filter=wether(this.contains.bind(this),infer(),swap(undefined));
  let active=filter(this.ownerDocument.activeElement);
@@ -494,11 +469,11 @@
  }
  })}});
  let fields=
- {send:{message:message?null:[],code:message||identity()?undefined:""}
+ {send:{message:[],code:message||identity()?undefined:""}
  ,put:{name:message,code:code}
  ,code:method==="put"||{[code?"name":"message"]:code?message:name}
  }[method]||{};
- form.call(this,{[method]:fields});
+ form.call(this,{[method]:annotate(fields,labels)});
  document.call(this,{method:method});
  if(active)
  focus(this.querySelector(qualify(active)));
@@ -537,42 +512,6 @@
  return;
  let subject=JSON.parse(this.dataset.subject);
  compose(combine(compose("source",fetch,digest),infer()),transform,"over",this,insert)(subject);
-};
-
- function dim()
-{let mode=this.style.filter?"remove":"set";
- this.style[mode+"Property"]("filter","brightness(0.2)");
-};
-
- function highlight(node)
-{this.style.removeProperty("filter");
- let filter="url(#shadow"+(this.getAttribute("filter")==="url(#shadow)"?"_white)":")");
- extend.call(this,{fold:false,filter});
-};
-
- function interact({target})
-{target=target.closest(".node");
- if(target.editing)
- return;
- let form=target.closest("body").querySelector("#composer");
- let node=d3.select(target).datum();
- let source=trace(node,[]);
- if(source[0]=="get")
- return form.call(form,{get:path.slice(1).join("/"),gradual:true});
- if(!node.parent)return retreat();
- //let simulation=target.closest("svg").simulation.force("link");
- //let linked=simulation.links().length-
- //note(simulation.links(simulation.links().filter(link=>
- //!node.descendants().includes(link.source)||
- //!fuse(link,-1))).links()).length
- //if(linked)return;
- //let links=node.descendants().slice(1).map(target=>(
- //{source:(target[0]||target).parent
- //,target:target[0]||target
- //,value:target[1]||1
- //}));
- //simulation.links(simulation.links().concat(links));
- edit(target);
 };
 
  function modify(event)
@@ -656,29 +595,16 @@
 });
 };
 
- function update(node,body,root)
-{let presence=[node.parent.data[node.parent.title],node.data];
- if(!body)return presence.forEach(place=>place[node.title]=undefined);
- let related=root.descendants().filter(({relations})=>relations);
- let domain=root.children[0];
- let relations=related.map(({relations})=>relations.filter(({target})=>target==node))
- relations=relations.flat().reduce((relations,{source:{title},value})=>Object.assign(relations
-,{[title]:!relations[title]?value
-:(Array.isArray(relations[title])?relations[title]:[relations[title]]).concat(value)}),{});
- node[domain.title]=domain.leaves().map(({title})=>relations[title]);
- Object.entries(body).forEach(function([key,value])
-{if(key==node.title)
- return value?node.data[body.name][value]={roles:[],progress:0}:null;
- note(key,value)
- if(key!="name"||node.data[node.title][key])
- return (value||confirm("delete "+key+"?"))&&
- (node.data[body.name][key]=!value?undefined:
- Array.isArray(node.data[node.title][key])?value.split(","):value);
- if(value==node.title)return;
- value={[value]:node.data[node.title],[node.title]:undefined};
- presence.forEach(data=>Object.assign(data,value));
-});
- note(node.data)
+ export function profile(resource)
+{let source=basic(resource)&&{source:resource};
+ let fragment={fragment:"media",script:null,chart:"plot",network:null};
+ return {...source,fragment};
+};
+
+ export async function transform(resource,{fragment,incumbent,...fields})
+{let [module,feature]=await locate(fragment);
+ let fail=compose(crop(1),note.bind(1),"message",document);
+ return buffer(resolve,fail)(module,feature,resource,fields,incumbent||window);
 };
 
  function identity(full)
@@ -688,12 +614,17 @@
  return compose.call({author},["body",author],record,{method:"put"},merge,fetch,when(compose("status",is(200))),"json","author");
 };
 
+ var labels=
+ {message:"",source:"",fragment:"as",title:"of"
+ ,category:"on",spread:"by",matrix:"from",relations:"with"
+ };
+
  var {exports,imports}=
  {imports:
- {"./Blik_2023_interface.js":["","resolve","digest","cookie","cookies","query"]
+ {"./Blik_2023_interface.js":["","resolve","locate","digest","cookie","cookies","query"]
  ,"./Blik_2023_search.js":["","merge","unfold","search","prune","extract"]
- ,"./Blik_2023_inference.js":";note;expect;compose;combine;pass;route;record;trace;drop;crop;slip;infer;tether;wether;wait;observe;buffer;swap;when;array;has;each;differ;provide;collect;is;match".split(";")
- ,"./Blik_2023_fragment.js":";* as fragment;document;form;image;canvas;demarkup;insert;navigate;activate;metamarkup;transform;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard;spell;expand;parse;semiotics;consume;syndicate;article;destroy;reference;profile;fill;qualify;focus".split(";")
+ ,"./Blik_2023_inference.js":";note;expect;compose;combine;pass;route;record;trace;drop;crop;slip;infer;tether;wether;wait;observe;buffer;swap;when;array;has;each;differ;provide;collect;is;match;basic".split(";")
+ ,"./Blik_2023_fragment.js":";* as fragment;document;form;image;canvas;demarkup;insert;navigate;activate;metamarkup;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard;spell;expand;parse;semiotics;consume;syndicate;article;destroy;reference;fill;annotate;qualify;focus;capture".split(";")
  ,"./Blik_2023_layout.js":["layout"]
  ,"./Blik_2023_d4.js":"extend"
  ,"./Blik_2020_svg.json":"svg"
@@ -702,7 +633,8 @@
  ,"./Bostock_2011_d3.js":"* as d3"
  }
  ,exports:
- {default:actions,submission,path,edit,update,highlight,dim
- ,identity,proceduralize,toggle,peer:peer.exports
+ {default:actions,submission,path,edit
+ ,identity,proceduralize,peer:peer.exports
+ ,toggle,labels,profile,transform
  }
  };
