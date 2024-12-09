@@ -1,7 +1,7 @@
  import layout,{color} from "./Blik_2023_layout.js";
  import {search,merge,extreme,sum,extract,unfold,prune} from "./Blik_2023_search.js";
  import {document,demarkup,namespaces,deselect,css,capture} from "./Blik_2023_fragment.js";
- import {infer,tether,simple,swap,wait,numeric,drop,pass,note,has,collect,compose,combine,wether,record,buffer,observe,ascending,defined,compound,array,string,clock,revert,provide,plural,when} from "./Blik_2023_inference.js";
+ import {infer,tether,simple,swap,wait,numeric,drop,pass,note,has,collect,compose,combine,wether,record,each,slip,differ,buffer,observe,ascending,defined,compound,array,string,clock,revert,provide,plural,when} from "./Blik_2023_inference.js";
  import {window,fetch,digest,resolve,path} from "./Blik_2023_interface.js";
  import * as d3 from './Bostock_2011_d3.js';
  import extend,{ascend} from "./Blik_2023_d4.js";
@@ -11,7 +11,7 @@
 
  export default compose
 (drop(1),combine(sprawl,drop(1)),combine(spread,drop(1)),chart,simulate
-,pass(capture,["",location,"actions"].join("/")),pass(report)
+,pass(buffer(capture),["",location,"actions"].join("/")),pass(report)
 );
 
  export function sprawl(resource,options={})
@@ -755,7 +755,7 @@
  {async contextrestored()
 {let options=JSON.parse(this.dataset.options);
  let {default:network}=await import(import.meta.url);
- return compose(fetch,"json",options,this,network.bind(this))(options.source);
+ return compose(options,this,network.bind(this))(options.source);
 }}
  ,"g.network":
  {mouseover({target})
