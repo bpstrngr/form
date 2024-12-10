@@ -4,6 +4,7 @@
  import {infer,tether,simple,swap,wait,numeric,drop,pass,note,has,collect,compose,combine,wether,record,each,slip,differ,buffer,observe,ascending,defined,compound,array,string,clock,revert,provide,plural,when} from "./Blik_2023_inference.js";
  import {window,fetch,digest,resolve,path} from "./Blik_2023_interface.js";
  import * as d3 from './Bostock_2011_d3.js';
+ import {select,selectAll} from './Bostock_2011_d3_select.js';
  import extend,{ascend} from "./Blik_2023_d4.js";
  var {default:vectors}=await resolve("./Blik_2020_svg.json");
  var browser=Boolean(globalThis.window);
@@ -180,7 +181,7 @@
  ,class:"node",id:nodeindex,filter:"url(#shadow)"
  ,fill:node=>paint(node)
  ,transform({x,y})
-{let {spread}=ascend.call(d3.select(this))[0].datum();
+{let {spread}=ascend.call(select(this))[0].datum();
  let {up,down,right,left,radial,force}={[spread]:true};
  return force?"translate("+[x,y]+")"
 :radial?"rotate("+(x*180/Math.PI-90)+") translate("+y+",0)"
@@ -188,7 +189,7 @@
 },title:{text:({name})=>name}
  ,circle:
 [{name({name,source,nodes}){return source&&!nodes?source.name+"_"+name:null;}
- ,r(node){return ascend.call(d3.select(this))[0].datum().spread==="force"?scale(size(node)):5;}
+ ,r(node){return ascend.call(select(this))[0].datum().spread==="force"?scale(size(node)):5;}
  ,fill:node=>paint(node)
  ,title:{text({value,name}){return value?.progress?.concat("%")||this.remove();}}
  }
@@ -200,28 +201,28 @@
 ],text:
  {fold:wrap,class:"label",fill:"black",stroke:"black",opacity:0.5
  ,"text-anchor":function()
-{let {spread}=ascend.call(d3.select(this))[0].datum();
+{let {spread}=ascend.call(select(this))[0].datum();
  let {force,left,up}={[spread]:true};
- let {children}=ascend.call(d3.select(this),1)[0].datum();
+ let {children}=ascend.call(select(this),1)[0].datum();
  return force?"middle":["start","end"][sum([Boolean(children?.length),left])%2];
 },"stroke-width":function()
-{let force=ascend.call(d3.select(this))[0].datum().spread==="force";
+{let force=ascend.call(select(this))[0].datum().spread==="force";
  return force?this.parentNode.querySelector("circle").getAttribute("r")*0.002+"px":0.5;
 },"font-size":function()
-{let force=ascend.call(d3.select(this))[0].datum().spread==="force";
- let node=ascend.call(d3.select(this),1)[0].datum();
+{let force=ascend.call(select(this))[0].datum().spread==="force";
+ let node=ascend.call(select(this),1)[0].datum();
  let size=this.parentNode.querySelector("circle").getAttribute("r");
  return size/5+"px";
 },dx()
-{let {spread}=ascend.call(d3.select(this))[0].datum();
+{let {spread}=ascend.call(select(this))[0].datum();
  let {force,left,up}={[spread]:true};
- let {children}=ascend.call(d3.select(this),1)[0].datum();
+ let {children}=ascend.call(select(this),1)[0].datum();
  return !force?[7,-7][sum([Boolean(children?.length),left])%2]:null;
 },dy(text,index,wrap)
-{let force=ascend.call(d3.select(this))[0].datum().spread==="force";
+{let force=ascend.call(select(this))[0].datum().spread==="force";
  return force?scale(index+1-(wrap.length)/2)+"em":".25em";
 },transform()
-{let radial=ascend.call(d3.select(this))[0].datum().spread==="radial";
+{let radial=ascend.call(select(this))[0].datum().spread==="radial";
  return radial?left(this)?"rotate(180)":null:null;
 },text(text){return text;}
  }
@@ -243,7 +244,7 @@
  ,each(link)
 {degree(link);
  let fragment=ascend.call(this)[0];
- let {gradual}=d3.select(fragment).datum();
+ let {gradual}=select(fragment).datum();
  let unlocated=[link.source,link.target].filter(node=>
  ["x","y"].some(axis=>isNaN(node[axis])));
  if(!gradual||!unlocated.length)
@@ -257,7 +258,7 @@
  ,title:{text:(link)=>[link,link.source,link.target].map(({value,name},index)=>
  index?name:{R:"responsible",A:"accountable",C:"consulted",I:"informed"}[value]||value).join("\n")}
  ,transform(link,index,links)
-{let twins=d3.selectAll(links).select(function(twin){return ["source","target"].every(key=>twin[key]==link[key])&&this}).data();
+{let twins=selectAll(links).select(function(twin){return ["source","target"].every(key=>twin[key]==link[key])&&this}).data();
  let twinindex=twins.indexOf(link);
  return "translate(0,"+(scale(!link.value||isNaN(link.value)?1:link.value)/7/twins.length)*Math.ceil(twinindex/2)*(twinindex%2||-1)+")";
 },path:
@@ -291,7 +292,7 @@
 ]};
 
  function line(link,index,paths)
-{let [fragment]=ascend.call(d3.select(this));
+{let [fragment]=ascend.call(select(this));
  let {spread}=fragment.datum();
  let {up,down,right,left,radial,force}={[spread]:true};
  let [vertical,horizontal]=[up||down,left||right];
@@ -323,7 +324,7 @@
  function pattern(node)
 {extend.call(ascend.call(this)[0]
 ,{fold:false,defs:{fold:false,pattern:
- {fold(){return d3.select(this).selectAll("pattern").data().concat(node);}
+ {fold(){return select(this).selectAll("pattern").data().concat(node);}
  ,match:patternindex
  ,id:patternindex,name({value,name}){return value||name;}
  ,x:0,y:0,width:1,height:1,viewBox({centrality:size}){return [0,0,size,size];}
@@ -360,7 +361,7 @@
 {["x","y"].forEach(dimension=>node["f"+dimension]=drag[dimension]);
  this.style.zIndex=0;
  let fragment=this.closest("svg");
- let {spread}=d3.select(fragment).datum();
+ let {spread}=select(fragment).datum();
  let {force}={[spread]:true};
  if(force)
  return;
@@ -379,7 +380,7 @@
  ["x","y"].forEach(dimension=>[node["s"+dimension],sibling[dimension]]=[sibling[dimension],node["s"+dimension]]);
  let {1:links}=forage(fragment);
  links.filter(({source,target})=>[source,target].includes(node.datum())).remove();
- // [this,this[(sort<0?"previous":"next")+"Sibling"]].filter(Boolean).map(d3.select).forEach(node=>
+ // [this,this[(sort<0?"previous":"next")+"Sibling"]].filter(Boolean).map(select).forEach(node=>
  // node.update(node)||
  // link.update(links.filter(({source,target})=>[source,target].includes(node.datum()))));
 },end(drag,node)
@@ -388,7 +389,7 @@
  let source=fragment.simulation.find(node.x,node.y,radius);
  //["x","y"].map(dimension=>node[dimension]=node["s"+dimension]);
  let {1:links}=forage(fragment);
- //node.update(d3.select(this));
+ //node.update(select(this));
  //links.filter((link)=>[link.source,link.target].includes(node)).remove();
  fragment.simulation.alpha(fragment.simulation.alpha()+0.1);
  //link.update(links.filter((link)=>[link.source,link.target].includes(node)))
@@ -432,7 +433,7 @@
  function wrap({name,source})
 {if(trace(arguments[0],[])?.[0]?.includes("image"))
  return [];
- let force=ascend.call(d3.select(this))[0].datum().spread==="force";
+ let force=ascend.call(select(this))[0].datum().spread==="force";
  return force?!name||(name.toString().match(/.+?(_|\/|$)/g)||[]).reduce((wrap,split,index,splits)=>
  wrap.concat(index&&(split.length+wrap[wrap.length-1].length<18)
 ?wrap.pop()+split
@@ -448,8 +449,8 @@
 };
 
  function left(node)
-{let {width,spread}=ascend.call(d3.select(node))[0].datum();
- let {x,parent}=ascend.call(d3.select(node),1)[0].datum();
+{let {width,spread}=ascend.call(select(node))[0].datum();
+ let {x,parent}=ascend.call(select(node),1)[0].datum();
  let {radial}={[spread]:true};
  return radial?x<Math.PI||!parent:(x<width/2?parent:!parent);
 };
@@ -458,7 +459,7 @@
 {if(!node.ownerDocument)
  throw Error("can't "+forage.name+node);
  return [["cluster","node"],["network","link"]].map(([group,name],index)=>
- d3.select(node).select("g."+group).selectAll("g."+name));
+ select(node).select("g."+group).selectAll("g."+name));
 };
 
  function connect(node,sources=new Set())
@@ -469,7 +470,7 @@
 };
 
  function neighbors({target})
-{let node=d3.select(target).datum();
+{let node=select(target).datum();
  let {source,nodes}=node;
  let {1:links}=forage(target.closest("svg"));
  let cluster=[node,source,nodes].flat().filter(Boolean).map();
@@ -504,7 +505,7 @@
 };
 
  function report(fragment)
-{note(d3.select(fragment).datum().source,fragment.parentNode?"tethered.":"ready.");
+{note(select(fragment).datum().source,fragment.parentNode?"tethered.":"ready.");
 };
 
  function simulate(fragment)
@@ -526,7 +527,7 @@
  let {fragment,clock=0}=simulation;
  if(!fragment.parentNode)
  return note(simulation.stop(),"detached");
- let datum=d3.select(fragment).datum();
+ let datum=select(fragment).datum();
  if(!browser&&datum.gradual)
  return simulation.alpha(0).stop();
  let [cluster,network]=forage(fragment); 
@@ -768,7 +769,7 @@
  {pointerover({target})
 {target=target.closest(".node");
  compose
-(combine(compose("svg","closest",forage),compose(d3.select,"datum"))
+(combine(compose("svg","closest",forage),compose(select,"datum"))
 ,when(array,has(["x","y"]))
 ,combine("0",compose
 (each(["1",compose
@@ -807,7 +808,7 @@
  if(target.editing)
  return;
  let form=target.closest("body").querySelector("#composer");
- let node=d3.select(target).datum();
+ let node=select(target).datum();
  let source=trace(node,[]);
  if(source[0]=="get")
  return form.call(form,{get:path.slice(1).join("/"),gradual:true});
