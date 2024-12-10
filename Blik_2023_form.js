@@ -14,15 +14,17 @@
  await publish("./Blik_2024_comments.json");
 
  export default
- {...local,svg,wikipedia,modules
+ {...local,wikipedia,modules
+ ,svg(){return svg;}
  ,overpass(){return fetch('https://www.overpass-api.de/api/interpreter?'+new URLSearchParams({data:'[out:json];rel[admin_level=2]'/*'convert item ::=::,::geom=geom(),_osm_type=type();'*/+';out geom;'}))}
  ,author:persistence("Blik_2024_author.json",{code:encrypt("secret")})
  ,document:compose(crop(1),{width:50},merge,infer(record,["svg"]),document)
  ,media:compose(crop(1),"toString",media,collect,document)
  ,interface:async function(request)
 {let queries=query(request.url);
- let fragment=numeric(this.put)?"fragment/feed":"fragment/network";
- let {controls,...fields}={source:request.url==="/"?"get":"",fragment,...queries};
+ let fragment=numeric(this.put)?"fragment/feed":queries.source?"fragment/media":"network";
+ let spread=fragment==="network"?"force":undefined;
+ let {controls,...fields}={source:request.url==="/"?"get":"",fragment,spread,...queries};
  let composer=document({form:
  {id:"composer",style:{"#text":css({"form#composer":
  {position:"fixed","z-index":100,bottom:"0px",left:"0px",margin:0,"padding-right":"1.5em",overflow:"scroll","box-sizing":"border-box","max-width":"calc(100% - 20px)"
@@ -314,6 +316,7 @@
  ,"./Blik_2023_inference.js":";note;expect;compose;combine;pass;route;record;trace;drop;crop;slip;infer;tether;wether;wait;observe;buffer;swap;when;array;has;each;differ;provide;collect;is;match;basic;defined".split(";")
  ,"./Blik_2023_fragment.js":";* as fragment;document;form;image;canvas;demarkup;insert;navigate;activate;metamarkup;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard;spell;expand;parse;semiotics;consume;syndicate;article;destroy;reference;fill;annotate;qualify;focus;capture".split(";")
  ,"./Blik_2023_layout.js":["layout"]
+ ,"./Blik_2023_search.js":["","merge","unfold","search","prune","extract"]
  ,"./Blik_2024_svg.js":"* as svg"
  }
  ,exports:
@@ -350,7 +353,8 @@
  if(target.role!=="input")
  return;
  let [form,label]=["form","label"].map(tag=>target.closest(tag));
- let {name,type}=demarkup(target,["name","text"]),value=target.textContent;
+ let {name,type}=demarkup(target,["name","text"]);
+ let value=target.textContent;
  let {method}=demarkup(form,"method");
  if(!genuine&&method==="erase")
  toggle.call(form,"get");
@@ -648,7 +652,7 @@
  return ["warn 1s","unset"].forEach((animation,index)=>
  compose(wait(1000*index),Object.assign)(target.closest(".comment").style,{animation}));
  await comment(message,0,comments);
- fill.call(this,{message:""});
+ fill.call(this,{comment:""});
  if(cookie("author")===fields.name)
  return;
  this.ownerDocument.cookie=cookie({author:fields.name,path:"/"});
