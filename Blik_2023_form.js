@@ -7,6 +7,7 @@
  import local,{persistence,publish,published} from "./Blik_2024_static.js";
  import routes from "./Blik_2023_form.js";
  import network from "./Blik_2024_network.js";
+ import editor from "./Blik_2024_script.js";
  import extend from "./Blik_2023_d4.js";
  import wikipedia from "./Blik_2024_wikipedia.js";
  import * as svg from "./Blik_2024_svg.js";
