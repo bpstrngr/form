@@ -23,7 +23,7 @@
  ,media:compose(crop(1),"toString",media,collect,document)
  ,interface:async function(request)
 {let queries=query(request.url);
- let fragment=numeric(this.put)?"fragment/feed":queries.source?"fragment/media":"network";
+ let fragment=numeric(this.put)?"fragment/feed":(this!==routes||queries.source)?"fragment/media":"network";
  let spread=fragment==="network"?"force":undefined;
  let {controls,...fields}={source:request.url==="/"?"get":"",fragment,spread,...queries};
  let composer=document({form:
