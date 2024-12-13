@@ -1,6 +1,6 @@
  import layout,{color} from "./Blik_2023_layout.js";
  import {search,merge,extreme,sum,extract,unfold,prune} from "./Blik_2023_search.js";
- import {document,demarkup,namespaces,deselect,css,capture} from "./Blik_2023_fragment.js";
+ import {document,demarkup,namespaces,deselect,css,capture,destroy} from "./Blik_2023_fragment.js";
  import {infer,tether,simple,swap,wait,numeric,drop,pass,note,has,collect,compose,combine,wether,record,each,slip,differ,buffer,observe,ascending,defined,compound,array,string,clock,revert,provide,plural,when} from "./Blik_2023_inference.js";
  import {window,fetch,digest,resolve,path} from "./Blik_2023_interface.js";
  import * as d3 from './Bostock_2011_d3.js';
@@ -20,6 +20,8 @@
  // {node:{node:[{node:"node",relations:["node"]},"node"]}} or [{name,relations}]
  if(typeof resource==="string")
  return compose(fetch,digest,infer(sprawl,options))(resource);
+ if(options.source==="/get")
+ resource=record(resource,[window.location.origin]),options.linear=true;
  if(resource.constructor.name==="Node")
  return resource;
  let {relations,spread,title,monospace=10,still,source,gradual,depth}=options;
@@ -27,7 +29,7 @@
  return Graph(resource);
  let {resource:{nodes}}=prune.call({resource},split,false,"value");
  prune.call(nodes,crosslink,false,["source","value"]);
- let cluster=unfold.call({nodes},childfold).slice(1);
+ let cluster=unfold.call(note({nodes}),childfold).slice(1);
  if(!options.linear)
  cluster.forEach(deduplicate);
  return nodes;
@@ -50,7 +52,7 @@
  let entry=path.at(-1)==="nodes";
  if(entry&&array(this))
  return provide((compound(value)?Object.entries(value):[[value]]).map(entry=>split.call(value,entry,path)));
- let nodes=defined(value)?[value].flat():undefined;
+ let nodes=compound(value)?[value].flat():undefined;
  // search.prune collects array indices in path, which doubles the depth. 
  // first entries only serve to expose resource entries, which increments depth. 
  let depth=path.length/2-1;
@@ -267,28 +269,28 @@
  ,"stroke-width":({value})=>scale(!value||isNaN(value)?1:(value*(value<0?10:1)))/2
  ,d:line
  }
-,{update(path){extend.call(path,{fold:false,...extract.call(link.path[1],["d"])});}
- ,class:"arrow"
- ,d:buffer(function({source,target})
-{if(!this.previousSibling.getPointAtLength)
- return null;
- let curve=[source,source,this.previousSibling.getPointAtLength?.(scale(size(source)))||target];
- return curve.map(({x,y},index)=>["M","S"," "][index]+[x,y]).join("");
-},swap(undefined))
- ,"stroke-width"(){return this.previousSibling.getAttribute("stroke-width")/2}
- ,"marker-end":function({source})
-{let [fragment]=ascend.call(this);
- let marker=trace(source,[]).pop()?.replace(/[^a-zA-Z0-9]/g,"").replace(/^[0-9]+/,number=>
- number.split("").map(number=>String.fromCharCode(65+number))).replace(/,/g,"")||"none";
- if(!fragment.querySelector("marker#"+marker))
- extend.call(fragment,{fold:false,defs:
- {fold:false,marker:
- {id:marker,orient:"auto",markerWidth:"2",refX:"0.1",refY:"1"
- ,path:{d:"M0,0 V2 L2,1 Z",fill:paint(source)}
- }
- }});
- return "url(#"+marker+")";
-}}
+//,{update(path){extend.call(path,{fold:false,...extract.call(link.path[1],["d"])});}
+//  ,class:"arrow"
+//  ,d:buffer(function({source,target})
+// {if(!this.previousSibling.getPointAtLength)
+//  return null;
+//  let curve=[source,source,this.previousSibling.getPointAtLength?.(scale(size(source)))||target];
+//  return curve.map(({x,y},index)=>["M","S"," "][index]+[x,y]).join("");
+//},swap(undefined))
+//  ,"stroke-width"(){return this.previousSibling.getAttribute("stroke-width")/2}
+//  ,"marker-end":function({source})
+// {let [fragment]=ascend.call(this);
+//  let marker=trace(source,[]).pop()?.replace(/[^a-zA-Z0-9]/g,"").replace(/^[0-9]+/,number=>
+//  number.split("").map(number=>String.fromCharCode(65+number))).replace(/,/g,"")||"none";
+//  if(!fragment.querySelector("marker#"+marker))
+//  extend.call(fragment,{fold:false,defs:
+//  {fold:false,marker:
+//  {id:marker,orient:"auto",markerWidth:"2",refX:"0.1",refY:"1"
+//  ,path:{d:"M0,0 V2 L2,1 Z",fill:paint(source)}
+//  }
+//  }});
+//  return "url(#"+marker+")";
+// }}
 ]};
 
  function line(link,index,paths)
@@ -517,16 +519,16 @@
 ,infer("force","charge",d3.forceManyBody().strength(0))
 ,infer("force","collision",d3.forceCollide().radius(0))
 ,{fragment,clock:0},Object.assign
-,tether(observe,{tick:buffer(compose(synchronize,charge),note.bind(1))})
+,tether(observe,{tick:buffer(compose(populate,charge),note.bind(1))})
 ,"fragment"
-)(fragment.simulation=fragment.simulation||d3.forceSimulation());
+)(fragment.simulation=fragment.simulation||merge(d3.forceSimulation(),{fragment}));
 };
 
- function synchronize(simulation)
+ function populate(simulation)
 {// reflect changes to simulation on chart. 
  let {fragment,clock=0}=simulation;
  if(!fragment.parentNode)
- return note(simulation.stop(),"detached");
+ return note({detached:simulation.stop().fragment}),simulation;
  let datum=select(fragment).datum();
  if(!browser&&datum.gradual)
  return simulation.alpha(0).stop();
@@ -561,7 +563,7 @@
  let density=connections/(population*(population-1)/2)||0;
  let [width,height]=["width","height"].map(dimension=>scale(population**2/(density||1)));
  let [exposure,imposure,internal,balance]=nodes.reduce((metric,{exposure,imposure,complexity},internal)=>
-[exposure,imposure,internal=complexity&&(complexity!=Infinity),internal?complexity:0
+[exposure,imposure,internal=complexity?(complexity!==Infinity):0,internal?complexity:0
 ].map((value,index)=>metric[index]+value)
 ,[0,0,0,0]);
  let complexity=balance/internal||0;
@@ -609,11 +611,10 @@
 };*/
 
  export function Graph(xml)
-{let root=xml.getElementsByTagName('gexf')[0];
- let graph=xml.getElementsByTagName('graph')[0];
+{let graph=xml.getElementsByTagName('graph')[0];
  let meta=xml.getElementsByTagName('meta')[0];
- let hasViz=Boolean(root.getAttribute("xmlns:viz")??root.getAttributeNS("xmlns","viz")??root.getAttribute("viz"));
- let version=root.getAttribute('version')||'1.0';
+ let hasViz=Boolean(xml.getAttribute("xmlns:viz")??xml.getAttributeNS("xmlns","viz")??xml.getAttribute("viz"));
+ let version=xml.getAttribute('version')||'1.0';
  let mode=graph.getAttribute('mode')||'static';
  let defaultEdgetype=graph.getAttribute('defaultedgetype')||'undirected';
  let attributes=Array.from(xml.getElementsByTagName('attribute')).filter(node=>node.nodeName!=="#text").map(node=>(

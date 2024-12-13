@@ -1,9 +1,9 @@
- import {note,crop,swap,is,buffer,provide,collect,same,pass,compose,each,infer,tether,route,record,combine,wether,drop,slip,exit,numeric,match,when,has,basic,ascend,fields as inheritance,observe} from "./Blik_2023_inference.js";
- import {document,hypertext,dispose,throttle,capture,form,insert,expose,activate,namespaces,css,fill,annotate,deselect,expand,spell,syndicate,article,demarkup,media,stylerules} from "./Blik_2023_fragment.js";
+ import {note,crop,swap,is,buffer,provide,compound,collect,same,pass,compose,each,infer,tether,route,record,combine,wether,drop,slip,exit,numeric,match,when,has,basic,ascend,fields as inheritance,observe} from "./Blik_2023_inference.js";
+ import {document,hypertext,dispose,throttle,capture,form,progress,insert,expose,activate,namespaces,css,fill,annotate,deselect,expand,spell,syndicate,article,demarkup,media,stylerules} from "./Blik_2023_fragment.js";
  import {serialize,proceduralize,parse,mime} from "./Blik_2023_meta.js";
  import layout,{fontface,animation} from "./Blik_2023_layout.js";
  import {merge,search,extract,encrypt} from "./Blik_2023_search.js";
- import {access,resolve,locate,window,sourcemap,fetch,digest,cookie,cookies,script,query,path,scope as modules,module} from "./Blik_2023_interface.js";
+ import {access,resolve,locate,window,sourcemap,fetch,digest,cookie,cookies,script,query,path,scope as modules,module,stage} from "./Blik_2023_interface.js";
  import local,{persistence,publish,published} from "./Blik_2024_static.js";
  import routes from "./Blik_2023_form.js";
  import network from "./Blik_2024_network.js";
@@ -23,9 +23,8 @@
  ,media:compose(crop(1),"toString",media,collect,document)
  ,interface:async function(request)
 {let queries=query(request.url);
- let fragment=numeric(this.put)?"fragment/feed":(this!==routes||queries.source)?"fragment/media":"network";
- let spread=fragment==="network"?"force":undefined;
- let {controls,...fields}={source:request.url==="/"?"get":"",fragment,spread,...queries};
+ let fragment=numeric(this.put)?"fragment/feed":compound(this)?"network":"fragment/media";
+ let {controls,...fields}={source:"",fragment,...queries};
  let composer=document({form:
  {id:"composer",style:{"#text":css({"form#composer":
  {position:"fixed","z-index":100,bottom:"0px",left:"0px",margin:0,"padding-right":"1.5em",overflow:"scroll","box-sizing":"border-box","max-width":"calc(100% - 20px)"
@@ -86,8 +85,12 @@
 });}
 )];
  fragment=compose.call(body,"concept","/svg/object/node/document",scripts,["/style"],hypertext,0,document);
- if(this!==routes)
- fields.source=path(window.origin+request.url),fields.resource=this;
+ merge(fields
+ // root needs explicit /get method to reach json representation. 
+,{source:path(window.origin+(this===routes?"/get":request.url))
+ ,resource:this!==routes&&compose(stage,digest)(this
+,{url:request.url.replace(/\/($|\?.*)/,""),headers:request.headers})
+ },1);
  await buffer(compose(tether(submission.get),throttle))(composer,fields);
  if(String(controls)==="false")
  composer.remove();
@@ -102,8 +105,8 @@
 },actions(request){return module(actions,request.url);}
  ,composer(request){return module(composer,request.url);}
  ,feed(request){return module(feed,request.url);}
- ,routes:compose
-(crop(1),"get",{spread:"force"},network.bind(null),throttle,{style:"background:#222222"},tether(document)
+ ,network:compose
+(crop(1),{spread:"force"},network.bind(null),throttle,{style:"background:#222222"},tether(document)
 ),sourcemap:compose(drop(1),address,sourcemap)
  ,peer()
 {return compose.call(peer,serialize,["body"],record,{type:mime("js")},Object.assign);
@@ -245,35 +248,21 @@
  };
 
  var submission=
- {get({resource,...fields})
-{let {pathname:path}=this.ownerDocument.defaultView.location;
- let source=[path.replace(/^\/$/,""),fields.source||(path==="/"?"/get":"")].join("").replace(/\/+$/,"");
- let incumbent=source?this.ownerDocument.querySelector("#"+deselect(source)):undefined;
- let query=new URLSearchParams(prune.call(fields,({1:value})=>value||undefined,0,1)).toString();
- let route=[path,query].filter(Boolean).join("?");
- if(this)
- this.ownerDocument.defaultView.history.pushState({},null,route);
- resource=resource||compose(fetch,digest)(source);
- form.call(this,{get:annotate(profile(resource),labels)});
- //fill.call(this,fields);
- let fragment=transform(resource,{incumbent,...fields,source});
- let target=incumbent||this?.ownerDocument.defaultView.frame||
- infer(insert,"before",this)(document({div:{id:"frame"}}));
- let progress=document({div:{class:"progress",style:{"#text":css({".progress":
- {position:"absolute",width:"100%",height:"100%"
- ,background:"linear-gradient(transparent 0%,rgba(33,150,243,0.25) 75%,transparent 100%)"
- ,animation:"wave 3s ease 1s infinite"
- },"@keyframes wave":
- {"0%":{height:0,transform:"translate(0,-100%)",opacity:0}
- ,"50%":{opacity:0.25},"100%":{transform:"translate(0,100%)",opacity:0}
- }})}}});
- insert(progress,target.lastChild?"after":"under",target.lastChild||target);
- //insert(document({}),"under",target);
- let fragments=each.call(fragment,async(fragment,index)=>
-(!index&&insert(progress,"under",target),fragment!==target&&
- insert(fragment,incumbent?"over":target.lastChild?"after":"under",target.lastChild||target)
-));
- return compose.call(fragments,pass(progress.remove.bind(progress)));
+ {get({source,resource,...fields})
+{let {origin,pathname:path}=this.ownerDocument.defaultView.location;
+ let query=new URLSearchParams(prune.call(fields
+,({1:value})=>value||undefined,0,1)).toString().replace(/^(.)/,"?$1");
+ if(globalThis.window)
+ this.ownerDocument.defaultView.history.pushState({},null,[origin,path.replace(/(^\/*|\/*$)/g,""),source,query].filter(Boolean).join("/"));
+ let route=[path,source||(path==="/"?"get":"")].join("").replace(/\/+$/,"");
+ resource=resource||compose(fetch,digest)(route);
+ compose(profile,labels,annotate,["get"],record,form.bind(this))(resource);
+ let frame=this?.ownerDocument.defaultView.frame||insert(document({div:{id:"frame"}}),"before",this);
+ let fragment=infer(transform)(resource,{source:route,...fields});
+ return compose.call(each.call(fragment
+,async fragment=>insert(fragment,"after",frame.lastChild)
+,insert(document(progress),"under",frame))
+,pass(compose(swap(frame),"firstChild","remove")));
 },async put(fields)
 {let {method}=demarkup(this,"method");
  let {name}=fields;
@@ -315,7 +304,7 @@
  {imports:
  {"./Blik_2023_interface.js":["","path","resolve","locate","digest","cookie","cookies","query"]
  ,"./Blik_2023_inference.js":";note;expect;compose;combine;pass;route;record;trace;drop;crop;slip;infer;tether;wether;wait;observe;buffer;swap;when;array;has;each;differ;provide;collect;is;match;basic;defined".split(";")
- ,"./Blik_2023_fragment.js":";* as fragment;document;form;image;canvas;demarkup;insert;navigate;activate;metamarkup;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard;spell;expand;parse;semiotics;consume;syndicate;article;destroy;reference;fill;annotate;qualify;focus;capture".split(";")
+ ,"./Blik_2023_fragment.js":";* as fragment;document;form;progress;image;canvas;demarkup;insert;navigate;activate;metamarkup;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard;spell;expand;parse;semiotics;consume;syndicate;article;destroy;reference;fill;annotate;qualify;focus;capture".split(";")
  ,"./Blik_2023_layout.js":["layout"]
  ,"./Blik_2023_search.js":["","merge","unfold","search","prune","extract"]
  ,"./Blik_2024_svg.js":"* as svg"
@@ -347,6 +336,8 @@
  let form=this;
  let {method}=demarkup(form,"method");
  let fields=fill.call(form,method);
+ if(fields.source)
+ fill.call(form,{[method]:{source:""}});
  return submission[method].call(form,fields);
 },focusin({isTrusted:genuine,target})
 {if(target.nodeName==="#text")
