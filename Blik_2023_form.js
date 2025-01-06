@@ -1,16 +1,18 @@
- import {note,crop,swap,is,buffer,provide,compound,collect,same,pass,compose,each,infer,tether,route,record,combine,wether,drop,slip,exit,numeric,match,when,has,basic,ascend,fields as inheritance,observe} from "./Blik_2023_inference.js";
+ import {note,crop,swap,is,buffer,provide,compound,collect,same,pass,compose,each,infer,tether,route,record,combine,string,wether,drop,slip,exit,numeric,match,when,has,basic,ascend,fields as inheritance,observe} from "./Blik_2023_inference.js";
  import {document,hypertext,dispose,throttle,capture,form,progress,insert,expose,activate,namespaces,css,fill,annotate,deselect,expand,spell,syndicate,article,demarkup,media,stylerules} from "./Blik_2023_fragment.js";
  import {serialize,proceduralize,parse,mime} from "./Blik_2023_meta.js";
  import layout,{fontface,animation} from "./Blik_2023_layout.js";
  import {merge,search,extract,encrypt} from "./Blik_2023_search.js";
  import {access,resolve,locate,window,sourcemap,fetch,digest,cookie,cookies,script,query,path,scope as modules,module,stage} from "./Blik_2023_interface.js";
- import local,{persistence,publish,published} from "./Blik_2024_static.js";
  import routes from "./Blik_2023_form.js";
  import network from "./Blik_2024_network.js";
  import editor from "./Blik_2024_script.js";
  import extend from "./Blik_2023_d4.js";
  import wikipedia from "./Blik_2024_wikipedia.js";
  import * as svg from "./Blik_2024_svg.js";
+ import local,{persistence,publish,published,encryption,classify} from "./Blik_2024_static.js";
+ export {encryption,classify};
+ export var syndication={rss2json:{key:undefined}};
  var address=new URL(import.meta.url).pathname;
  await publish("./Blik_2024_comments.json");
 
@@ -18,7 +20,7 @@
  {...local,wikipedia,modules
  ,svg(){return svg;}
  ,overpass(){return fetch('https://www.overpass-api.de/api/interpreter?'+new URLSearchParams({data:'[out:json];rel[admin_level=2]'/*'convert item ::=::,::geom=geom(),_osm_type=type();'*/+';out geom;'}))}
- ,author:persistence("Blik_2024_author.json",{code:encrypt("secret")})
+ ,author:persistence("Blik_2024_author.json")
  ,document:compose(crop(1),{width:50},merge,infer(record,["svg"]),document)
  ,media:compose(crop(1),"toString",media,collect,document)
  ,interface:async function(request)
@@ -33,9 +35,9 @@
  ,"&:not(:hover)":
  {[Object.entries({send:"message",get:"source"}).map(([method,primary])=>
  "&[method="+method+"]>label:not([for="+primary+"])").join()]:{width:0,display:"none"}
- ,"&>span[role=input]#extend":{width:0,display:"none"}
+ ,"&>span[role=textbox]#extend":{width:0,display:"none"}
  }
- ,"& label":[layout.form.label,layout.form.dropup,{"&>span:not([role=input])":{height:"3em","margin-top":"1.5em"}}].reduce(merge)
+ ,"& label":[layout.form.label,layout.form.dropup,{"&>span:not([role=textbox])":{height:"3em","margin-top":"1.5em"}}].reduce(merge)
  ,"& label[for=message]":
  {"&>span.status":{position:"absolute",left:"-0.5em",top:"-1.5em",color:"black"}
  ,"&,& label[for=source]":
@@ -74,35 +76,27 @@
  };
  let scripts=[proceduralize
 (serialize({exports:{fragment:"data:text/javascript;globalThis",actions:"/actions",ascend,fields:inheritance}}),capture,expose
-,function(){import("/anvaka_2019_sinus_pine.js").then(({run:pine})=>
-{let xmas=window.document.body.appendChild(window.document.createElement("span"));
- xmas.style="position:absolute;bottom:1em;right:1em;pointer-events:none;text-align:center;";
- let canvas=xmas.appendChild(pine());
- canvas.style="width:150px;height:250px;";
- let text=xmas.appendChild(window.document.createElement("span"));
- text.textContent="Merry Xmas!";
- text.style="position:absolute;bottom:1.6em;left:1.4em;font-family:ranger;font-size:1.5em;transform:rotate(-10deg);"
-});}
 )];
- fragment=compose.call(body,"concept","/svg/object/node/document",scripts,["/style"],hypertext,0,document);
+ let {averia,oswald,ranger}=fontface;
+ let style=css(
+ {"@font-face":[averia,oswald,ranger]
+ ,"@keyframes wave":{"0%":{height:0,transform:"translate(0,-100%)",opacity:0},"50%":{opacity:0.25},"100%":{transform:"translate(0,100%)",opacity:0}}
+ ,...animation.dotdot
+ });
+ let url=request.url.replace(/\/($|\?.*)/g,"");
+ let title=url.split("/").reverse().find(Boolean)||"JSInterface";
+ fragment=compose.call(body,title,"/svg/object/node/document",scripts,style,hypertext,0,document);
  merge(fields
  // root needs explicit /get method to reach json representation. 
 ,{source:path(window.origin+(this===routes?"/get":request.url))
  ,resource:this!==routes&&compose(stage,digest)(this
-,{url:request.url.replace(/\/($|\?.*)/,""),headers:request.headers})
+,{url,headers:request.headers})
  },1);
  await buffer(compose(tether(submission.get),throttle))(composer,fields);
  if(String(controls)==="false")
  composer.remove();
  return fragment;
-},style:async function()
-{let {averia,oswald,ranger}=fontface;
- return {type:mime("css"),body:css(
- {"@font-face":[averia,oswald,ranger]
- ,"@keyframes wave":{"0%":{height:0,transform:"translate(0,-100%)",opacity:0},"50%":{opacity:0.25},"100%":{transform:"translate(0,100%)",opacity:0}}
- ,...animation.dotdot
- })};
-},actions(request){return module(actions,request.url);}
+},actions(request){return module(body,request.url);}
  ,composer(request){return module(composer,request.url);}
  ,feed(request){return module(feed,request.url);}
  ,network:compose
@@ -132,7 +126,22 @@
  let {outerHTML:body}=document({rss:{version:"2.0",channel:{...channel,item}}});
 //,{declaration:true,indent:" "})
  return {status:200,type:"rss+xml",body:'<?xml version="1.0" encoding="UTF-8" ?>'+body};
-}}; 
+},"robots.txt":function(){return "User-agent: *\nDisallow: "}
+ ,rss2json:request=>compose(fetch,"json",["body"],record)("https://api.rss2json.com/v1/api.json?"+new URLSearchParams(
+ {rss_url:string(request)?request:query(request.url).url
+ ,api_key:syndication.rss2json.key
+ }))
+ //,wordpress:request=>compose.call("./wordpress_2019_wpcom.js","WPCOM",resolve,request.url.split("/").slice(2).join("/"),"site",{number:15},"postsList",request.url.split("/").slice(2),record,note)
+ //,facebook:source=>compose(fetch,"json")("/facebook/"+source)
+ // new Promise(resolve=>!window.FB?featurefacebook().then(f=>
+ // insert(f,"after",window.document.body)).then(f=>
+ // feed.face(source)).then(resolve):FB.api("/"+/*source*/"10210793350908906"+"/feed","GET",{},response=>resolve(response)))
+ // ,google(request){"https://www.googleapis.com/drive/v3/files/"+"?alt=media&key="+keys.googleapi}
+ //,facebook(){FB.api("/"+subject.getAttribute("source"),"GET",{fields:'id,name,from,created_time,message,type,timeline_visibility,link,object_id'},response=>resolve(response)).then(response=>{return response.object_id?new Promise(resolve=>FB.api("/"+response.object_id,"GET",{fields:'id,title,format,source,embed_html'},responseobject=>resolve(responseobject))).then(responseobject=>{return responseobject.embed_html+" \n"+response.message}):deform(response.message+" \n "+(response.name&&response.link?response.name.replace(/ /g,"_")+"@"+response.link:""))});
+ // ,"https:":source=>compose(fetch,"json")("https:/"+source)
+ // ,"http:":source=>compose(fetch,"json")("http:/"+source)
+ ,medium:request=>compose(fetch,"text",note,slip(new DOMParser()),"text/xml","parseFromString","item","querySelectorAll")("https://medium.com/feed/"+new URL(request.url).pathname.split("/").slice(2).join("/"))
+ };
 
  async function toggle(method)
 {let filter=wether(this.contains.bind(this),infer(),swap(undefined));
@@ -462,13 +471,13 @@
  }
  };
 
- export var broadcast=
+ export var actions=
  {check(event,peer){peer.connected=true;}
  ,join({room},peer)
 {this.rooms[room]=this.rooms[room]||{messages:[]};
  let {author}=merge(peer,{room},0);
  let event={action:"message",message:author.name+" joined.",room};
- broadcast.broadcast.call(this,event,peer);
+ actions.broadcast.call(this,event,peer);
  let {messages}=this.rooms[room];
  if(messages.length)
  peer?.send(JSON.stringify({action:"history",messages}));
@@ -479,11 +488,11 @@
  peer.send(JSON.stringify({action:"message",author,message:"signed in as "+author.name}));
 },signal({room},peer)
 {let event={action:"signal",author:peer.author,room};
- broadcast.broadcast.call(this,event,peer);
+ actions.broadcast.call(this,event,peer);
 },message({message,room,put},peer)
 {let event={action:"message",author:peer.author,message,room,put};
  this.rooms[room].messages.push({message,author:peer.author,put});
- broadcast.broadcast.call(this,event);
+ actions.broadcast.call(this,event);
 },broadcast(event,peer)
 {let message=JSON.stringify(event);
  this.clients.forEach(client=>
@@ -512,7 +521,7 @@
  this.leave(subject)&&
  this._events.message.bind(this)({message:this.author+" left "+subject,subject}));
 },put:async function({subject,content},peer)
-{peer.subject=this.subjects[subject]||broadcast.join.call(...arguments);
+{peer.subject=this.subjects[subject]||actions.join.call(...arguments);
  peer.subject.content=content;
  let body=Buffer.from(content,"base64").toString("utf8");
  let message=await fetch(subject+"?force=overwrite",{method:"put",body,headers:{"Content-Type":"text/plain"}});
@@ -520,7 +529,7 @@
  return peer.send("message",{message:await message.text()});
 [{action:"put",body:content}
 ,{action:"message",message:this.author+" updated "+subject}
-].forEach(event=>broadcast.broadcast.call(this,event));
+].forEach(event=>actions.broadcast.call(this,event));
 }};
 
  var feed=
@@ -574,7 +583,8 @@
  await collect(each.call(content,async function add(fragment,index,entry)
 {if(!index)
  progress.remove();
- return compose.call(fragment,infer(insert,...entry.lastChild?["after",entry.lastChild]:["under",entry]));
+ return compose.call(fragment
+,infer(insert,...entry.lastChild?["after",entry.lastChild]:["under",entry]));
 },entry));
  if(article?.link)
  insert(reference(this.querySelector("span").textContent,article?.link),entry.lastChild?"after":"under",entry.lastChild||entry);
@@ -588,7 +598,7 @@
  ,style:{"#text":css(
  {".comments":
  {display:"inline-block"
- ,"&>span.history":{display:"table-cell","border-spacing":".25em","text-align":"left"}
+ ,"&>span.history":{display:"table-cell","border-spacing":"0 1em","text-align":"left"}
  ,"&>span.comment":
  {...layout.material,display:"inline-block","border-radius":"2.1em"
  ,"& label":
@@ -596,7 +606,7 @@
  ,"&[for=name]":{"margin-right":0,"border-radius":"2.1em 0 0 2.1em","padding":"0 .5em"}
  ,"&[for=comment]":
  {"max-width":"100%","word-break":"break-all"
- ,"&>span[role=input]":{"min-width":0,"text-align":"left","white-space":"pre"}
+ ,"&>span[role=textbox]":{"min-width":0,"text-align":"left","white-space":"pre"}
  }
  }
  ,"& span[role=button]":
@@ -604,7 +614,7 @@
  ,"&>canvas":{width:"1.2em",height:"1.2em"}
  }
  ,"&>label,&>span":{display:"table-cell","align-content":"center","min-height":"2.5em"}
- ,"&:hover>label[for=comment]>span[role=input]":{"min-width":"5em"}
+ ,"&:hover>label[for=comment]>span[role=textbox]":{"min-width":"5em"}
  }
  }
  ,"@keyframes warn":{from:{"box-shadow":"#880e4f 0px 0px 5px inset"},to:{"box-shadow":"revert"}}
@@ -620,7 +630,7 @@
  ,".comment":
  {keydown({target,keyCode:code})
 {let feed=target.closest(".feed");
- let article=feed.querySelector(".article");
+ let article=feed.closest(".comments").parentNode.querySelector(".article");
  let source=[feed,article].map(node=>node.getAttribute("source")).join("/");
  let {enter}=keyboard(code);
  if(!enter)
@@ -634,8 +644,8 @@
  let empty=Object.keys(fields).find(field=>!fields[field]);
  if(empty)
  return ["warn 1s","unset"].forEach((animation,index)=>
- compose(wait(1000*index),Object.assign)(note(this.querySelector("label[for="+empty+"]")).style,{animation}));
- let source=this.closest(".feed").querySelector(".article").getAttribute("source");
+ compose(wait(1000*index),Object.assign)(this.querySelector("label[for="+empty+"]").style,{animation}));
+ let source=this.closest(".comments").parentNode.querySelector(".article").getAttribute("source");
  let comments=target.closest(".comments").querySelector(".history");
  let message={put:Date.now(),...fields};
  let body=JSON.stringify({[source]:[message]});
@@ -643,14 +653,13 @@
  if(status!==200)
  return ["warn 1s","unset"].forEach((animation,index)=>
  compose(wait(1000*index),Object.assign)(target.closest(".comment").style,{animation}));
- await comment(message,0,comments);
+ await comment(message,comments.childNodes.length,comments);
  fill.call(this,{comment:""});
  if(cookie("author")===fields.name)
  return;
  this.ownerDocument.cookie=cookie({author:fields.name,path:"/"});
  let rank=await fetch("/author/"+fields.name+"/rank");
  let expires=rank.status===200?undefined:new Date().toUTCString();
- note(expires)
  this.ownerDocument.cookie=cookie({rank:await rank.text(),path:"/",expires});
 }}
  ,".message>span:first-of-type":
@@ -672,11 +681,11 @@
  }
  ,".message svg[role=button]":
  {async pointerout()
-{let source=this.closest(".feed").querySelector(".article").getAttribute("source");
+{let source=this.closest(".comments").parentNode.querySelector(".article").getAttribute("source");
  let message=this.closest(".message");
  let {index}=message.dataset;
  let body=JSON.stringify({[source]:{[index]:null}});
- let comments=await fetch("/Blik_2024_comments.json",{method:"put",body});
+ let comments=await fetch("/Blik_2024_comments.json?override=true",{method:"put",body});
  if(comments.status!==200)return;
  let style=message.querySelector("style");
  if(style)
@@ -694,31 +703,21 @@
 }}
  };
 
- var actions=
- // obsolete, mostly isolated to composer and feed. 
+ var body=
+ // under isolation to event capture islands. 
  {imports:
  {"./Blik_2023_interface.js":["","resolve","locate","digest","cookie","cookies","query"]
  ,"./Blik_2023_search.js":["","merge","unfold","search","prune","extract"]
  ,"./Blik_2023_inference.js":";note;expect;compose;combine;pass;route;record;trace;drop;crop;slip;infer;tether;wether;wait;observe;buffer;swap;when;array;has;each;differ;provide;collect;is;match;basic;defined".split(";")
  ,"./Blik_2023_fragment.js":";* as fragment;document;form;image;canvas;demarkup;insert;navigate;activate;metamarkup;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard;spell;expand;parse;semiotics;consume;syndicate;article;destroy;reference;fill;annotate;qualify;focus;capture".split(";")
  ,"./Blik_2023_layout.js":["layout"]
- ,"./Blik_2023_d4.js":"extend"
  ,"./Blik_2024_syndication.js":"syndication"
- ,"./Bostock_2011_d3.js":"* as d3"
  }
  ,exports:
  {default:
  {body:
- {load(event)
-{if(this!==event.target.body)
- // ignore propagated load events. 
- return;
- this.querySelectorAll("canvas[role=img]").forEach(canvas=>
- canvas.dispatchEvent(new canvas.ownerDocument.defaultView.Event("contextrestored",{bubbles:true})));
- this.querySelectorAll("[actions]").forEach(scope=>
- capture(scope,scope.getAttribute("actions"))||
- scope.dispatchEvent(new scope.ownerDocument.defaultView.Event("contextrestored")));
-},popstate(event)
+ {load:activate
+ ,popstate(event)
 {//note(event);this.document.forms[0]?.dispatchEvent(new Event("submit"));
 }}
  ,"canvas[role=img]":
@@ -821,3 +820,4 @@
  ,path,edit,proceduralize,peer:peer.exports
  }
  };
+

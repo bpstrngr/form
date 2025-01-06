@@ -78,7 +78,7 @@
 ,node);
 };
 
- function spread(nodes,{spread="force",monospace,matrix})
+ function spread(nodes,{spread="force",monospace,matrix}={})
 {let {force,radial,up,down,left,right}={[spread]:true};
  if(force)
  return nodes;
@@ -759,16 +759,17 @@
  let {default:network}=await import(import.meta.url);
  return compose(options,this,network.bind(this))(options.source);
 }}
- ,"g.network":
- {mouseover({target})
+ ,"g.link":
+ {...observe({touch({target})
 {target=target.closest(".link");
  target.style.removeProperty("filter");
  target.setAttribute("opacity",target.getAttribute("opacity")<1?1:0.5);
-},mouseout({target}){target.dispatchEvent(new Event("mouseover",{bubbles:true}));}
+}//,mouseout({target}){target.dispatchEvent(new Event("mouseover",{bubbles:true}));}
+ })
  }
- ,"g.cluster":
- {pointerover({target})
-{target=target.closest(".node");
+ ,"g.node":
+ {...observe({touch({target})
+{target=note(target).closest(".node");
  compose
 (combine(compose("svg","closest",forage),compose(select,"datum"))
 ,when(array,has(["x","y"]))
@@ -783,13 +784,14 @@
 )
 ])
 ,(links,nodes)=>links.each(dim).filter(({source,target})=>[source,target].every(node=>nodes.has(node)))
-,infer("each",infer("dispatchEvent",new Event("mouseover",{bubbles:true})))
+,infer("each",infer("dispatchEvent",new Event("pointerover",{bubbles:true})))
 ,links=>new Set(links.data().flatMap(({source,target})=>[source,target]))
 ))
 ,(nodes,cluster)=>nodes.each(dim).filter(node=>cluster.has(node)).each(highlight)
 )(target);
-},pointerout({target}){target.dispatchEvent(new Event("pointerover",{bubbles:true}));}
+}//,pointerout({target}){target.dispatchEvent(new Event("pointerover",{bubbles:true}));}
  ,click:interact
+ })
  }
  };
 
