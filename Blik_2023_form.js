@@ -14,7 +14,7 @@
  export {encryption,classify,classified,published,permit};
  export var syndication={rss2json:{key:undefined}};
  var address=new URL(import.meta.url).pathname;
- await publish("./Blik_2024_comments.json");
+ await publish("./Blik_2024_comments.json",/.*\/author.*[^\/]$/);
 
  export default
  {...local,wikipedia,modules
@@ -711,7 +711,6 @@
  ,"./Blik_2023_inference.js":";note;expect;compose;combine;pass;route;record;trace;drop;crop;slip;infer;tether;wether;wait;observe;buffer;swap;when;array;has;each;differ;provide;collect;is;match;basic;defined".split(";")
  ,"./Blik_2023_fragment.js":";* as fragment;document;form;image;canvas;demarkup;insert;navigate;activate;metamarkup;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard;spell;expand;parse;semiotics;consume;syndicate;article;destroy;reference;fill;annotate;qualify;focus;capture".split(";")
  ,"./Blik_2023_layout.js":["layout"]
- ,"./Blik_2024_syndication.js":"syndication"
  }
  ,exports:
  {default:
