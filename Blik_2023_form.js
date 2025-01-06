@@ -10,8 +10,8 @@
  import extend from "./Blik_2023_d4.js";
  import wikipedia from "./Blik_2024_wikipedia.js";
  import * as svg from "./Blik_2024_svg.js";
- import local,{persistence,publish,published,encryption,classify} from "./Blik_2024_static.js";
- export {encryption,classify};
+ import local,{persistence,encryption,publish,published,classify,classified,permit} from "./Blik_2024_static.js";
+ export {encryption,classify,classified,published,permit};
  export var syndication={rss2json:{key:undefined}};
  var address=new URL(import.meta.url).pathname;
  await publish("./Blik_2024_comments.json");
