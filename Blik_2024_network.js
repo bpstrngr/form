@@ -1,11 +1,11 @@
  import layout,{color} from "./Blik_2023_layout.js";
  import {search,merge,extreme,sum,extract,unfold,prune} from "./Blik_2023_search.js";
- import {document,demarkup,namespaces,deselect,css,capture,destroy} from "./Blik_2023_fragment.js";
+ import {document,demarkup,namespaces,deselect,css,capture,destroy,ascend} from "./Blik_2023_fragment.js";
  import {infer,tether,simple,swap,wait,numeric,drop,pass,note,has,collect,compose,combine,wether,record,each,slip,differ,buffer,observe,ascending,defined,compound,array,string,clock,revert,provide,plural,when} from "./Blik_2023_inference.js";
  import {window,fetch,digest,resolve,path} from "./Blik_2023_interface.js";
  import * as d3 from './Bostock_2011_d3.js';
  import {select,selectAll} from './Bostock_2011_d3_select.js';
- import extend,{ascend} from "./Blik_2023_d4.js";
+ import extend from "./Blik_2023_d4.js";
  var {default:vectors}=await resolve("./Blik_2020_svg.json");
  var browser=Boolean(globalThis.window);
  let location=new URL(import.meta.url).pathname.replace(/.*\//,"");

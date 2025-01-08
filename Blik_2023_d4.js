@@ -89,33 +89,6 @@
 }catch(fail){console.log(fail);}
 }};
 
- export function ascend(selector,descendants=new Set())
-{let fragment=this instanceof window.Node;
- let selection=!fragment&&!simple(this);
- let node=fragment?this:selection?this.node():this;
- if((selection||fragment)&&!defined(selector))selector="svg";
- let limited=numeric(selector);
- if(limited&&!selector)
- return [this];
- let matching=!limited&&(!/[\.#]/.test(selector)
-?node.nodeName.toLowerCase()===selector
-:(selector instanceof Function)
-?selector(this)
-:// match selectors on node. 
-[qualify(qualify(node)),prune.call({"":qualify(selector)},({1:value})=>
- Object.keys(value).every(field=>["id","class"].includes(field))?value:undefined,1,1)
-].map(Object.entries).reduce(([[nodename,node]],[[name,selector]])=>
- (!name||nodename===name)&&
- Object.entries(selector).every(([field,value])=>
- value.every(value=>node[field]?.includes(value)))));
- if(matching)
- return [this];
- let parent=fragment||selection?node.parentNode:node.parent;
- return !descendants.has(node)&&parent
-?[...ascend.call(selection?select(parent):parent,limited?selector-1:selector,descendants.add(node)),this]
-:[this];
-};
-
  export function jss(style)
 {return Object.fromEntries(Object.entries(style).map(([field,value])=>
 [field.replace(/-(.)/g,(match,lowerCase)=>lowerCase.toUpperCase())
