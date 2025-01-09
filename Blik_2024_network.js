@@ -148,7 +148,7 @@
  {class:"link"
  ,fold(node){return connect(node);}
  ,match:linkindex
- ,update(links){if(ascend.call(links)[0].datum().spread==="force")links.each(link.each).call(drag);}
+ ,update(links){if(select(ascend.call(links)[0]).datum().spread==="force")links.each(link.each).call(drag);}
  ,call(links){links.remove();}
  }
  }
@@ -156,7 +156,7 @@
  {class:"node"
  ,fold(node){return unfold.call({nodes:node},childfold).slice(1);}
  ,match:nodeindex
- ,update(nodes){if(ascend.call(nodes)[0].datum().spread==="force")nodes.each(locate).call(drag);}
+ ,update(nodes){if(select(ascend.call(nodes)[0]).datum().spread==="force")nodes.each(locate).call(drag);}
  ,call(nodes){nodes.remove();}
  }
  }
@@ -166,7 +166,7 @@
  var node=
  {fold:false,match:nodeindex
  ,update(nodes)
-{let fragment=ascend.call(nodes)[0];
+{let fragment=select(ascend.call(nodes)[0]);
  let {gradual}=fragment.datum();
  let content=gradual&&
  {circle:{update:true,...extract.call(node.circle[0],["class","r"])}
@@ -183,7 +183,7 @@
  ,class:"node",id:nodeindex,filter:"url(#shadow)"
  ,fill:node=>paint(node)
  ,transform({x,y})
-{let {spread}=ascend.call(select(this))[0].datum();
+{let {spread}=select(ascend.call(this)[0]).datum();
  let {up,down,right,left,radial,force}={[spread]:true};
  return force?"translate("+[x,y]+")"
 :radial?"rotate("+(x*180/Math.PI-90)+") translate("+y+",0)"
@@ -191,7 +191,7 @@
 },title:{text:({name})=>name}
  ,circle:
 [{name({name,source,nodes}){return source&&!nodes?source.name+"_"+name:null;}
- ,r(node){return ascend.call(select(this))[0].datum().spread==="force"?scale(size(node)):5;}
+ ,r(node){return select(ascend.call(this)[0]).datum().spread==="force"?scale(size(node)):5;}
  ,fill:node=>paint(node)
  ,title:{text({value,name}){return value?.progress?.concat("%")||this.remove();}}
  }
@@ -203,28 +203,28 @@
 ],text:
  {fold:wrap,class:"label",fill:"black",stroke:"black",opacity:0.5
  ,"text-anchor":function()
-{let {spread}=ascend.call(select(this))[0].datum();
+{let {spread}=select(ascend.call(this)[0]).datum();
  let {force,left,up}={[spread]:true};
- let {children}=ascend.call(select(this),1)[0].datum();
+ let {children}=select(ascend.call(this,1)[0]).datum();
  return force?"middle":["start","end"][sum([Boolean(children?.length),left])%2];
 },"stroke-width":function()
-{let force=ascend.call(select(this))[0].datum().spread==="force";
+{let force=select(ascend.call(this)[0]).datum().spread==="force";
  return force?this.parentNode.querySelector("circle").getAttribute("r")*0.002+"px":0.5;
 },"font-size":function()
-{let force=ascend.call(select(this))[0].datum().spread==="force";
- let node=ascend.call(select(this),1)[0].datum();
+{let force=select(ascend.call(this)[0]).datum().spread==="force";
+ let node=select(ascend.call(this,1)[0]).datum();
  let size=this.parentNode.querySelector("circle").getAttribute("r");
  return size/5+"px";
 },dx()
-{let {spread}=ascend.call(select(this))[0].datum();
+{let {spread}=select(ascend.call(this)[0]).datum();
  let {force,left,up}={[spread]:true};
- let {children}=ascend.call(select(this),1)[0].datum();
+ let {children}=select(ascend.call(this,1)[0]).datum();
  return !force?[7,-7][sum([Boolean(children?.length),left])%2]:null;
 },dy(text,index,wrap)
-{let force=ascend.call(select(this))[0].datum().spread==="force";
+{let force=select(ascend.call(this)[0]).datum().spread==="force";
  return force?scale(index+1-(wrap.length)/2)+"em":".25em";
 },transform()
-{let radial=ascend.call(select(this))[0].datum().spread==="radial";
+{let radial=select(ascend.call(this)[0]).datum().spread==="radial";
  return radial?left(this)?"rotate(180)":null:null;
 },text(text){return text;}
  }
@@ -233,7 +233,7 @@
  var link=
  {fold:false,match:linkindex
  ,update(links)
-{let force=ascend.call(links)[0].datum().spread==="force";
+{let force=select(ascend.call(links)[0]).datum().spread==="force";
  let fields=force?["path"]:["transform","path"];
  extend.call(links,{fold:false,...extract.call(link,fields)});
 },drop(links)
@@ -294,7 +294,7 @@
 ]};
 
  function line(link,index,paths)
-{let [fragment]=ascend.call(select(this));
+{let fragment=select(ascend.call(this)[0]);
  let {spread}=fragment.datum();
  let {up,down,right,left,radial,force}={[spread]:true};
  let [vertical,horizontal]=[up||down,left||right];
@@ -435,7 +435,7 @@
  function wrap({name,source})
 {if(trace(arguments[0],[])?.[0]?.includes("image"))
  return [];
- let force=ascend.call(select(this))[0].datum().spread==="force";
+ let force=select(ascend.call(this)[0]).datum().spread==="force";
  return force?!name||(name.toString().match(/.+?(_|\/|$)/g)||[]).reduce((wrap,split,index,splits)=>
  wrap.concat(index&&(split.length+wrap[wrap.length-1].length<18)
 ?wrap.pop()+split
@@ -451,8 +451,8 @@
 };
 
  function left(node)
-{let {width,spread}=ascend.call(select(node))[0].datum();
- let {x,parent}=ascend.call(select(node),1)[0].datum();
+{let {width,spread}=select(ascend.call(node)[0]).datum();
+ let {x,parent}=select(ascend.call(node,1)[0]).datum();
  let {radial}={[spread]:true};
  return radial?x<Math.PI||!parent:(x<width/2?parent:!parent);
 };
