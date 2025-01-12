@@ -1,4 +1,4 @@
- import {note,each,drop,compose,either,infer,tether,is,record,slip,numeric,collect,provide,combine,wether,when,crop,buffer,pass,colors,expect,wait,exit} from "./Blik_2023_inference.js";
+ import {note,each,drop,compose,either,infer,tether,is,record,slip,numeric,collect,provide,combine,whether,when,crop,buffer,pass,colors,expect,wait,exit} from "./Blik_2023_inference.js";
  import {fetch} from "./Blik_2023_interface.js";
  import {merge,search,extract,unfold,prune,sum,extreme} from "./Blik_2023_search.js";
  let parameters={query:{format:"json",origin:"*"}};
@@ -54,7 +54,7 @@
  await compose.call(this.buffer,throttle,entry,"add");
  compose(wait(rate),"delete")(this.buffer,entry);
  return compose
-(expect(compose(fetch,wether(compose("status",is(200)),infer())),1000,5),"json",result=>result.continue
+(expect(compose(fetch,whether(compose("status",is(200)),infer())),1000,5),"json",result=>result.continue
 ?harvest.call(this,query,rate,limit,[...history,result]):
 [...history
 ,console.log(colors.ready+"harvested wikipedia: ("+(performance.now()-this.requests.get(query))/1000+"s)"+JSON.stringify(query)+"!"+colors.steady)||
