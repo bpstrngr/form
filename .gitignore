@@ -1,5 +1,6 @@
 /*
 !.gitignore
+!Blik_2025_git_hook_post-receive.sh
 
 !Blik_2024_form
 !Blik_2023_form.js
@@ -15,3 +16,4 @@
 
 !Blik_2018_calligraphy.ttf
 !Sayers_2011_averia.ttf
+
