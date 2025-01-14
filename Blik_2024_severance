@@ -1,0 +1,541 @@
+
+
+
+(Severance: 
+an archaeology of sociomaterial entanglements between software and their engineers in "black boxes" from a Critical Making perspective)#span{"role":"heading","aria-level":"1","style":"font-size:2em;font-weight:bold"}
+
+
+
+Patrik Blik
+
+2024
+
+AAU@/AAU_2020_logo.svg{width:300px}
+
+Supervisor: 
+Petko Karadechev
+
+Aalborg University
+Techno-anthropology MA
+1st semester project
+
+
+Abstract#h2{text-align:center}
+
+{text-align:left}
+
+(Problem statement)#h2{text-align:center}
+
+ Whether by misconception or obliviousness, but if one is used to considering the creation of software the straightforward implementation of a designer's work (as we will find to be the trend in many techno-anthropological studies), the amount of consequential creative decisions involved in this part of what is considered "design" may come as a surprise (Bogers & Chiappini 2021). If an engineer of software were to put a computer executing their instructions in an art gallery, this degree of detachment ("severance") we commonly project between them would make it seem like a found art, or ready-made exhibition. As a recent anthology of ethnographies about "critical making" shows, engineers often have a very different perspective. How technology may be experienced or affected by the "user" can be studied to (inform, or) set expectations towards engineers (or even users), but how is their agency involved in the "design" process, and remains constituted in the final product? 
+ To explore this, I will be applying agential realism in an ethnography of pair-programming participant observation following formal, semi-structured qualitative interviews to "diffract intra-actions of mattering" by "dynamic agential cuts" of the software engineering actor network (engineers and their work environment). In the analysis of this work, I will reflect and theorize about how these observations could, or should be incorporated into planning processes that ultimately depend on these actors' agency. With such theories, I hope to address two technosocial problems. First, to support ethical considerations of transparency, accountability and fairness by potentially minimizing "black box" effects that often limit our access to these. Second, to include often marginalized perspectives in "design" to enhance collaboration and understanding ("anagnorisis", see Seaver 2019), with special attention to how this could benefit product management goals popular in techno-anthropology (infrastructuring, institutioning, commoning, participatory, agonistic and anarchistic design, co-creation and co-design, value-sensitive, feministic and sustainable design). 
+
+ (Problem analysis)#h2{text-align:center} 
+
+ (Anthropology's static materialism)#h3 
+ 
+ Reckoning with the growing prominence of digital data#b encountered during anthropological studies, Douglas-Jones_et_al._2021@/Anthropology/Douglas-Jones_2021_Anthropology_of_data.pdf characterize data as problematic when "insisting on its material specificity", as opposed to its context-dependent "mercurial nature". In their claim, the former conception is associated with "universalizing epistemologies" that perpetuate its oppressive colonial history of ("violent legibility")#b, to which the only remedy is to engage it in "local worlds" of traditional ethnographic epistemology instead. Without specifying any philosophy of eg. hegelian historical consciousness to justify this equivocation of data's ontology with its historical circumstances, the article goes as far as unhesitantly disqualifying traditional scientific methods altogether ("replicability, objectivity, etc." - sic.) from studying "big data" (making that leap of scale to "big" at once to desist addressing "data" in particular altogether). 
+ Having quickly arrived at such bold conclusions, they admit the subject to be new challenge, and recognise three themes it is introducing for anthropology to consider in its "complementary" role of delivering "thick" contextual ethnographies and "theory generation": the virtualization of identities and communities, the commodification of (personal) information, and the ambivalent reductive and revalatory nature of abstract representation. While the list is also rather short, the bigger problem rests in the authors' elaboration on the third one, as they mistake the reduction (and ambivalence) to be specifically due to a conversion from qualitative#b to quantitative#b information, as if being digital or computationally accessible somehow limited the storage of qualitative information any more than pen and paper does. As we will see from more faithful accounts of "data", it is a form of abstraction itself, and if we honor our interdisciplinary disposition by extending for a definition to an expert in its study: "abstraction is the amplification of the essential and the elimination of the irrelevant" (Martin 2006). 
+ In discussing algorithms#b, Seaver_2019@/Anthropology/Seaver_2019_Digital_STS_26_Knowing_Algorithms.pdf reiterates this false dichotomy of qualitativity and quantitativity, but the thereby overlooked difference between the abstraction of information and instructions will actually carry more significance to us later than this apparently common mistake. On the other hand, he correctly argues that (in most cases, due to complex, asynchronous, dynamic states) even detailed technical knowledge about programs (let alone their mystification) will not lend anyone immediate authority to determine their effects, be they author or reviewer. Depending on the scale of given software, this obscurity creates a shared moral responsibility for all stakeholders to ensure its reliability, security and accessibility in the making. He explicitly calls for active engagement with the contexts and decisions of engineers and designers, as the only way to truly "know" algorithms (anagnorisis), as opposed to passive demands for transparency that treat software as inaccessible black boxes. 
+ While this task of approaching the creative process of engineering may seem more daunting for an anthropologist, it should be imperative for science and technology studies to at least not exclude, if not even prioritize this perspective as more relevant than arbitrary political and historical contexts, and hence potentially avoid eg. superficial classifications of anything digital as "quantitative", as we have seen. Frauenberger_2019@/Framing/Frauenberger_2019_Human_computer_interaction_entanglement.pdf asserts that the dominant paradigms in studies of human-computer interaction have been "user-centric" or prescriptive towards technology, with a third one "chaotically" emerging in concert with relational#b and flat#b ontologies, challenging the epistemological integrity of this particular subfield by new context-dependent research resisting traditional generalizability (as expressed explicitly by the article on "data"). The author attributes this conundrum to the increasingly blurred boundaries of digital interfaces (as Donna Haraway had pronouced in her Cyborg Manifesto; (Haraway 1991)@/Haraway_1991_Cyborg_Manifesto.pdf) and compares it to a model crisis of constructivist cycles (Kuhn 1962), but then proceeds to regress into calling only for new prescriptive "design" practices that may reclaim control over this amorphous entity, at terror of its apparition ("whoever shapes technology, puts the chisel on humanity"). In his admittedly humble attempt to embrace what he calls "entanglement theories" (actor-network theory, object-oriented ontology, post-phenomenology and agential realism), he promptly remains captivated by a consumerist perspective, simply flipping the interpretation of how we experience technology to how it affects us, failing to integrate a concept of how human and machine can, and by necessity does, form one creative agency to begin with. The move "away from" user-centric design is portrayed as immediately having "decentered the human", as if "user" was the only way we had a relationship to it. 
+
+ star_ruhleder_1996_ecologyofinfrastructure.pdf@/Anthropology/star_ruhleder_1996_ecologyofinfrastructure.pdf
+ Bowker_2000_Sorting_Things_Out_Classification_and_consequences.pdf@/Anthropology/Bowker_2000_Sorting_Things_Out_Classification_and_consequences.pdf
+ Anderson_2008_End_of_Theory_Scientific_method.pdf@/Anthropology/Anderson_2008_End_of_Theory_Scientific_method.pdf
+ Miller_Horst_2012_The_Digital_and_the_Human.pdf@/Anthropology/Miller_Horst_2012_The_Digital_and_the_Human.pdf
+ Friedman_2013@/Framing/Doorn_etal_2013_Philosophy_of_engineering_reflections.pdf
+
+ Poel_2013@/Framing/Poel_2010_Translating_values_into_design.pdf
+
+disalvo_2013@/Framing/disalvo_2013_infrastructuring-and-the-formation-of-publics-in-participatory-design.pdf
+Teli_2014@/Framing/Teli_2014_Public_design_urban_digital_commons.pdf
+ Karasti_2014@/Framing/Karasti_2014_Infrastructuring_in_participatory_design.pdf
+ blok_2014_complementary_social_science_in_a_big_data_world.pdf@/Anthropology/blok_2014_complementary_social_science_in_a_big_data_world.pdf
+ Ekbia_2014@/Framing/Ekbia_2014_Heteromation_division_of_labor_between_humans_and_machines.pdf
+ Knox_2016_Digital_Ontology.pdf@/Anthropology/Knox_2016_Digital_Ontology.pdf
+ Marttila_2017@/Framing/Marttila_2017_Infrastructuring_commons.pdf
+ Keyes_2019@/Framing/Keyes_2019_Anarchist_HCI.pdf
+
+Sapiezinsky_2019_interaction_data.pdf@/Anthropology/Sapiezinsky_2019_interaction_data.pdf
+ Cibin_etal_2019@/Framing/Cibin_etal_2019_Institutioning_community_radio.pdf
+ Hoeyer_2020_Private_public_data_infrastructures.pdf@/Anthropology/Hoeyer_2020_Private_public_data_infrastructures.pdf
+ Bruun_etal_2020@/Anthropology/Bruun_etal_2020_Cryptic_Commonalities.pdf
+ Bruun_etal_2020@/Anthropology/Bruun_etal_2020_Infrastructures_of_trust_and_distrust_the_politics_and_ethics_of_emerging_cryptographic_technologies_AM.pdf
+ Balasescu_2020_machine_anthropology.pdf@/Anthropology/Balasescu_2020_machine_anthropology.pdf
+ Munk_etal_2022_think_machine_anthropological_ai_between_explanation_and_explication.pdf@/Anthropology/munk_etal_2022_think_machine_anthropological_ai_between_explanation_and_explication.pdf
+ Goldstein_Nost_etal_2022_The_Nature_of_Data.pdf@/Anthropology/Goldstein_Nost_etal_2022_The_Nature_of_Data.pdf
+ Bruun_2022@/cybernetics/Bruun_2022_Palgrave_handbook_of_the_anthropology_of_technology.pdf
+ Breslin_2024@/Anthropology/Breslin_2024_cultures_of_trust_in_computing.pdf
+
+ (A new, dynamic materialism)#h3 
+
+ By these accounts, the emergence of the cybernetic paradigm appears to be persistently hindered by anthropology's own characteristic proclivity to juxtapose human and technology. The consistent usage of the word "design" to reference but only the entire process of creation itself, but the research activity as well shows the extreme lack of differentiation of agency beyond userhood. Going to the sources to correct this oversight, the situation shouldn't be surprising either. 
+ Bruno Latour (1972) has been subject to a high amount of controversy, forcing him to clarify his points on multiple counts since his introduction of (actor-network theory)#b. His legacy of calling software "black boxes" that are only opened up for reconfiguration at times of crisis instilled a view of technology akin to Thomas Kuhn's cyclical theory of scientific progress, which, in its original context, already incited heavy criticism from Karl Popper for being bound to perpetuate a complacent status quo of (non-revolutionary) "normal science". The "normal technology" in this case would mean the static "program of action" that Latour readily coined as well. He tried to abate post-phenomenology's (see next paragraph) stride towards re-framing technology as something defined by its relations to us (1993). 
+ In the meantime, Don Ihde (1990) and Peter-Paul Verbeek (Rosemberger and Verbeek 2015) established a standard, corresponding best to Frauenberger's position, by discarding classical phenomenology's#b investigations into technology based on its semantic origins as "techne" and "poiesis" ((Heidegger 1954)@/cybernetics/Heidegger_1954_Concerning_Technology.pdf; Harraway_2016@/cybernetics/Haraway_2016_staying_with_the_trouble.pdf) in favor of a contradictory one where it is always already at our disposal, "mediating our relations to the world", leaving accounts of how it comes into being behind. Their focus turns towards the relations people form with this pre-existing "other", making it a "relational"#b ontology. Restricting this attention exclusively to user experiences would make a valid investigation in isolation, but Verbeek's irredeemably dichotomistic claim that "designing technology is designing human beings" transgressed this specialization to declare the pursuit of control over the art of engineering, and even outspokenly question humanity's autonomy, authority and responsibility. 
+
+{width:80%;inset:10%;text-align:center;}
+"Moral actions and decisions of human beings are fundamentally mediated by technologies, like turnstiles that intervene in fare-dodging in the subway, and antenatal diagnostic technologies that inform moral decisions about abortion."
+{text-align:right;width:90%}- Verbeek 2011
+
+{text-align:left}
+ Driven by more noble, moral concerns about modern humanity's impact on the environment, (Graham Harman 2002)@/cybernetics/Harman_2002_Tool-being_metaphysics_of_objects.pdf took it on himself to elaborate and declare Latour's so far heuristic philosophy as the affirmation of the existence of non-human entities regardless of our phenomenological constraints (the cartesian "veil of perception"), establishing the branch of "speculative realism". While this view has been constructive as far as the natural (non-human) domain certainly not originating from human agency is concerned, its flat, static#b deontology still got overgeneralized beyond this scope, with the adopted term ("object-oriented" ontology)#b (Bryant 2011) emphasizing the rejection of subjective phenomena altogether. The appeal to computer scientific terms in both cases, for common database and program structures respectively, reflects the treatment of technology as evidently as available ("ready-to-hand" or vorhandensein, to recover Heidegger_1927's@/cybernetics/Heidegger_1927_Being-and-Time.pdf phenomenological distinction) as any other external object (see eg. the comically backwards "interview with things" approach of (Cheng et al. 2017)@/cybernetics/Chang_2017_interview_with_things.pdf). This makes the two philosophies ultimately commensurable, but as a silver thread, (Hayles 2014)@/cybernetics/Hayles_2014_Speculative_Aesthetic_and_Object_Oriented_Inquiry_OOI.pdf advised caution about such overgeneralization even within the natural realm, so it should be especially important for us investigating the technological. 
+ Seeing the abject failure of post-phenomenology to comprehensively ascribe relational characteristics to a flat ontology, and OOO's morally driven reluctance to do so, (Karen Barad 1995)@/cybernetics/Barad_1995_meeting-the-universe-halfway.pdf traces the standstill to the "representationalism" (the reliance on language to describe reality, better known as the dialectical idealism of (Hegel 1807)@/phenomenology/Hegel_1807_The_Phenomenology_of_Spirit.pdf) of both the constructivist and the realist traditions. To add some more accuracy to this diagnosis, a notable shift occurred in the dialectical tradition with the Frankfurt school, when Herbert Marcuse introduced technological determinism. She proposes the first (dynamic, flat ontology)#b based on the fundamentally "material dialectics" (not to be confused with dialectical materialism) of ("performative mattering")#b and constant (intra-action of entangled agents)#b (agential cuts), which can be studied through "diffraction"#b. The concept of mattering itself, and how it leaves material traces of ontology, epistemology and morality, is what has so far been lacking in post-phenomenology, and lost on "entanglement" HCI. 
+
+ (Critical Making)#h3
+
+ Activity theory (60) 
+ evolution of social and epistemic design practices (14, 16) 
+ distributed cognition (31,54,65) (agile collaboration and ux) and cognitive dimensions (56) 
+
+ Reverting post-phenomenology's detachment from Hegelian dialectics, we direct it towards the material, but instead of Marx's inversion of it. 
+ 
+ Searle_1995@/Searle_1995_The+Construction+of+Social+Reality.pdf.pdf
+ Dandrade_2001@/cybernetics/Dandrade_2001_a-cognitivist-s-view-of-the-units-debate-in-cultural-anthropology.pdf
+ Flyvbjerg_2001@/cybernetics/Flyvbjerg_2001_making_social_sciences_matter.pdf
+ social ontology Dandrade_2006@/cybernetics/Dandrade_2006_commentary-on-searle-s-social-ontology-some-basic-principles-culture-and-institutions.pdf
+ Coleman_2014@/cybernetics/Coleman_2014_Hacker_Hoaxer_Whistleblower_Spy_The_Story_of_Anonymous.pdf
+ 
+ Stoczkowski_2008@/cybernetics/Stoczkowski_2008_The_fourth_aim_of_anthropology_Between_k.pdf
+ Suchman ((1998)@/cybernetics/Suchman_1998_human_machine_reconsidered.pdf) ((2002)@/cybernetics/Suchman_2002_Locatedaccountabilitiesintechnologyproduction.pdf) provided the first critique of agential realism. More successful adoption of agential realism at long last helped Jackson and Kang ((2014)@/cybernetics/Jackson_2014_breakdown_obsolescence_reuse.pdf) and Devendorf et al. ((2016)@/cybernetics/Devendorf_2016_postanthropocentric_making_3dprinting.pdf) to connect ANT and OOO under a consistent frame, bringing the engineer's (maker's) agency into the picture. Redstrom and Wiltse ((2015)@/cybernetics/Redstrom_2015_fluid_assemblages.pdf, (2018)@/cybernetics/Redstrom_2019_innovation_through_design_philosophy.pdf) combined Barad's theory with fluid assemblages of Deleuze and Guattari (2013).
+ The power over technology is, and will remain inextracably in the hands of capable humans in the form of engineers, and the only way to share in it will lead trough acknowledging them, allowing for collaboration and contribution with similar competence, as Seaver has suggested, - if only to assert our trust in "theirs". No shortcuts lead through superficial theoretization, or they do no further than the antagonism they are conceived in. What follows is a genuine attempt to build bridges, by lifting the primary, necessary, yet mostly ignored agents of technology into participatory design, to make arbitrary management goals even conceivable. 
+
+ Bogers_2019@/cybernetics/Bogers_2019_CriticalMakersReader.pdf
+ Neill_2021@/cybernetics/Neill_2021_the-handbook-of-peer-production.pdf chapter 26
+ restoration of programming as a tool of thought (process), not a product. 
+ Designers, design education and artists have a proclivity to use "hacker" terminology, originating from online maker subcultures, which Groten (2001) considers a cultural appropriation. 
+ Gets into the creativity in hacking, but switches to a social aspect... 
+ the creativity and aesthetics is a duty. 
+ "i don't even care about your so-called design methods." 
+ Hacking is not a method. complex form of interactions. an ecology. you glorify it and forget about the dynamics. 
+ programmer vs developer 
+ politically incorrent culture 
+ they maintain spaces for others to confront them. 
+ constant and meticulous documentation. we don't hide problems. 
+ "Designers should disseminate their work in ways that force still-vulnerable processes to be exposed and possibly contested." 
+ instead of making "convincing work", designers could create their own ecology of frictions. 
+
+ 
+
+ Hall_2008@/cybernetics/Hall_2008_developer_motivation.pdf
+ Bill_2009@/cybernetics/Bill_2009_IS_boundary_objects.pdf
+ Coleman_2010@/cybernetics/Coleman_2010_ethnographic_approaches_to_digital_media.pdf
+ Hovorka_2011@/cybernetics/Hovorka_2011_Towards_an_informativity_in_design_research.pdf
+ Johri_2011@/cybernetics/Johri_2011_sociomaterial_bricolage.pdf
+ Panourgias_2011@/cybernetics/Panourgias_2011_creative_agency_in_gamedev.pdf
+ Tell_2012@/cybernetics/Tell_2012_Activity_Theory_Applied_to_Global_Software_Engineering_Theoretical_Foundations_and_Implications_for_Tool_Builders.pdf
+ 
+ Bjorn_2012@/cybernetics/Bjorn_2012_bounding_sociomaterial_practice.pdf
+ Bjorn_2014@/cybernetics/Bjorn_2014_Sociomaterial_design.pdf
+ Styhre_2012@/cybernetics/Styhre_2012_sociomaterial_engineering.pdf
+ Styhre_2015@/cybernetics/Styhre_2015_IT_individuation.pdf
+ Sharp_2016@/cybernetics/Sharp_2016_Ethnographic_Studies_in_Software.pdf
+ Srinivasan_2017@/cybernetics/Srinivasan_2017_information_determinism.pdf
+ Bader_2017@/cybernetics/Bader_2017_heterogenous_sociomaterial_workplace.pdf
+ Amir_2017@/cybernetics/Amir_2017_Sociotechnical_Resilience.pdf
+ Holmstrom_2017@/cybernetics/Holmstrom_2017_performative_it_risk_mamagement.pdf
+ Neff_2017@/cybernetics/neff_2017_critique-and-contribute-a-practice-based-framework-for-improving-critical-data-studies-and-data-science.pdf
+ Holford_2018@/cybernetics/Holford_2018_knowledge_flows_entanglement_airplanes.pdf
+ Ivory_2019@/cybernetics/Ivory_2019_caught_between_discourses_hybrid_tech_choices.pdf
+ Bates_2020@/cybernetics/Bates_2020_Staging_with_objects.pdf
+ Dittrich_2020@/cybernetics/Dittrich_2020_Evolving_software_Practices.pdf
+ Dittrich_2014@/cybernetics/Dittrich_2014_to_use_a_method_in_software.pdf
+ Tyrer_2020@/cybernetics/Tyrer_2020_multimodal_screen_feedback.pdf
+ Avle_2020@/cybernetics/Avle_2020_scaling_techno_optimistic_visions.pdf
+ hummels_2021@/cybernetics/hummels_2021_non-discursive-philosophy-by-imagining-new-practices-through-design.pdf
+ Hyeon_2021@/cybernetics/Hyeon_2021_creative_engineering.pdf
+ Gravel_2021@/cybernetics/Gravel_2021_heterogeneous_engineering.pdf
+ Waizenegger_2021@/cybernetics/Waizenegger_2021_sociomateriality_in_action.pdf
+ Vidal-Rojas_2022@/cybernetics/Vidal-Rojas_2022_failed_cocreation.pdf
+ Betagui_2023@/cybernetics/Betagui_2023_sociomaterial_epistemic_objects.pdf
+ Clark_2023@/cybernetics/Clark_2023_Mundane_software.pdf
+ Paolo_2023@/cybernetics/Paolo_2023_enact_material_productivity.pdf
+ Vega_2023@/cybernetics/Vega_2023_sociomaterial_thinking_making.pdf
+ Macgilchrist_2023@/cybernetics/Macgilchrist_2023_postdigital_futures.pdf
+ Shan_2024@/cybernetics/Shan_2024_expanding_engineering_innovation.pdf
+ Dittrich_2024@/cybernetics/Dittrich_2024_Triage_anthropology.pdf
+ Benavides_2024@/cybernetics/Benavides_2024_tech_mediated_nature_encounters.pdf
+
+ Lantz_2005@/cybernetics/Lantz_2005_NORDES_Interaction_design_by_practicioners.pdf
+ Feenberg_2009@/cybernetics/Feenberg_2009_Radical-Philosophy-of-Technology-From-Marx-to-Marcuse-and-beyond.pdf
+ Feenberg_2023@/cybernetics/Feenberg_2023_marcuse-s-critique-of-technology-today.pdf
+ (Murray-Rust 2019)@/cybernetics/Murray-Rust_2019_Entangled_ethnography.pdf
+ Kautz_2017@/cybernetics/Kautz_2017_sociomateriality_information_systems.pdf
+ Kautz_2014@/cybernetics/Kautz_2014_ReframingSuccessFailure.pdf
+
+ Liu_et_al._2018@/cybernetics/Liu_2018_Collaborative_Survival.pdf
+
+Merkourus_2022@/Framing/Thesis_final___Markos_P.Merkouris.pdf
+Spiel et al 2017 Ant experiences
+
+{text-align:center}
+actornetwork#network({"design":
+{"technology":
+{"data":
+{"violent legibility":{}
+,"virtual identities":{}
+,"qualitative":{}
+,"quantitative":{}
+}
+,"algorithms":{"qualitative":{},"quantitative":{},"black box":{}}
+,"consumer products":{"users":{"participatory design":{}}}
+}
+,"black box":{}
+,"engineers":{}
+}},{"spread":"force"}){width:50%;text-align:center}
+
+Figure 1: actor network of software phenomenology. 
+{text-align:left}
+
+Methodology#h2{text-align:center}
+
+ (Participant observation)#b 
+
+ Following a history of scarce and fragmented ethnographic engagement with software development practice, (Dittrich et al. 2024)@/cybernetics/Dittrich_2024_Ethnography_for_software.pdf released a practical guide for doing so just this year. As precedents, she presents (Unphon & Dittrich 2010)@/cybernetics/Unphon_2010_longterm_software_architecture_awareness.pdf who found that corporate organizations tend to not maintain a stable documentation in order to ease communication between departments. De Souza and Redmiles (57) . A study about air traffic controllers revealed how there can be serious technical or cultural limitations justifying even decades of delay to adopt seemimgly favorable technologies (2017). A third example about software security practices resulted in the creation of the ("Motivating Jenny")@https://motivatingjenny.org model to support cultures of consideration around security, to remarkable success counting thousands of downloads by industry and education in only a year ((Lopez 2023)@/cybernetics/Lopez_2023_security_responses_in_software_development.pdf). These remarkable insights demonstrate how ethnography can reveal immediately actionable improvements directly to agents of change, especially with rationales behind their existing practices being recognised and respected. 
+ She asserts that in HCI research, ethnography has been used exclusively targeting user groups, and while studies on software engineering practice often lead to constructive theories for professionals, it is this very ethnographic understanding of their culture that simply allows for such practical theories to be generated, and appropriately implemented if needed. Research output that is grounded in such comprehensive contextual awareness is also much more likely to be accepted by practicioners. This understanding can be about human and social aspects of practicioners, the effects of the tools and paradigms they are relying on, as well as their workflows or work environments. In highly technical field, a level of familiarity with the domain and its language is often even necessary to prevent misinterpretation, or at least to speed up and enrich preparation and analysis, but it is always cardinal to acquire and maintain an unbiased perspective, as well as avoiding to "go native". The cognitive openness to take in empirical experience without presumptions is discussed in phenomenological literature as "suspension of judgement", or "epoch�" and "bracketing" (Husserl 1906) for short. As far as my methodical review has extended, ethnographic literature typically takes this term as something self-evident, and at best advises to "strike" a balance between familiarity and "strangeness" (Latour's critical proximity). Recognising that engagement of scienfic inquiry is inseparable from cultural progress in a "critical" field of study (making it a "value-articulating institution", as identified in ecological economics; (Vatn 2006)@/cybernetics/Vatn_2006_Institutions.pdf), and its informants may well be as early yet in exactly judging the specific values in question as the researcher, should constitute a warning for both parties about the emergency of prioritizing reflection on tendencies for predeliction, over drawing conclusions, in order to avoid interfering in potentially negative ways. Asking the wrong questions can cause confusion, and even mislead professionals in their own expertise. This ethical consideration has unfortunately not yet percolated into anthropology (driven by a conflict between social and evolutionary anthropology, debate is only ongoing about what domains should be considered politically acceptable to study, not about positive and negative influence on them; Dandrade_1995@/cybernetics/Dandrade_1995_Moral-Models-in-Anthropology.pdf, Fearn_2008@/cybernetics/Fearn_2008_the_great_divide.pdf, Perry_2010@/cybernetics/Perry_2010_The_lack_of_acceptance_of_evolutionary_a.pdf, Smocovitis_2012@/cybernetics/Smocovitis_2012_humanizing_evolution.pdf, Langlitz_2020@/cybernetics/Langlitz_2020_DEVILS_ADVOCATE_anthropology.pdf, Langlitz_2020@/cybernetics/Langlitz_2020_WARNING_AGAINST_MORALITY.pdf, Canceran_2023@/cybernetics/Canceran_2023_Ethical_turn_in_the_social_sciences.pdf). 
+ The ultimate goal of ethnography is to deduce or induce consistent theories#b from related concepts in the analysis of field observations. To reach sufficient level of detail, in addition to making and analysing observations as much so as if we were aiming to present them to "a traveller from outer space" (sic.) as possible, ethnography typically needs to be combined with other methods, such as interviews, focus groups and external data analysis. Verbatim quotations are an important part of analysis, as they allow future reviewers to assess the accuracy of the researcher's subjective interpretations. Regarding the generalizability of this method, there are big, long standing controversies surrounding its possibility at all (see "the problem of induction"; Hume 1739, (Salmon 1978)@/cybernetics/Salmon_1978_UnfinishedBusinessProblem.pdf, (Henderson 2022)@https://plato.stanford.edu/entries/induction-problem/; or "the postmodern holiday"; (D'Andrade 2002)@/cybernetics/Dandrade_2000_the-sad-story-of-anthropology-1950-1999.pdf, (Levinson 2012)@/cybernetics/Levinson_2012_The_Original_Sin_of_Cognitive_Science.pdf, (Kroupin et al. 2024)@/cybernetics/Kroupin_2024_beyond_newton.pdf), with some anthropologists arguing that even though "statistical" generalizability certainly isn't, "analytical generalization" can be achieved through (figurative) extrapolation or the cumulation of "similar" studies (the "cognitivist view"; eg. Lave & Wegner 34), while others try to rationalize why its impossibility doesn't compromise validy ("the hermeneutic approach"; (Flyvbjerg 2006)@/Flyvbjerg_2006_case_study_misunderstandings.pdf). In my project I'm supporting the former argument, by hoping for my findings to serve as contribution to a range of similar studies, until theory generation may be considered viable and reliable. Vannoni_2014@/vannoni_2014_what-are-case-studies-good-for-nesting-comparative-case-study-research-into-the-lakatosian-research-program.pdf
+
+Dumit_2014_writing_the_implosion.pdf@/Anthropology/Dumit_2014_writing_the_implosion.pdf
+344-362
+
+ (Semi-structured interviews)#b
+
+ encoding
+
+ Application#b
+ 
+ Since software development has become more and more distributed in the online space especially due to the lockdowns during the pandemic of 2020 (assimilating to open source projects where this has been the case by nature), methods for conducting virtual ethnography have been adopted to study it (29, 33, 43). My interviews will be conducted over video calls on app.kosmi.io, with exercises in screen sharing. Kosmi is a platform optimized for informal online hangout, with several features such as streams from participants' cameras positioned on a couch around a table, in a virtual room with a fireplace, which can help create a comfortable, welcoming and inspiring atmosphere. My target community is IndieWeb.org and JSRebels, two grassroot online communities of independent web developers. Many independent bloggers and web makers, including myself, gathered for a conference organized by IndieWeb.org in Berlin on the 9th of November 2024, where I developed personal rapport with some of them in advance. This means that instead of having a "gatekeeper" informant to connect and negotiate other informants, they will be contacted directly. The preliminary interview will aim to map the sociomaterial actor network of the informant as an "agent" of web technology, thereby guide subsequent observations of the "diffraction" of their agential cuts in processes of "mattering". The ethnography will be made on a participaroty basis, as the semi-structured interview will be followed by a pair programming exercise simulating their work environment, reviewing some code they had written recently (see appendix 1). If such material is not available, a scenario will be negotiated with the informant for a programming task to be implemented together, me taking the "navigator" role and them being the "driver" (roles commonly assumed in pair programming exercises). To support transparency, field notes I take during the meetings will be shared with the participants in real-time for validation ("member checking"). Since the relationship between actors and intra-actions has a bipartite network sturcture, an adjacency (entanglement) matrix will be guiding my note-taking. The roadmap of the ethnography is also sent to them in advance, including time estimations and its overall goals, so they can prepare and give consent for both its content and duration. In anticipation of them finding their reflections during the ethnography useful for themselves, I will close the sessions by offering future correspondence and collaboration. 
+
+ Lederman_2004@/cybernetics/Lederman_2004_Towards_an_anthropology_of_disciplinarit.pdf
+ Seaver_2024@/cybernetics/Seaver_2021_spatial_data.pdf
+
+ Ellen_2010@/cybernetics/Ellen_2010_Theoriesanthropologyanthropological.pdf
+ Bell_2018@/cybernetics/Bell_2018_The_problem_of_undesigned_relationality.pdf
+ Cabana_2022@/cybernetics/Cabana_2022_Crossing_at_Y_Our_Own_Peril_Biocultural.pdf
+ Dittrich_2014@/cybernetics/Dittrich_2014_to_use_a_method_in_software.pdf
+ (Pink et al. 2016)@/Anthropology/Pink_etal_2016_Digital_Ethnography.pdf 
+ (Denzin ed. 2018)@/cybernetics/Denzin_2018_SAGE_handbook_of_qualitative_research.pdf Sage handbook of qualitative research 
+
+Results#h2{text-align:center}
+
+demo-scene 
+software engineer 
+
+Discussion#h2{text-align:center}
+
+Conclusions#h2{text-align:center}
+
+References#h2{text-align:center}
+
+Appendix#h2{text-align:center}
+
+(Interview guide)#h2
+
+ Welcome to Severance -------- --- �--. ��
+                                        ^
+                                        Error: Segmentation fault (core dumped) 
+                                        waiting for debugger to reconnect...
+
+
+The following ethnography will aim to map the "actor network" of You (singular) as an "agent" of software creation, and observe You (plural) in Action. 
+
+Sorry for that, bear with me. The unusual words I just used are from "science and technology studies", a branch of applied philosophy trying to define our relationship with science and technology. 
+
+The benefit of its approach is allowing the humanities and the natural sciences to join forces to answer questions such as that of this study: 
+
+How are decisions taken during development preserved in software products? 
+
+If these traces could be identified, common concerns about transparency, accountability and attribution of software could decrease, and unnecessary "black box" effects reduced. 
+
+You may now see how the menacing title of "Severance" wasn't in reference to any shady medical procedure out of an upcoming sci-fi series, but to this issue of diminishing authority in the hands of engineers. 
+
+We would start by reviewing the material and human context of your practice, 
+and then do a short pair programming exercise, either reviewing something 
+that you have recently worked on, strictly in the public domain, or if you prefer, 
+trying to implement a simple algorithm together in your programming language of choice. 
+
+Finally, we will take a look at a "provotype" (provocative prototype) 
+for a proposed alternative "sociomaterial" model for creating websites, 
+that claims to realize full developer agency, 
+and let you test how it compares to your current workflows. 
+
+Time estimates for each step are shown below, it should take a total of 30 minutes. 
+The study is done for a master program in Techno-Anthropology at Aalborg University. 
+If you don't mind, I would also record our exchange. 
+You will be able to see the notes I here on the website. 
+
+Shall we get started? :) 
+
+Material aspects (5 minutes): 
+
+What existing hardware do you rely on to write programs and why? 
+What existing software do you rely on to write programs and why? 
+What changes do you make to these software and hardware to customize your experience? 
+What are some of their immutable characteristics that influence your work, and how? 
+
+Human aspects (5 minutes): 
+
+What goals motivate you the most when you start writing a program? 
+How much time do you usually spend on design, relative to implementation? 
+What experiences keep you inspired during implementation, before finishing a task? 
+What events can cause you distress during implementation? 
+Thinking back on some of your accomplisments in the past, how do you feel about them now? 
+Do you wish they would be different in any way? 
+Do you have any practices that you seek to improve on in the future? 
+
+Simulating natural work environment (10 minutes): 
+
+Is there a feature you have recently worked on, that you would be open and able
+to share for a pair-programming exercise? (are you sure it is in public domain?)
+Alternatively, let's try to implement a breadth- and depth-first search algorithm together, 
+taking input from. 
+
+Testing provotype on modular tacit programming (10 minutes): 
+
+Let's visit https://jsinterface.org/author/blik/ and walk through the exercises in my blog post on "Interface", "Inference" and "Form". 
+
+Request feedback on the content of the blogposts. 
+
+(Notes)#b 
+
+{text-align:center}
+actor-network#[[["/Blik_2025_severance.json","0","1"]],"inference/iterate","chart/matrix"]{display:inline-block;margin:10em 0}
+
+(Interview transcript #1)#h2 
+
+ROLE: Software engineer
+PROGRAMMING EXPERIENCE (years): 10
+AGE: 30-35
+
+
+(Interview transcript #2)#h2
+
+ROLE: Software engineer
+PROGRAMMING EXPERIENCE (years): 9
+AGE: 25-30
+
+
+(Interview transcript #3)#h2
+
+ROLE: Software engineer student
+AGE: 20-25
+PROGRAMMING EXPERIENCE (years): 3
+
+
+
+BoersenBotin2013_TANT.pdf@/Anthropology/BoersenBotin2013_TANT.pdf
+Heidegger_1954_Concerning_Technology.pdf@/Anthropology/Heidegger_1954_Concerning_Technology.pdf
+Matejka_2017_Annealing_identical_statistics.pdf@/Anthropology/Matejka_2017_Annealing_identical_statistics.pdf
+Jensen_Techno_Anthropology_STS_Encounters_2013.pdf@/Anthropology/Jensen_Techno_Anthropology_STS_Encounters_2013.pdf
+Clarke_2005@/Framing/Clarke_2005_Situational_Analysis.pdf
+
+ 1. Infrastructure and institution
+
+Karasti_2014@/Framing/Karasti_2014_Infrastructuring_in_participatory_design.pdf
+Cibin_etal_2019@/Framing/Cibin_etal_2019_Institutioning_community_radio.pdf
+
+ 2. Value-sensitive design
+
+ Friedman_2013@/Framing/Doorn_etal_2013_Philosophy_of_engineering_reflections.pdf
+ Value sensitive design: privacy, property, impartiality, welfare, accessibility, trust, autonomy. 
+Control. 
+Iterative conceptual, empirical, technical investigation. 
+Cookies: Informed consent (disclosure, compensation, voluntariness)
+HDTV window: 
+Milieu simulation: 
+ Poel_2013@/Framing/Poel_2010_Translating_values_into_design.pdf
+ Translating values into design requirements: value hierarchy specification. 
+value(judgement)-Norm(prescription)-design requirement or sake justification (means to an end).
+Professional or philosophical deliberation. 
+
+ 3. Co-design
+
+Osborne_2016@/Framing/Osborne_2016_Co-production_PMR_final.pdf
+Sanders_2008@/Framing/Sanders_2008_Co-creation_and_the_new_landscapes_of_design.pdf
+
+ 4. Publics
+
+disalvo_2013@/Framing/disalvo_2013_infrastructuring-and-the-formation-of-publics-in-participatory-design.pdf
+Teli_2014@/Framing/Teli_2014_Public_design_urban_digital_commons.pdf
+
+ 5. Agonistic design
+
+Bjorgvinsson_2012@/Framing/Bjorgvinsson_2012_Agonistic_design_marginalised_movements.pdf
+Keyes_2019@/Framing/Keyes_2019_Anarchist_HCI.pdf
+
+ 6. Commoning
+
+Ekbia_2014@/Framing/Ekbia_2014_Heteromation_division_of_labor_between_humans_and_machines.pdf
+Marttila_2017@/Framing/Marttila_2017_Infrastructuring_commons.pdf
+
+ 7. Feminine human-computer interaction
+
+ Bardzell_2010@/Framing/Bardzell_2010_Feminist_HCI.pdf
+ user research, prototyping, evaluation instead of piecemeal feminism. 
+"Universal" accessible design from STS, 
+domestic and developing country tech from product design, pervasive computing from architecture, 
+affective computing from game design. 
+pluralism (marginal standpoint epistemologies) and self-disclosure over universalism, participation over reproducibility, advocacy over empiricism, ecology and embodiment over performance. 
+ Sciannamblo_2021@/Framing/Sciannamblo_2021_Caring_commoning_cooperative_work.pdf
+ activism and emancipation over surveillence/platform capitalism in work, affects, politics in computer-supported cooperative work
+by focusing on reproductive work.
+Autonomy, cooperation and solidarity over exploitation, commodification. 
+Heteromation over audience commodity. 
+Caring is invervention of structuring connections, generative critique. 
+Careful peer production, cooperative enterprise, maintenance and repair of commons. 
+Commons are sets of collective interests. 
+Grassroots solidarity of Commonfare to challenge precariousness, unemployment with digital technologies. 
+Infrastructure for solidarity and commoning. 
+
+ 8. Sustainable interaction design   
+
+ Blevis_2007@/Framing/Blevis_2007_Sustainable_interaction_design.pdf
+ sustainable values, methods, reasoning. 
+defuturing, ontological design, technophenomenology, structure-preserving transformations. 
+disposal, salvage, reuse, refurbishment, recycling, longevity, sharing, heirloom, alternatives, resilience. 
+move from users to human conditions, from novelty to well-designed systems. 
+value: I=NPE, method: prescriptive critique and reflection, reasoning: obsolescence and longevity conditions for invention through (e)quality, ownership, ecology. 
+ Blevis_2013@/Framing/Blevis_2013_Collapse_informatics_and_practice.pdf collapse informatics. comparative research of reflexive practice theory, longitudinal study. 
+climate change habitability index, wisdom of years, local smart grids, 
+
+ 
+Appleton_2020_Digital_Anthropology.pdf@/Anthropology/Appleton_2020_Digital_Anthropology.pdf
+Brinkman_2013_Qualitative_Interviewing.pdf@/Anthropology/Brinkman_2013_Qualitative_Interviewing.pdf
+
+Andersen_etal_2020_anthropology_inside_out.pdf@/Anthropology/Andersen_etal_2020_anthropology_inside_out.pdf
+Neyland_2008_organizational_ethnography.pdf@/Anthropology/Neyland_2008_organizational_ethnography.pdf
+
+ #1 centering algorithms
+
+Seaver_2019_Digital_STS_26_Knowing_Algorithms.pdf@/Anthropology/Seaver_2019_Digital_STS_26_Knowing_Algorithms.pdf
+ Algorithms. Anagnorisis (aletheia)
+Douglas-Jones_2021_Anthropology_of_data.pdf@/Anthropology/Douglas-Jones_2021_Anthropology_of_data.pdf
+ Anthropology of data. making it "political" and "generative". 
+ examples: evidence, government, indicators by experts (how tf are these the first 3 coming to mind...)
+ precedents: audit culture, (colonial) bureaucracy, violent legibility by numerical seduction (this is insane.)
+ Pink_etal_2016_Digital_Ethnography.pdf@/Anthropology/Pink_etal_2016_Digital_Ethnography.pdf
+ Balasescu_2020_machine_anthropology.pdf@/Anthropology/Balasescu_2020_machine_anthropology.pdf
+ Munk_etal_2022_think_machine_anthropological_ai_between_explanation_and_explication.pdf@/Anthropology/munk_etal_2022_think_machine_anthropological_ai_between_explanation_and_explication.pdf
+ blok_2014_complementary_social_science_in_a_big_data_world.pdf@/Anthropology/blok_2014_complementary_social_science_in_a_big_data_world.pdf
+
+Dumit_2014_writing_the_implosion.pdf@/Anthropology/Dumit_2014_writing_the_implosion.pdf
+344-362
+Knox_2016_Digital_Ontology.pdf@/Anthropology/Knox_2016_Digital_Ontology.pdf
+Sapiezinsky_2019_interaction_data.pdf@/Anthropology/Sapiezinsky_2019_interaction_data.pdf
+Wilson_2008_global_indigenous_media.pdf@/Anthropology/Wilson_2008_global_indigenous_media.pdf
+Anderson_2008_End_of_Theory_Scientific_method.pdf@/Anthropology/Anderson_2008_End_of_Theory_Scientific_method.pdf
+
+ #2 public privacy
+
+Mohl_2022_Biometric_Technologies_border_control.pdf@/Anthropology/Mohl_2022_Biometric_Technologies_border_control.pdf
+Grunenberg_2020_Biometric_technologies_anti-spoofing.pdf@/Anthropology/Grunenberg_2020_Biometric_technologies_anti-spoofing.pdf
+Waltorp_2017@/Anthropology/Salazar_etal_2017_Anthropologies_and_Futures_Researching_Emerging_and_Uncertain_Worlds.pdf
+101-116
+
+Ravn_etal_2019_Publicly_available_data_Instagram.pdf@/Anthropology/Ravn_etal_2019_Publicly_available_data_Instagram.pdf
+40-45
+Miller_Horst_2012_The_Digital_and_the_Human.pdf@/Anthropology/Miller_Horst_2012_The_Digital_and_the_Human.pdf
+Waltorp_2018@/Anthropology/Estalella_etal_2018_Experimental_Collaborations_Ethnography_through_Fieldwork_Devices.pdf
+114-131
+
+ #7 automated healthcare
+
+Jensen_2022@/Anthropology/Jensen_2022_organ_transplant_data.pdf
+Hoeyer_2020_Private_public_data_infrastructures.pdf@/Anthropology/Hoeyer_2020_Private_public_data_infrastructures.pdf
+Mol_2010@Mol_2010_Care_Practice_into_theory.pdf
+Wadman_2022_Patient_confidentiality_history.pdf@/Anthropology/Wadman_2022_Patient_confidentiality_history.pdf
+Christensen_2023@/Anthropology/Christensen_2023_ehealth_for_persistent_patients.pdf
+
+ 275 Hippocratic oath
+ 1924 public registry
+ 1968 CPR number
+ 1983 Dankort
+ 2000 digital signature, MinSundhed, eboks
+ 2001 digitalization strategy
+ 2010 NemID
+ 2022 MitID
+
+ #5 digitalization of trade
+ 
+Nelms_et_al_2018@/Anthropology/Nelms_et_al_2018_sharing_economy.pdf
+Bruun_etal_2020@/Anthropology/Bruun_etal_2020_Infrastructures_of_trust_and_distrust_the_politics_and_ethics_of_emerging_cryptographic_technologies_AM.pdf
+Breslin_2024@/Anthropology/Breslin_2024_cultures_of_trust_in_computing.pdf
+Breslin_2024@/Anthropology/Breslin_2024_cultures_of_trust_in_computing_.mp3
+
+Ravnbol_2019@/Anthropology/Ravnbol_2023_Anthropod_Cashless_.mp3
+Hoods_2019@/Anthropology/Hoods_2019_Facebook_Libra_issue.pdf
+
+Bruun_etal_2020@/Anthropology/Bruun_etal_2020_Cryptic_Commonalities.pdf
+
+ #3 digitalization of nature
+
+Goldstein_Nost_etal_2022_The_Nature_of_Data.pdf@/Anthropology/Goldstein_Nost_etal_2022_The_Nature_of_Data.pdf
+Gabrys_2016_Program_Earth.pdf@/Anthropology/Gabrys_2016_Program_Earth.pdf
+gabrys_2020@/Anthropology/gabrys_2020_smart-forests-and-data-practices-from-the-internet-of-trees-to-planetary-governance.pdf
+Nadim_2021_Datafication_of_nature.pdf@/Anthropology/Nadim_2021_Datafication_of_nature.pdf
+Nadim_2020@https://www.anthropocene-curriculum.org/contribution/data-flow
+
+Helmreich_2011@/Anthropology/Helmreich_2011_NatureCultureSeawater.pdf
+Helmreich_2011@/Anthropology/Helmreich_2011_spaceship_google_ocean.pdf
+Childs_2019@/Anthropology/Childs_2019_deep_sea_mining.pdf
+
+ #4 digitalization of infrastructure
+
+ star_ruhleder_1996_ecologyofinfrastructure.pdf@/Anthropology/star_ruhleder_1996_ecologyofinfrastructure.pdf
+ Information infrastructures. Ecology of infrastructure. Bateson's complexity levels of learning, designer-user communication. 
+Collaboration, organization, transformation. Structure vs agency structuration. Quest for universal niche. 
+Worm community system. 
+Figure/ground, supported/support hierarchy. Limiting/facilitating channel of transport. 
+Standards, protocols, relations, bereaucracy emergence/enforcement/marginalization. 
+ FISCH_2013_TOKYOSCOMMUTERTRAIN.pdf@/Anthropology/FISCH_2013_TOKYOSCOMMUTERTRAIN.pdf
+ Pink_2022_methods_for_researching_automated_futures.pdf@/Anthropology/pink_2022_methods_for_researching_automated_futures.pdf
+ 
+ Bowker_2000_Sorting_Things_Out_Classification_and_consequences.pdf@/Anthropology/Bowker_2000_Sorting_Things_Out_Classification_and_consequences.pdf
+
+
+ #6 machine translation
+
+Christensen_2022@/Anthropology/Christensen_2022_What_motor_vehicles_and_translation_machines_have_in_common_a_first_step_towards_a_translation_automation_taxonomy_Accepted_manuscript.pdf
+Bundgaard_2018_netnographic_study_of_translators_backtranslation_medical.pdf@/Anthropology/Bundgaard_2018_netnographic_study_of_translators_backtranslation_medical.pdf
+ Medical backtranslation. 
+
+ #8 Time
+
+Duus_etal_2023@/Anthropology/duus_etal_2023_riders-in-app-time-exploring-the-temporal-experiences-of-food-delivery-platform-work.pdf
+Rosa_2003@/Anthropology/Rosa_2003_Social_Acceleration_Ethical_and_Politica.pdf
+Sharma_2013@/Anthropology/Sharma_2013_Critical_Time.pdf
+wajcman_2018@/Anthropology/wajcman_2018_how-silicon-valley-sets-time.pdf
+
+ #9 sentience
+ 
+Jaynes_2021@/Anthropology/Jaynes_2021_algorithmic_personhood.pdf
+Addlesee_2001@/Anthropology/Addlesee_2001_IEEE-computing-sentient.pdf
+
+ #10 ethnography of digital interaction (cancelled)
+
+Brandt_2023_Governing_Like_a_Resilient_City.pdf@/Anthropology/Brandt_2023_Governing_Like_a_Resilient_City.pdf
+chapter 8
+Marvin_2018_Urban_Living_Labs.pdf@/Anthropology/Marvin_2018_Urban_Living_Labs.pdf
+
+(1st SEMESTER LEARNING OBJECTIVES)@/Anthropology/AAU_2024_1st_semester_description.pdf
+A student who has completed this module can:
+KNOWLEDGE
+� explain theories and methods used in studies of digital transformations.
+� explain historical and contemporary needs and uses of a specific technology.
+� categorize technical datasets in transformational perspective.
+� communicate existing knowledge on interdisciplinary project work in groups.
+SKILLS
+� portray and critically evaluate the theoretical and conceptual landscape of Techno-Anthropology and
+link it to digital transformations.
+� identify drivers for responsible digital transformation, planning and implementation.
+� Identify relevant digital platforms in specific digital transformations.
+� critically reflect on own analysis and group dynamics.
+COMPETENCES
+� apply qualitative methods in studies of digital transformation and implementation.
+� communicate complex technological knowledge and practice.
+� make use of the diversities presented in the project group and reflect on the impact on the work
+processes in problem-based and project-oriented work. 
+
+(3rd SEMESTER LEARNING OBJECTIVES)@/Anthropology/AAU_2024_3rd_semester_description.pdf 
+
+
+
+
