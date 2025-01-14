@@ -172,7 +172,7 @@
  insert(document({svg:
  {...search.call(svg.object,icon.split("/")),title:method,id:"toggle"
  }}),control?"over":"before",control||this.firstChild);
- let room=[path(this.ownerDocument.defaultView.location.href),fill.call(this).source].join("/");
+ let room=["",path(this.ownerDocument.defaultView.location.href),fill.call(this).source].join("/");
  if(method==="send"&&!defined(message))
  this.dispatchEvent(new MessageEvent("message",{data:{action:"join",room},bubbles:true}));
 };
@@ -240,6 +240,7 @@
  resource=resource||compose(fetch,digest)(route);
  compose(profile,labels,annotate,["get"],record,form.bind(this))(resource);
  let frame=this?.ownerDocument.defaultView.frame||insert(document({div:{id:"frame"}}),"before",this);
+ frame.dataset.source=route;
  let fragment=infer(transform)(resource,{source:route,...fields});
  return compose.call(each.call(fragment
 ,async fragment=>insert(fragment,"after",frame.lastChild)
@@ -395,8 +396,9 @@
 
  export var peer=
  {imports:
- {"./Blik_2023_inference.js":["","note","each","infer","provide","collect","compose","record","wait","has","clock"]
- ,"./Blik_2023_fragment.js":["","demarkup","document","fill","image","canvas","message as entry"]
+ {"./Blik_2023_inference.js":["","note","each","infer","buffer","provide","collect","compose","record","wait","has","clock"]
+ ,"./Blik_2023_interface.js":["","path","query","locate","resolve"]
+ ,"./Blik_2023_fragment.js":["","demarkup","document","insert","fill","image","canvas","message as entry"]
  }
  ,exports:
  {default: 
@@ -413,6 +415,10 @@
  form.querySelector("#message").parentNode.querySelector("ul").append(message);
  if(name==="system")
  compose(wait(10000),{style:"opacity:0;transition:all 1s;"},Object.assign,wait(1000),"remove")(message);
+},broadcast({message,room,author})
+{let {href}=window.location;
+ note(room)
+ compose({source:room,...query(href)},transform,infer(insert,"under",window.document.querySelector("[actions='"+room+"']")))(message);
 },signal({author},window)
 {let form=window.document.querySelector("form#composer");
  let fields=Array.from(form.querySelectorAll("span[role=textbox]"));
@@ -437,6 +443,7 @@
  Object.assign(updates[index],{changes})))).then(updates=>
  this.room.content.update([updates]));
 }}
+ ,transform
  }
  };
 
@@ -580,7 +587,7 @@
  }
  ,"& span[role=button]":
  {"border-radius":"0 2.1em 2.1em 0","margin-left":0,padding:".5em","vertical-align":"middle",overflow:"hidden",cursor:"pointer"
- ,"&>canvas":{width:"1.2em",height:"1.2em"}
+ ,"&>canvas":{width:"1.2em",height:"1.2em","vertical-align":"middle"}
  }
  ,"&>label,&>span":{display:"table-cell","align-content":"center","min-height":"2.5em"}
  ,"&:hover>label[for=comment]>span[role=textbox]":{"min-width":"5em"}
