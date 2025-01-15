@@ -264,6 +264,94 @@ You will be able to see the notes I here on the website.
 
 Shall we get started? :) 
 
+(Notes)#b 
+
+{text-align:center}
+actor-network#[[["/Blik_2025_severance.json","0","1"]],"inference/iterate","chart/matrix"]{display:inline-block;margin:10em 0}
+
+(Interview transcript #1)#h2 
+
+Material aspects (5 minutes): 
+
+What existing hardware do you rely on to write programs and why? 
+Laptop, no desktop, tablet only for reading. 
+M2 mac provided, 10 year old lenovo "edge". regular mouse, comfortable layout. 
+regular table and chair 3/4. 
+
+What existing software do you rely on to write programs and why? 
+Arch linux, macbook. if i didnt have to change it every 3 years. 
+jetbrains on mac, gedit on arch. jupyter on pc, and vscode for blog, only for writing 
+on the mac. webstorm and pycharm. 
+python for personal projects, js+angular and node and golang at work. 
+
+What changes do you make to these software and hardware to customize your experience? 
+spell checker for plain text, markdown. 
+webstorm spellchecks words and lints. 
+linter customization, region and language settings. 
+file explorer cant remember what changes. 
+disabling AI. 
+
+What are some of their immutable characteristics that influence your work, and how? 
+search bar in jetbrains. code completion has been improving over the years. 
+
+Human aspects (5 minutes): 
+
+What goals motivate you the most when you start writing a program? 
+universal accessibility, group work. 
+researching data, communicating information effectively. 
+
+How much time do you usually spend on design, relative to implementation? 
+ethical questions are better considered early on. 
+iterative design. 
+implementable features are offered, better maintainer than implementor. 
+
+What experiences keep you inspired during implementation, before finishing a task? 
+Intersting problems are progressing and you see the evolution. 
+now i understand the code. 
+
+What events can cause you distress during implementation? 
+designing the technical architecture, and collaborating with other departments. 
+
+Thinking back on some of your accomplisments in the past, how do you feel about them now? 
+not satisfied by past products, prefer work on volunteer projects. 
+had full overview on a project, which was scrapped making the memory worse. 
+
+Do you wish they would be different in any way? 
+they were my own projects, so feel personal, but i would need to focus on other things. 
+potential needs to be expanded. better than crypto or gambling. 
+
+Do you have any practices that you seek to improve on in the future? 
+datavisualization in css, technical communication. 
+
+Simulating natural work environment (10 minutes): 
+
+Is there a feature you have recently worked on, that you would be open and able
+to share for a pair-programming exercise? (are you sure it is in public domain?)
+Alternatively, let's try to implement a breadth- and depth-first search algorithm together, 
+taking input from. 
+Jupyter notebook, python. 
+speeling out input in jupyter, copy pasting, indenting after edit to 2 layers. 
+find_person function name, taking data as second argument. 
+iterating on each level. 
+type error when running. 
+markdown toggle "stop trying to be helpful"
+datastructure specific. 
+
+
+Testing provotype on modular tacit programming (10 minutes): 
+
+Let's visit https://jsinterface.org/author/blik/ and walk through the exercises in my blog post on "Interface", "Inference" and "Form". 
+
+test, translation. 
+at work there are more variables to consider than cli arguments allow. 
+dependencies get compilcated. 
+
+routes need organizing, but it doesnt need to be hierarchical. 
+dont feel like missing tools. 
+
+
+(Interview transcript #2)#h2
+
 Material aspects (5 minutes): 
 
 What existing hardware do you rely on to write programs and why? 
@@ -292,33 +380,39 @@ Testing provotype on modular tacit programming (10 minutes):
 
 Let's visit https://jsinterface.org/author/blik/ and walk through the exercises in my blog post on "Interface", "Inference" and "Form". 
 
-Request feedback on the content of the blogposts. 
 
 (Notes)#b 
-
-{text-align:center}
-actor-network#[[["/Blik_2025_severance.json","0","1"]],"inference/iterate","chart/matrix"]{display:inline-block;margin:10em 0}
-
-(Interview transcript #1)#h2 
-
-ROLE: Software engineer
-PROGRAMMING EXPERIENCE (years): 10
-AGE: 30-35
-
-
-(Interview transcript #2)#h2
-
-ROLE: Software engineer
-PROGRAMMING EXPERIENCE (years): 9
-AGE: 25-30
 
 
 (Interview transcript #3)#h2
 
-ROLE: Software engineer student
-AGE: 20-25
-PROGRAMMING EXPERIENCE (years): 3
+Material aspects (5 minutes): 
 
+What existing hardware do you rely on to write programs and why? 
+What existing software do you rely on to write programs and why? 
+What changes do you make to these software and hardware to customize your experience? 
+What are some of their immutable characteristics that influence your work, and how? 
+
+Human aspects (5 minutes): 
+
+What goals motivate you the most when you start writing a program? 
+How much time do you usually spend on design, relative to implementation? 
+What experiences keep you inspired during implementation, before finishing a task? 
+What events can cause you distress during implementation? 
+Thinking back on some of your accomplisments in the past, how do you feel about them now? 
+Do you wish they would be different in any way? 
+Do you have any practices that you seek to improve on in the future? 
+
+Simulating natural work environment (10 minutes): 
+
+Is there a feature you have recently worked on, that you would be open and able
+to share for a pair-programming exercise? (are you sure it is in public domain?)
+Alternatively, let's try to implement a breadth- and depth-first search algorithm together, 
+taking input from. 
+
+Testing provotype on modular tacit programming (10 minutes): 
+
+Let's visit https://jsinterface.org/author/blik/ and walk through the exercises in my blog post on "Interface", "Inference" and "Form". 
 
 
 BoersenBotin2013_TANT.pdf@/Anthropology/BoersenBotin2013_TANT.pdf

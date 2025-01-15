@@ -1,4 +1,4 @@
-(Disentangling the Web)#h3{text-align:center}
+(Separating concerns)#h3{text-align:center}
 
 {text-align:left}
   Browsers are programs to display#b interactive text files. Like this one. 
@@ -8,9 +8,7 @@ unformatted#["this",["#frame"],"tether fragment/ascend",["shift"],"fragment/text
 
   Over a 100 of them are defined in HTML's namespace#b to reproduce common layout practices, but since the </keywords>#b need to be repeated to end their effect, it quickly proves to be a rather cumbersome format to write directly. Notice also that each keyword introduced features we did not yet consider. To split lines, we were really only interested in "div"#b, the others instead changed the design#b or functionality#b of a segment, while all providing some (semantic association)#b for mechanical interaction (eg. crawlers, screen readers). For a title image link on a new line, should we write "<div><a><h1><svg/></h1></a></div>"#b? 
 
-  Semantics#h3{"id":"Semantics","style":{"margin-left":"1em","font-size":"1.1em"}}
-
-  Not separating these different concerns of customization becomes a recipe for confusion very quickly as you start layering the implicit, arbitrary and limited combinations of them inherent in keywords. To avoid this, the <span>#b keyword exhausts html's otherwise confusing effects in serving its only necessary one of (isolating content)#b. To simply display content that isn't text, we'll also remember <svg>#b, <canvas>#b, <video>#b and <audio>#b. 
+  Not separating these different concerns of customization becomes a recipe for confusion very quickly as you start layering the implicit, arbitrary and limited combinations of them inherent in keywords. To avoid this, the <span>#b keyword exhausts html's otherwise confusing effects in serving its only necessary one of (isolating content)#b. To display content that isn't text, we'll also remember <svg>#b, <canvas>#b, <video>#b and <audio>#b. 
 
   HTML's second feature, allowing us to control these other aspects separately, are field="value"#b pairs ("attributes"), included with keywords between their angle brackets: (<a href="https://jsinterface.org">)#b specifies the address of a link, (<svg width="500">)#b the dimensions of an image. Every keyword has several of them, still arbitrarily controlling design, functionality or semantics. Luckily, all also share one dedicated to each respectively: 
   (1. style)#b for a (still problematic, but at least) (dedicated design language)@https://drafts.csswg.org/css2/, 
@@ -42,7 +40,7 @@ inference#script/highlight(` <link rel="stylesheet" type="text/css" href="./styl
   Functions#b are declared procedures that can isolate variables ((arguments)#b) and conclude by yielding a variable. Javascript is a declarative, procedural and functional programming language with simple expressions#b that are mutually exclusive, and collectively exhaustive: 
 {display:block;text-align:center;margin:.5em 10%;color:#616161}string#b, number#b, boolean#b, object#b, array#b, promise#b, generator#b, undefined#b, null#b, NaN#b, function#b, this#b, arguments#b
 {text-align:left}  and operators#b: 
-{display:block;text-align:center;margin:.5em 10%;color:#616161}= ((assignment)#b), ==, != ((equivalence)#b), ===, !== ((equality)#b), !, &&, ||, ?? ((logical)#b), +, -, *, /, %, <, >, <=, >=, ((arithmetic)#b), &, |, ^, ~, <<, >>, >>> ((bitwise)#b), import, export, let, if, else, do, while, for, in, of, try, catch, yield, return ((procedural)#b), (), {}, [], :, ?., ., ... (inference or ("destructuring")#b). 
+{display:block;text-align:center;margin:.5em 10%;color:#616161}= ((assignment)#b), ==, != ((equivalence)#b), ===, !== ((equality)#b), !, &&, ||, ?? ((logical)#b), +, -, *, /, %, <, >, <=, >=, ((arithmetic)#b), &, |, ^, ~, <<, >>, >>> ((bitwise)#b), import, export, let, var, const, if, else, do, while, for, in, of, try, catch, yield, return ((procedural)#b), (), {}, [], :, ?., ., ... (inference or ("destructuring")#b). 
 {text-align:left}
   The browser itself in fact uses Javascript to process documents, reading every word, tag, attribute and style rule and translating them into pixels, semantics, design and (event listeners)#b. Action fields provide an entry point to take over this mechanism by defining procedures (actions) to be executed at given events. Browsers implicitly include their values in a function declaration to pass them two arguments: a model of the event and the containing element (as "this"#b). To operate a link, we need to set a click#b action and an address#b as a metadata field: 
 inference#script/highlight(` <span role="link" data-address="https://jsinterface.org" onclick="this.ownerDocument.defaultView.open(this.dataset.address,'_blank');">Interface</span>`){max-width:100%;overflow:scroll}
@@ -57,13 +55,13 @@ Its existence has a long history of misunderstanding, leading to a common, redun
 free#script/highlight("action(...arguments)"){display:inline}
 (2. closure)#b when it is permanently assigned (bound) to a variable: 
 closure#script/highlight("action.bind(scope)"){display:inline}
-(3. method)#b when it is implicitly bound to a variable by being a member on it (particular to object-oriented programming): 
+(3. method)#b when it is implicitly bound to a variable by being accessed as a member on it (particular to object-oriented programming): 
 method#script/highlight("scope.action(...arguments)"){display:inline}
 (4. functor)#b when it is dynamically passed along with free arguments: 
 functor#script/highlight("action.call(...arguments)"){display:inline}.
 {text-align:left}
 
-  Before getting confused by this diversity, notice that the first three are all simply assuming a value for the "this" (scope) argument, while the fourth doesn't. This is collectively called "partial application" of a functor#b, which in turn is only the mathematically accurate term (category) for functions representing computer procedures. What truly differentiates functions is rather their return value: operators#b return constants, combinators#b return other functors. Javascript's "bind"#b method simply acts as a function returning its scope function with a default argument, whatever that may be (object, variable or undefined). Unfortunately the Javascript base expressions listed above are littered with unnecessary "method" bindings, but I present alternative combinators to dissolve this confusion in my notes on Inference@Blik_2023_inference. For now, all we need to understand is that our action functions will need to be bound to an element reference and an event type for the browser to find them. While the obvious "node.event=action" works indeed, browsers offer an "addEventListener" (and corresponding "removeEventListener") method to adjust some conditions with an optional third argument. Functions being only a declaration of a procedure, we need a second procedure to do this explicitly, for which the module scope ("this") has the window#b object available containing the model of the entire document: 
+  Before getting confused by this diversity, notice that the first three are all simply assuming a value for the "this" (scope) argument, while the fourth doesn't. This is collectively called "partial application" of a functor#b, which in turn is only the mathematically accurate term ((category)#b) for functions present in computer procedures. What truly differentiates functions is rather their return value: operators#b return constants, combinators#b return other functors. Javascript's "bind"#b method simply acts as a function returning its bound scope with a default argument, whatever that may be (object, variable or undefined). Unfortunately, the Javascript base expressions listed above are littered with these unnecessary "method" bindings, but I present alternative combinators to abandon this confusing practice in my notes on Inference@Blik_2023_inference. For now, all we need to understand is that our action functions will need to be bound to an element reference and an event type for the browser to find them. While the obvious "node.event=action" works indeed, browsers offer an "addEventListener" (and corresponding "removeEventListener") method to bind some further conditions with an optional third argument. Functions being only a declaration of a procedure, we need a second procedure to do this explicitly, for which the module scope ("this") exposes a window#b object containing the model of the entire document: 
 inference#script/highlight(
 '<script>
  function action(event){this.ownerDocument.defaultView.open(this.dataset.address,"_blank");}
@@ -72,16 +70,48 @@ inference#script/highlight(
 ,{capture:false,once:false,passive:false,signal:new AbortController().signal}));
 </script>'){max-width:100%;overflow:scroll}
 
-  Similar to how the "."#b notation for "methods" earlier implied an assignment of the function's scope, the arrow doodle "=>"#b here is an abbreviation javascript supports for free functors, where the "this" argument is inherited from the calling procedure's scope, as it would be ignored anyway. While you can preserve the accolades to include multiple statements, restricting its usage for single expressions corresponds to a type of free functors called "lambdas"#b that promote discipline to avoid liabilities of imperative programming. When you have more actions to assign, it is practical to group them in one object so you can derive them all with the same lambda expression. This generalization reveals how the action namespace is actually independent from this procedure, which is where Javascript's own, natural ability to isolate (referentially transparent)#b modules most obviously outshines HTML and CSS. Adhering to modular "composition over convention" principles outlined in Interface#fragment/link("https://jsinterface.org/Blik_2023_interface/","Interface"), we'll also limit imperative procedures to a single expression on the module scope. 
+  Similar to how the "."#b notation for "methods" earlier implied an assignment of the function's scope, the arrow doodle "=>"#b here is an abbreviation javascript supports for free functors, where the "this" argument is inherited from the calling procedure's scope, as it would just be ignored otherwise. While you can preserve the accolades to include multiple statements, restricting its usage for single expressions corresponds to a type of free functors called "lambdas"#b that promote discipline to avoid liabilities of imperative programming. 
+  
+  When you have more actions to assign, it is practical to group them in one object so you can derive them all in the same lambda expression. This generalization reveals how the action namespace is actually independent#b from this procedure, which is where Javascript's own, natural ability to isolate (referentially transparent)#b modules with its export#b and import#b statements most obviously outshines HTML and CSS. 
 
-  At once, we can note that while selector specificity helped prevent mismatched content references in the isolation of CSS's declarative rules, this procedural assignment of interactions may still leave past or future elements out of its scope at the moment of execution. Luckily, browser actions don't need to be bound to a specific element to receive events from it. When an interaction happens, the event stores its own reference to the "target" element it originated in, and gets "propagated" to each containing element in the document. You can still restrict actions to more specific container elements, but to make sure you receive them, every event can be captured on the document level. To buffer events happening before your bindings are ready, assign asynchronous actions that delegate them afterwards: 
+  At once, we can note that while selector specificity helped prevent mismatched content references in the isolation of CSS's declarative rules, this procedural assignment of interactions may still leave past or future elements out of its scope at the moment of execution. Luckily, browser actions don't need to be bound to a specific element to receive events from it. When interactions happen, their event stores a reference to the ("target")#b element they originated in, and gets ("propagated")#b to each containing element in the document. To make sure you receive them, every event can therefore be captured#b on a higher level, be routed back to their target element from there. While you may choose the highest document level for this, it could imply a large set of independent actions to be stored on one object. A more modular approach is to reference actions in a data attribute on your elements, and capture only the ("load")# event on the body tag (discussed momentarily), fired when all its elements are loaded, to perform these assignments. To capture events happening before your binding is ready, assign asynchronous actions that delegate them afterwards: 
+
+actions#script(
+` // /actions
+ export var document=
+ {body:
+ {load()
+{this.querySelectorAll("[data-actions]").forEach(node=>
+ capture.call(node,node.dataset.actions));
+}}
+ };
+
+ export var link=
+ {"span[role=link]":
+ {click(event)
+{this.ownerDocument.defaultView.open(this.dataset.address,"_blank");
+}}
+ };
+
+ export var image=
+ {"canvas[role=img]":
+ {contextrestored(event)
+{let [src,alt]=["data-source","aria-label"].map(this.getAttribute.bind(this));
+ compose(image,canvas,infer(insert,"over",this))(src,alt);
+}}
+ };`,{"source":"/actions"}){max-width:90%;overflow:scroll;width:90%;margin:auto;border-radius:.5em; border:2px dashed #616161}
+
 
 capture#script(
 ' // /capture
- capture.call(this,"/actions");
+ capture.call(this.document,"/actions/document");
 
  export function capture(module)
-{let lead=["/","./"].find(lead=>module.startsWith(lead));
+{// register events to be routed to actions scoped by selector (eg. {#form:{submit(){}}}). 
+ if(!globalThis.window)
+ // Re-invoke on client to capture events. 
+ return this.setAttribute("actions",module),this;
+ let lead=["/","./"].find(lead=>module.startsWith(lead));
  let route=actions.replace(lead,"").split("/").filter(Boolean);
  let actions=import(lead+route.shift()).then(module=>
  Object.assign(["default"],route).reduce((module,field)=>module[field],module));
@@ -105,26 +135,12 @@ capture#script(
  console.warn({["captured "+event.type+" from"]:event.target});
 };',{"source":"/capture"}){max-width:90%;overflow:scroll;width:90%;margin:auto;border-radius:.5em; border:2px dashed #616161}
 
-actions#script(
-` // /actions
- export default
- {"span[role=link]":
- {click(event)
-{this.ownerDocument.defaultView.open(this.dataset.address,"_blank");
-}}
- ,"canvas[role=img]":
- {contextrestored(event)
-{let [src,alt]=["data-source","aria-label"].map(this.getAttribute.bind(this));
- compose(image,canvas,infer(insert,"over",this))(src,alt);
-}}
- };`,{"source":"/actions"}){max-width:90%;overflow:scroll;width:90%;margin:auto;border-radius:.5em; border:2px dashed #616161}
-
-  As with style#b tags, we can now also isolate this module into a file. Since javascript can interfere with the browser as part of the its own procedure, a simple link tag is not designed to control it sufficiently. The script tag itself was extended with attributes to make it execute in parallel with the rest of the document ("async"), or after it is fully displayed ("defer"). For backwards compatibility with some old, deprecated javascript syntax ("commonjs"), a "type" field needs to be set explicitly: 
+  As with style#b tags, we can now also isolate this module into a file. Since javascript can interfere with the browser as part of the its own procedure, a simple link tag is not sufficient to control it. The script tag itself was extended with attributes to make it execute in parallel with the rest of the document (("async")#b), or after it is fully displayed (("defer")#b). For backwards compatibility with an older, deprecated javascript syntax ("commonjs"), a "type" field for modular javascript needs to be set explicitly: 
 inference#script/highlight(` <script src="./capture" type="module" async="false" defer="true"/>`){max-width:100%;overflow:scroll} 
 
   (The goal)#b{font-size:1.1em}
 
-  We shouldn't forget to note that these last three tags (script, style and link) are new in the sense that they don't isolate content#b of their own that we'd like to display. They are called metadata#b tags, and they modify the display of other elements in the document, so ideally they are processed before them. While being careful to place them first could be sufficient, or it may even be fine to change the document retrospectively with styles and scripts, some metadata tags contain semantic information about the entire document that may be critical for its display, or be interesting without its content, such as <meta>#b tags for description, encoding and optimal screen dimensions. For this reason, the main <html>#b tag is divided by respective <head>#b and <body>#b tags, following a standard GML namespace declaration: 
+  We shouldn't forget to note that these last three tags (script, style and link) were new in the sense that they don't isolate content#b of their own that we'd like to display. These are called metadata#b tags, and they modify the display of other elements in the document, so ideally they are processed before them. While being careful to place them first could be sufficient, or it may even be fine to adjust the document retrospectively, some metadata tags contain semantic information about the entire document that may be critical for its display, or be interesting without its content, such as <meta>#b tags for description, encoding and intended screen dimensions. For this reason, the main <html>#b tag is divided by respective <head>#b and <body>#b tags, following a standard GML namespace declaration: 
 
 inference#script/highlight(`<!DOCTYPE html>
 <html lang="en">

@@ -640,7 +640,8 @@
 }}
  ,".message>span:first-of-type":
  {...observe({hover({isTrusted:hover,target})
-{if(!hover)
+{if(this!==target)return;
+ if(!hover)
  return [target.firstChild.nextSibling].forEach(function remove(node){node&&remove(node.nextSibling),node?.remove();});
  let name=this.closest(".message").querySelector(".name").textContent;
  if(name!==cookie("author")&&cookie("rank")!=="ranger")
@@ -656,7 +657,7 @@
  //,touchstart(event){event.preventDefault();}
  }
  ,".message svg[role=button]":
- {async pointerout()
+ {async click()
 {let source=this.closest(".comments").parentNode.querySelector(".article").getAttribute("source");
  let message=this.closest(".message");
  let {index}=message.dataset;
