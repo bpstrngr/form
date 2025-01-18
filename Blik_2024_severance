@@ -2,13 +2,13 @@
 
 
 (Severance: 
-an archaeology of sociomaterial entanglements between software and their engineers in "black boxes" from a Critical Making perspective)#span{"role":"heading","aria-level":"1","style":"font-size:2em;font-weight:bold"}
+an archaeology of sociomaterial entanglements between software and their engineers in "black boxes" of the Web)#span{"role":"heading","aria-level":"1","style":"font-size:2em;font-weight:bold"}
 
 
 
 Patrik Blik
 
-2024
+2025
 
 AAU@/AAU_2020_logo.svg{width:300px}
 
@@ -98,20 +98,7 @@ Sapiezinsky_2019_interaction_data.pdf@/Anthropology/Sapiezinsky_2019_interaction
  Suchman ((1998)@/cybernetics/Suchman_1998_human_machine_reconsidered.pdf) ((2002)@/cybernetics/Suchman_2002_Locatedaccountabilitiesintechnologyproduction.pdf) provided the first critique of agential realism. More successful adoption of agential realism at long last helped Jackson and Kang ((2014)@/cybernetics/Jackson_2014_breakdown_obsolescence_reuse.pdf) and Devendorf et al. ((2016)@/cybernetics/Devendorf_2016_postanthropocentric_making_3dprinting.pdf) to connect ANT and OOO under a consistent frame, bringing the engineer's (maker's) agency into the picture. Redstrom and Wiltse ((2015)@/cybernetics/Redstrom_2015_fluid_assemblages.pdf, (2018)@/cybernetics/Redstrom_2019_innovation_through_design_philosophy.pdf) combined Barad's theory with fluid assemblages of Deleuze and Guattari (2013).
  The power over technology is, and will remain inextracably in the hands of capable humans in the form of engineers, and the only way to share in it will lead trough acknowledging them, allowing for collaboration and contribution with similar competence, as Seaver has suggested, - if only to assert our trust in "theirs". No shortcuts lead through superficial theoretization, or they do no further than the antagonism they are conceived in. What follows is a genuine attempt to build bridges, by lifting the primary, necessary, yet mostly ignored agents of technology into participatory design, to make arbitrary management goals even conceivable. 
 
- Bogers_2019@/cybernetics/Bogers_2019_CriticalMakersReader.pdf
- Neill_2021@/cybernetics/Neill_2021_the-handbook-of-peer-production.pdf chapter 26
- restoration of programming as a tool of thought (process), not a product. 
- Designers, design education and artists have a proclivity to use "hacker" terminology, originating from online maker subcultures, which Groten (2001) considers a cultural appropriation. 
- Gets into the creativity in hacking, but switches to a social aspect... 
- the creativity and aesthetics is a duty. 
- "i don't even care about your so-called design methods." 
- Hacking is not a method. complex form of interactions. an ecology. you glorify it and forget about the dynamics. 
- programmer vs developer 
- politically incorrent culture 
- they maintain spaces for others to confront them. 
- constant and meticulous documentation. we don't hide problems. 
- "Designers should disseminate their work in ways that force still-vulnerable processes to be exposed and possibly contested." 
- instead of making "convincing work", designers could create their own ecology of frictions. 
+
 
  
 
@@ -338,16 +325,387 @@ markdown toggle "stop trying to be helpful"
 datastructure specific. 
 
 
-Testing provotype on modular tacit programming (10 minutes): 
+and so hi Sarah this is the first interview we're doing for my project Severance that's
+the working title of it and we will be I'll read the summary of what we'll be doing which
+is an ethnography where I will be mapping the actor network of how you work which is a technical
+term but basically we will list your material tools that you're working with and your human
+attitudes towards them and the main goal is to then observe you in action with your tools
+and your thoughts and I will try to detect certain phenomena in your work that well the idea
+is that it would help in the future to for for example managers or users or non-technical
+people to get a better understanding of how you work and and make the technological products
+more accessible to them yes so first we will go through questions about your material and
+human context in practice and then a short pair programming exercise if you could think you
+you said you weren't sure if you have something to review that you worked on recently ah but
+that's perfectly fine we otherwise we can just do a short coding exercise and then and then we
+we will go through the articles that I showed you um should take 30 minutes but we're starting a little
+delayed um and we'll see how far we get uh within remaining like 15 from the official time schedule um yes so are you ready then
+okay okay then first question is uh what hardware do you rely on when you work
+uh like i the like from what i know about you you work with websites but uh sometimes you said that
+you're less in the technical area i don't know uh sometimes you uh manage projects like that
+yeah
+okay
+okay
+okay
+okay
+perfect so uh what's what's your hardware setup
+we're starting from a bit far but uh this this will be important later
+well your preference like things you prefer like uh if you start programming then like
+hardware wise what kind of uh laptop do you need uh does it need to be uh fast or what what do you
+look for when you look for when you look for a laptop or computer this is a desktop is it laptop or is it a tablet i don't know
+mm-hmm
+thinkpad
+okay
+edge that's a i don't know that one
+okay
+okay
+all right
+yeah i was a big fan of uh thinkpads and lono volina
+time does it have the uh trackpoint uh mouse that's like i think uh
+it doesn't
+okay that's also interesting
+yep um all right
+is the keyboard comfortable on either the mac or your own laptop
+yep
+like an old school like big travel keyboard or
+yeah
+okay
+okay
+so you you like
+try to avoid using the mac keyboard
+is that the case
+okay um
+this should be enough about the hardware stuff
+uh but i'm thinking of one more thing here that uh
+like your office like not only the uh uh computer hardware but uh like uh do you
+work at a home or prefer working at home or do you have like an office space where it's better
+yep
+you have a study table you have a study table where you go to or switch places
+you have a study table where you have a study table where you have a study table where you have a study
+um
+so you don't have like really high needs about uh the environment um it's just a basic table check
+um
+um
+it's just a basic table check
+yeah
+okay
+okay
+okay
+all right let's uh move on from this then and
+talk about your software
+references
+um
+so you already said you have a
+uh
+macbook for work
+uh
+so
+and
+and your own laptop what's uh the operating system there
+arch linux all right
+that's cool
+and
+uh
+how how do you compare
+uh
+your arch linux laptop with the macbook
+um
+um
+how much
+how which one do you prefer and how much
+um
+how much
+um
+um
+um
+um
+um
+um
+yeah what might be the reason then like do you prefer how arch linux works or
+so one aspect is probably the hardware that we talked about that you just
+like laptop better but uh you know if the macbook could have uh arch linux um then how how would
+you prefer that to mac os on it
+why do you have to change it every three years you say uh why
+so you've been working at the same company for a long time and that's like the same company made
+you change laptop gotcha um other software stuff like how um on do you use different software
+uh on the mac and the arch laptop for coding
+the right
+um
+And the latter two, those you use on both laptops, right?
+It can be as good.
+And Jupyter Notebook, you use on both.
+You say you use VS Code for writing on the Mac.
+And then you added...
+What did you say last?
+You said the other two, by WebStorm, I said WebStorm and PyCharm, yeah, right.
+So it seems like you do a lot of Python.
+Yeah.
+Hmm.
+Hmm.
+Hmm.
+Hmm.
+Hmm.
+Hmm.
+All right, that's nice so far.
+And we, I think we should move on, because these questions are taking more time than I estimate.
+And like...
+Ugh.
+Sorry?
+Yeah.
+Yeah, kind of.
+Sorry, this is kind of like a trial.
+Yes.
+So we talked about hardware and software, and next is like...
+Yeah, we talked about them in static states as they are at your disposal.
+And there's been quite a few things.
+But what are some common changes that you make to the hardware or the software, the way
+you customize anything in it.
+The only thing that seemed relevant so far is how you only use VS Code, you said, for writing
+on the Mac, and on your own laptop, you also use it for coding.
+So those are two, it seems like different use cases for VS Code.
+Do they, for example, mean that you have to change things in VS Code so that it's better
+for writing or coding?
+Or the default setup is good for both?
+rule any time.
+I couldn't change.
+Spell checker for writing in VS Code.
+That's interesting.
+I suppose that might be markdown that you're writing it then.
+Oh.
+Oh.
+and you're spell checking there i actually like haven't even heard of spell checker being used in
+uh code editor like you know they are present in uh common document editors but in a code editor
+uh you know
+okay yeah that's very curious uh that you're writing like natural language and code editors
+uh often um all right
+huh is it useful
+well like so you mean it's not linting so not checking code syntax but like if you spell
+the word uh-huh
+i'm actually not familiar with uh webstorm at all i think like i heard of it uh i know what pycharm is
+but is webstorm also like python adjacent or
+oh is it okay
+yeah i think pycharm is also like jet brains i actually missed noting the jet brains which was
+what you started with previously uh you said you use jet brains for work on mac right
+oh yeah i miss miss uh noted something there corrected it and other changes you make um
+this was already good input that uh you're relying on the spell checking and the linting
+and you need to add that in vs code
+um
+yeah like probably like jet brains stuff in my experience actually they are
+this might be imposing something which i should stay clear of but uh i don't know are they i'll ask
+it as a question uh are they as customizable as vs code or
+okay
+so more experience with chat friends stuff
+and you have been customizing them a lot uh which which is interesting because so far you said you
+don't customize it that much you just add the spell checker and uh ps code but uh regarding jet brains
+you said webstorm has these things built in that you need what customizations do you mean can you
+think of an example
+uh
+uh the file explorer
+what do you what changes do you make the file explorer
+people commonly talk about moving it to the left or right but that may be a vs code thing
+uh or is it something different like the icons do you change the icons on it or
+but so you basically like the default also would you say
+yeah okay
+okay well the you the fact that you say well or what customization you could think of with
+the linter and region and language settings uh that's already interesting that uh speaks about
+your focus on uh like content more than uh uh i don't know widgets around the content
+okay disabling ai oh that's that's rich for for uh my program there's a lot of talk about ai
+everything everyone's focusing on ai and everyone everywhere of course okay yeah so it's present in
+jetbrain stuff also they're putting it in jetbrains
+okay so these are uh the changes you make all right that we can work with already and then
+uh
+uh last material question is about immutable characteristics of uh these hardware and
+software on your work which we said was uh the case that you actually can work with the defaults
+so there's uh they are not immutable you could change them but they're fine as they are um
+but like
+what what uh features do these uh jetbrains editors and vs code have
+uh that you think influences your work um like you said for example that uh webstorm has this spell
+checking and linting built in which is very useful for you because you rely actually on the spell
+checking for your code even and you write a lot of uh like natural language in them
+system so those are built-in characteristics of webstorms that are useful for you
+uh-huh
+you use it for you use it for search and replace also or just the search
+mm-hmm and this is uh this is a search feature in jetbrains products in general or you're talking
+about one specific
+mm-hmm
+mm-hmm
+mm-hmm
+mm-hmm
+on code completion
+huh
+that is that is kind of an ai feature isn't it uh or or not necessarily the ai
+or that's not necessarily what has been improving it over
+okay
+yeah yeah yeah like i think you mean the like context
+yeah yeah yeah yeah so it takes information from the context um which which is a like traditional programming task
+uh and this like code completion on steroids which ai has been providing is is kind of different like
+it doesn't take information from the context that much it infers some of the context and then comes up with
+uh what like entire programs that you may be writing where i have little experience with the copilot
+and that's sort of the thing that it was doing but it's good to know that that's actually not what
+we are referring to here but the general code completion abilities
+yeah yeah yeah there's different variations yeah
+yeah mm-hmm
+yeah um so we can move on to the human aspects of coding which is uh when you start writing program
+what uh call motivates you the most usually uh yeah i don't know it's a good question but that's what i have
+that's what i have so uh uh uh like
+when you're assigned the task or when you come up with uh tasks on your personal projects
+um do you think of uh how it will benefit someone if you're solving the problem
+um or i don't know it was just like the joy of programming or how or that it's a difficult task
+uh to complete or i don't know like
+um
+um
+Thank you.
+Thank you.
 
-Let's visit https://jsinterface.org/author/blik/ and walk through the exercises in my blog post on "Interface", "Inference" and "Form". 
+Okay, can I write this with less code?
+Does this work with force colors?
+Does this work on a different screen sizes?
+Does this work no matter what kind of zoom do we use?
+If we remove the CSS from this side,
+this is still going to be at least semi-eligible.
+And playing around with these things,
+it's generally what makes the task more interesting.
+Or if it's something that I'm implementing
+and I'm like, this is going to be confusing to a person
+or this is going to be unreadable at a certain point
+and then I can pass it on.
+This is what...
+But the task as itself doesn't really have like...
+Yeah, I generally know people will use it
+but since I'm still not 100% on board
+on what my team is actually doing,
+I'm like, yeah, okay, people say that is useful.
+Well, I don't actually see the entire thing as useful
+but I'm going to do it anyway sort of situation.
+Now, if I'm volunteering,
+then you generally get a survey
+that you need to analyze a part of it.
+In which case, the main motivation is
+what kind of interesting things can I find in this data?
+And the motivation starts with
+what is interesting to me.
+Because if it's going to be interesting to me,
+it might be interesting to somebody else as well
+and the writers will be able to write something about it.
+And afterwards, the interesting part is
+how can I actually visualize that
+to be both readable
+and at least somehow understandable?
+Because a lot of times it's like
+I get into this problem of
+this would be a great visualization
+but not all the numbers will be visible there.
+So what do you do then?
+Do you change the visualization
+or do you make some sort of wackish way
+that doesn't look that good?
+And trying to figure out
+the sort of trade-offs between them.
+It's the interesting one.
+Once I already figure it out,
+okay, these are the interesting things
+that I actually want to present.
+I start with that.
+And when it comes to my own personal project,
+it's usually this is an interesting idea to me
+or this is an interesting...
+or I want to have this feature service,
+things like that
+and it starts from what will be,
+from me as a user perspective,
+the best thing to do.
+Then I start from the user perspective.
+Of me.
+I don't know.
+Was that in the direction that you wanted?
+It sounds like you're focusing on using technology
+to communicate information when you work with data
+or when it's not about, like, content
+and producing content,
+but how it is implementing,
+then it's important to you
+that it's universally accessible
+or you were talking about something like that,
+that it is visible to everyone
+in a nice way.
+So that...
+I think I can work with those inputs.
+Just in the meantime,
+I realized that my voice recorder
+wasn't recording your responses,
+only my voice from the material part,
+but that's fine.
+We are having the recording for now.
+Yeah, because, you know,
+because if you're talking about ethical problems,
+by the time you have a task,
+it's too late to take a process.
+Ah, yeah.
+Yeah, so...
+That's actually kind of the next question.
+Yes, indeed.
+Which is,
+how much time do you spend on design
+compared to implementation?
+So now you started talking about
+considering ethical questions
+is better early on
+and that might be part of design.
+Okay.
+Okay.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
 
-test, translation. 
-at work there are more variables to consider than cli arguments allow. 
-dependencies get compilcated. 
-
-routes need organizing, but it doesnt need to be hierarchical. 
-dont feel like missing tools. 
+Yeah, then we are using Jupyter Notebook and so it will be Python.
+I mean, Jupyter Notebook is Python exclusive, right?
+There are, I've heard of extensions to other languages, but most-
+I used R in it as well.
+Oh, right.
+And I think there are others.
+Okay, but I guess we'll be using Python then, right?
+Yeah.
+So, what I thought would be a good exercise is breadth and depth-first search.
+We don't have to complete it, and you can choose which one you want to go for first.
+And we would need to come up with some input data, which I think would be easiest to just
+spell out some JSON.
+Just two levels maybe, and there's a string in it.
+And then we will find it algorithmically.
+But maybe in Python, it's not literal JSON that you can spell out, but like a dictionary,
+right?
+Yeah.
+Same thing.
+Same thing.
+So, you know, a key value pair where the values are also key value pairs and maybe like two,
+two levels of this, you know, cat, dog.
+And each has a name, for example, where you're writing Albert.
+That's good too.
+Yeah.
+Perfect.
+And I can already observe some stuff here.
+So, let's just, let's just do one thing.
+Let's put them inside, uh, companies.
+So, create, let's say Albert and Jay are in, uh, Google and, uh, what's the name of the
+third?
+I can see that, you know, or someone, they work at, I don't know, uh, Facebook.
+Oh, wait, but, uh, yeah, this is not how I meant it.
+I meant like, let's, uh, put another layer.
+So there's, uh, yeah, like that.
+Google.
+Yeah.
+And then, yeah, Apple, and this is the third person.
+Yeah, and then, so if we want to find, um, workers with the name, uh, that's given to a function.
+So let's take the name as input, and how would we find a person with that name?
+And how would we find a person with that name?
+So, we have to find...
+FindPerson, that's the name you gave, alright?
 
 
 (Interview transcript #2)#h2
@@ -355,17 +713,52 @@ dont feel like missing tools.
 Material aspects (5 minutes): 
 
 What existing hardware do you rely on to write programs and why? 
+Work and private life. 
+Lenovo thinkpad. 
+No-code platform to automate market intelligence. 
+Website to aggregate websites indieweb compatible. 
+Desktop, because it is not compliant with company. 
+Specs from a computer magazine. 16gb ram, 1tb ssd. 
+good screen and mouse and kb. 
+
 What existing software do you rely on to write programs and why? 
+Nan.io, contabo self-hosted on VPS, browser access. 
+Hugo SSG. VSCode. ChatGPT. 
+Typora for markdown, on Ubuntu. 
+filezilla for ftp. 
+uknowhost.org to self-host applications. 
+
 What changes do you make to these software and hardware to customize your experience? 
+configuration is usually sufficient. 
+i'd rather have less features than breaking it. 
+
 What are some of their immutable characteristics that influence your work, and how? 
+Seamlessness between applications is not a given, 
+so integrating between them or adapting takes time. 
 
 Human aspects (5 minutes): 
 
 What goals motivate you the most when you start writing a program? 
+DIY, the ability to publish content. 
+No-code is for fun and usefulness. 
+
 How much time do you usually spend on design, relative to implementation? 
+Not too much, blog content on wordpress, choosing a template that i like. 
+pragrmatic choices. 
+
 What experiences keep you inspired during implementation, before finishing a task? 
+more the goal than the fiddling. 
+new ideas. 
+
 What events can cause you distress during implementation? 
+depends on how crucial it is. 
+
 Thinking back on some of your accomplisments in the past, how do you feel about them now? 
+never satisfied, competition keeps me want to grow. 
+getting better understanding. 
+uncharted territories. 
+open source culture, development projects. 
+
 Do you wish they would be different in any way? 
 Do you have any practices that you seek to improve on in the future? 
 
@@ -376,12 +769,86 @@ to share for a pair-programming exercise? (are you sure it is in public domain?)
 Alternatively, let's try to implement a breadth- and depth-first search algorithm together, 
 taking input from. 
 
-Testing provotype on modular tacit programming (10 minutes): 
-
-Let's visit https://jsinterface.org/author/blik/ and walk through the exercises in my blog post on "Interface", "Inference" and "Form". 
+scrping news about network api. 
+curated links, get headlines, summary. 
+was easy to set up. 
+coding js is the hard part. 
 
 
 (Notes)#b 
+
+
+(Interview transcript #3)#h2
+
+Material aspects (5 minutes): 
+
+What existing hardware do you rely on to write programs and why? 
+Apple laptop since 1993, desktop publishing. 
+Intel macbook from 2018. 
+Windows was never working, so Mac was better. 
+Low maintenance system. 
+Switching places sometime, but mainly home office. 
+Office environment is better.
+
+What existing software do you rely on to write programs and why? 
+Linux is of interest, for IOT. 
+Vim for text editing. GUI are a nuisance. 
+Figma and Sketch, creative cloud, Adobe photoshop/illustrator/aftereffects/premiere. 
+Chrome, Jira, Confluence. 
+VSCode for code editing. 
+
+What changes do you make to these software and hardware to customize your experience? 
+Vim key bindings in VSCode, 
+Emmet: CSS syntax to build html. 
+Linter, prettier, Biome. 
+Markdown. 
+
+What are some of their immutable characteristics that influence your work, and how? 
+MS Office leads to usage of shell. 
+GUI ought to simplify processes. 
+
+Human aspects (5 minutes): 
+
+What goals motivate you the most when you start writing a program? 
+Make things easier for me or someone else. 
+
+How much time do you usually spend on design, relative to implementation? 
+Becoming more pragmatic over time, html and css. 
+Building design systems involves testing components. 
+
+What experiences keep you inspired during implementation, before finishing a task? 
+lightbulb moments when i solved some difficult issue. 
+Seeing new possibilities. 
+
+What events can cause you distress during implementation? 
+Lack of skills to debug. 
+Struggling to find reason of bugs. 
+Bad documentation. 
+Node modules not well documented. 
+LLM helps me understand. 
+
+Thinking back on some of your accomplisments in the past, how do you feel about them now? 
+Seeing the flaws, trying to celebrate successes more. 
+
+Do you wish they would be different in any way? 
+Adding more flexibility. 
+
+Do you have any practices that you seek to improve on in the future? 
+Debugging skills should be improved. 
+
+
+Simulating natural work environment (10 minutes): 
+
+Is there a feature you have recently worked on, that you would be open and able
+to share for a pair-programming exercise? (are you sure it is in public domain?)
+Alternatively, let's try to implement a breadth- and depth-first search algorithm together, 
+taking input from. 
+
+Alfred no-code tool. Event data from a text. 
+ICS converter. 
+OpenAI-aided LLM
+experiment to make it more consistent. 
+Helps achieve more complicated system level operations. 
 
 
 (Interview transcript #3)#h2

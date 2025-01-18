@@ -74,7 +74,7 @@ inference#script/highlight(
   
   When you have more actions to assign, it is practical to group them in one object so you can derive them all in the same lambda expression. This generalization reveals how the action namespace is actually independent#b from this procedure, which is where Javascript's own, natural ability to isolate (referentially transparent)#b modules with its export#b and import#b statements most obviously outshines HTML and CSS. 
 
-  At once, we can note that while selector specificity helped prevent mismatched content references in the isolation of CSS's declarative rules, this procedural assignment of interactions may still leave past or future elements out of its scope at the moment of execution. Luckily, browser actions don't need to be bound to a specific element to receive events from it. When interactions happen, their event stores a reference to the ("target")#b element they originated in, and gets ("propagated")#b to each containing element in the document. To make sure you receive them, every event can therefore be captured#b on a higher level, be routed back to their target element from there. While you may choose the highest document level for this, it could imply a large set of independent actions to be stored on one object. A more modular approach is to reference actions in a data attribute on your elements, and capture only the ("load")# event on the body tag (discussed momentarily), fired when all its elements are loaded, to perform these assignments. To capture events happening before your binding is ready, assign asynchronous actions that delegate them afterwards: 
+  At once, we can note that while selector specificity helped prevent mismatched content references in the isolation of CSS's declarative rules, this procedural assignment of interactions may still leave past or future elements out of its scope at the moment of execution. Luckily, browser actions don't need to be bound to a specific element to receive events from it. When interactions happen, their event stores a reference to the ("target")#b element they originated in, and gets ("propagated")#b to each containing element in the document. To make sure you receive them, every event can therefore be captured#b on a higher level, be routed back to their target element from there. While you may choose the highest document level for this, it could imply a large set of independent actions to be stored on one object. A more modular approach is to reference actions in a data attribute on your elements, and capture only the ("load")#b event on the body tag (discussed momentarily), fired when all its elements are loaded, to perform these assignments. To capture events happening before your binding is ready, assign asynchronous actions that delegate them afterwards: 
 
 actions#script(
 ` // /actions
@@ -99,8 +99,8 @@ actions#script(
 {let [src,alt]=["data-source","aria-label"].map(this.getAttribute.bind(this));
  compose(image,canvas,infer(insert,"over",this))(src,alt);
 }}
- };`,{"source":"/actions"}){max-width:90%;overflow:scroll;width:90%;margin:auto;border-radius:.5em; border:2px dashed #616161}
-
+ };`,{"source":"/actions"}){max-width:90%;overflow:scroll;width:90%;margin:auto;b
+order-radius:.5em; border:2px dashed #616161}
 
 capture#script(
 ' // /capture
