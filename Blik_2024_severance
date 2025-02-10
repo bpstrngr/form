@@ -1,221 +1,84 @@
 
-
-
 (Severance: 
-an archaeology of sociomaterial entanglements between software and their engineers in "black boxes" of the Web)#span{"role":"heading","aria-level":"1","style":"font-size:2em;font-weight:bold"}
-
-
-
-Patrik Blik
-
-2025
-
-AAU@/AAU_2020_logo.svg{width:300px}
-
-Supervisor: 
-Petko Karadechev
-
-Aalborg University
-Techno-anthropology MA
-1st semester project
-
-
-Abstract#h2{text-align:center}
+an archaeology of sociomaterial agency between software and their engineers in "black boxes" of the Web)#span{"role":"heading","aria-level":"1","style":"font-size:2em;font-weight:bold"}
 
 {text-align:left}
+Abstract#h2{text-align:center}
+
+ This semester project emerged as a second attempt to frame an ethnography of technological transformations involving engineering practice in IT. While methods of participatory and "human-centered" design have been widely utilized to study user preferences, ethnomethodologies for software engineering practice, design and innovation have been hindered by tremendous conceptual and philosophical challenges since the early days of Interaction and Human Factors studies in the 70's, while the complexity of the practice has kept exponentially growing. The program's focus on human-centered design, consisting of various theories and methodologies to study user preferences such as co-design and participatory design, carries a heavily constrained representation of the "human", reducing many core characteristics into consumer attitudes to study "users", and ignoring the organic role of engineers in design entirely ("by implication if not by intention"; (Steen 2011)@/Steen_2011_Tensions_in_Human-Centered_Design.pdf). This controversy has been most pronounced in studies of the diffusion of innovation ("innofusion"; (Fleck 1994)@/making/Fleck_1994_configurational_implementation.pdf), struggling to resolve the paradox of diminishing returns despite increased user involvement ((Bogner 2011)@/Bogner_2011_Paradox_of_participation_experiments.pdf). After reviewing the history of anthropological engagement with engineering practice, I settle on agential realism and adjacent procedural ontologies as an appropriate framework to observe the sociomaterial network of four independent web developers with diverse backgrounds in action. I use the results to draw conclusions about the technological affordances and limitations of their praxis to inform product management goals in human-centered and value-sensitive design. 
 
 (Problem statement)#h2{text-align:center}
 
- Whether by misconception or obliviousness, but if one is used to considering the creation of software the straightforward implementation of a designer's work (as we will find to be the trend in many techno-anthropological studies), the amount of consequential creative decisions involved in this part of what is considered "design" may come as a surprise (Bogers & Chiappini 2021). If an engineer of software were to put a computer executing their instructions in an art gallery, this degree of detachment ("severance") we commonly project between them would make it seem like a found art, or ready-made exhibition. As a recent anthology of ethnographies about "critical making" shows, engineers often have a very different perspective. How technology may be experienced or affected by the "user" can be studied to (inform, or) set expectations towards engineers (or even users), but how is their agency involved in the "design" process, and remains constituted in the final product? 
- To explore this, I will be applying agential realism in an ethnography of pair-programming participant observation following formal, semi-structured qualitative interviews to "diffract intra-actions of mattering" by "dynamic agential cuts" of the software engineering actor network (engineers and their work environment). In the analysis of this work, I will reflect and theorize about how these observations could, or should be incorporated into planning processes that ultimately depend on these actors' agency. With such theories, I hope to address two technosocial problems. First, to support ethical considerations of transparency, accountability and fairness by potentially minimizing "black box" effects that often limit our access to these. Second, to include often marginalized perspectives in "design" to enhance collaboration and understanding ("anagnorisis", see Seaver 2019), with special attention to how this could benefit product management goals popular in techno-anthropology (infrastructuring, institutioning, commoning, participatory, agonistic and anarchistic design, co-creation and co-design, value-sensitive, feministic and sustainable design). 
-
+ If one is used to considering the creation of software the straightforward implementation of a designer's work (the "design fallacy"; (Stewart & Williams 2005)@/Stewart_2005_Design_fallacy.pdf), the amount of consequential creative decisions bearing on the former design process in this phase may come as a surprise. If an engineer of software were to put a computer executing their program in an art gallery, the degree of detachment this view projects between them would make it seem like a found object, or "readymade" exhibition ((Mørch & Zhu 2013)@/making/Morch_1999_Readymade_component_design.pdf, Jackson & Kang 2014). How technology is experienced or affected by the "end-user" can be studied to set expectations towards engineers, but 
+{text-align:center}
+ how is their agency constituted in the final product? 
+{text-align:left}
+ To explore this, I will be applying agential realism in an ethnography of pair-programming participant observation following formal, semi-structured qualitative interviews to "diffract intra-actions of mattering" by "dynamic agential cuts" in the actor network of software engineering (engineers and their work environment; (Leonardi 2023)@/cybernetics/Leonardi_2023_Affordances_and_agency.pdf). In a critical realist analysis of this study, I will be reflecting on how technology affordances and constraints (TACT; (Majchrzak 2013)@/making/Majchrzak_2012_Technology_affordances_and_constraints.pdf) could, or should be incorporated into "human-centered" design approaches to remedy two of its problems. First, extending its ethical considerations to pertinent virtues of accountability, creativity and autonomy ((Steen 2015)@/Steen_2015_opening_the_black_box.pdf), beyond the paternalistic extent of its popular product management goals (participatory and co-design, value-sensitive, anarchistic, feministic and sustainable design; (Steen 2011)@/Steen_2011_Tensions_in_Human-Centered_Design.pdf), by "opening up", and potentially eliminating unnecessary "black boxes" that tend to obscure them. Second, simply including the often marginalized perspective of engineers in "design" to promote epistemological collaboration ("anagnorisis"; Seaver 2019) in software development. 
+ 
  (Problem analysis)#h2{text-align:center} 
 
- (Anthropology's static materialism)#h3 
- 
- Reckoning with the growing prominence of digital data#b encountered during anthropological studies, Douglas-Jones_et_al._2021@/Anthropology/Douglas-Jones_2021_Anthropology_of_data.pdf characterize data as problematic when "insisting on its material specificity", as opposed to its context-dependent "mercurial nature". In their claim, the former conception is associated with "universalizing epistemologies" that perpetuate its oppressive colonial history of ("violent legibility")#b, to which the only remedy is to engage it in "local worlds" of traditional ethnographic epistemology instead. Without specifying any philosophy of eg. hegelian historical consciousness to justify this equivocation of data's ontology with its historical circumstances, the article goes as far as unhesitantly disqualifying traditional scientific methods altogether ("replicability, objectivity, etc." - sic.) from studying "big data" (making that leap of scale to "big" at once to desist addressing "data" in particular altogether). 
- Having quickly arrived at such bold conclusions, they admit the subject to be new challenge, and recognise three themes it is introducing for anthropology to consider in its "complementary" role of delivering "thick" contextual ethnographies and "theory generation": the virtualization of identities and communities, the commodification of (personal) information, and the ambivalent reductive and revalatory nature of abstract representation. While the list is also rather short, the bigger problem rests in the authors' elaboration on the third one, as they mistake the reduction (and ambivalence) to be specifically due to a conversion from qualitative#b to quantitative#b information, as if being digital or computationally accessible somehow limited the storage of qualitative information any more than pen and paper does. As we will see from more faithful accounts of "data", it is a form of abstraction itself, and if we honor our interdisciplinary disposition by extending for a definition to an expert in its study: "abstraction is the amplification of the essential and the elimination of the irrelevant" (Martin 2006). 
- In discussing algorithms#b, Seaver_2019@/Anthropology/Seaver_2019_Digital_STS_26_Knowing_Algorithms.pdf reiterates this false dichotomy of qualitativity and quantitativity, but the thereby overlooked difference between the abstraction of information and instructions will actually carry more significance to us later than this apparently common mistake. On the other hand, he correctly argues that (in most cases, due to complex, asynchronous, dynamic states) even detailed technical knowledge about programs (let alone their mystification) will not lend anyone immediate authority to determine their effects, be they author or reviewer. Depending on the scale of given software, this obscurity creates a shared moral responsibility for all stakeholders to ensure its reliability, security and accessibility in the making. He explicitly calls for active engagement with the contexts and decisions of engineers and designers, as the only way to truly "know" algorithms (anagnorisis), as opposed to passive demands for transparency that treat software as inaccessible black boxes. 
- While this task of approaching the creative process of engineering may seem more daunting for an anthropologist, it should be imperative for science and technology studies to at least not exclude, if not even prioritize this perspective as more relevant than arbitrary political and historical contexts, and hence potentially avoid eg. superficial classifications of anything digital as "quantitative", as we have seen. Frauenberger_2019@/Framing/Frauenberger_2019_Human_computer_interaction_entanglement.pdf asserts that the dominant paradigms in studies of human-computer interaction have been "user-centric" or prescriptive towards technology, with a third one "chaotically" emerging in concert with relational#b and flat#b ontologies, challenging the epistemological integrity of this particular subfield by new context-dependent research resisting traditional generalizability (as expressed explicitly by the article on "data"). The author attributes this conundrum to the increasingly blurred boundaries of digital interfaces (as Donna Haraway had pronouced in her Cyborg Manifesto; (Haraway 1991)@/Haraway_1991_Cyborg_Manifesto.pdf) and compares it to a model crisis of constructivist cycles (Kuhn 1962), but then proceeds to regress into calling only for new prescriptive "design" practices that may reclaim control over this amorphous entity, at terror of its apparition ("whoever shapes technology, puts the chisel on humanity"). In his admittedly humble attempt to embrace what he calls "entanglement theories" (actor-network theory, object-oriented ontology, post-phenomenology and agential realism), he promptly remains captivated by a consumerist perspective, simply flipping the interpretation of how we experience technology to how it affects us, failing to integrate a concept of how human and machine can, and by necessity does, form one creative agency to begin with. The move "away from" user-centric design is portrayed as immediately having "decentered the human", as if "user" was the only way we had a relationship to it. 
+ (Two fallacies)#h3 
 
- star_ruhleder_1996_ecologyofinfrastructure.pdf@/Anthropology/star_ruhleder_1996_ecologyofinfrastructure.pdf
- Bowker_2000_Sorting_Things_Out_Classification_and_consequences.pdf@/Anthropology/Bowker_2000_Sorting_Things_Out_Classification_and_consequences.pdf
- Anderson_2008_End_of_Theory_Scientific_method.pdf@/Anthropology/Anderson_2008_End_of_Theory_Scientific_method.pdf
- Miller_Horst_2012_The_Digital_and_the_Human.pdf@/Anthropology/Miller_Horst_2012_The_Digital_and_the_Human.pdf
- Friedman_2013@/Framing/Doorn_etal_2013_Philosophy_of_engineering_reflections.pdf
+ Reckoning with the growing prominence of digital data#b encountered during anthropological studies, Douglas-Jones_et_al._2021@/Anthropology/Douglas-Jones_2021_Anthropology_of_data.pdf characterize data as problematic when "insisting on its material specificity", as opposed to its context-dependent "mercurial nature". In their claim, the former conception is associated with "universalizing epistemologies" that perpetuate an oppressive colonial history of ("violent legibility")#b, to which the only remedy is to engage it in "local worlds" of traditional ethnographic epistemology instead. Without specifying a philosophy of eg. hegelian historical consciousness to justify this equivocation of data's ontology with its historical circumstances, the article goes on to disqualify traditional scientific methods altogether ("replicability, objectivity, etc." - sic.) from studying "big data" (making a leap of scale at once to desist addressing "data" in particular). 
+ Having quickly arrived at such bold conclusions, they admit the subject to be new challenge, and recognise three themes it is introducing for anthropology to consider in its "complementary" role of delivering "thick" contextual ethnographies and "theory generation": the virtualization of identities and communities, the commodification of (personal) information, and the ambivalent reductive and revalatory nature of abstract representation. While the list is also rather short, the bigger problem rests with the authors' elaboration on the third one, as they mistake the reduction (and ambivalence) to be specifically due to a conversion from qualitative#b to quantitative#b information, as if being digital or computationally accessible evidently limited the storage of qualitative information any more than pen and paper does - or they were incommensurable analytical dimensions in the first place. As we will see from more faithful accounts of "data", it is a form of abstraction itself, and if we honor our interdisciplinary disposition by referring to an expert in its study for a definition, abstraction is only: "the amplification of the essential and the elimination of the irrelevant" ((Martin 2006)@/Martin_2006_Agile-Principles-Patterns-and-Practices-in-C.pdf). 
+ In discussing algorithms#b, Seaver_2019@/Anthropology/Seaver_2019_Digital_STS_26_Knowing_Algorithms.pdf reiterates this false dichotomy between qualitativity and quantitativity, but the thereby overlooked difference between the abstraction of information and instructions will carry more significance to later than this apparently common mistake. On the other hand, he correctly argues that (in most cases, due to unmanagable complexity) even detailed technical knowledge about programs (let alone their mystification) will not lend anyone immediate ability to determine their effects, be they author or reviewer. Depending on the scale of given software, this obscurity creates a shared responsibility for all stakeholders to ensure its reliability, security and accessibility in the making. He explicitly calls for active engagement with the contexts and decisions of engineers and designers, as the only way to truly "know" algorithms (which he calls "anagnorisis"), as opposed to passive demands for transparency that treat software as inaccessable "black boxes". 
+ While this task of approaching the creative process of engineering may seem the more "exotic" angle for an ethnographer, it should be imperative for science and technology studies to heed this advice before inductively applying arbitrary political and historical theories (and hence potentially avoid eg. superficial classifications of anything digital as "quantitative"). Frauenberger_2019@/Framing/Frauenberger_2019_Human_computer_interaction_entanglement.pdf asserts that the dominant paradigm in studies of human-computer interaction have been "user-centric" or prescriptive towards technology, with a third one "chaotically" emerging in concert with relational#b and flat#b ontologies, challenging the epistemological integrity of this particular subfield by context-dependent ("localized") research resisting traditional generalizability (as declared explicitly by the previous article on data). The author attributes this conundrum to the increasingly blurred boundaries of digital interfaces (as Donna Haraway had pronouced in her Cyborg Manifesto; (Haraway 1991)@/Haraway_1991_Cyborg_Manifesto.pdf) and compares it to a model crisis of constructivist cycles, but then regresses into calling only for new prescriptive design practices that may reclaim control over this amorphous entity, at terror of its apparition ("whoever shapes technology, puts the chisel on humanity"). In his admittedly humble attempt to embrace what he calls "entanglement theories" (actor-network theory, object-oriented ontology, post-phenomenology and agential realism), he promptly remains captivated by a consumerist perspective, simply flipping the relationship from how we experience technology to how it affects us, failing to integrate a concept of how human and machine can, and by necessity does, form one creative agency to begin with, whether in production or consumption. The move "away from" user-centric design is portrayed as immediately having "decentered the human" (sic.), as if "user" was the only way we had a relationship to technology. 
 
- Poel_2013@/Framing/Poel_2010_Translating_values_into_design.pdf
+ (Refocusing the frame)#h3 
 
-disalvo_2013@/Framing/disalvo_2013_infrastructuring-and-the-formation-of-publics-in-participatory-design.pdf
-Teli_2014@/Framing/Teli_2014_Public_design_urban_digital_commons.pdf
- Karasti_2014@/Framing/Karasti_2014_Infrastructuring_in_participatory_design.pdf
- blok_2014_complementary_social_science_in_a_big_data_world.pdf@/Anthropology/blok_2014_complementary_social_science_in_a_big_data_world.pdf
- Ekbia_2014@/Framing/Ekbia_2014_Heteromation_division_of_labor_between_humans_and_machines.pdf
- Knox_2016_Digital_Ontology.pdf@/Anthropology/Knox_2016_Digital_Ontology.pdf
- Marttila_2017@/Framing/Marttila_2017_Infrastructuring_commons.pdf
- Keyes_2019@/Framing/Keyes_2019_Anarchist_HCI.pdf
+ By these accounts, the emergence of an adequate cybernetic paradigm appears to be persistently hindered by anthropology's own characteristic proclivity to juxtapose human and technology. Before the Work Practice and Technology Group (lead by Lucy Suchman) at Xerox PARC reoriented HCI research to users in the 70's, "computer interaction" studies referred strictly to engineering practices, with "human factors" being a growing secondary interest until computers became fast and versatile enough to become an "extension of the mind", prompting interdisciplinary (psychological) investigations of "human-computer interaction", and then cheap enough to be mass produced, opening avenues for sociological investigation of "computer-supported cooperative work" and "user-centered design" ((Drazin 2012)@/Anthropology/Miller_Horst_2012_The_Digital_and_the_Human.pdf). Scandinavian social-democratic policies went through a similar transition with initial legislation requiring the informed consent of workers accompanying technological innovations from the 70's to prevent "de-skilling" of the workforce, that was slowly reapplied to "participatory design" collecting information about users ((Hyysalo et al. 2016)@/Hyysalo_2016_The_New_Production_of_Users.pdf), a practice prone to create information asymmetry on markets through disingenuous marketing (known to economists as a Nobel prize-awarded market failure of Akerlof 1970 - its implication being an exploitation of consumers in addition to workers). By 1999, HCI and PD methodologies came to be officially standardardized as "human-centered design" (ISO 13407; latest edition 2019), with little mention of workers anymore beyond a disclaimer about the synonymous "user-centered design" label being symbolically extended due to the variety of "stakeholders" potentially involved. The consistent usage of the word "design" throughout the standard to reference not only the entire process of creation, but the research activity as well, shows a reductive appropriation of the term (the "design fallacy"; (Stewart & Williams 2005)@/Stewart_2005_Design_fallacy.pdf), and an extremely partial repesentation of both users as consumers ((Steen 2011)@/Steen_2011_Tensions_in_Human-Centered_Design.pdf), and technology as commodities ((Thrift 2006)@/Thrift_2006_Re-Inventing_Invention_New_Tendencies_in_Capitalist_commodification.pdf) to support it, "reifying" a politically justified, but market-incentivised, paternalistic interpretation of democracy (a whiteheadian "fallacy of misplaced concreteness" common in economics; Daly 1987, figure 1). 
 
-Sapiezinsky_2019_interaction_data.pdf@/Anthropology/Sapiezinsky_2019_interaction_data.pdf
- Cibin_etal_2019@/Framing/Cibin_etal_2019_Institutioning_community_radio.pdf
- Hoeyer_2020_Private_public_data_infrastructures.pdf@/Anthropology/Hoeyer_2020_Private_public_data_infrastructures.pdf
- Bruun_etal_2020@/Anthropology/Bruun_etal_2020_Cryptic_Commonalities.pdf
- Bruun_etal_2020@/Anthropology/Bruun_etal_2020_Infrastructures_of_trust_and_distrust_the_politics_and_ethics_of_emerging_cryptographic_technologies_AM.pdf
- Balasescu_2020_machine_anthropology.pdf@/Anthropology/Balasescu_2020_machine_anthropology.pdf
- Munk_etal_2022_think_machine_anthropological_ai_between_explanation_and_explication.pdf@/Anthropology/munk_etal_2022_think_machine_anthropological_ai_between_explanation_and_explication.pdf
- Goldstein_Nost_etal_2022_The_Nature_of_Data.pdf@/Anthropology/Goldstein_Nost_etal_2022_The_Nature_of_Data.pdf
- Bruun_2022@/cybernetics/Bruun_2022_Palgrave_handbook_of_the_anthropology_of_technology.pdf
- Breslin_2024@/Anthropology/Breslin_2024_cultures_of_trust_in_computing.pdf
+{text-align:center}
+severence@/Blik_2025_severance.png
+Figure 1: Illustration of the "design" fallacy ((Stewart & Williams 2005)@/Stewart_2005_Design_fallacy.pdf) and the fallacy of misplaced concreteness in participatory design. Notice the appropriation of the former term for research and the overgeneralization of its understanding in development, which is also excluded from its scope, without even a transactional involvement specified clearly. Design is therefore "being nowhere, while claiming to see comprehensively" (Haraway 1991 p. 584). 
+{text-align:left}
 
- (A new, dynamic materialism)#h3 
+ One approach standing out with its scope is "value-sensitive design" (VSD), not included in the HCD standard. It specifies design as a more comprehensive iterative process, consisting of conceptual, technical and empirical investigations, the latter referring to any social scientific research methodology applicable, including HCD. However in the former stages, where design and implementation as interpretted in software development takes place (figure 1), still no anthropological methods of their own are referenced, only traditional multidisciplinary analysis ((Friedman et al. 2013)@/Framing/Doorn_etal_2013_Philosophy_of_engineering_reflections.pdf). As a result, while the model is relieved of political or economic intentions implied in HCD, we still see researchers appropriating professional roles of developers and designers proper, ignoring their autonomy and capability of making informed, responsible decisions (figure 1). A substantial contribution is made by Poel ((2013)@/Framing/Poel_2010_Translating_values_into_design.pdf), who brings attention to transferring results to developers, in the form of regulatory specifications (legislation, standard or context-specific requirement) derived from "values" through "norms", allowing for the ethical reasoning to be consequentialist, virtual or deontological. While the process he describes is trivial (implied in the term "specification") in its generality, and ignores the compexities of proposing or fulfilling requirements, at least it involves professionals in the model for the first time as recipients (although also bestows the responsibility for this task to them). 
+ While these fallacious (or, as they may be called when appearing tenaciously, "predatory"; (Debaise & Keating 2021)@/Debaise_Keating_2021_SpeculativeEmpiricismNatureandtheQuestionofPredatoryAbstractions.pdf) abstractions of technology production and design may be debated via further social scientific litigation, Crabtree ((2004)@/Crabtree_2004_Taking_ethnomethodology_seriously.pdf) argues that they can be attributed to an unstable identity in the social sciences, and its practical conduct of ethnometodological studies. He traces the epistemology of ethnomethodology to Husserl's original phenomenological program, concerned not with objects of social networks, but the processes they are produced in. He calls for a diffusion of social sciences (and "technomethodology" in particular) as a "hybrid" between disciplines, conducive to their autonomous activity, instead of interfering with it: 
 
- By these accounts, the emergence of the cybernetic paradigm appears to be persistently hindered by anthropology's own characteristic proclivity to juxtapose human and technology. The consistent usage of the word "design" to reference but only the entire process of creation itself, but the research activity as well shows the extreme lack of differentiation of agency beyond userhood. Going to the sources to correct this oversight, the situation shouldn't be surprising either. 
- Bruno Latour (1972) has been subject to a high amount of controversy, forcing him to clarify his points on multiple counts since his introduction of (actor-network theory)#b. His legacy of calling software "black boxes" that are only opened up for reconfiguration at times of crisis instilled a view of technology akin to Thomas Kuhn's cyclical theory of scientific progress, which, in its original context, already incited heavy criticism from Karl Popper for being bound to perpetuate a complacent status quo of (non-revolutionary) "normal science". The "normal technology" in this case would mean the static "program of action" that Latour readily coined as well. He tried to abate post-phenomenology's (see next paragraph) stride towards re-framing technology as something defined by its relations to us (1993). 
- In the meantime, Don Ihde (1990) and Peter-Paul Verbeek (Rosemberger and Verbeek 2015) established a standard, corresponding best to Frauenberger's position, by discarding classical phenomenology's#b investigations into technology based on its semantic origins as "techne" and "poiesis" ((Heidegger 1954)@/cybernetics/Heidegger_1954_Concerning_Technology.pdf; Harraway_2016@/cybernetics/Haraway_2016_staying_with_the_trouble.pdf) in favor of a contradictory one where it is always already at our disposal, "mediating our relations to the world", leaving accounts of how it comes into being behind. Their focus turns towards the relations people form with this pre-existing "other", making it a "relational"#b ontology. Restricting this attention exclusively to user experiences would make a valid investigation in isolation, but Verbeek's irredeemably dichotomistic claim that "designing technology is designing human beings" transgressed this specialization to declare the pursuit of control over the art of engineering, and even outspokenly question humanity's autonomy, authority and responsibility. 
+ "the programme [of ethnomethodology as a hybrid discipline founded on Husserl's phenomenology] demands that the social sciences abandon classical accounting practices – theorizing, modeling, and other means of formalizing their objects of study – and instead explicate, through close and careful description, the interactional work-practices implicated in an object of study’s production and recognition" (Crabtree 2004)
+
+ Basing techno-anthropology on such "technomethodological" (sic. ibid.) approach to its social networks could allow organic integration with its multiple disciplines, providing philosophical accounts of their respective practices that they couldn't observe while concerned with their "objects of study". Instead of political imaginaries and methodological interventions in social practices, studying how they naturally unfold - design as design, implementation as implementation, and use as use - is enough, and exhaustive of a mandate for scientific research. This shift of paradigm may be difficult after a history of extensive disciplinary theory generation in social sciences. The relationship of the suggested meta-attitude to social networks is incidentally analogous to a representation of process (function) networks in a subfield of mathematics called category theory, where ethnomethodology could be described as "higher-order", "antisymmetrical" category in relation to technology (see figure 2 illustrating it accordingly). It shouldn't be surprising that the philosophical foundations for this paradigm has been in active formation ever since Husserl, producing several incompatible theories as the foundation for studies of science and technology. 
+
+(Static materialism in anthropology)#h3
+
+ Bruno Latour's (actor-network theory)#b (compatible in practice with Crabtree's concept of ethnomethodology) has been subject to a high amount of controversy outside of his following, forcing him to clarify his ideas on multiple counts to reject its interpretation as a "post-truth" philosophy ((Kofman 2018)@https://www.nytimes.com/2018/10/25/magazine/bruno-latour-post-truth-philosopher-science.html). His theory about science and technology as "black boxes" that are only opened up for reconfiguration at times of crisis ((Latour 1987)@/Latour_1987_Science_in_Action.pdf) created a direct association with Thomas Kuhn's theory of cyclical scientific progress, inadvertantly enlisting ANT in the "science wars" that raged since Karl Popper's case against the model's liability to perpetuate a complacent status quo of "normal" (non-revolutionary) science ((Kuhn 1970)@/Kuhn_1970_Logic_of_discovery_or_psychology_of_research.pdf). A "normal technology" in this sense would mean a static "program of action" ("script") view of technology that Latour readily coined as well, without reflecting on the unmistakable Kuhnian analogies. It is worth noting, that this debate unfortunately overshadowed a previous work warning about the growing schism of sciences and humanities into "two cultures" ((Snow 1959)@/Snow_1959_Two_cultures.pdf), calling for more integration, the impact of which was documented as a rising "third culture" in 1995 (Brockman 1995). In trying to find the right philosophical framing to settle the controversy, Latour edited a publication three times ((Blake 2013)@https://terenceblake.wordpress.com/2013/11/17/bruno-latour-and-whitehead-a-pragmatic-alliance/) in 1996 until he discovered Whitehead's process philosophy resolving the realist-relativist dichotomy (the "bifurcation of nature") of nonhuman actors ("Before reading Whitehead, I could not extricate myself from this dilemma"; (Latour 1996)@/Latour_1996_Scientific_objects_history.pdf). 
+ In the meantime, Don Ihde and Peter-Paul Verbeek establish a philosophy explicitly diverging from Husserl's phenomenological tradition by discarding its semantic investigations into how technology comes into being (as "techne" and "poiesis") initiated by Heidegger ((1954)@/cybernetics/Heidegger_1954_Concerning_Technology.pdf) in favor of one where it is always already at our disposal, "mediating our relations to the world". Their focus turns towards consumer relations people form with this pre-existing, static "other", making it a "relational"#b ontology suitable as paradigm for human-centered design. Specifying this context could make for valid investigations in isolation, but Verbeek asserts the paradigm's claim for determining the design process, stating that "designing technology is designing human beings", and even overly litigating people's (users') autonomy: 
 
 {width:80%;inset:10%;text-align:center;}
 "Moral actions and decisions of human beings are fundamentally mediated by technologies, like turnstiles that intervene in fare-dodging in the subway, and antenatal diagnostic technologies that inform moral decisions about abortion."
 {text-align:right;width:90%}- Verbeek 2011
 
 {text-align:left}
- Driven by more noble, moral concerns about modern humanity's impact on the environment, (Graham Harman 2002)@/cybernetics/Harman_2002_Tool-being_metaphysics_of_objects.pdf took it on himself to elaborate and declare Latour's so far heuristic philosophy as the affirmation of the existence of non-human entities regardless of our phenomenological constraints (the cartesian "veil of perception"), establishing the branch of "speculative realism". While this view has been constructive as far as the natural (non-human) domain certainly not originating from human agency is concerned, its flat, static#b deontology still got overgeneralized beyond this scope, with the adopted term ("object-oriented" ontology)#b (Bryant 2011) emphasizing the rejection of subjective phenomena altogether. The appeal to computer scientific terms in both cases, for common database and program structures respectively, reflects the treatment of technology as evidently as available ("ready-to-hand" or vorhandensein, to recover Heidegger_1927's@/cybernetics/Heidegger_1927_Being-and-Time.pdf phenomenological distinction) as any other external object (see eg. the comically backwards "interview with things" approach of (Cheng et al. 2017)@/cybernetics/Chang_2017_interview_with_things.pdf). This makes the two philosophies ultimately commensurable, but as a silver thread, (Hayles 2014)@/cybernetics/Hayles_2014_Speculative_Aesthetic_and_Object_Oriented_Inquiry_OOI.pdf advised caution about such overgeneralization even within the natural realm, so it should be especially important for us investigating the technological. 
- Seeing the abject failure of post-phenomenology to comprehensively ascribe relational characteristics to a flat ontology, and OOO's morally driven reluctance to do so, (Karen Barad 1995)@/cybernetics/Barad_1995_meeting-the-universe-halfway.pdf traces the standstill to the "representationalism" (the reliance on language to describe reality, better known as the dialectical idealism of (Hegel 1807)@/phenomenology/Hegel_1807_The_Phenomenology_of_Spirit.pdf) of both the constructivist and the realist traditions. To add some more accuracy to this diagnosis, a notable shift occurred in the dialectical tradition with the Frankfurt school, when Herbert Marcuse introduced technological determinism. She proposes the first (dynamic, flat ontology)#b based on the fundamentally "material dialectics" (not to be confused with dialectical materialism) of ("performative mattering")#b and constant (intra-action of entangled agents)#b (agential cuts), which can be studied through "diffraction"#b. The concept of mattering itself, and how it leaves material traces of ontology, epistemology and morality, is what has so far been lacking in post-phenomenology, and lost on "entanglement" HCI. 
+ Driven by more noble, ethical concerns about modernity's impact on the environment, Graham Harman ((2002)@/cybernetics/Harman_2002_Tool-being_metaphysics_of_objects.pdf) took it on himself to elaborate on Latour's volatile philosophy in his affirmation of the existence of non-human entities regardless of our subjective phenomenologies (the cartesian "veil of perception"), establishing the paradigm of "speculative realism". While this view was constructive as far as the natural (non-human) domain is concerned, this flat, static#b deontology still got overgeneralized beyond this scope with the adopted term of ("object-oriented" ontology)#b (Bryant 2011) emphasizing the rejection of subjective phenomena altogether in an attempt to track Latour's alignment with Whitehead. 
+ This makes both relational and object-oriented ontologies static. The appeal to computer scientific terminology in both cases (for common program- and data structures respectively), reflects their treatment of technology as evidently as statically available ("present-at-hand" or "vorhandenheit", to restore Heidegger's phenomenological distinction) as any other nonhuman entity (see eg. the derivative "interview with things" approach of (Cheng et al. 2017)@/cybernetics/Chang_2017_interview_with_things.pdf). As a silver thread, (Hayles 2014)@/cybernetics/Hayles_2014_Speculative_Aesthetic_and_Object_Oriented_Inquiry_OOI.pdf advised caution about OOO's overgeneralization (mediating Whitehead's case for subjectivity): 
+ "The effect of encapsulating relations within objects, as Harman does, is to mask the system’s dynamics and make it difficult to think about the dynamics at all. The black boxing of relations obliterates the specificity of how complex systems work."
 
- (Critical Making)#h3
+(Reassembling dynamic materialism)#h3 
 
- Activity theory (60) 
- evolution of social and epistemic design practices (14, 16) 
- distributed cognition (31,54,65) (agile collaboration and ux) and cognitive dimensions (56) 
-
- Reverting post-phenomenology's detachment from Hegelian dialectics, we direct it towards the material, but instead of Marx's inversion of it. 
- 
- Searle_1995@/Searle_1995_The+Construction+of+Social+Reality.pdf.pdf
- Dandrade_2001@/cybernetics/Dandrade_2001_a-cognitivist-s-view-of-the-units-debate-in-cultural-anthropology.pdf
- Flyvbjerg_2001@/cybernetics/Flyvbjerg_2001_making_social_sciences_matter.pdf
- social ontology Dandrade_2006@/cybernetics/Dandrade_2006_commentary-on-searle-s-social-ontology-some-basic-principles-culture-and-institutions.pdf
- Coleman_2014@/cybernetics/Coleman_2014_Hacker_Hoaxer_Whistleblower_Spy_The_Story_of_Anonymous.pdf
- 
- Stoczkowski_2008@/cybernetics/Stoczkowski_2008_The_fourth_aim_of_anthropology_Between_k.pdf
- Suchman ((1998)@/cybernetics/Suchman_1998_human_machine_reconsidered.pdf) ((2002)@/cybernetics/Suchman_2002_Locatedaccountabilitiesintechnologyproduction.pdf) provided the first critique of agential realism. More successful adoption of agential realism at long last helped Jackson and Kang ((2014)@/cybernetics/Jackson_2014_breakdown_obsolescence_reuse.pdf) and Devendorf et al. ((2016)@/cybernetics/Devendorf_2016_postanthropocentric_making_3dprinting.pdf) to connect ANT and OOO under a consistent frame, bringing the engineer's (maker's) agency into the picture. Redstrom and Wiltse ((2015)@/cybernetics/Redstrom_2015_fluid_assemblages.pdf, (2018)@/cybernetics/Redstrom_2019_innovation_through_design_philosophy.pdf) combined Barad's theory with fluid assemblages of Deleuze and Guattari (2013).
- The power over technology is, and will remain inextracably in the hands of capable humans in the form of engineers, and the only way to share in it will lead trough acknowledging them, allowing for collaboration and contribution with similar competence, as Seaver has suggested, - if only to assert our trust in "theirs". No shortcuts lead through superficial theoretization, or they do no further than the antagonism they are conceived in. What follows is a genuine attempt to build bridges, by lifting the primary, necessary, yet mostly ignored agents of technology into participatory design, to make arbitrary management goals even conceivable. 
-
-
-
- 
-
- Hall_2008@/cybernetics/Hall_2008_developer_motivation.pdf
- Bill_2009@/cybernetics/Bill_2009_IS_boundary_objects.pdf
- Coleman_2010@/cybernetics/Coleman_2010_ethnographic_approaches_to_digital_media.pdf
- Hovorka_2011@/cybernetics/Hovorka_2011_Towards_an_informativity_in_design_research.pdf
- Johri_2011@/cybernetics/Johri_2011_sociomaterial_bricolage.pdf
- Panourgias_2011@/cybernetics/Panourgias_2011_creative_agency_in_gamedev.pdf
- Tell_2012@/cybernetics/Tell_2012_Activity_Theory_Applied_to_Global_Software_Engineering_Theoretical_Foundations_and_Implications_for_Tool_Builders.pdf
- 
- Bjorn_2012@/cybernetics/Bjorn_2012_bounding_sociomaterial_practice.pdf
- Bjorn_2014@/cybernetics/Bjorn_2014_Sociomaterial_design.pdf
- Styhre_2012@/cybernetics/Styhre_2012_sociomaterial_engineering.pdf
- Styhre_2015@/cybernetics/Styhre_2015_IT_individuation.pdf
- Sharp_2016@/cybernetics/Sharp_2016_Ethnographic_Studies_in_Software.pdf
- Srinivasan_2017@/cybernetics/Srinivasan_2017_information_determinism.pdf
- Bader_2017@/cybernetics/Bader_2017_heterogenous_sociomaterial_workplace.pdf
- Amir_2017@/cybernetics/Amir_2017_Sociotechnical_Resilience.pdf
- Holmstrom_2017@/cybernetics/Holmstrom_2017_performative_it_risk_mamagement.pdf
- Neff_2017@/cybernetics/neff_2017_critique-and-contribute-a-practice-based-framework-for-improving-critical-data-studies-and-data-science.pdf
- Holford_2018@/cybernetics/Holford_2018_knowledge_flows_entanglement_airplanes.pdf
- Ivory_2019@/cybernetics/Ivory_2019_caught_between_discourses_hybrid_tech_choices.pdf
- Bates_2020@/cybernetics/Bates_2020_Staging_with_objects.pdf
- Dittrich_2020@/cybernetics/Dittrich_2020_Evolving_software_Practices.pdf
- Dittrich_2014@/cybernetics/Dittrich_2014_to_use_a_method_in_software.pdf
- Tyrer_2020@/cybernetics/Tyrer_2020_multimodal_screen_feedback.pdf
- Avle_2020@/cybernetics/Avle_2020_scaling_techno_optimistic_visions.pdf
- hummels_2021@/cybernetics/hummels_2021_non-discursive-philosophy-by-imagining-new-practices-through-design.pdf
- Hyeon_2021@/cybernetics/Hyeon_2021_creative_engineering.pdf
- Gravel_2021@/cybernetics/Gravel_2021_heterogeneous_engineering.pdf
- Waizenegger_2021@/cybernetics/Waizenegger_2021_sociomateriality_in_action.pdf
- Vidal-Rojas_2022@/cybernetics/Vidal-Rojas_2022_failed_cocreation.pdf
- Betagui_2023@/cybernetics/Betagui_2023_sociomaterial_epistemic_objects.pdf
- Clark_2023@/cybernetics/Clark_2023_Mundane_software.pdf
- Paolo_2023@/cybernetics/Paolo_2023_enact_material_productivity.pdf
- Vega_2023@/cybernetics/Vega_2023_sociomaterial_thinking_making.pdf
- Macgilchrist_2023@/cybernetics/Macgilchrist_2023_postdigital_futures.pdf
- Shan_2024@/cybernetics/Shan_2024_expanding_engineering_innovation.pdf
- Dittrich_2024@/cybernetics/Dittrich_2024_Triage_anthropology.pdf
- Benavides_2024@/cybernetics/Benavides_2024_tech_mediated_nature_encounters.pdf
-
- Lantz_2005@/cybernetics/Lantz_2005_NORDES_Interaction_design_by_practicioners.pdf
- Feenberg_2009@/cybernetics/Feenberg_2009_Radical-Philosophy-of-Technology-From-Marx-to-Marcuse-and-beyond.pdf
- Feenberg_2023@/cybernetics/Feenberg_2023_marcuse-s-critique-of-technology-today.pdf
- (Murray-Rust 2019)@/cybernetics/Murray-Rust_2019_Entangled_ethnography.pdf
- Kautz_2017@/cybernetics/Kautz_2017_sociomateriality_information_systems.pdf
- Kautz_2014@/cybernetics/Kautz_2014_ReframingSuccessFailure.pdf
-
- Liu_et_al._2018@/cybernetics/Liu_2018_Collaborative_Survival.pdf
-
-Merkourus_2022@/Framing/Thesis_final___Markos_P.Merkouris.pdf
-Spiel et al 2017 Ant experiences
+ Seeing the failure of post-phenomenology to comprehensively integrate relational characteristics into a flat ontology, and OOO's morally driven reluctance to do so, Karen Barad (1995)@/cybernetics/Barad_1995_meeting-the-universe-halfway.pdf traces the standstill to the "representationalism" (the overreliance on language to describe reality in western dialectical tradition) of both the realist and the relativist paradigms. She proposes the first (dynamic, flat ontology)#b based on the fundamentally "material dialectics" (not to be confused with dialectical materialism) of ("performative mattering")#b and constant (intra-action of entangled agents)#b (agential cuts), which can be studied through "diffraction"#b. Although Barad based her philosophy on Neils Bohr's metaphysics, this concept of mattering, and how it generates traces of metaphisycal, epistemological and moral relations to be studied, continues the neglected project of Husserl's phenomenology, Whitehead's mereology (or process philosophy; also inspired by quantum physics), as well as Norbert Wiener's cybernetics. As such, it is also suitable for a comprehensive ethnomethodological approach to technology and value-sensitive design (figure 2). 
 
 {text-align:center}
-actornetwork#network({"design":
-{"technology":
-{"data":
-{"violent legibility":{}
-,"virtual identities":{}
-,"qualitative":{}
-,"quantitative":{}
-}
-,"algorithms":{"qualitative":{},"quantitative":{},"black box":{}}
-,"consumer products":{"users":{"participatory design":{}}}
-}
-,"black box":{}
-,"engineers":{}
-}},{"spread":"force"}){width:50%;text-align:center}
-
-Figure 1: actor network of software phenomenology. 
+ unseverence@/Blik_2025_severance_unsevered.png
+Figure 2: A flat, procedural ontology of technology's actor network. Research is restored as an external agent inspecting (diffracting) autonomous intra-actions (agential cuts) of "mattering" from a state of epoché (Husserl), instead of interfering with political intentions. All four agencies may be assumed by the same person, or rotated among collaborators. Research being a antisymmetrical, higher-order function (linking to actions, not actors) indicates that it mediates to an exterior "universe" of scientific progress, not product development. 
 {text-align:left}
+
+ As an "early adopter" of the paradigm, Suchman ((2002)@/cybernetics/Suchman_2002_Locatedaccountabilitiesintechnologyproduction.pdf) highlights how agential realism (although she subsumes it in broader feminist movements and critical theories) makes the especially important value consideration of accountability accessable in ethnographic studies of technology, in the process of emancipating "the myth of the lone creator of new technology on the one hand, and the passive recipients of new technology on the other". Despite HCI's close affiliation with human-centered design and therefore static ontologies, it pioneered some curious hybrid "post-humanist" studies where "readymade" software technologies are exposed to dynamic end-user interaction (such as component-based design taking advantage of a similar trend in web development; Mørch & Zhu 2013)@/making/Morch_1999_Readymade_component_design.pdf). Jackson and Kang (2014)@/cybernetics/Jackson_2014_breakdown_obsolescence_reuse.pdf began to turn this around by observing the emergence of creative agency for design and innovation in users when interacting with obsolete and broken technologies, recognizing "affordances" as a complementary quality in these artifacts (as opposed to just static products of linear design). 
+ Similar to Suchman, but completely dissociating from the HCI discourse, Redstrom and Wiltse ((2018)@/cybernetics/Redstrom_2019_innovation_through_design_philosophy.pdf) began directly applying philosophy to design in practice. Reaching for the notion of "fluid assemblages" from Deleuze and Guattari, they analyzed affordances of the simple "play" button through terms (boundary objects) directly known to the industry ((2015)@/cybernetics/Redstrom_2015_fluid_assemblages.pdf). What follows is a similar attempt to continue building bridges between actors of technology design, by lifting the primary, necessary, yet mostly ignored agents of technology into an ethnography of web designers. 
 
 Methodology#h2{text-align:center}
 
  (Participant observation)#b 
 
- Following a history of scarce and fragmented ethnographic engagement with software development practice, (Dittrich et al. 2024)@/cybernetics/Dittrich_2024_Ethnography_for_software.pdf released a practical guide for doing so just this year. As precedents, she presents (Unphon & Dittrich 2010)@/cybernetics/Unphon_2010_longterm_software_architecture_awareness.pdf who found that corporate organizations tend to not maintain a stable documentation in order to ease communication between departments. De Souza and Redmiles (57) . A study about air traffic controllers revealed how there can be serious technical or cultural limitations justifying even decades of delay to adopt seemimgly favorable technologies (2017). A third example about software security practices resulted in the creation of the ("Motivating Jenny")@https://motivatingjenny.org model to support cultures of consideration around security, to remarkable success counting thousands of downloads by industry and education in only a year ((Lopez 2023)@/cybernetics/Lopez_2023_security_responses_in_software_development.pdf). These remarkable insights demonstrate how ethnography can reveal immediately actionable improvements directly to agents of change, especially with rationales behind their existing practices being recognised and respected. 
- She asserts that in HCI research, ethnography has been used exclusively targeting user groups, and while studies on software engineering practice often lead to constructive theories for professionals, it is this very ethnographic understanding of their culture that simply allows for such practical theories to be generated, and appropriately implemented if needed. Research output that is grounded in such comprehensive contextual awareness is also much more likely to be accepted by practicioners. This understanding can be about human and social aspects of practicioners, the effects of the tools and paradigms they are relying on, as well as their workflows or work environments. In highly technical field, a level of familiarity with the domain and its language is often even necessary to prevent misinterpretation, or at least to speed up and enrich preparation and analysis, but it is always cardinal to acquire and maintain an unbiased perspective, as well as avoiding to "go native". The cognitive openness to take in empirical experience without presumptions is discussed in phenomenological literature as "suspension of judgement", or "epoch�" and "bracketing" (Husserl 1906) for short. As far as my methodical review has extended, ethnographic literature typically takes this term as something self-evident, and at best advises to "strike" a balance between familiarity and "strangeness" (Latour's critical proximity). Recognising that engagement of scienfic inquiry is inseparable from cultural progress in a "critical" field of study (making it a "value-articulating institution", as identified in ecological economics; (Vatn 2006)@/cybernetics/Vatn_2006_Institutions.pdf), and its informants may well be as early yet in exactly judging the specific values in question as the researcher, should constitute a warning for both parties about the emergency of prioritizing reflection on tendencies for predeliction, over drawing conclusions, in order to avoid interfering in potentially negative ways. Asking the wrong questions can cause confusion, and even mislead professionals in their own expertise. This ethical consideration has unfortunately not yet percolated into anthropology (driven by a conflict between social and evolutionary anthropology, debate is only ongoing about what domains should be considered politically acceptable to study, not about positive and negative influence on them; Dandrade_1995@/cybernetics/Dandrade_1995_Moral-Models-in-Anthropology.pdf, Fearn_2008@/cybernetics/Fearn_2008_the_great_divide.pdf, Perry_2010@/cybernetics/Perry_2010_The_lack_of_acceptance_of_evolutionary_a.pdf, Smocovitis_2012@/cybernetics/Smocovitis_2012_humanizing_evolution.pdf, Langlitz_2020@/cybernetics/Langlitz_2020_DEVILS_ADVOCATE_anthropology.pdf, Langlitz_2020@/cybernetics/Langlitz_2020_WARNING_AGAINST_MORALITY.pdf, Canceran_2023@/cybernetics/Canceran_2023_Ethical_turn_in_the_social_sciences.pdf). 
- The ultimate goal of ethnography is to deduce or induce consistent theories#b from related concepts in the analysis of field observations. To reach sufficient level of detail, in addition to making and analysing observations as much so as if we were aiming to present them to "a traveller from outer space" (sic.) as possible, ethnography typically needs to be combined with other methods, such as interviews, focus groups and external data analysis. Verbatim quotations are an important part of analysis, as they allow future reviewers to assess the accuracy of the researcher's subjective interpretations. Regarding the generalizability of this method, there are big, long standing controversies surrounding its possibility at all (see "the problem of induction"; Hume 1739, (Salmon 1978)@/cybernetics/Salmon_1978_UnfinishedBusinessProblem.pdf, (Henderson 2022)@https://plato.stanford.edu/entries/induction-problem/; or "the postmodern holiday"; (D'Andrade 2002)@/cybernetics/Dandrade_2000_the-sad-story-of-anthropology-1950-1999.pdf, (Levinson 2012)@/cybernetics/Levinson_2012_The_Original_Sin_of_Cognitive_Science.pdf, (Kroupin et al. 2024)@/cybernetics/Kroupin_2024_beyond_newton.pdf), with some anthropologists arguing that even though "statistical" generalizability certainly isn't, "analytical generalization" can be achieved through (figurative) extrapolation or the cumulation of "similar" studies (the "cognitivist view"; eg. Lave & Wegner 34), while others try to rationalize why its impossibility doesn't compromise validy ("the hermeneutic approach"; (Flyvbjerg 2006)@/Flyvbjerg_2006_case_study_misunderstandings.pdf). In my project I'm supporting the former argument, by hoping for my findings to serve as contribution to a range of similar studies, until theory generation may be considered viable and reliable. Vannoni_2014@/vannoni_2014_what-are-case-studies-good-for-nesting-comparative-case-study-research-into-the-lakatosian-research-program.pdf
-
-Dumit_2014_writing_the_implosion.pdf@/Anthropology/Dumit_2014_writing_the_implosion.pdf
-344-362
-
- (Semi-structured interviews)#b
-
- encoding
+ Following a history of scarce and fragmented ethnographic engagement with software development practice, Dittrich et al. (2024)@/cybernetics/Dittrich_2024_Ethnography_for_software.pdf released a practical guide for doing so just recently. As precedents, she presents Unphon & Dittrich (2010)@/cybernetics/Unphon_2010_longterm_software_architecture_awareness.pdf who found that corporate organizations tend to not maintain a stable documentation in order to ease communication between departments. A study about air traffic controllers revealed how there can be serious technical or cultural limitations justifying even decades of delay to adopt seemimgly favorable technologies (2017). A third example about software security practices resulted in the creation of the ("Motivating Jenny")@https://motivatingjenny.org model to support cultures of consideration around security, to remarkable success counting thousands of downloads by industry and education in only a year ((Lopez 2023)@/cybernetics/Lopez_2023_Security_responses_in_software_development.pdf). These remarkable insights demonstrate how ethnography can reveal immediately actionable improvements directly to agents of change, especially with rationales behind their existing practices being recognised and respected. 
+ She asserts that in HCI research, ethnography has been used exclusively to target user groups, and while studies on software engineering practice often lead to constructive theories for professionals, it is this very ethnographic understanding of their culture that simply allows for such practical theories to be generated, and appropriately implemented if needed. Research output that is grounded in such comprehensive contextual awareness is also much more likely to be accepted by practicioners. This understanding can be about human and social aspects of practicioners, the effects of the tools and paradigms they are relying on, as well as their workflows or work environments. In highly technical field, a level of familiarity with the domain and its language is often even necessary to prevent misinterpretation, or at least to speed up and enrich preparation and analysis, but it is always cardinal to acquire and maintain an unbiased perspective, as well as avoiding to "go native". The cognitive openness to take in empirical experience without presumptions is proposed in Husserl's phenomenology as the disposition of "suspended judgement", or "epoché" and "bracketing" for short. As far as my methodical review has extended, ethnographic literature typically takes this term as something self-evident, and at best advises to strike a balance between "familiarity" and "strangeness" (Latour's critical proximity). Recognising that engagement of scienfic inquiry is inseparable from cultural progress in a "critical" field of study (making it a "value-articulating institution", as identified in ecological economics; (Vatn 2006)@/cybernetics/Vatn_2006_Institutions.pdf), and its informants may well be as early yet in exactly judging the specific values in question as the researcher, should constitute a warning for both parties about the emergency of prioritizing reflection on tendencies for predeliction, over drawing conclusions, in order to avoid interfering in potentially negative ways. Asking the wrong questions can cause confusion, and even mislead professionals in their own expertise. This ethical consideration is unfortunately not prominent in anthropology (driven by a conflict between social and evolutionary anthropology, debate is only ongoing about what domains should be considered politically acceptable to study, not about positive and negative influence on them; "the social sciences have generally elided the question of the private domain of morality or ethics and focused on the public domain of politics and market" - Canceran_2023@/cybernetics/Canceran_2023_Ethical_turn_in_the_social_sciences.pdf). 
+ The ultimate goal of ethnography is to deduce or induce consistent theories#b from related concepts in the analysis of field observations. To reach sufficient level of detail, in addition to making and analysing observations as much so as if we were aiming to present them to "a traveller from outer space" (sic.) as possible, ethnography typically needs to be combined with other methods, such as interviews, focus groups and external data analysis. Verbatim quotations are an important part of analysis, as they allow future reviewers to assess the accuracy of the researcher's subjective interpretations. Regarding the generalizability of this method, there are big, long standing controversies surrounding its possibility at all (see "the problem of induction", (Salmon 1978)@/cybernetics/Salmon_1978_UnfinishedBusinessProblem.pdf; or "the postmodern holiday", ((Levinson 2012)@/cybernetics/Levinson_2012_The_Original_Sin_of_Cognitive_Science.pdf), with some anthropologists arguing that even though "statistical" generalizability certainly isn't, "analytical generalization" can be achieved through (figurative) extrapolation or the cumulation of "similar" studies (the "cognitivist view"; eg. Lave & Wegner 1991), while others try to rationalize why its impossibility doesn't compromise validy ("the hermeneutic approach"; (Flyvbjerg 2006)@/Flyvbjerg_2006_case_study_misunderstandings.pdf). In my project I'm supporting the former argument, by hoping for my findings to serve as contribution to a range of similar studies, until theory generation may be considered viable and reliable. 
 
  Application#b
  
- Since software development has become more and more distributed in the online space especially due to the lockdowns during the pandemic of 2020 (assimilating to open source projects where this has been the case by nature), methods for conducting virtual ethnography have been adopted to study it (29, 33, 43). My interviews will be conducted over video calls on app.kosmi.io, with exercises in screen sharing. Kosmi is a platform optimized for informal online hangout, with several features such as streams from participants' cameras positioned on a couch around a table, in a virtual room with a fireplace, which can help create a comfortable, welcoming and inspiring atmosphere. My target community is IndieWeb.org and JSRebels, two grassroot online communities of independent web developers. Many independent bloggers and web makers, including myself, gathered for a conference organized by IndieWeb.org in Berlin on the 9th of November 2024, where I developed personal rapport with some of them in advance. This means that instead of having a "gatekeeper" informant to connect and negotiate other informants, they will be contacted directly. The preliminary interview will aim to map the sociomaterial actor network of the informant as an "agent" of web technology, thereby guide subsequent observations of the "diffraction" of their agential cuts in processes of "mattering". The ethnography will be made on a participaroty basis, as the semi-structured interview will be followed by a pair programming exercise simulating their work environment, reviewing some code they had written recently (see appendix 1). If such material is not available, a scenario will be negotiated with the informant for a programming task to be implemented together, me taking the "navigator" role and them being the "driver" (roles commonly assumed in pair programming exercises). To support transparency, field notes I take during the meetings will be shared with the participants in real-time for validation ("member checking"). Since the relationship between actors and intra-actions has a bipartite network sturcture, an adjacency (entanglement) matrix will be guiding my note-taking. The roadmap of the ethnography is also sent to them in advance, including time estimations and its overall goals, so they can prepare and give consent for both its content and duration. In anticipation of them finding their reflections during the ethnography useful for themselves, I will close the sessions by offering future correspondence and collaboration. 
+ Since software development has become more and more distributed in the online space especially due to the lockdowns during the pandemic of 2020 (assimilating to open source projects where this has been the case by nature), methods for conducting virtual ethnography have been adopted to study it (Hine 2008). My interviews will be conducted over video calls on app.kosmi.io, with exercises in screen sharing. Kosmi is a platform optimized for informal online hangout, with several features such as streams from participants' cameras positioned on a couch around a table, in a virtual room with a fireplace, which can help create a comfortable, welcoming and inspiring atmosphere. My target community is IndieWeb.org and JSRebels, two grassroot online communities of independent web developers. Many independent bloggers and web makers, including myself, gathered for a conference organized by IndieWeb.org in Berlin on the 9th of November 2024, where I developed personal rapport with some of them in advance. This means that instead of having a "gatekeeper" informant to connect and negotiate other informants, they will be contacted directly. The preliminary interview will aim to map the sociomaterial actor network of the informant as an "agent" of web technology, thereby guide subsequent observations of the "diffraction" of their agential cuts in processes of "mattering". The ethnography will be made on a participaroty basis, as the semi-structured interview will be followed by a pair programming exercise simulating their work environment, reviewing some code they had written recently. If such material is not available, a scenario will be negotiated with the informant for a programming task to be implemented together, me taking the "navigator" role and them being the "driver" (roles commonly assumed in pair programming exercises). Since the relationship between actors and intra-actions has a bipartite network sturcture, I will attempt to guide my note-taking with an adjacency (entanglement) matrix of actors and their actions. The roadmap of the ethnography is also sent to them in advance (figure 3), including time estimations and its overall goals, so they can prepare and give consent for both its content and duration. In anticipation of them finding their reflections during the ethnography useful for themselves, I will close the sessions by offering future correspondence and collaboration, as well as sending them the results of the study for "member-checking". 
 
- Lederman_2004@/cybernetics/Lederman_2004_Towards_an_anthropology_of_disciplinarit.pdf
- Seaver_2024@/cybernetics/Seaver_2021_spatial_data.pdf
-
- Ellen_2010@/cybernetics/Ellen_2010_Theoriesanthropologyanthropological.pdf
- Bell_2018@/cybernetics/Bell_2018_The_problem_of_undesigned_relationality.pdf
- Cabana_2022@/cybernetics/Cabana_2022_Crossing_at_Y_Our_Own_Peril_Biocultural.pdf
- Dittrich_2014@/cybernetics/Dittrich_2014_to_use_a_method_in_software.pdf
- (Pink et al. 2016)@/Anthropology/Pink_etal_2016_Digital_Ethnography.pdf 
- (Denzin ed. 2018)@/cybernetics/Denzin_2018_SAGE_handbook_of_qualitative_research.pdf Sage handbook of qualitative research 
-
-Results#h2{text-align:center}
-
-demo-scene 
-software engineer 
-
-Discussion#h2{text-align:center}
-
-Conclusions#h2{text-align:center}
-
-References#h2{text-align:center}
-
-Appendix#h2{text-align:center}
-
-(Interview guide)#h2
-
+{color:#616161}
  Welcome to Severance -------- --- �--. ��
                                         ^
                                         Error: Segmentation fault (core dumped) 
@@ -239,478 +102,12 @@ and then do a short pair programming exercise, either reviewing something
 that you have recently worked on, strictly in the public domain, or if you prefer, 
 trying to implement a simple algorithm together in your programming language of choice. 
 
-Finally, we will take a look at a "provotype" (provocative prototype) 
-for a proposed alternative "sociomaterial" model for creating websites, 
-that claims to realize full developer agency, 
-and let you test how it compares to your current workflows. 
-
-Time estimates for each step are shown below, it should take a total of 30 minutes. 
 The study is done for a master program in Techno-Anthropology at Aalborg University. 
-If you don't mind, I would also record our exchange. 
-You will be able to see the notes I here on the website. 
+If you don't mind, I would also record our conversation. 
 
-Shall we get started? :) 
+Figure 3: Interview guide for the ethnography. 
 
-(Notes)#b 
-
-{text-align:center}
-actor-network#[[["/Blik_2025_severance.json","0","1"]],"inference/iterate","chart/matrix"]{display:inline-block;margin:10em 0}
-
-(Interview transcript #1)#h2 
-
-Material aspects (5 minutes): 
-
-What existing hardware do you rely on to write programs and why? 
-Laptop, no desktop, tablet only for reading. 
-M2 mac provided, 10 year old lenovo "edge". regular mouse, comfortable layout. 
-regular table and chair 3/4. 
-
-What existing software do you rely on to write programs and why? 
-Arch linux, macbook. if i didnt have to change it every 3 years. 
-jetbrains on mac, gedit on arch. jupyter on pc, and vscode for blog, only for writing 
-on the mac. webstorm and pycharm. 
-python for personal projects, js+angular and node and golang at work. 
-
-What changes do you make to these software and hardware to customize your experience? 
-spell checker for plain text, markdown. 
-webstorm spellchecks words and lints. 
-linter customization, region and language settings. 
-file explorer cant remember what changes. 
-disabling AI. 
-
-What are some of their immutable characteristics that influence your work, and how? 
-search bar in jetbrains. code completion has been improving over the years. 
-
-Human aspects (5 minutes): 
-
-What goals motivate you the most when you start writing a program? 
-universal accessibility, group work. 
-researching data, communicating information effectively. 
-
-How much time do you usually spend on design, relative to implementation? 
-ethical questions are better considered early on. 
-iterative design. 
-implementable features are offered, better maintainer than implementor. 
-
-What experiences keep you inspired during implementation, before finishing a task? 
-Intersting problems are progressing and you see the evolution. 
-now i understand the code. 
-
-What events can cause you distress during implementation? 
-designing the technical architecture, and collaborating with other departments. 
-
-Thinking back on some of your accomplisments in the past, how do you feel about them now? 
-not satisfied by past products, prefer work on volunteer projects. 
-had full overview on a project, which was scrapped making the memory worse. 
-
-Do you wish they would be different in any way? 
-they were my own projects, so feel personal, but i would need to focus on other things. 
-potential needs to be expanded. better than crypto or gambling. 
-
-Do you have any practices that you seek to improve on in the future? 
-datavisualization in css, technical communication. 
-
-Simulating natural work environment (10 minutes): 
-
-Is there a feature you have recently worked on, that you would be open and able
-to share for a pair-programming exercise? (are you sure it is in public domain?)
-Alternatively, let's try to implement a breadth- and depth-first search algorithm together, 
-taking input from. 
-Jupyter notebook, python. 
-speeling out input in jupyter, copy pasting, indenting after edit to 2 layers. 
-find_person function name, taking data as second argument. 
-iterating on each level. 
-type error when running. 
-markdown toggle "stop trying to be helpful"
-datastructure specific. 
-
-
-and so hi Sarah this is the first interview we're doing for my project Severance that's
-the working title of it and we will be I'll read the summary of what we'll be doing which
-is an ethnography where I will be mapping the actor network of how you work which is a technical
-term but basically we will list your material tools that you're working with and your human
-attitudes towards them and the main goal is to then observe you in action with your tools
-and your thoughts and I will try to detect certain phenomena in your work that well the idea
-is that it would help in the future to for for example managers or users or non-technical
-people to get a better understanding of how you work and and make the technological products
-more accessible to them yes so first we will go through questions about your material and
-human context in practice and then a short pair programming exercise if you could think you
-you said you weren't sure if you have something to review that you worked on recently ah but
-that's perfectly fine we otherwise we can just do a short coding exercise and then and then we
-we will go through the articles that I showed you um should take 30 minutes but we're starting a little
-delayed um and we'll see how far we get uh within remaining like 15 from the official time schedule um yes so are you ready then
-okay okay then first question is uh what hardware do you rely on when you work
-uh like i the like from what i know about you you work with websites but uh sometimes you said that
-you're less in the technical area i don't know uh sometimes you uh manage projects like that
-yeah
-okay
-okay
-okay
-okay
-perfect so uh what's what's your hardware setup
-we're starting from a bit far but uh this this will be important later
-well your preference like things you prefer like uh if you start programming then like
-hardware wise what kind of uh laptop do you need uh does it need to be uh fast or what what do you
-look for when you look for when you look for a laptop or computer this is a desktop is it laptop or is it a tablet i don't know
-mm-hmm
-thinkpad
-okay
-edge that's a i don't know that one
-okay
-okay
-all right
-yeah i was a big fan of uh thinkpads and lono volina
-time does it have the uh trackpoint uh mouse that's like i think uh
-it doesn't
-okay that's also interesting
-yep um all right
-is the keyboard comfortable on either the mac or your own laptop
-yep
-like an old school like big travel keyboard or
-yeah
-okay
-okay
-so you you like
-try to avoid using the mac keyboard
-is that the case
-okay um
-this should be enough about the hardware stuff
-uh but i'm thinking of one more thing here that uh
-like your office like not only the uh uh computer hardware but uh like uh do you
-work at a home or prefer working at home or do you have like an office space where it's better
-yep
-you have a study table you have a study table where you go to or switch places
-you have a study table where you have a study table where you have a study table where you have a study
-um
-so you don't have like really high needs about uh the environment um it's just a basic table check
-um
-um
-it's just a basic table check
-yeah
-okay
-okay
-okay
-all right let's uh move on from this then and
-talk about your software
-references
-um
-so you already said you have a
-uh
-macbook for work
-uh
-so
-and
-and your own laptop what's uh the operating system there
-arch linux all right
-that's cool
-and
-uh
-how how do you compare
-uh
-your arch linux laptop with the macbook
-um
-um
-how much
-how which one do you prefer and how much
-um
-how much
-um
-um
-um
-um
-um
-um
-yeah what might be the reason then like do you prefer how arch linux works or
-so one aspect is probably the hardware that we talked about that you just
-like laptop better but uh you know if the macbook could have uh arch linux um then how how would
-you prefer that to mac os on it
-why do you have to change it every three years you say uh why
-so you've been working at the same company for a long time and that's like the same company made
-you change laptop gotcha um other software stuff like how um on do you use different software
-uh on the mac and the arch laptop for coding
-the right
-um
-And the latter two, those you use on both laptops, right?
-It can be as good.
-And Jupyter Notebook, you use on both.
-You say you use VS Code for writing on the Mac.
-And then you added...
-What did you say last?
-You said the other two, by WebStorm, I said WebStorm and PyCharm, yeah, right.
-So it seems like you do a lot of Python.
-Yeah.
-Hmm.
-Hmm.
-Hmm.
-Hmm.
-Hmm.
-Hmm.
-All right, that's nice so far.
-And we, I think we should move on, because these questions are taking more time than I estimate.
-And like...
-Ugh.
-Sorry?
-Yeah.
-Yeah, kind of.
-Sorry, this is kind of like a trial.
-Yes.
-So we talked about hardware and software, and next is like...
-Yeah, we talked about them in static states as they are at your disposal.
-And there's been quite a few things.
-But what are some common changes that you make to the hardware or the software, the way
-you customize anything in it.
-The only thing that seemed relevant so far is how you only use VS Code, you said, for writing
-on the Mac, and on your own laptop, you also use it for coding.
-So those are two, it seems like different use cases for VS Code.
-Do they, for example, mean that you have to change things in VS Code so that it's better
-for writing or coding?
-Or the default setup is good for both?
-rule any time.
-I couldn't change.
-Spell checker for writing in VS Code.
-That's interesting.
-I suppose that might be markdown that you're writing it then.
-Oh.
-Oh.
-and you're spell checking there i actually like haven't even heard of spell checker being used in
-uh code editor like you know they are present in uh common document editors but in a code editor
-uh you know
-okay yeah that's very curious uh that you're writing like natural language and code editors
-uh often um all right
-huh is it useful
-well like so you mean it's not linting so not checking code syntax but like if you spell
-the word uh-huh
-i'm actually not familiar with uh webstorm at all i think like i heard of it uh i know what pycharm is
-but is webstorm also like python adjacent or
-oh is it okay
-yeah i think pycharm is also like jet brains i actually missed noting the jet brains which was
-what you started with previously uh you said you use jet brains for work on mac right
-oh yeah i miss miss uh noted something there corrected it and other changes you make um
-this was already good input that uh you're relying on the spell checking and the linting
-and you need to add that in vs code
-um
-yeah like probably like jet brains stuff in my experience actually they are
-this might be imposing something which i should stay clear of but uh i don't know are they i'll ask
-it as a question uh are they as customizable as vs code or
-okay
-so more experience with chat friends stuff
-and you have been customizing them a lot uh which which is interesting because so far you said you
-don't customize it that much you just add the spell checker and uh ps code but uh regarding jet brains
-you said webstorm has these things built in that you need what customizations do you mean can you
-think of an example
-uh
-uh the file explorer
-what do you what changes do you make the file explorer
-people commonly talk about moving it to the left or right but that may be a vs code thing
-uh or is it something different like the icons do you change the icons on it or
-but so you basically like the default also would you say
-yeah okay
-okay well the you the fact that you say well or what customization you could think of with
-the linter and region and language settings uh that's already interesting that uh speaks about
-your focus on uh like content more than uh uh i don't know widgets around the content
-okay disabling ai oh that's that's rich for for uh my program there's a lot of talk about ai
-everything everyone's focusing on ai and everyone everywhere of course okay yeah so it's present in
-jetbrain stuff also they're putting it in jetbrains
-okay so these are uh the changes you make all right that we can work with already and then
-uh
-uh last material question is about immutable characteristics of uh these hardware and
-software on your work which we said was uh the case that you actually can work with the defaults
-so there's uh they are not immutable you could change them but they're fine as they are um
-but like
-what what uh features do these uh jetbrains editors and vs code have
-uh that you think influences your work um like you said for example that uh webstorm has this spell
-checking and linting built in which is very useful for you because you rely actually on the spell
-checking for your code even and you write a lot of uh like natural language in them
-system so those are built-in characteristics of webstorms that are useful for you
-uh-huh
-you use it for you use it for search and replace also or just the search
-mm-hmm and this is uh this is a search feature in jetbrains products in general or you're talking
-about one specific
-mm-hmm
-mm-hmm
-mm-hmm
-mm-hmm
-on code completion
-huh
-that is that is kind of an ai feature isn't it uh or or not necessarily the ai
-or that's not necessarily what has been improving it over
-okay
-yeah yeah yeah like i think you mean the like context
-yeah yeah yeah yeah so it takes information from the context um which which is a like traditional programming task
-uh and this like code completion on steroids which ai has been providing is is kind of different like
-it doesn't take information from the context that much it infers some of the context and then comes up with
-uh what like entire programs that you may be writing where i have little experience with the copilot
-and that's sort of the thing that it was doing but it's good to know that that's actually not what
-we are referring to here but the general code completion abilities
-yeah yeah yeah there's different variations yeah
-yeah mm-hmm
-yeah um so we can move on to the human aspects of coding which is uh when you start writing program
-what uh call motivates you the most usually uh yeah i don't know it's a good question but that's what i have
-that's what i have so uh uh uh like
-when you're assigned the task or when you come up with uh tasks on your personal projects
-um do you think of uh how it will benefit someone if you're solving the problem
-um or i don't know it was just like the joy of programming or how or that it's a difficult task
-uh to complete or i don't know like
-um
-um
-Thank you.
-Thank you.
-
-Okay, can I write this with less code?
-Does this work with force colors?
-Does this work on a different screen sizes?
-Does this work no matter what kind of zoom do we use?
-If we remove the CSS from this side,
-this is still going to be at least semi-eligible.
-And playing around with these things,
-it's generally what makes the task more interesting.
-Or if it's something that I'm implementing
-and I'm like, this is going to be confusing to a person
-or this is going to be unreadable at a certain point
-and then I can pass it on.
-This is what...
-But the task as itself doesn't really have like...
-Yeah, I generally know people will use it
-but since I'm still not 100% on board
-on what my team is actually doing,
-I'm like, yeah, okay, people say that is useful.
-Well, I don't actually see the entire thing as useful
-but I'm going to do it anyway sort of situation.
-Now, if I'm volunteering,
-then you generally get a survey
-that you need to analyze a part of it.
-In which case, the main motivation is
-what kind of interesting things can I find in this data?
-And the motivation starts with
-what is interesting to me.
-Because if it's going to be interesting to me,
-it might be interesting to somebody else as well
-and the writers will be able to write something about it.
-And afterwards, the interesting part is
-how can I actually visualize that
-to be both readable
-and at least somehow understandable?
-Because a lot of times it's like
-I get into this problem of
-this would be a great visualization
-but not all the numbers will be visible there.
-So what do you do then?
-Do you change the visualization
-or do you make some sort of wackish way
-that doesn't look that good?
-And trying to figure out
-the sort of trade-offs between them.
-It's the interesting one.
-Once I already figure it out,
-okay, these are the interesting things
-that I actually want to present.
-I start with that.
-And when it comes to my own personal project,
-it's usually this is an interesting idea to me
-or this is an interesting...
-or I want to have this feature service,
-things like that
-and it starts from what will be,
-from me as a user perspective,
-the best thing to do.
-Then I start from the user perspective.
-Of me.
-I don't know.
-Was that in the direction that you wanted?
-It sounds like you're focusing on using technology
-to communicate information when you work with data
-or when it's not about, like, content
-and producing content,
-but how it is implementing,
-then it's important to you
-that it's universally accessible
-or you were talking about something like that,
-that it is visible to everyone
-in a nice way.
-So that...
-I think I can work with those inputs.
-Just in the meantime,
-I realized that my voice recorder
-wasn't recording your responses,
-only my voice from the material part,
-but that's fine.
-We are having the recording for now.
-Yeah, because, you know,
-because if you're talking about ethical problems,
-by the time you have a task,
-it's too late to take a process.
-Ah, yeah.
-Yeah, so...
-That's actually kind of the next question.
-Yes, indeed.
-Which is,
-how much time do you spend on design
-compared to implementation?
-So now you started talking about
-considering ethical questions
-is better early on
-and that might be part of design.
-Okay.
-Okay.
-Thank you.
-Thank you.
-Thank you.
-Thank you.
-Thank you.
-Thank you.
-Thank you.
-Thank you.
-Thank you.
-Thank you.
-Thank you.
-
-Yeah, then we are using Jupyter Notebook and so it will be Python.
-I mean, Jupyter Notebook is Python exclusive, right?
-There are, I've heard of extensions to other languages, but most-
-I used R in it as well.
-Oh, right.
-And I think there are others.
-Okay, but I guess we'll be using Python then, right?
-Yeah.
-So, what I thought would be a good exercise is breadth and depth-first search.
-We don't have to complete it, and you can choose which one you want to go for first.
-And we would need to come up with some input data, which I think would be easiest to just
-spell out some JSON.
-Just two levels maybe, and there's a string in it.
-And then we will find it algorithmically.
-But maybe in Python, it's not literal JSON that you can spell out, but like a dictionary,
-right?
-Yeah.
-Same thing.
-Same thing.
-So, you know, a key value pair where the values are also key value pairs and maybe like two,
-two levels of this, you know, cat, dog.
-And each has a name, for example, where you're writing Albert.
-That's good too.
-Yeah.
-Perfect.
-And I can already observe some stuff here.
-So, let's just, let's just do one thing.
-Let's put them inside, uh, companies.
-So, create, let's say Albert and Jay are in, uh, Google and, uh, what's the name of the
-third?
-I can see that, you know, or someone, they work at, I don't know, uh, Facebook.
-Oh, wait, but, uh, yeah, this is not how I meant it.
-I meant like, let's, uh, put another layer.
-So there's, uh, yeah, like that.
-Google.
-Yeah.
-And then, yeah, Apple, and this is the third person.
-Yeah, and then, so if we want to find, um, workers with the name, uh, that's given to a function.
-So let's take the name as input, and how would we find a person with that name?
-And how would we find a person with that name?
-So, we have to find...
-FindPerson, that's the name you gave, alright?
-
-
-(Interview transcript #2)#h2
-
-Material aspects (5 minutes): 
+Material aspects (10 minutes): 
 
 What existing hardware do you rely on to write programs and why? 
 Work and private life. 
@@ -736,7 +133,7 @@ What are some of their immutable characteristics that influence your work, and h
 Seamlessness between applications is not a given, 
 so integrating between them or adapting takes time. 
 
-Human aspects (5 minutes): 
+Human aspects (10 minutes): 
 
 What goals motivate you the most when you start writing a program? 
 DIY, the ability to publish content. 
@@ -764,339 +161,99 @@ Do you have any practices that you seek to improve on in the future?
 
 Simulating natural work environment (10 minutes): 
 
-Is there a feature you have recently worked on, that you would be open and able
-to share for a pair-programming exercise? (are you sure it is in public domain?)
-Alternatively, let's try to implement a breadth- and depth-first search algorithm together, 
-taking input from. 
-
-scrping news about network api. 
-curated links, get headlines, summary. 
-was easy to set up. 
-coding js is the hard part. 
-
-
-(Notes)#b 
-
-
-(Interview transcript #3)#h2
-
-Material aspects (5 minutes): 
-
-What existing hardware do you rely on to write programs and why? 
-Apple laptop since 1993, desktop publishing. 
-Intel macbook from 2018. 
-Windows was never working, so Mac was better. 
-Low maintenance system. 
-Switching places sometime, but mainly home office. 
-Office environment is better.
-
-What existing software do you rely on to write programs and why? 
-Linux is of interest, for IOT. 
-Vim for text editing. GUI are a nuisance. 
-Figma and Sketch, creative cloud, Adobe photoshop/illustrator/aftereffects/premiere. 
-Chrome, Jira, Confluence. 
-VSCode for code editing. 
-
-What changes do you make to these software and hardware to customize your experience? 
-Vim key bindings in VSCode, 
-Emmet: CSS syntax to build html. 
-Linter, prettier, Biome. 
-Markdown. 
-
-What are some of their immutable characteristics that influence your work, and how? 
-MS Office leads to usage of shell. 
-GUI ought to simplify processes. 
-
-Human aspects (5 minutes): 
-
-What goals motivate you the most when you start writing a program? 
-Make things easier for me or someone else. 
-
-How much time do you usually spend on design, relative to implementation? 
-Becoming more pragmatic over time, html and css. 
-Building design systems involves testing components. 
-
-What experiences keep you inspired during implementation, before finishing a task? 
-lightbulb moments when i solved some difficult issue. 
-Seeing new possibilities. 
-
-What events can cause you distress during implementation? 
-Lack of skills to debug. 
-Struggling to find reason of bugs. 
-Bad documentation. 
-Node modules not well documented. 
-LLM helps me understand. 
-
-Thinking back on some of your accomplisments in the past, how do you feel about them now? 
-Seeing the flaws, trying to celebrate successes more. 
-
-Do you wish they would be different in any way? 
-Adding more flexibility. 
-
-Do you have any practices that you seek to improve on in the future? 
-Debugging skills should be improved. 
-
-
-Simulating natural work environment (10 minutes): 
-
-Is there a feature you have recently worked on, that you would be open and able
-to share for a pair-programming exercise? (are you sure it is in public domain?)
-Alternatively, let's try to implement a breadth- and depth-first search algorithm together, 
-taking input from. 
-
-Alfred no-code tool. Event data from a text. 
-ICS converter. 
-OpenAI-aided LLM
-experiment to make it more consistent. 
-Helps achieve more complicated system level operations. 
-
-
-(Interview transcript #3)#h2
-
-Material aspects (5 minutes): 
-
-What existing hardware do you rely on to write programs and why? 
-What existing software do you rely on to write programs and why? 
-What changes do you make to these software and hardware to customize your experience? 
-What are some of their immutable characteristics that influence your work, and how? 
-
-Human aspects (5 minutes): 
-
-What goals motivate you the most when you start writing a program? 
-How much time do you usually spend on design, relative to implementation? 
-What experiences keep you inspired during implementation, before finishing a task? 
-What events can cause you distress during implementation? 
-Thinking back on some of your accomplisments in the past, how do you feel about them now? 
-Do you wish they would be different in any way? 
-Do you have any practices that you seek to improve on in the future? 
-
-Simulating natural work environment (10 minutes): 
-
-Is there a feature you have recently worked on, that you would be open and able
-to share for a pair-programming exercise? (are you sure it is in public domain?)
-Alternatively, let's try to implement a breadth- and depth-first search algorithm together, 
-taking input from. 
-
-Testing provotype on modular tacit programming (10 minutes): 
-
-Let's visit https://jsinterface.org/author/blik/ and walk through the exercises in my blog post on "Interface", "Inference" and "Form". 
-
-
-BoersenBotin2013_TANT.pdf@/Anthropology/BoersenBotin2013_TANT.pdf
-Heidegger_1954_Concerning_Technology.pdf@/Anthropology/Heidegger_1954_Concerning_Technology.pdf
-Matejka_2017_Annealing_identical_statistics.pdf@/Anthropology/Matejka_2017_Annealing_identical_statistics.pdf
-Jensen_Techno_Anthropology_STS_Encounters_2013.pdf@/Anthropology/Jensen_Techno_Anthropology_STS_Encounters_2013.pdf
-Clarke_2005@/Framing/Clarke_2005_Situational_Analysis.pdf
-
- 1. Infrastructure and institution
-
-Karasti_2014@/Framing/Karasti_2014_Infrastructuring_in_participatory_design.pdf
-Cibin_etal_2019@/Framing/Cibin_etal_2019_Institutioning_community_radio.pdf
-
- 2. Value-sensitive design
-
- Friedman_2013@/Framing/Doorn_etal_2013_Philosophy_of_engineering_reflections.pdf
- Value sensitive design: privacy, property, impartiality, welfare, accessibility, trust, autonomy. 
-Control. 
-Iterative conceptual, empirical, technical investigation. 
-Cookies: Informed consent (disclosure, compensation, voluntariness)
-HDTV window: 
-Milieu simulation: 
- Poel_2013@/Framing/Poel_2010_Translating_values_into_design.pdf
- Translating values into design requirements: value hierarchy specification. 
-value(judgement)-Norm(prescription)-design requirement or sake justification (means to an end).
-Professional or philosophical deliberation. 
-
- 3. Co-design
-
-Osborne_2016@/Framing/Osborne_2016_Co-production_PMR_final.pdf
-Sanders_2008@/Framing/Sanders_2008_Co-creation_and_the_new_landscapes_of_design.pdf
-
- 4. Publics
-
-disalvo_2013@/Framing/disalvo_2013_infrastructuring-and-the-formation-of-publics-in-participatory-design.pdf
-Teli_2014@/Framing/Teli_2014_Public_design_urban_digital_commons.pdf
-
- 5. Agonistic design
-
-Bjorgvinsson_2012@/Framing/Bjorgvinsson_2012_Agonistic_design_marginalised_movements.pdf
-Keyes_2019@/Framing/Keyes_2019_Anarchist_HCI.pdf
-
- 6. Commoning
-
-Ekbia_2014@/Framing/Ekbia_2014_Heteromation_division_of_labor_between_humans_and_machines.pdf
-Marttila_2017@/Framing/Marttila_2017_Infrastructuring_commons.pdf
-
- 7. Feminine human-computer interaction
-
- Bardzell_2010@/Framing/Bardzell_2010_Feminist_HCI.pdf
- user research, prototyping, evaluation instead of piecemeal feminism. 
-"Universal" accessible design from STS, 
-domestic and developing country tech from product design, pervasive computing from architecture, 
-affective computing from game design. 
-pluralism (marginal standpoint epistemologies) and self-disclosure over universalism, participation over reproducibility, advocacy over empiricism, ecology and embodiment over performance. 
- Sciannamblo_2021@/Framing/Sciannamblo_2021_Caring_commoning_cooperative_work.pdf
- activism and emancipation over surveillence/platform capitalism in work, affects, politics in computer-supported cooperative work
-by focusing on reproductive work.
-Autonomy, cooperation and solidarity over exploitation, commodification. 
-Heteromation over audience commodity. 
-Caring is invervention of structuring connections, generative critique. 
-Careful peer production, cooperative enterprise, maintenance and repair of commons. 
-Commons are sets of collective interests. 
-Grassroots solidarity of Commonfare to challenge precariousness, unemployment with digital technologies. 
-Infrastructure for solidarity and commoning. 
-
- 8. Sustainable interaction design   
-
- Blevis_2007@/Framing/Blevis_2007_Sustainable_interaction_design.pdf
- sustainable values, methods, reasoning. 
-defuturing, ontological design, technophenomenology, structure-preserving transformations. 
-disposal, salvage, reuse, refurbishment, recycling, longevity, sharing, heirloom, alternatives, resilience. 
-move from users to human conditions, from novelty to well-designed systems. 
-value: I=NPE, method: prescriptive critique and reflection, reasoning: obsolescence and longevity conditions for invention through (e)quality, ownership, ecology. 
- Blevis_2013@/Framing/Blevis_2013_Collapse_informatics_and_practice.pdf collapse informatics. comparative research of reflexive practice theory, longitudinal study. 
-climate change habitability index, wisdom of years, local smart grids, 
-
- 
-Appleton_2020_Digital_Anthropology.pdf@/Anthropology/Appleton_2020_Digital_Anthropology.pdf
-Brinkman_2013_Qualitative_Interviewing.pdf@/Anthropology/Brinkman_2013_Qualitative_Interviewing.pdf
-
-Andersen_etal_2020_anthropology_inside_out.pdf@/Anthropology/Andersen_etal_2020_anthropology_inside_out.pdf
-Neyland_2008_organizational_ethnography.pdf@/Anthropology/Neyland_2008_organizational_ethnography.pdf
-
- #1 centering algorithms
-
-Seaver_2019_Digital_STS_26_Knowing_Algorithms.pdf@/Anthropology/Seaver_2019_Digital_STS_26_Knowing_Algorithms.pdf
- Algorithms. Anagnorisis (aletheia)
-Douglas-Jones_2021_Anthropology_of_data.pdf@/Anthropology/Douglas-Jones_2021_Anthropology_of_data.pdf
- Anthropology of data. making it "political" and "generative". 
- examples: evidence, government, indicators by experts (how tf are these the first 3 coming to mind...)
- precedents: audit culture, (colonial) bureaucracy, violent legibility by numerical seduction (this is insane.)
- Pink_etal_2016_Digital_Ethnography.pdf@/Anthropology/Pink_etal_2016_Digital_Ethnography.pdf
- Balasescu_2020_machine_anthropology.pdf@/Anthropology/Balasescu_2020_machine_anthropology.pdf
- Munk_etal_2022_think_machine_anthropological_ai_between_explanation_and_explication.pdf@/Anthropology/munk_etal_2022_think_machine_anthropological_ai_between_explanation_and_explication.pdf
- blok_2014_complementary_social_science_in_a_big_data_world.pdf@/Anthropology/blok_2014_complementary_social_science_in_a_big_data_world.pdf
-
-Dumit_2014_writing_the_implosion.pdf@/Anthropology/Dumit_2014_writing_the_implosion.pdf
-344-362
-Knox_2016_Digital_Ontology.pdf@/Anthropology/Knox_2016_Digital_Ontology.pdf
-Sapiezinsky_2019_interaction_data.pdf@/Anthropology/Sapiezinsky_2019_interaction_data.pdf
-Wilson_2008_global_indigenous_media.pdf@/Anthropology/Wilson_2008_global_indigenous_media.pdf
-Anderson_2008_End_of_Theory_Scientific_method.pdf@/Anthropology/Anderson_2008_End_of_Theory_Scientific_method.pdf
-
- #2 public privacy
-
-Mohl_2022_Biometric_Technologies_border_control.pdf@/Anthropology/Mohl_2022_Biometric_Technologies_border_control.pdf
-Grunenberg_2020_Biometric_technologies_anti-spoofing.pdf@/Anthropology/Grunenberg_2020_Biometric_technologies_anti-spoofing.pdf
-Waltorp_2017@/Anthropology/Salazar_etal_2017_Anthropologies_and_Futures_Researching_Emerging_and_Uncertain_Worlds.pdf
-101-116
-
-Ravn_etal_2019_Publicly_available_data_Instagram.pdf@/Anthropology/Ravn_etal_2019_Publicly_available_data_Instagram.pdf
-40-45
-Miller_Horst_2012_The_Digital_and_the_Human.pdf@/Anthropology/Miller_Horst_2012_The_Digital_and_the_Human.pdf
-Waltorp_2018@/Anthropology/Estalella_etal_2018_Experimental_Collaborations_Ethnography_through_Fieldwork_Devices.pdf
-114-131
-
- #7 automated healthcare
-
-Jensen_2022@/Anthropology/Jensen_2022_organ_transplant_data.pdf
-Hoeyer_2020_Private_public_data_infrastructures.pdf@/Anthropology/Hoeyer_2020_Private_public_data_infrastructures.pdf
-Mol_2010@Mol_2010_Care_Practice_into_theory.pdf
-Wadman_2022_Patient_confidentiality_history.pdf@/Anthropology/Wadman_2022_Patient_confidentiality_history.pdf
-Christensen_2023@/Anthropology/Christensen_2023_ehealth_for_persistent_patients.pdf
-
- 275 Hippocratic oath
- 1924 public registry
- 1968 CPR number
- 1983 Dankort
- 2000 digital signature, MinSundhed, eboks
- 2001 digitalization strategy
- 2010 NemID
- 2022 MitID
-
- #5 digitalization of trade
- 
-Nelms_et_al_2018@/Anthropology/Nelms_et_al_2018_sharing_economy.pdf
-Bruun_etal_2020@/Anthropology/Bruun_etal_2020_Infrastructures_of_trust_and_distrust_the_politics_and_ethics_of_emerging_cryptographic_technologies_AM.pdf
-Breslin_2024@/Anthropology/Breslin_2024_cultures_of_trust_in_computing.pdf
-Breslin_2024@/Anthropology/Breslin_2024_cultures_of_trust_in_computing_.mp3
-
-Ravnbol_2019@/Anthropology/Ravnbol_2023_Anthropod_Cashless_.mp3
-Hoods_2019@/Anthropology/Hoods_2019_Facebook_Libra_issue.pdf
-
-Bruun_etal_2020@/Anthropology/Bruun_etal_2020_Cryptic_Commonalities.pdf
-
- #3 digitalization of nature
-
-Goldstein_Nost_etal_2022_The_Nature_of_Data.pdf@/Anthropology/Goldstein_Nost_etal_2022_The_Nature_of_Data.pdf
-Gabrys_2016_Program_Earth.pdf@/Anthropology/Gabrys_2016_Program_Earth.pdf
-gabrys_2020@/Anthropology/gabrys_2020_smart-forests-and-data-practices-from-the-internet-of-trees-to-planetary-governance.pdf
-Nadim_2021_Datafication_of_nature.pdf@/Anthropology/Nadim_2021_Datafication_of_nature.pdf
-Nadim_2020@https://www.anthropocene-curriculum.org/contribution/data-flow
-
-Helmreich_2011@/Anthropology/Helmreich_2011_NatureCultureSeawater.pdf
-Helmreich_2011@/Anthropology/Helmreich_2011_spaceship_google_ocean.pdf
-Childs_2019@/Anthropology/Childs_2019_deep_sea_mining.pdf
-
- #4 digitalization of infrastructure
-
- star_ruhleder_1996_ecologyofinfrastructure.pdf@/Anthropology/star_ruhleder_1996_ecologyofinfrastructure.pdf
- Information infrastructures. Ecology of infrastructure. Bateson's complexity levels of learning, designer-user communication. 
-Collaboration, organization, transformation. Structure vs agency structuration. Quest for universal niche. 
-Worm community system. 
-Figure/ground, supported/support hierarchy. Limiting/facilitating channel of transport. 
-Standards, protocols, relations, bereaucracy emergence/enforcement/marginalization. 
- FISCH_2013_TOKYOSCOMMUTERTRAIN.pdf@/Anthropology/FISCH_2013_TOKYOSCOMMUTERTRAIN.pdf
- Pink_2022_methods_for_researching_automated_futures.pdf@/Anthropology/pink_2022_methods_for_researching_automated_futures.pdf
- 
- Bowker_2000_Sorting_Things_Out_Classification_and_consequences.pdf@/Anthropology/Bowker_2000_Sorting_Things_Out_Classification_and_consequences.pdf
-
-
- #6 machine translation
-
-Christensen_2022@/Anthropology/Christensen_2022_What_motor_vehicles_and_translation_machines_have_in_common_a_first_step_towards_a_translation_automation_taxonomy_Accepted_manuscript.pdf
-Bundgaard_2018_netnographic_study_of_translators_backtranslation_medical.pdf@/Anthropology/Bundgaard_2018_netnographic_study_of_translators_backtranslation_medical.pdf
- Medical backtranslation. 
-
- #8 Time
-
-Duus_etal_2023@/Anthropology/duus_etal_2023_riders-in-app-time-exploring-the-temporal-experiences-of-food-delivery-platform-work.pdf
-Rosa_2003@/Anthropology/Rosa_2003_Social_Acceleration_Ethical_and_Politica.pdf
-Sharma_2013@/Anthropology/Sharma_2013_Critical_Time.pdf
-wajcman_2018@/Anthropology/wajcman_2018_how-silicon-valley-sets-time.pdf
-
- #9 sentience
- 
-Jaynes_2021@/Anthropology/Jaynes_2021_algorithmic_personhood.pdf
-Addlesee_2001@/Anthropology/Addlesee_2001_IEEE-computing-sentient.pdf
-
- #10 ethnography of digital interaction (cancelled)
-
-Brandt_2023_Governing_Like_a_Resilient_City.pdf@/Anthropology/Brandt_2023_Governing_Like_a_Resilient_City.pdf
-chapter 8
-Marvin_2018_Urban_Living_Labs.pdf@/Anthropology/Marvin_2018_Urban_Living_Labs.pdf
-
-(1st SEMESTER LEARNING OBJECTIVES)@/Anthropology/AAU_2024_1st_semester_description.pdf
-A student who has completed this module can:
-KNOWLEDGE
-� explain theories and methods used in studies of digital transformations.
-� explain historical and contemporary needs and uses of a specific technology.
-� categorize technical datasets in transformational perspective.
-� communicate existing knowledge on interdisciplinary project work in groups.
-SKILLS
-� portray and critically evaluate the theoretical and conceptual landscape of Techno-Anthropology and
-link it to digital transformations.
-� identify drivers for responsible digital transformation, planning and implementation.
-� Identify relevant digital platforms in specific digital transformations.
-� critically reflect on own analysis and group dynamics.
-COMPETENCES
-� apply qualitative methods in studies of digital transformation and implementation.
-� communicate complex technological knowledge and practice.
-� make use of the diversities presented in the project group and reflect on the impact on the work
-processes in problem-based and project-oriented work. 
-
-(3rd SEMESTER LEARNING OBJECTIVES)@/Anthropology/AAU_2024_3rd_semester_description.pdf 
-
-
-
+Is there a feature you have recently worked on, that you would be open and able to share for a pair-programming exercise? (are you sure it is in public domain?) Alternatively, let's try to implement a breadth- and depth-first search algorithm together. 
+{text-align:left}
+
+Discussion#h2{text-align:center}
+
+ I conducted a total of four interviews with four independent web developers taking very different approaches to web development, whom I met at a conference organized by IndieWeb.org in Berlin on November 9th, 2024. Two of them were professional web developers working primarily with the Angular and React frameworks respectively, but as evidenced by their participation at the conference, they also actively seek alternative approaches to web development in their private projects. The other two informants have years of history trying to get familiar with programming, one of them completely independently, the other with a professional background in design systems. They both settled on various low- or no-code platforms to produce their websites, but maintain a keen interest in finding better tools, and learning programming to take full control of their digital presence. 
+
+ (First interview)#h3
+
+ About her material work environment, my first interview candidate said she uses two laptops, an M2 macbook for work and an "10 years old" lenovo device personal projects. She prefers a regular mouse, and the comfortable keyboard of her personal laptop. For office space, she has a steady, regular table and chair in a room where she works three quarters of the time. For operating systems, she uses Arch linux and the macbook's MacOS, which she can't get as used to because her company makes her change it every 3 years. For work she relies mostly on various JetBrains editors (IntelliJ IDEA, PyCharm and WebStorm), while "gedit", Jupyter notebook on her PC for personal projects. Interstingly, when she mentioned VSCode, she said she uses it to write content for her blog, in markdown or plain text files. In the other editors, her job requires working with Angular, Javascript and Golang projects, while she uses python to create personal ones. 
+ Regarding customizations, she uses a spell checker in VSCode, which is available by default in WebStorm, along with a linter. Her extensive content writing activity makes spell checking useful for her, which she customizes with region and language settings. She also customizes the linter, given the diversity of the projects she works on. She said she changes something about the file explorer, but couldn't remember what it is, suggesting her setup has been stable for a while. She also disables AI, as she doesn't find the prompt feature it offers in JetBrains products useful. Instead, the default, static analysis based code completion capabilities have been improving over the years, along with the search feature, which she highlighted as very useful for her. In summary, she likes the default settings of the editors, and doesn't make too many changes, only smaller tweaks that she really needs. 
+ Making the content she produces universally accessible and display correctly on various browsers, as well as standards compliance ("if we remove the css from the site, is it still going to be at least semi-eligible?"), and working in a group she mentioned as her primary motivators to work on her programming tasks. She also cares about producing maintainable and expressive code ("Can I write it with less code"; "if it is going to be unreadable at some point then I can't pass it on."), and added that she especially enjoys analysing data in volunteer projects and creating expressive data visualizations. When reflecting on how much time she spends on design, she found it very difficult to distinguish what part of her work counts as design and implementation. She eventually concluded that it is a fuzzy, iterative process, dedicated designers are responsible for assigning her features that are implementable and she tries to trust their decision, although it often requires her to suppress concerns about the utility of a task: "I generally know people will use it, but since I'm still not 100% on board on what my team is actually doing, I'm like, okay, people say that is useful. I don't actually see the entire thing as useful but I'm going to do it anyway sort of situation.". Given this analysis paralysis, she feels more comfortable being assigned "maintenance" tasks than new feature implementation, as they involve less such decision-making responsibility. She still expressed some discomfort about lack of ethical considerations she can afford, or is involved in, since these are best made early on in the design process. She contrasted this with her volunteer work, where she receives survey data that she can analyse herself, and finds great inspiration in discovering and expressively visualizing interesting insights ("if it's interesting to me, it might be interesting to somebody else as well and the writers will be able to write something about it."). 
+ Consistent with this, about positive experiences during implementation, she highlighted the growing understanding she gains as a product evolves, about code architecture as well as its purpose. By contrast, in volunteer and personal projects, she enjoys the freedom to follow her own interests, from her own "user perspective", and develop features or products that she designs to be as useful and expressive as possible. In terms of frustrations and events that cause distress, she quickly replied with designing large technical architectures, and collaboration with other departments in her company. The first is understandable given her previously expressed frustrations about being overwhelmed by adding new features to existing architectures, while elaborating on the second showed how seeking help in other departments in her corporation to figure out complex issues often also leads to dead ends, because noone seems able to report on their responsibilities either. 
+ When asked to reflect on how she feels about her past accomplishments, she expectably expressed dissatisfaction with her work record due to the limiting circumstances. She told a story abot a smaller project she was excited to have full overview on, but it was cancelled recently, making this experience a disappointment too. She finds much more pleasure working on her volunteer projects, but her general experience is everything is always in progress, and she would like to see more impact from her work. Her own projects give her the most solace because they are personal, but she is trying to shift her focus to new areas where she wants to improve. One of these is the aforementioned code architecture, but she also wants to expand the scope of her potential needs. As a consolation, she sarcastically remarked that even her work is "better than crypto or gambling" (echoing her former concern for ethical responsibility). On the question about work practices, as opposed to products, she could name datavisualization in css, and technical communication in specific (corresponding to her biggest challenges in volunteer and work projects, respectively). 
+ For our pair programming exercise, she chose to use a local instance of Jupyter notebook, as she found it the most convenient to open and live-edit a Python program. To provide input to the search algorithm, she first spelled out a list of employees, but then I asked her to put them in some hierarchical data structure of companies. She copy-pasted redundant structures to make it quicker, which caused her to corrent misaligned indentation sometimes. When I caught up on the data structure she wrote, she was already writing the function, calling it "find_person", designing it as a pure binary function (taking both the name to search and the source data to search in as arguments). She began by writing an iteration on the specific data structure she created, iterating redundantly on its two levels. This made it less generalizable as a "search algorithm", rather a pragmatic depth-first search for the specific use case she improvised. This could represent her described approach in work tasks, preferring to ignore complexity to get a specific assignment done quickly, but generalizability was also not stated as an explicit requirement for the exercise. During implementation, she kept being distracted by a markdown feature of Jupyter notebook offering help, until she turned it off (exclaiming "stop trying to be helpful"). 
+
+ (Second interview)#h3
+
+ My second interview was with a hobby blogger, professionally working outside of the tech industry, but proficient in Wordpress where he writes custom plugins for his blog and several other personal projects. The audio record of the conversation was unfortunately lost, so I had to reconstruct my observations from my notes and memory. 
+ He also has separate computers for official and private work, a Lenovo thinkpad and a desktop computer. His desktop setup was carefully assembled with a computer magazine's guidance, has 16GB ram, 1TB SSD, a good monitor, mouse and keyboard, and a Ubuntu Linux installed. This also means that his personal work is mostly done at his desk, but he sometimes uses the Lenovo to access his host servers. Beyond Wordpress, he also uses Hugo to generate static web pages, and recently a new no-code platform at "n8n.io" to "automate market intelligence", as he phrased it. For hosting, he uses Contabo, because it offers convenient access from a browser. He additionally uses FileZilla for FTP access to his servers. Typora is his dedicated text editor for markdown, but he also uses VSCode, and often relies on ChatGPT to solve tasks. Regarding customization, he said he rather carefully chooses the tools he uses, and then their configuration is usually sufficient. "I'd rather have less features than breaking it." That said, he mentioned that integrating between the various tools he uses if "not a given" so often takes time, and isn't seamless, which can cause him a lot of frustration. To express his motivation to solve tasks, he referred to a DIY car maintenance culture in the 80's and 90's, as a model for how he intends to use web technology as well. He uses blogs because he wants to publish articles about his interests, but over time he developed curiosity for "life hacking" capabilities of programs, which he currently explores in no-code platforms, and plans to expand by learning javascript soon. For his publishing practice, he said he doesn't have to spend too much time on design, he just chooses a template that he likes. It occurred to me later that his focus on Wordpress templates indicated an interpretation of "design" as strictly aesthetic choices, which is why his answer was limited to his publishing practice. From his previous responses though, we can infer that his careful choice of tools involves a large amount of system and implementation design considerations, but their ratio to productive activities remained difficult to determine. During implementation, he affirmed that he is pragmatic and focuses on the goal, rather than "fiddling", but what he gains new inspiration from in this process is new ideas he develops as he discovers new possibilities. When something he wants to achieve is difficult, he critically assesses how crucial it is, or if it can be worked around with alternatives, usually helping him avoid any frustrations. 
+ Regarding his past achievements, he feels never satisfied, and the competition of fellow independent developers keeps him want to constantly improve, and explore "uncharted territories". He is also in constant search for understanding his tools better, and to follow the progress of the open source ecosystem. 
+ For the pair programming exercise, he presented a recent automation he implemented in his recently discovered no-code platform. He maintains a curated list online journals about various network API innovations to be scraped, and uses AI to provide a summary of articles with headlines. He said the platform made it very easy to set up, only the required javascript snippets were difficult. 
+
+ (Third interview)#h3
+
+ My third informant was a "design systems" expert, a rare interdisciplinary profession concerned with detailed specification of UI layout and interactivity (gained popularity since the release of Google's Material Design). His growing confusion about the efficiency of his design proposals considering the complexities and limitations of implementation as he became familiar with it lead him to take more and more interest in programming, and create a blog using 11ty to document his progress. 
+ His device preference is with Apple products since as early as 1993, when they were uniquely fit for his work in "desktop publishing", currently being loyal to his Intel macbook from 2018. He has been working in home office since the pandemic, but misses an office environment ever since as it made it easier to strike a good work-life balance, so he likes going somewhere else to work when he has the opportunity. 
+ He praised MacOS for being a low maintenance system, but he is interested in using Linux more, as it is more suitable for IoT (Internet of Things) applications he wants to experiment with. As part of his growing fascination with coding, he discovered Vim as his new favorite text editor, although he is still learning the plentiful shortcuts that its interface is based on. In comparison, he finds graphical text editors much less intuitive. His traditional design toolkit consists of graphical design software like Figma, Sketch, Creative Cloud, and Adobe products. His corporate job record also brought a reliance on Atlassian products Jira and Confluence. He finally mentioned Chrome and VSCode as the main utilities on his new adventures in web development. 
+ His fascination with Vim made him customize VSCode by adding Vim keybindings, while he found the Emmet plugin additionally helpful for editing web assets, with its shortcuts to eg. spell out html with css syntax. For syntactic linting and formatting, he also found a personal preference in Biome, over the more conventional Prettier formatter. His preferences are characteristically moving from graphical interfaces to more direct programmatic controls with command line, but he still appreciates good graphical interfaces, which he typically finds in Apple software (eg. iMovie). 
+ He identified his main motivator to pursue programming tasks in making things "easier" for himself or others. He reports a trend of less focus on design and being more pragmatic as he works more directly with the web platform, writing html and css directly. Architecting design systems involves a growing amount of testing his components, which is blending his "design" and "implementation" activities into the same creative process. This also yields him the "lightbulb moments" that keep him motivated during implementation by opening new perspectives as he understainds how to solve various difficult challenges. A lack of debugging skills still makes these moments harder to achieve, and the unreliable quality of documentations can further increase his frustration in some cases. While he finds most documentations informative, it baffles him how some most popular tools can have the least intuitive documentation, notably NPM libraries for javascript. He often resorts to LLMs to find the reason for his bugs. Due to his tendency for self-criticism about his past accomplishments, he tries to celebrate his successes more. He wishes his products were more flexible, and he seeks to improve his debugging skills to speed up his progress. 
+ For our pair programming exercise, he also chose to present an experimental automation project on the Alfred no-code platform that he has been working on recently. He chose it because it provides system-level capabilities that he didn't feel prepared to control programmatically yet. The goal was to automate calendar event extraction from various websites, as it was something he hasn't found consistent in direct prompt interfaces to LLMs. While it didn't become clear where he provided input from, and what he did with the output ICS file, it was only an experimental project focused on a python script to interact with OpenAI. He frequently apologized foe his implementation, which included many comments explaining almost every line, which were still somewhat redundant (re-declaring variables and missing opportunities for iteration). This showed a great deal of humility towards programming concepts, but a struggle to reconcile them with his own intuitions, which would be a great asset for conscious, responsible programming if he can develop his preferences to express them. 
+
+ (Fourth interview)#h3
+
+ My last interview was with another professional web developer who also transitioned from a designer carreer in the past. He works with the React framework now, as a majority of frontend developers. At the IndieWeb conference, he showed great interest in standard, low-level web technologies, and independent professional knowledge, as he participated in the workshop I hosted there about abstractions to architect CSS/JS/HTML on the server side. 
+ His hardware asset is two Macbooks, a new M4 variant for work, and an M2 for personal use. He has been interested in using Linux more, ever since his experiments with Arduino 10-15 years ago at university, but his focus has not returned to this hobby yet. He works in a hybrid workspace, from home or a co-working office, with flexible hours. He mostly works from home, but also mentions the work-life imbalance this causes, so sometimes prefers to attend the co-working office. He also struggles with back problems due to a broken chair he has at home, which pain can sometimes limits his efficiency. His software needs are largely covered by VSCode, but he told the story of how he found this preference after the P5.js library helped him discover the javascript ecosystem. The library ports Processing, a popular Java library for intuitive, compelling graphical visualizations that provided inspiration for many to get into programming in its time. He introduced me to some details of this history, showing his great appreciation for it. In the times when Processing was his main driver of development, he used the Sublime and Vim editors following his university's recommendations, but they never felt as convenient as VSCode and the Javascript ecosystem does now, which probably reinfoced his carreer path leadin through UI design with other graphical software like Figma. He enjoys that he gets to participate in both design and implementation to this day, and VSCode provides him great customizability for his unique workflows. In listing his VSCode plugins, he started with Postman and Thunderclient, two utilities to test interaction with servers (typically used for testing database interfaces). Another plugin he praised was one he was introduced to in his new team, to provide a graphical interface to manage codebase versions with git, which is proving to be more convenient than his traditional command line interaction. For syntactic linting he uses Norminet, Liveshare is for remote team collaboration, and a Figma plugin remains in his toolkit to translate his graphical designs into code. He also has a preference in terminal environment, which he sets to ZSH or FISH over the more common bash shell. Additionally, he extends Macbooks with a plugin to remember his clipboard, and uses two monitors to work.  
+ Regarding immutable characteristics of software that influences his work, he mentioned Copilot and OpenAI plugins that are installed by default, and although the interactive prompt is useful, their amutocompletion feature is often more distractive as he authors code. 
+ His motivation to complete tasks is mainly to obtain new skills, but he also often feels "demotivated" when facing difficult challenges. This may be explainable by how his tasks are split between desin and implementation, and he still spends about two thirds of his time on the former (although it was again unclear if he meant only graphical design or also preliminary code design). His hope for eventually learning something new keeps him motivated, but he said he relies heavily on his team's support to keep that hope alive. He emphatically said he feels "paralyzed" when not knowing how to proceed, or receives feedback that he did something wrong. As a recent example, he told how he accidentally committed sensitive data on the first week of the year, and he felt the same way as he couldn't trace back how he should have avoided this mistake. For this reason, he feels much more confident working in a team, both due to this safety measure it provides, and the complementary knowledge allowing for "higher rated" products that he isn't confident that he could create on his own, but he wasn't sure how much of that concern is rational or excessively self-critical: "I'm very dependent on other people for a couple of reasons, kind of. I would probably have this feeling of having self-decisions that actually are already, how to say, valid enough on their own, without them necessarily being validated by someone else.". 
+ While the team work makes him proud of his past accomplishments, he also wishes that there was more fun involved to compensate all the trepidation, and that they would be more meaningful products, with ethical contributions to "society, the earth, the environment". He enthusiastically started telling about recent controversies about how Google Earth and Maps handles private information, for an example of social issues that he cares about. In general though, he would like to improve much on his research skills, and independence, to be less paralyzed by challenges in the future. 
+ For the pair programming exercise, he picked the search algorithm challenge, as he only had work-related tasks recently that were not open source. He created a "DEV" folder in VSCode, and copilot was already there to autofill "employees" as he started typing out that data structure to search in, but it created a list of employees, so he had to edit it to be a hierarchical structure embedding the employees in companies. He improvised the "getEmployee" name for his search function, and wrote it as an arrow function with an imperative body. He started writing the procedure by declaring the result, and using a "find" iteration in the company list, which was a data-specific implementation, resulting in a simple one-layer search procedure instead of a generic search algorithm. As I tried to prompt him to return only the employee, not the company itself, the specificity of the implementation made it difficult to redesign, but this was enough exercise to observe how he has such pragmatic approach to tasks, before he considers generalization. 
+
+Conclusions#h2{text-align:center}
+
+ All four informants expressed a strong sense of ethical responsibility, and at the same time a dissatisfaction with how they are limited to have such considerations due to the complexity of their work, or their lack of understanding of it - the inability of deciding which causing additional frustration. The most challenging among the questions always proved to be the one about allocated time for "design", revealing a highly consequential negative effect of applying the "design fallacy" as an intented boundary object in development contexts. The common interpretation of the word there strictly refers to UI/UX design, even for the informant with a rare history in the interdisciplinary field of "design systems". This was in conflict with how I intended to include code design considerations, like architectures, abstractions and algorithms in my reference, which is itself only half way to how "participatory design" interprets even (if not rather) user/market research and systems design (not to be confused with "design systems") under its umbrella term. This becomes especially problematic as all informants expressed discomfort about how they have little involvement in such "big picture" concerns, which often limits the embodiment of their motivation to perform their tasks, and consequently their performance and enjoyment of their work. It should be noted that these were informants whom I carefully selected as independently motivated creators aspiring for autonomy, which as evidenced by the interviews, is tightly rooted in moral dedication and senses of ethical responsibility. The majority of professionals may struggle less from this "severance" of their work from their core personal motivators, but if this is in correlation with less ethical attitudes, then the "design fallacy" and promotion of "participatory design", that further exlude professional suppliers in favor of consumer demands, should be imperative to reconsider. Since this study was not representative of even this minority of independent programmers, and industry-wide ethnographies to compare it with are scarce, this of course remains a localised theory based on this ethnography, and its extrapolation would only be based on the researcher's limited experience. While the proposition is grounded in my analysis of the problem statement, it should only apply if its conditional clause can also be evidenced by further, representative research. 
+
+References#h2{text-align:center}
+
+ Akerlof, George A. (1970): "The Market for 'Lemons': Quality Uncertainty and the Market Mechanism". Quarterly Journal of Economics. 84 (3). The MIT Press pp. 488–500. 
+ Blake, Terence (2013): "BRUNO LATOUR AND WHITEHEAD: a pragmatic alliance
+". blog post: https://terenceblake.wordpress.com/2013/11/17/bruno-latour-and-whitehead-a-pragmatic-alliance/
+ Brockman, John (1995): "The Third Culture: Beyond the Scientific Revolution". Simon & Schuster. 
+ Bryant, Levi R. (2011): "The Democracy of Objects". Open Humanities Press. 
+ Canceran, Delfo C. (2023): "Ethical turn in the social sciences". Sociology Compass 17:e13064.
+ Chang, Wen-Wei; Giaccardi, Elisa; Chen, Lin-Lin & Liang, Rung-Huei (2017): "Interview with Things: A First-thing Perspective to Understand the Scooter’s Everyday Socio-material Network in Taiwan". DIS Human Relationships 1 pp. 1001-1012. 
+ Crabtree, Andy (2004): "Taking technomethodology seriously: hybrid change in the ethnomethodology–design relationship". In: European Journal of Information Systems 13 pp. 195–209.
+ Daly, Herman E. (1987): "A.N. Whitehead’s Fallacy of Misplaced Concreteness: Examples from Economics". Journal of Interdisciplinary Economics 2:2 pp. 83-89.
+ Debaise, Didier & Keating, Thomas (2021): "Speculative Empiricism, Nature and the Question of Predatory Abstractions: A conversation with Didier Debaise". In: Theory, Culture and Society 0:0 pp. 1-15. 
+ Unphon, Hataichanok & Dittrich, Yvonne (2010): "Software architecture awarenes in long-term software product evolution". In: Journal of Systems and Software 83:11 pp. 2211-2226. 
+ Dittrich, Yvonne; Sharp, Helen & Source, Cleidson de (2024): "Teaching and Learning Ethnography for Software Engineering Contexts". In: Mendez, D., Avgeriou, P., Kalinowski, M. & Ali, N. B. (eds.): "Handbook on Teaching Empirical Software Engineering". Springer Nature Switzerland, p. 593-630
+ Douglas-Jones, Rachel; Walford, Antonia & Seaver, Nick (2021): "Introduction: Towards an Anthropology of Data". In: Journal of the Royal Anthropological Institute 27 pp. 9-25. 
+ Drazin, Adam (2012): "Digital Anthropology: Working on, with and for Digital Technologies". In: Miller & Horst (eds): Digital Anthropology. 
+ Flyvbjerg, Bent (2006): "Five Misunderstandings About Case-Study Research". Qualitative Inquiry 12:2 pp. 129-245. 
+ Frauenberger, Christopher (2019): "Entanglement HCI: The Next Wave?". ACM Transactionson Computer-Human Interaction 27:1:2
+ Friedman, B., Kahn, P. H. Jr., Borning, A., & Huldtgren, A. (2013): V"alue sensitive design and information systems". In N. Doorn, D. Schuurbiers & I. van de Poel, M. E. Gorman (Eds.): "Early engagement and new technologies: Opening up the laboratory". Springer, Dordrecht pp. 55-95.
+ Haraway, Donna (1991): "The Cyborg Manifesto: Science, Technology and Socialist-Feminism in the late Twentieth century". In: Simians, Cyborgs and Women: The Reinvention of Nature, Routledge, New York pp. 149-181.
+ Haraway, Donna (1991): “Situated Knowledges: the science question in feminism and the privelege of partial perspective”. In: Simians, Cyborgs, and Women. Routledge, New York pp. 183-201. 
+ Harman, Graham (2002): "Tool-being: Heidegger and the Methaphysics of Objects". Open Court, Chicage and La Salle, IL. 
+ Hayles, Katherine N. (2014): "Speculative Aesthetics and Object-oriented Inquiry (OOI)". Speculations: A Journal of Speculative Realism 5.
+ Heidegger, Martin (1954): "The Question Concerning Technology". In: Krell, David Farell (ed. 1977): "MartinHeidgger: Basic Writings". Harper & Row, New York pp. 287-317.
+ Hine, C. (2008): "Virtual ethnography: Modes, varieties, affordances". The SAGE handbook of online research methods pp. 257–270.
+ Hyysalo, Sampsa; Jensen, Torben Elgaard & Oudshoorn, Nelly (2016): "Introduction to the New Production of Users". In: Hyysalo, Sampsa; Jensen, Torben Elgaard & Oudshoorn, Nelly (ed. 2016): The New Production of Users. Changing Innovation Collectives and Involvement Strategies. Routledge, New York pp. 160-193.
+ Jackson, Steven J & Kang, Laewoo (2014): "Breakdown, Obsolescence and Reuse: HCI and the Art of Repair". In: CHI: One of a CHind. Session: Hackerspaces, Making and Breaking. 
+ Kofman, Ava (2018): "Bruno Latour, the Post-Truth Philosopher, Mounts a Defense of Science". The New York Times. online: https://www.nytimes.com/2018/10/25/magazine/bruno-latour-post-truth-philosopher-science.html
+ Kuhn, Thomas S. (1970): "Logic of Discovery or Psychology of Research?". In: Lakatos, Imre & Musgrave, Alan (eds.): "Criticism and the Growth of Knowledge". Cambridge University Press pp. 1–24.
+ Latour, Bruno (1987): "Science in Action: How to Follow Scientists and Engineers through Society". Harvard University Press, Cambridge, MS, USA. 
+ Latour, Bruno (1996): "Do Scientific Objects Have a History? Pasteur and Whitehead in a Bath of Lactic Acid". In: Common Knowledge 5:1, pp.76-91
+ Lave, Jean & Wenger, Etienne (1991): Situated Learning: Legitimate Peripheral Participation. Cambridge University Press. 
+ Leonardi, Paul (2023): "Affordances and Agency: A Clarification and Integration of Fractured Concepts". MIS Quarterly 47:4 pp. 9-20. 
+ Levinson, Stephen C. (2012): "The Original Sin of Cognitive Science". Topics in Cognitive Science 4 pp. 396–403.
+ Lopez, Tamara; Sharp, Helen, Bandara, Arosha & Tun, Thein (2023): "Security Responses in Software Development". ACM Transactions on Software Engineering and Methodology 32:3:64. 
+ Majchrzak, A. & Markus, M. L. (2013): "Technology Affordances and Constraints in Management Information Systems (MIS)". In: Kessler, E. (ed)_ "Encyclopedia of Management Theory". Sage Publications. 
+ Martin, Robert C. & Martin, Micah (2006): "Agile Principles, Patterns, and Practices in C-sharp". Prentice Hall. 
+ Mørch, Anders I. & Zhu, Li (2013): Component-Based Design and Software Readymades. In: Dittrich, Y., Burnett, M., Mørch, A., Redmiles, D. (eds) End-User Development. IS-EUD 2013. Lecture Notes in Computer Science, vol 7897. Springer, Berlin, Heidelberg. pp. 278-283. 
+ Poel, Ibo Van de (2013): "Translating values into design requirements". In: Philosophy and engineering: Reflections on practice, principles and processes. Springer Netherlands pp. 253-266. 
+ Redstrom, Johan & Wiltse, Heather (2015): "Press Play: Acts of defining (in) fluid assemblages". In: Proceedings of Nordes 2015: Design Ecologies. online: http://www.nordes.org/opj/index.php/n13/article/view/432/407
+ Redstrom, Johan & Wiltse, Heather (2015): "Changing Things: Innovation through Design Philosophy." In: Academy of Design Innovation Management 2019: Research Perspectives in the Era of Transformations. 
+ Salmon, Wesley C. (1978): "Unfinished business: The Problem of Induction". Philosophical Studies 33 pp. 1-19.
+ Seaver, Nick (2019): "Knowing Algorithms". In: Vertesi, Janet & David Ribes (eds): "digitalSTS: A Field Guide for Science & Technology Studies". Princeton University Press pp. 412-422. 
+ Snow, C. P. (1959): "The Two Cultures and the Scientific Revolution". Cambridge University Press, New York. 
+ Steen, Marc (2011): "Tensions in human-centered design". CoDesign 7:1, pp. 45-60. 
+ Steen, Marc (2015): "Upon Opening the Black Box and Finding it Full: Exploring the Ethics in Design Practices". In: Science, Technology, and Human Values 40:3 pp. 389-420. 
+ Stewart, James & Williams, Robert (2005): The Wrong Trousers? Beyond the Design Fallacy: Social Learning and the User. In: Rohracher, Harald (ed.) User-involvement in innovation processes. Strategies and limitations from a socio-technical perspective. Profil-Verlag, Munich. 
+ Suchman, Lucy (2002): "Located accountabilities in technology production". Scandinavian Journal of Information Systems 14:2 pp. 91-105.
+ Thrift, N. J. (2006): Re-inventing Invention: New Tendencies in Capitalist Commodification. Economy and Society 35 pp. 279-306. 
+ Vatn, Arild (2005): "Institutions and the Environment". Edward Elgar, Cheltenham UK and Northampton USA. 
 

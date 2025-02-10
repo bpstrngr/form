@@ -1,13 +1,13 @@
  import {note,each,drop,compose,either,infer,tether,is,record,slip,numeric,collect,provide,combine,whether,when,crop,buffer,pass,colors,expect,wait,exit} from "./Blik_2023_inference.js";
- import {fetch} from "./Blik_2023_interface.js";
+ import {fetch,path,query} from "./Blik_2023_interface.js";
  import {merge,search,extract,unfold,prune,sum,extreme} from "./Blik_2023_search.js";
  let parameters={query:{format:"json",origin:"*"}};
 
  export default 
  {async get(request)
-{let {title,depth=1,height,section,homogeneous=true}=request.query;
+{let {title,depth=1,height,section,homogeneous=true}=query(request.url);
  let pages=await expand(title,depth,height,section,homogeneous);
- if(request.path.at(-1)==="wikipedia")
+ if(path(request).at(-1)==="wikipedia")
  return {[title]:prune.call(pages,({1:page})=>
  page.title?page.pages?{[page.title]:page.pages||{}}:page.title:page)};
  return unfold.call({title,pages},"pages").filter(page=>page.pages);

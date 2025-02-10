@@ -1,6 +1,7 @@
- import layout,{color} from "./Blik_2023_layout.js";
+ import * as layout from "./Blik_2023_layout.js";
+ import {color} from "./Blik_2023_layout.js";
  import {search,merge,extreme,sum,extract,unfold,prune} from "./Blik_2023_search.js";
- import {document,demarkup,namespaces,deselect,css,capture,destroy,ascend} from "./Blik_2023_fragment.js";
+ import {document,demarkup,namespaces,deselect,css,capture,destroy,ascend,form,fill,annotate} from "./Blik_2023_fragment.js";
  import {infer,tether,simple,swap,wait,numeric,drop,pass,note,has,collect,compose,combine,whether,record,each,slip,differ,buffer,observe,ascending,defined,compound,array,string,clock,revert,provide,plural,when} from "./Blik_2023_inference.js";
  import {window,fetch,digest,resolve,path} from "./Blik_2023_interface.js";
  import * as d3 from './Bostock_2011_d3.js';
@@ -20,8 +21,8 @@
  // {node:{node:[{node:"node",relations:["node"]},"node"]}} or [{name,relations}]
  if(typeof resource==="string")
  return compose(fetch,digest,infer(sprawl,options))(resource);
- if(options.source==="/get")
- resource=record(resource,[window.location.origin]),options.linear=true;
+ if(options.source)
+ resource=record(resource,[options.source==="/get"?window.location.origin:options.source]),options.linear=true;
  if(resource.constructor.name==="Node")
  return resource;
  let {relations,spread,title,monospace=10,still,source,gradual,depth}=options;
@@ -201,7 +202,7 @@
  ,fill({name}){return "url(#"+name?.replace(/ /g,"_")+")"}
  }
 ],text:
- {fold:wrap,class:"label",fill:"black",stroke:"black",opacity:0.5
+ {fold:wrap,update:false,class:"label",fill:"black",stroke:"black",opacity:0.5
  ,"text-anchor":function()
 {let {spread}=select(ascend.call(this)[0]).datum();
  let {force,left,up}={[spread]:true};
@@ -810,12 +811,14 @@
 {target=target.closest(".node");
  if(target.editing)
  return;
- let form=target.closest("body").querySelector("#composer");
+ let composer=target.closest("body").querySelector("#composer");
  let node=select(target).datum();
- let source=trace(node,[]);
- if(source[0]=="get")
- return form.call(form,{get:path.slice(1).join("/"),gradual:true});
- if(!node.parent)return retreat();
+ let source=compose(tether(unfold,"source"),provide,each("name"),collect,"reverse")(node);
+ return form.call(composer
+,{get:annotate({source:"",gradual:true},{source:""})})
+,fill.call(composer,{source:source.length>1?source.slice(1).join("/"):"..",gradual:true})
+,composer.dispatchEvent(new Event("submit"));
+ //if(!node.parent)return retreat();
  //let simulation=target.closest("svg").simulation.force("link");
  //let linked=simulation.links().length-
  //note(simulation.links(simulation.links().filter(link=>

@@ -99,8 +99,7 @@ actions#script(
 {let [src,alt]=["data-source","aria-label"].map(this.getAttribute.bind(this));
  compose(image,canvas,infer(insert,"over",this))(src,alt);
 }}
- };`,{"source":"/actions"}){max-width:90%;overflow:scroll;width:90%;margin:auto;b
-order-radius:.5em; border:2px dashed #616161}
+ };`,{"source":"/actions"}){max-width:90%;overflow:scroll;width:90%;margin:auto;border-radius:.5em;border:2px dashed #616161}
 
 capture#script(
 ' // /capture

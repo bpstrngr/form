@@ -1,7 +1,8 @@
  import {note,crop,swap,is,buffer,provide,compound,collect,same,pass,compose,each,infer,tether,route,record,combine,string,whether,drop,slip,exit,numeric,match,when,has,basic,ascend,heritage,observe} from "./Blik_2023_inference.js";
  import {document,hypertext,dispose,throttle,capture,defer,delegate,form,progress,insert,expose,namespaces,css,fill,annotate,deselect,expand,spell,syndicate,article,demarkup,media,stylerules,actions as interaction} from "./Blik_2023_fragment.js";
  import {serialize,proceduralize,parse,mime} from "./Blik_2023_meta.js";
- import layout,{fontface,animation} from "./Blik_2023_layout.js";
+ import * as layout from "./Blik_2023_layout.js";
+ import {fontface,animation} from "./Blik_2023_layout.js";
  import {merge,search,extract,encrypt} from "./Blik_2023_search.js";
  import {access,resolve,locate,window,sourcemap,fetch,digest,cookie,cookies,script,query,path,scope as modules,module,stage} from "./Blik_2023_interface.js";
  import routes from "./Blik_2023_form.js";
@@ -42,20 +43,12 @@
  {"&>span.status":{position:"absolute",left:"-0.5em",top:"-1.5em",color:"black"}
  ,"&,& label[for=source]":
  {"&>ul":
- {"text-align":"left","margin-left":"-1.8em",width:"auto","&>li":{"text-shadow":"black 0px 0px 10px","white-space":"nowrap","&>span":{"white-space":"normal"}}
+ {"text-align":"left","margin-left":"-1.8em",width:"auto"
+ ,"&>li":{"text-shadow":"black 0px 0px 10px","white-space":"nowrap","&>span":{"white-space":"normal"}}
  //,"background-image":"linear-gradient(to right, rgb(17, 17, 17) 0%, rgba(33, 33, 33, 0) 100%)"
  }
  }
- ,"&>ul":
- {display:"block","margin-left":"-5em","max-height":"50vh","min-width":"150px"
- ,"&>li":
- {...animation.fade.out,opacity:0,animation:"fadeout 6s","padding-left":0,"min-height":"4em","white-space":"normal"
- ,...layout.message
- }
- ,"&>li:not(:last-of-type)":{animation:"fadeout 2s"}
- ,"&>span":{position:"fixed",bottom:"1.5em",left:"5.5em",color:"black"}
- ,"&:hover>li":{opacity:1,animation:"fadein 1s"}
- }
+ ,"&>ul":layout.list
  }
  ,"&:hover label[for=message]>ul>li":{opacity:1,animation:"fadein 1s"}
  ,...Object.fromEntries(["erase","get","put","send"].map((method,index)=>
@@ -234,9 +227,10 @@
 {let {origin,pathname:path}=this.ownerDocument.defaultView.location;
  let query=new URLSearchParams(prune.call(fields
 ,({1:value})=>value||undefined,0,1)).toString().replace(/^(.)/,"?$1");
+ path=source===".."?path.replace(/[^\/]*\/$/,""):path+source;
  if(globalThis.window)
- this.ownerDocument.defaultView.history.pushState({},null,[origin,path.replace(/(^\/*|\/*$)/g,""),source,query].filter(Boolean).join("/"));
- let route=[path,source||(path==="/"?"get":"")].join("").replace(/\/+$/,"");
+ this.ownerDocument.defaultView.history.pushState({},null,[origin,path.replace(/(^\/*|\/*$)/g,""),query].filter(Boolean).join("/"));
+ let route=[path,path==="/"?"get":""].join("").replace(/\/+$/,"");
  resource=resource||compose(fetch,digest)(route);
  compose(profile,labels,annotate,["get"],record,form.bind(this))(resource);
  let frame=this?.ownerDocument.defaultView.frame||insert(document({div:{id:"frame"}}),"before",this);
@@ -288,7 +282,7 @@
  {"./Blik_2023_interface.js":["","path","resolve","locate","digest","cookie","cookies","query"]
  ,"./Blik_2023_inference.js":";note;expect;compose;combine;pass;route;record;trace;drop;crop;slip;infer;tether;whether;wait;observe;buffer;swap;when;array;has;each;differ;provide;collect;is;match;basic;defined".split(";")
  ,"./Blik_2023_fragment.js":";* as fragment;document;form;progress;image;canvas;demarkup;insert;navigate;metamarkup;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard;spell;expand;parse;semiotics;consume;syndicate;article;destroy;reference;fill;annotate;qualify;focus;capture".split(";")
- ,"./Blik_2023_layout.js":["layout"]
+ ,"./Blik_2023_layout.js":["* as layout"]
  ,"./Blik_2023_search.js":["","merge","unfold","search","prune","extract"]
  ,"./Blik_2024_svg.js":"* as svg"
  }
@@ -310,8 +304,7 @@
  input.dispatchEvent(new Event("blur",{bubbles:true})); 
  input.closest("form").dispatchEvent(new Event("submit",{bubbles:true}));
 },submit(event)
-{// Important to prevent default to avoid unintended url-encoded requests. 
- event?.preventDefault();
+{event?.preventDefault();
  let form=this;
  let {method}=demarkup(form,"method");
  let fields=fill.call(form,method);
@@ -388,6 +381,21 @@
  if({erase:true,send:message,put:true}[method])
  return form.dispatchEvent(new Event("submit",{bubbles:true}));
  toggle.call(form,{get:"send",send:"get"}[method]);
+}}
+ ,"#extend":
+ {keydown(event)
+{event.stopPropagation();
+ event.preventDefault();
+ let {target,keyCode}=event;
+ let {enter}=keyboard(keyCode);
+ if(!enter)return;
+ let value=target.textContent;
+ if(Array.from(value).every(is(".")))
+ return this.dispatchEvent(new Event("submit",{bubbles:true}));
+ let form=this.closest("form");
+ let method=form.getAttribute("method");
+ fragment.form.call(form,{[method]:annotate({[value]:""},labels)});
+ target.textContent="...";
 }}
  }
  ,toggle,submission,labels,profile,transform
@@ -513,7 +521,7 @@
  {"./Blik_2023_interface.js":["","resolve","locate","digest","cookie","cookies","query"]
  ,"./Blik_2023_inference.js":";note;clock;expect;compose;combine;pass;route;record;trace;drop;crop;slip;infer;tether;either;whether;wait;observe;buffer;swap;when;array;has;each;differ;provide;collect;is;match;basic;defined".split(";")
  ,"./Blik_2023_fragment.js":";* as fragment;document;form;image;canvas;demarkup;insert;navigate;metamarkup;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard;spell;expand;parse;semiotics;consume;syndicate;article;destroy;reference;fill;annotate;qualify;focus;capture;message;stylerules".split(";")
- ,"./Blik_2023_layout.js":["layout"]
+ ,"./Blik_2023_layout.js":["* as layout"]
  ,"./Blik_2024_svg.js":"* as svg"
  }
  ,exports:
@@ -687,7 +695,7 @@
  ,"./Blik_2023_search.js":["","merge","unfold","search","prune","extract"]
  ,"./Blik_2023_inference.js":";note;expect;compose;combine;pass;route;record;trace;drop;crop;slip;infer;tether;whether;wait;observe;buffer;swap;when;array;has;each;differ;provide;collect;is;match;basic;defined".split(";")
  ,"./Blik_2023_fragment.js":";* as fragment;document;form;image;canvas;demarkup;insert;navigate;metamarkup;detransform;stretch;vectorspace;error;drillresize;deselect;namespaces;keyboard;spell;expand;parse;semiotics;consume;syndicate;article;destroy;reference;fill;annotate;qualify;focus;capture;socket".split(";")
- ,"./Blik_2023_layout.js":["layout"]
+ ,"./Blik_2023_layout.js":["* as layout"]
  }
  ,exports:
  {default:
