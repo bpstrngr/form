@@ -79,7 +79,7 @@
 ,node);
 };
 
- function spread(nodes,{spread="force",monospace,matrix}={})
+ function spread(nodes,{spread="force",monospace=10,matrix}={})
 {let {force,radial,up,down,left,right}={[spread]:true};
  if(force)
  return nodes;
@@ -89,21 +89,27 @@
  let vertical=down||up;
  let inverse=up||left;
  nodes=unfold.call({nodes},childfold).slice(1);
- let [{breadth,length}]=nodes.map(measure);
+ let {breadth,length}=measure(nodes[0]);
+ let [width,height]=[breadth,length].map(size=>size*monospace).sort(size=>horizontal?-1:1);
  if(radial)
- d3.tree().size([Math.PI*2,height/2]).separation(({depth,source},next)=>(source==next.source?1:2)/depth)(node);
+ d3.tree().size([Math.PI*2,height/2]).separation(({depth,source},next)=>(source==next.source?1:2)/depth)(nodes[0]);
  else
  nodes.forEach(node=>Object.assign(node,
-[sum(measure(node).breadth/2,unfold.call(node,"source").flatMap(node=>
- [node.source].flat().flatMap(node=>node?.nodes||[]).map((child,index,nodes)=>
- child===node?nodes.splice(index)&&child:child).map(node=>measure(node).breadth)))*monospace
-,sum(10,unfold.call(node,"source").slice(1).map(node=>
- extreme((node.source?.nodes||[node]).map(node=>node.title?.length||0))[1],0))*monospace
-].sort(size=>!horizontal-1).reduce((x,y)=>({x,y}))));
- let [width,height]=[breadth,length].map(size=>size*monospace).sort(size=>!horizontal-1);
+[[-breadth/2,measure(node).breadth/2,unfold.call(node,"source").flatMap(offset)]
+,[-length/2,node.nodes?10:20,unfold.call(node,"source").slice(node.nodes?1:2).map(indent)]
+].map(size=>sum(...size)*monospace).sort(size=>horizontal?-1:1).reduce((x,y)=>({x,y}))));
  if(inverse)
- nodes.forEach(node=>Object.assign(node,horizontal?{x:width-node.x}:{y:height-node.y}));
- return node;
+ nodes.forEach(node=>Object.assign(node,horizontal?{x:-node.x}:{y:-node.y}));
+ return nodes;
+};
+
+ function offset(node)
+{return [node.source].flat().flatMap(node=>node?.nodes||[]).flatMap((child,index,nodes)=>
+ child===node?nodes.splice(index)&&[]:child).map(node=>measure(node).breadth);
+};
+
+ function indent(node)
+{return extreme([node.source?.nodes||node].flat().map(({name})=>name?.length||0))[1];
 };
 
  function chart(nodes,options,fragment)
@@ -126,17 +132,16 @@
 {if(!browser||fragment.datum().still)return;
  observe.call(d3.zoom().scaleExtent([0.1,100]),{zoom({transform}){extend.call(this,{fold:false,g:{fold:false,class:"graph",transform}});}})(fragment);
 },id:({source})=>deselect(source||"get"),class:"d3"
-  //,width:({width,monospace})=>width*monospace,height:({height})=>height*monospace
  ,"data-options":(nodes)=>JSON.stringify(prune.call(nodes,([field,value])=>isNaN(field)?value:undefined,1,0))
  ,title(concept){return trace(concept,[])[0];}
- ,viewBox({monospace,spread="force"})
+ ,viewBox({monospace=10,spread="force"})
 {let {up,down,force,radial}={[spread]:true},vertical=Boolean(up||down);
  let {breadth,length}=measure(arguments[0]);
  let [nodes,links]=forage(this);
  let density=links.size()/(nodes.size()*(nodes.size()-1)/2);
  let [width,height]=force
 ?Array(2).fill(scale(nodes.size()/density||0))
-:[breadth,length].map(size=>size*monospace).sort(size=>vertical-1);
+:[breadth,length].map(size=>size*monospace).sort(size=>vertical?1:-1);
  let viewBox=radial?[-width,-height,width*2,height*2]:[-width/2,-height/2,width,height];
  return viewBox.join(" ");
 },g:
@@ -166,22 +171,21 @@
 
  var node=
  {fold:false,match:nodeindex
+ ,class:"node",id:nodeindex,filter:"url(#shadow)"
  ,update(nodes)
 {let fragment=select(ascend.call(nodes)[0]);
  let {gradual}=fragment.datum();
- let content=gradual&&
- {circle:{update:true,...extract.call(node.circle[0],["class","r"])}
- ,text:{fold:false,update:true,...extract.call(node.text,"font-size")}
- };
  extend.call(nodes
 ,{fold:false,...extract.call(node,["transform"])
- ,...content
+ ,...gradual&&
+ {circle:{update:true,...extract.call(node.circle[0],["class","r"])}
+ ,text:{fold:false,update:true,...extract.call(node.text,"font-size")}
+ }
  });
 },each(node)
 {if(trace(node,[])?.[0]?.includes?.("image"))
  pattern(node);
 },call(nodes){if(browser)drag(nodes);}
- ,class:"node",id:nodeindex,filter:"url(#shadow)"
  ,fill:node=>paint(node)
  ,transform({x,y})
 {let {spread}=select(ascend.call(this)[0]).datum();
@@ -202,25 +206,29 @@
  ,fill({name}){return "url(#"+name?.replace(/ /g,"_")+")"}
  }
 ],text:
- {fold:wrap,update:false,class:"label",fill:"black",stroke:"black",opacity:0.5
+ {fold:wrap,update:false,class:"label"
+ ,fill()
+{let {force}={[select(ascend.call(this)[0]).datum().spread]:true};
+ return force?"black":undefined;
+},stroke:"black",opacity:0.5
  ,"text-anchor":function()
 {let {spread}=select(ascend.call(this)[0]).datum();
  let {force,left,up}={[spread]:true};
- let {children}=select(ascend.call(this,1)[0]).datum();
- return force?"middle":["start","end"][sum([Boolean(children?.length),left])%2];
+ let {nodes}=select(ascend.call(this,1)[0]).datum();
+ return force?"middle":["start","end"][sum([Boolean(nodes?.length),left])%2];
 },"stroke-width":function()
-{let force=select(ascend.call(this)[0]).datum().spread==="force";
- return force?this.parentNode.querySelector("circle").getAttribute("r")*0.002+"px":0.5;
+{let {force}={[select(ascend.call(this)[0]).datum().spread]:true};
+ return this.parentNode.querySelector("circle").getAttribute("r")*0.02+"px";
 },"font-size":function()
-{let force=select(ascend.call(this)[0]).datum().spread==="force";
+{let {force}={[select(ascend.call(this)[0]).datum().spread]:true};
  let node=select(ascend.call(this,1)[0]).datum();
  let size=this.parentNode.querySelector("circle").getAttribute("r");
- return size/5+"px";
+ return size/2+"px";
 },dx()
 {let {spread}=select(ascend.call(this)[0]).datum();
  let {force,left,up}={[spread]:true};
- let {children}=select(ascend.call(this,1)[0]).datum();
- return !force?[7,-7][sum([Boolean(children?.length),left])%2]:null;
+ let {nodes}=select(ascend.call(this,1)[0]).datum();
+ return !force?[7,-7][sum([Boolean(nodes?.length),left])%2]:null;
 },dy(text,index,wrap)
 {let force=select(ascend.call(this)[0]).datum().spread==="force";
  return force?scale(index+1-(wrap.length)/2)+"em":".25em";
@@ -436,12 +444,12 @@
  function wrap({name,source})
 {if(trace(arguments[0],[])?.[0]?.includes("image"))
  return [];
- let force=select(ascend.call(this)[0]).datum().spread==="force";
+ let {force}={[select(ascend.call(this)[0]).datum().spread]:true};
  return force?!name||(name.toString().match(/.+?(_|\/|$)/g)||[]).reduce((wrap,split,index,splits)=>
  wrap.concat(index&&(split.length+wrap[wrap.length-1].length<18)
 ?wrap.pop()+split
 :split.match(new RegExp(".{1,"+18+"}","g"))),[])
-:[source?name:""];
+:[name];
 };
 
  function locate(node)
@@ -514,13 +522,14 @@
  function simulate(fragment)
 {//let {requestAnimationFrame:frame}=fragment.ownerDocument.defaultView;
  //let throttle=frame?revert((tick,simulation)=>frame(time=>tick(simulation))):infer();
+ let {force}={[select(fragment).datum().spread]:true};
  return compose
 (0.01,"alphaTarget"
 ,infer("force","link",d3.forceLink([]).strength(0))
 ,infer("force","charge",d3.forceManyBody().strength(0))
 ,infer("force","collision",d3.forceCollide().radius(0))
 ,{fragment,clock:0},Object.assign
-,tether(observe,{tick:buffer(compose(populate,charge),note.bind(1))})
+,tether(observe,{tick:buffer(compose(populate,force&&charge),note.bind(1))})
 ,"fragment"
 )(fragment.simulation=fragment.simulation||merge(d3.forceSimulation(),{fragment}));
 };
@@ -533,9 +542,10 @@
  let datum=select(fragment).datum();
  if(!browser&&datum.gradual)
  return simulation.alpha(0).stop();
- let [cluster,network]=forage(fragment); 
+ let [cluster,network]=forage(fragment);
  let nodes=unfold.call({nodes:datum},"nodes").slice(1);
  let links=connect(nodes);
+ let complete=cluster.size()===nodes.length;
  if(datum.gradual)
  links=links.slice(0,network.size()+!clock)
 ,nodes=Array.from(new Set(links.flatMap(({source,target})=>[source,target])));
@@ -548,7 +558,7 @@
  ,viewBox:svg.viewBox
  });
  let {force}={[datum.spread]:true};
- if(!force)
+ if(!force&&complete)
  return simulation.alpha(0).stop();
  return Object.assign(simulation,{clock:(clock+1)%2});
  //form.style.backgroundImage=nodes.size()==this.nodes()[0].value?"":"linear-gradient(to right,"+[...this.nodes(),...new Array(this.nodes()[0].value-this.nodes().length)].map(node=>!node?"var(--isle)":paint(node).replace(")",",0.3)")).join(",")+")";
@@ -770,8 +780,7 @@
  }
  ,"g.node":
  {...observe({touch({target})
-{target=note(target).closest(".node");
- compose
+{compose
 (combine(compose("svg","closest",forage),compose(select,"datum"))
 ,when(array,has(["x","y"]))
 ,combine("0",compose
@@ -789,7 +798,7 @@
 ,links=>new Set(links.data().flatMap(({source,target})=>[source,target]))
 ))
 ,(nodes,cluster)=>nodes.each(dim).filter(node=>cluster.has(node)).each(highlight)
-)(target);
+)(target.closest(".node"));
 }//,pointerout({target}){target.dispatchEvent(new Event("pointerover",{bubbles:true}));}
  ,click:interact
  })

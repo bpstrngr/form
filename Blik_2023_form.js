@@ -81,7 +81,7 @@
  merge(fields
  // root needs explicit /get method to reach json representation. 
 ,{source:path(window.origin+(this===routes?"/get":request.url))
- ,resource:this!==routes&&compose(stage,digest)(this
+ ,resource:this!==routes&&compose(stage,digest)(this.get?.(...arguments)||this
 ,{url,headers:request.headers})
  },1);
  await buffer(compose(tether(submission.get),throttle))(composer,fields);
@@ -225,14 +225,15 @@
  var submission=
  {get({source,resource,...fields})
 {let {origin,pathname:path}=this.ownerDocument.defaultView.location;
+ let back=source==="..";
  let query=new URLSearchParams(prune.call(fields
 ,({1:value})=>value||undefined,0,1)).toString().replace(/^(.)/,"?$1");
- path=source===".."?path.replace(/[^\/]*\/$/,""):path+source;
+ path=back?path.replace(/[^\/]*\/$/,""):path+source;
  if(globalThis.window)
  this.ownerDocument.defaultView.history.pushState({},null,[origin,path.replace(/(^\/*|\/*$)/g,""),query].filter(Boolean).join("/"));
  let route=[path,path==="/"?"get":""].join("").replace(/\/+$/,"");
  resource=resource||compose(fetch,digest)(route);
- compose(profile,labels,annotate,["get"],record,form.bind(this))(resource);
+ compose(profile,labels,note,annotate,["get"],record,form.bind(this))(resource);
  let frame=this?.ownerDocument.defaultView.frame||insert(document({div:{id:"frame"}}),"before",this);
  frame.dataset.source=route;
  let fragment=infer(transform)(resource,{source:route,...fields});
